@@ -7,5 +7,8 @@ import com.ez.wireless.cellphone.capstone.model.DeviceCondition;
 
 @Repository
 public interface DeviceConditionRepository extends CrudRepository<DeviceCondition, Integer> {
-
+	/*
+	 * You can find by column name	
+	  public DeviceCondition findByConditionName(String conditionName);
+	*/
 }
