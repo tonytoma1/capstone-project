@@ -1,4 +1,4 @@
-package com.ez.wireless.cellphone.capstone.controller;
+package com.ez.wireless.cellphone.capstone.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +17,13 @@ public class OrdersCompleteService {
 	@Autowired
 	public OrdersCompleteService(OrdersCompleteRepository ordersCompleteRepository)
 	{
-		this.ordersCompleteRepository = ordersCompleteRepository
+		this.ordersCompleteRepository = ordersCompleteRepository;
 	}
 
 	public List<OrdersComplete> getAllOrdersComplete()
 	{
 		ArrayList<OrdersComplete> ordersComplete = new ArrayList();
-		orderCompleteRepository.findAll().forEach(a -> ordersComplete.add(a));
+		ordersCompleteRepository.findAll().forEach(a -> ordersComplete.add(a));
 		return ordersComplete;
 	}
 	/**

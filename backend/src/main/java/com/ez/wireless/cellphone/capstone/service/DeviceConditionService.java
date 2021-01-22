@@ -27,8 +27,6 @@ public class DeviceConditionService {
 	public List<DeviceCondition> getAllConditions() {
 		List<DeviceCondition> conditions = new ArrayList();
 		
-		
-		
 		deviceConditionRepository.findAll()
 							.forEach(x -> conditions.add(x));
 		
