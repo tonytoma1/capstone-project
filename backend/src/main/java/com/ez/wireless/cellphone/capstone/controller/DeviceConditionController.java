@@ -31,7 +31,7 @@ public class DeviceConditionController {
 			deviceConditionService.saveCondition(condition);
 		}
 		catch(IllegalArgumentException e) {
-			throw new IllegalArgumentException("Device Condition couldn't be saved");
+			throw new IllegalArgumentException("Condition couldn't be saved");
 		}
 	}
 	
