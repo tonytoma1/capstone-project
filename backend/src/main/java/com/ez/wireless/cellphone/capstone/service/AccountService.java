@@ -1,8 +1,12 @@
 package com.ez.wireless.cellphone.capstone.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ez.wireless.cellphone.capstone.repository.AccountRepository;
+import com.ez.wireless.cellphone.capstone.model.Account;
 
 public class AccountService 
 {
@@ -14,11 +18,25 @@ public class AccountService
 		this.ar = ar;
 	}
 	
-	//TODO
-	/*
+	/**
+	 * Gets all the rows in the account table
+	 * @return
+	 */
 	public List<Account> getAllAccounts()
 	{
-		ArrayList<Account>
+		List<Account> accounts = new ArrayList<>();
+		ar.findAll().forEach(x -> accounts.add(x));
+		return accounts;
 	}
-	*/
+	
+	/**
+	 * Saves the Account to the account table
+	 * @param account The account
+	 * @return The Account if it was successfully saved to the database
+	 * @throws IllegalArgumentException if the argument is null
+	 */
+	public Account saveAccount(Account ac) throws IllegalArgumentException
+	{
+		return ar.save(ac);
+	}
 }

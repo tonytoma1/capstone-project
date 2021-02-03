@@ -34,7 +34,7 @@ public class ServiceProviderController
 		}
 		catch(IllegalArgumentException e)
 		{
-			throw new IllegalArgumentException("The Service Provider COuldn't be save");
+			throw new IllegalArgumentException("The Service Provider Couldn't be save");
 		}
 	}
 }
