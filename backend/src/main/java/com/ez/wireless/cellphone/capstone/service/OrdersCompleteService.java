@@ -22,7 +22,7 @@ public class OrdersCompleteService {
 
 	public List<OrdersComplete> getAllOrdersComplete()
 	{
-		ArrayList<OrdersComplete> ordersComplete = new ArrayList();
+		ArrayList<OrdersComplete> ordersComplete = new ArrayList<>();
 		ordersCompleteRepository.findAll().forEach(a -> ordersComplete.add(a));
 		return ordersComplete;
 	}

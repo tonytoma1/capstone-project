@@ -24,7 +24,7 @@ public class ClientTempService {
 	 * @return a list of ClientTemp objects
 	 */
 	public List<ClientTemp> getAllClientTemp() {
-		ArrayList<ClientTemp> clientTemps = new ArrayList();
+		ArrayList<ClientTemp> clientTemps = new ArrayList<>();
 		
 		clientTempRepository.findAll().forEach(x -> clientTemps.add(x));
 		
