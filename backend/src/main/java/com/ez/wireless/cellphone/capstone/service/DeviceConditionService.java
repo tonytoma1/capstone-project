@@ -1,7 +1,6 @@
 package com.ez.wireless.cellphone.capstone.service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class DeviceConditionService {
 	 * @return a list of device conditions
 	 */
 	public List<DeviceCondition> getAllConditions() {
-		List<DeviceCondition> conditions = new ArrayList();
+		List<DeviceCondition> conditions = new ArrayList<>();
 		
 		deviceConditionRepository.findAll()
 							.forEach(x -> conditions.add(x));

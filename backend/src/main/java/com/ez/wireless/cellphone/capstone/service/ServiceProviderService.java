@@ -24,7 +24,7 @@ public class ServiceProviderService
 	 */
 	public List<ServiceProvider> getAllProviders()
 	{
-		List<ServiceProvider> providers = new ArrayList();
+		List<ServiceProvider> providers = new ArrayList<>();
 		spr.findAll().forEach(x -> providers.add(x));
 		return providers;
 	}
