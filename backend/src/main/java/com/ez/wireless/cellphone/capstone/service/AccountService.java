@@ -29,8 +29,15 @@ public class AccountService
 		return accounts;
 	}
 	
-	//TODO
-	//TODO
+	/**
+	 * Returns the account
+	 * @param username The username
+	 * @return 
+	 */
+	public Account getByUsername(String username)
+	{
+		return ar.findByUsername(username);
+	}
 	
 	/**
 	 * Saves the Account to the account table
