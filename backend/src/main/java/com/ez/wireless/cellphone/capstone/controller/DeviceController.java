@@ -17,20 +17,20 @@ import com.ez.wireless.cellphone.capstone.service.DeviceService;
 public class DeviceController 
 {
 	@Autowired
-	private DeviceService ds;
+	private DeviceService deviceService;
 	
 	@GetMapping
 	public List<Device> getAll()
 	{
-		return ds.getAllDevices();
+		return deviceService.getAllDevices();
 	}
 	
 	@PostMapping
-	public void saveDevice(@RequestBody Device dv)
+	public void saveDevice(@RequestBody Device device)
 	{
 		try 
 		{
-			ds.saveDevice(dv);
+			deviceService.saveDevice(device);
 		} 
 		catch (IllegalArgumentException e) 
 		{

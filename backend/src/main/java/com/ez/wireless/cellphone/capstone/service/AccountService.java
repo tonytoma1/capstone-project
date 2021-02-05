@@ -12,12 +12,12 @@ import com.ez.wireless.cellphone.capstone.model.Account;
 @Service
 public class AccountService 
 {
-	private AccountRepository ar;
+	private AccountRepository accountRepository;
 	
 	@Autowired
-	public AccountService(AccountRepository ar)
+	public AccountService(AccountRepository accountRepository)
 	{
-		this.ar = ar;
+		this.accountRepository = accountRepository;
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class AccountService
 	public List<Account> getAllAccounts()
 	{
 		List<Account> accounts = new ArrayList<>();
-		ar.findAll().forEach(x -> accounts.add(x));
+		accountRepository.findAll().forEach(x -> accounts.add(x));
 		return accounts;
 	}
 	
@@ -38,7 +38,7 @@ public class AccountService
 	 */
 	public Account getByUsername(String username)
 	{
-		return ar.findByUsername(username);
+		return accountRepository.findByUsername(username);
 	}
 	
 	/**
@@ -47,8 +47,8 @@ public class AccountService
 	 * @return The Account if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */
-	public Account saveAccount(Account ac) throws IllegalArgumentException
+	public Account saveAccount(Account account) throws IllegalArgumentException
 	{
-		return ar.save(ac);
+		return accountRepository.save(account);
 	}
 }

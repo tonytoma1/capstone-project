@@ -14,20 +14,20 @@ import com.ez.wireless.cellphone.capstone.service.DeviceCompanyService;
 	@RequestMapping("/api/device-company")
 	public class DeviceCompanyController {	
 		@Autowired
-		private DeviceCompanyService dcs;
+		private DeviceCompanyService deviceCompanyService;
 		
 		@GetMapping
 		public List<DeviceCompany> getAllCompanies()
 		{
-			return dcs.getAllDeviceCompanies();
+			return deviceCompanyService.getAllDeviceCompanies();
 		}
 		
 		@PostMapping
-		public void saveDeviceCompany(@RequestBody DeviceCompany dc)
+		public void saveDeviceCompany(@RequestBody DeviceCompany deviceCompany)
 		{
 			try
 			{
-				dcs.saveDeviceCompany(dc);
+				deviceCompanyService.saveDeviceCompany(deviceCompany);
 			}
 			catch(IllegalArgumentException e)
 			{

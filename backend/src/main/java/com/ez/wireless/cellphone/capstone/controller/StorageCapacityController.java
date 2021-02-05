@@ -15,20 +15,20 @@ import com.ez.wireless.cellphone.capstone.service.StorageCapacityService;
 public class StorageCapacityController 
 {
 	@Autowired
-	private StorageCapacityService scs; 
+	private StorageCapacityService storageCapacityService; 
 	
 	@GetMapping
 	public List<StorageCapacity> getAllStorageCapacity()
 	{
-		return scs.getAllStorageCapacity();
+		return storageCapacityService.getAllStorageCapacity();
 	}
 	
 	@PostMapping
-	public void saveStorage(@RequestBody StorageCapacity sc)
+	public void saveStorage(@RequestBody StorageCapacity storageCapacity)
 	{
 		try
 		{
-			scs.saveStorage(sc);
+			storageCapacityService.saveStorage(storageCapacity);
 		}
 		catch(IllegalArgumentException e)
 		{

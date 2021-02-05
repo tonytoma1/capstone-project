@@ -12,12 +12,12 @@ import com.ez.wireless.cellphone.capstone.model.Device;
 @Service
 public class DeviceService 
 {
-	private DeviceRepository dr;
+	private DeviceRepository deviceRepository;
 	
 	@Autowired
-	public DeviceService(DeviceRepository dr)
+	public DeviceService(DeviceRepository deviceRepository)
 	{
-		this.dr = dr;
+		this.deviceRepository = deviceRepository;
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class DeviceService
 	public List<Device> getAllDevices()
 	{
 		List<Device> accounts = new ArrayList<>();
-		dr.findAll().forEach(x -> accounts.add(x));
+		deviceRepository.findAll().forEach(x -> accounts.add(x));
 		return accounts;
 	}
 	
@@ -37,8 +37,8 @@ public class DeviceService
 	 * @return The Device if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */
-	public Device saveDevice(Device dv) throws IllegalArgumentException
+	public Device saveDevice(Device device) throws IllegalArgumentException
 	{
-		return dr.save(dv);
+		return deviceRepository.save(device);
 	}
 }
