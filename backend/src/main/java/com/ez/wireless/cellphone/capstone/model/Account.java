@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,8 +27,10 @@ public class Account {
 	@Column(name = "password")
 	private String password;
 
-	// TODO add person object
-	
+	@OneToOne
+	@MapsId
+	@JoinColumn(name = "person_id")
+	private Person person;
 	
 	/**
 	 * @return the accountId
