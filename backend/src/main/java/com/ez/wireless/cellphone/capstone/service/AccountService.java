@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ez.wireless.cellphone.capstone.repository.AccountRepository;
@@ -13,6 +14,9 @@ import com.ez.wireless.cellphone.capstone.model.Account;
 public class AccountService 
 {
 	private AccountRepository ar;
+	
+	@Autowired
+	private PasswordEncoder bcryptPasswordEncoder;
 	
 	@Autowired
 	public AccountService(AccountRepository ar)
@@ -49,6 +53,7 @@ public class AccountService
 	 */
 	public Account saveAccount(Account ac) throws IllegalArgumentException
 	{
+		ac.setPassword(bcryptPasswordEncoder.encode(ac.getPassword()));
 		return ar.save(ac);
 	}
 }

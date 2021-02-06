@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.stereotype.Component;
 
 /**
  * Sends an unauthorized error if the user doesn't have a valid JWT token
@@ -17,6 +18,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
  * Referenced from: https://www.javainuse.com/spring/boot-jwt
  *
  */
+@Component
 public class JwtAuthenticationEntryPointFilter implements AuthenticationEntryPoint, Serializable {
 
 	@Override

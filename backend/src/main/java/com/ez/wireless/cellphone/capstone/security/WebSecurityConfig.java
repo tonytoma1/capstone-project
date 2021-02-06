@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// TODO change this 
 		http.csrf().disable()
 			.authorizeRequests()
-			.antMatchers(HttpMethod.GET, "/**").permitAll()
+				.antMatchers("/api/register").permitAll()
 			.and()
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST, "/**").permitAll();

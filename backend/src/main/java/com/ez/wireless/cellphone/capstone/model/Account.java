@@ -28,7 +28,7 @@ public class Account {
 	private String password;
 
 	@OneToOne
-	@MapsId
+	//@MapsId
 	@JoinColumn(name = "person_id")
 	private Person person;
 	
