@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "storage-capacity")
+@Table(name = "storage_capacity")
 public class StorageCapacity {
 	
 	@Id
