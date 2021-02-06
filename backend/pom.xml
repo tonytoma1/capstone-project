@@ -38,6 +38,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 		
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
@@ -49,6 +50,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>	
+		
+		<!-- https://mvnrepository.com/artifact/com.goshippo/shippo-java-client -->
+		<dependency>
+		    <groupId>com.goshippo</groupId>
+		    <artifactId>shippo-java-client</artifactId>
+		    <version>3.0.3</version>
+		</dependency>
 		
 	</dependencies>
 

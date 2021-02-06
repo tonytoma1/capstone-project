@@ -1,0 +1,42 @@
+package com.ez.wireless.cellphone.capstone.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.ez.wireless.cellphone.capstone.repository.DeviceRepository;
+import com.ez.wireless.cellphone.capstone.model.Device;
+
+public class DeviceService 
+{
+	private DeviceRepository dr;
+	
+	@Autowired
+	public DeviceService(DeviceRepository dr)
+	{
+		this.dr = dr;
+	}
+	
+	/**
+	 * Gets all the rows in the device table
+	 * @return
+	 */
+	public List<Device> getAllDevices()
+	{
+		List<Device> accounts = new ArrayList<>();
+		dr.findAll().forEach(x -> accounts.add(x));
+		return accounts;
+	}
+	
+	/**
+	 * Saves the Device to the device table
+	 * @param device The device
+	 * @return The Device if it was successfully saved to the database
+	 * @throws IllegalArgumentException if the argument is null
+	 */
+	public Device saveDevice(Device dv) throws IllegalArgumentException
+	{
+		return dr.save(dv);
+	}
+}
