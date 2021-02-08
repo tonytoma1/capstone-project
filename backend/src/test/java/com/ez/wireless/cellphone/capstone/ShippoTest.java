@@ -83,7 +83,6 @@ class ShippoTest
 		shipmentMap.put("parcels", parcelMap);
 		shipmentMap.put("async", false);
 		
-		
 	}
 	
 	@AfterEach
