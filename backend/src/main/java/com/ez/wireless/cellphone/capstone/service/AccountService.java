@@ -8,12 +8,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ez.wireless.cellphone.capstone.repository.AccountRepository;
+import com.ez.wireless.cellphone.capstone.repository.PersonRepository;
+import com.ez.wireless.cellphone.capstone.repository.RoleRepository;
+import java.util.Optional;
+import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
+import com.ez.wireless.cellphone.capstone.model.Person;
+import com.ez.wireless.cellphone.capstone.model.Role;
 
 @Service
 public class AccountService 
 {
 	private AccountRepository ar;
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired 
+	private PersonRepository personRepository;
 	
 	@Autowired
 	private PasswordEncoder bcryptPasswordEncoder;
@@ -51,9 +63,22 @@ public class AccountService
 	 * @return The Account if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */
-	public Account saveAccount(Account ac) throws IllegalArgumentException
+	public Account saveAccount(AccountPersonRoleDTO accountDTO) throws IllegalArgumentException
 	{
-		ac.setPassword(bcryptPasswordEncoder.encode(ac.getPassword()));
-		return ar.save(ac);
+		// TODO check if value was returned
+		Optional<Role> userRole = roleRepository.findById(accountDTO.getRoleId());
+		Optional<Person> person = personRepository.findById(accountDTO.getPersonId());
+		// TODO Get person
+		
+		// TODO error handling when person or userRole not found.
+		Account account = new Account();
+		//account.setAccountId(null);
+		account.setPerson(person.get());
+		account.setRole(userRole.get());
+		account.setUsername(accountDTO.getUsername());
+		account.setPassword(bcryptPasswordEncoder.encode(accountDTO.getPassword()));
+		
+		
+		return ar.save(account);
 	}
 }

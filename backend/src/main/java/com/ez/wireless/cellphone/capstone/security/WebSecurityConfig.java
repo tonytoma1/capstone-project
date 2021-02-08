@@ -11,9 +11,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.ez.wireless.cellphone.capstone.filter.JwtAuthenticationEntryPointFilter;
 import com.ez.wireless.cellphone.capstone.filter.JwtRequestFilter;
@@ -60,8 +62,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable()
 			.authorizeRequests()
 				.antMatchers("/api/register").permitAll()
+				.antMatchers("/api/authentication").permitAll()
 			.and()
 			.authorizeRequests()
-			.antMatchers(HttpMethod.POST, "/**").permitAll();
+			.antMatchers(HttpMethod.POST, "/**").permitAll()
+			.and()
+			// make sure we use stateless session; session won't be used to
+			// store user's state.
+			.exceptionHandling()
+				.authenticationEntryPoint(jwtAuthenticationEntryPoint)
+				.and()
+		        .sessionManagement()
+		        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		
+		// Add a filter to validate the tokens with every request
+	   http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 }

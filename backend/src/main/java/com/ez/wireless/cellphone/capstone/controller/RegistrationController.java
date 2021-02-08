@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ez.wireless.cellphone.capstone.dto.AccountPersonDTO;
+import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
 
@@ -24,11 +24,9 @@ public class RegistrationController {
 	private AccountService accountService;
 	
 	@PostMapping
-	public ResponseEntity<?> saveUser(@RequestBody AccountPersonDTO accountPerson) throws Exception {
-		Account account = new Account();
-		account.setUsername(accountPerson.getUsername());
-		account.setPassword(accountPerson.getPassword());
-		return ResponseEntity.ok(accountService.saveAccount(account));
+	public ResponseEntity<?> saveUser(@RequestBody AccountPersonRoleDTO accountPersonRoleDTO) throws Exception {
+		
+		return ResponseEntity.ok(accountService.saveAccount(accountPersonRoleDTO));
 	}
 	
 }

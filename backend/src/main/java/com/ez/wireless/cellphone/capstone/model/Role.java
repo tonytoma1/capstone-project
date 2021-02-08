@@ -1,12 +1,17 @@
 package com.ez.wireless.cellphone.capstone.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "role")
@@ -20,6 +25,10 @@ public class Role {
 	
 	@Column(name = "role_name")
 	private String roleName;
+	
+	/*//@JsonManagedReference
+	@OneToOne(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	private Account account;*/
 
 	/**
 	 * @return the roleId

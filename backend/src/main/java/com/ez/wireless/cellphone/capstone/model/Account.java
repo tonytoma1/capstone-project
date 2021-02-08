@@ -6,18 +6,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name = "account")
 public class Account {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_sequence")
 	@SequenceGenerator(name="account_sequence", sequenceName = "account_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "AccountSequenceTable")
 	@Column(name = "account_id")
 	private Integer accountId;
 	
@@ -32,6 +34,39 @@ public class Account {
 	@JoinColumn(name = "person_id")
 	private Person person;
 	
+	@OneToOne
+	//@MapsId
+	@JoinColumn(name = "role_id", referencedColumnName = "role_id")
+	private Role role;
+	
+	/**
+	 * @return the person
+	 */
+	public Person getPerson() {
+		return person;
+	}
+
+	/**
+	 * @param person the person to set
+	 */
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	/**
+	 * @return the role
+	 */
+	public Role getRole() {
+		return role;
+	}
+
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 	/**
 	 * @return the accountId
 	 */

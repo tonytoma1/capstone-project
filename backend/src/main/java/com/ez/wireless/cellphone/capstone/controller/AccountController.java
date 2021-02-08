@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
 
@@ -26,7 +27,7 @@ public class AccountController
 	}
 	
 	@PostMapping
-	public void saveAccount(@RequestBody Account ac)
+	public void saveAccount(@RequestBody AccountPersonRoleDTO ac)
 	{
 		try 
 		{
