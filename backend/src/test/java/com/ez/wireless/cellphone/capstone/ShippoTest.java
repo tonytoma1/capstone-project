@@ -18,7 +18,7 @@ import com.shippo.model.Transaction;
 
 class ShippoTest 
 {	
-	//private Shipment 	ship;
+	private Shipment 	ship;
 	private Transaction trans;
 	private String		toName					= "John Doe",
 						toCompany				= "SAIT",
@@ -96,7 +96,8 @@ class ShippoTest
 	{
 		try 
 		{
-			Shipment.create(shipmentMap);
+			System.out.println(ship.create(shipmentMap));
+			//assertEquals(true, ship.getStatus().equals("SUCCESS"));
 		} 
 		catch (AuthenticationException e) 
 		{
@@ -118,7 +119,34 @@ class ShippoTest
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//assertTrue(condition);
+		HashMap<String, Object> transactionMap = new HashMap<String, Object>();
+		transactionMap.put("shipment", shipmentMap);
+		transactionMap.put("servicelevel_token", "usps_priority");
+		transactionMap.put("carrier_account", "b741b99f95e841639b54272834bc478c");
+		try 
+		{
+			System.out.println(trans.create(transactionMap));
+		} 
+		catch (AuthenticationException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch (InvalidRequestException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch (APIConnectionException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch (APIException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
