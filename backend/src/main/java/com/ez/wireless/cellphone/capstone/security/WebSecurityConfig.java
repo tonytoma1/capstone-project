@@ -22,7 +22,7 @@ import com.ez.wireless.cellphone.capstone.filter.JwtRequestFilter;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	// Verifies a user's login based on the JwtUserDetailsService class
@@ -59,13 +59,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO change this 
-		http.csrf().disable()
-			.authorizeRequests()
+		http.csrf().and().csrf().disable()
+		// Add a filter to validate the tokens with every request
+		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+		.authorizeRequests()
 				.antMatchers("/api/register").permitAll()
 				.antMatchers("/api/authentication").permitAll()
-			.and()
-			.authorizeRequests()
-			.antMatchers(HttpMethod.POST, "/**").permitAll()
+				.antMatchers("/api/account").hasRole("ADMIN")//.access("hasRole('ADMIN')")
+											.anyRequest().authenticated()
 			.and()
 			// make sure we use stateless session; session won't be used to
 			// store user's state.
@@ -74,8 +75,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 		        .sessionManagement()
 		        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
-		// Add a filter to validate the tokens with every request
-	   http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 }
+

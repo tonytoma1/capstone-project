@@ -1,6 +1,7 @@
 package com.ez.wireless.cellphone.capstone.filter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -64,12 +66,16 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		// Once we get the token validate it.
 		if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 			UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+		
+			String role = jwtTokenUtil.getRoleFromToken(jwtToken);
+			ArrayList<SimpleGrantedAuthority> roleList = new ArrayList<>();
+			roleList.add(new SimpleGrantedAuthority(role));
 			
 			// if token is valid configure Spring Security to manually set
 			// authentication
-			if(jwtTokenUtil.validateToken(jwtToken, userDetails)) {
+			if(jwtTokenUtil.validateToken(jwtToken, username)) {
 				UsernamePasswordAuthenticationToken upa = new UsernamePasswordAuthenticationToken(
-						userDetails, null, userDetails.getAuthorities());
+						userDetails, null, roleList);
 				
 				upa.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				

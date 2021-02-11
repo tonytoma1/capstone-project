@@ -1,12 +1,17 @@
 package com.ez.wireless.cellphone.capstone.jwt;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -34,6 +39,13 @@ public class JwtTokenUtil implements Serializable{
 		return getClaimFromToken(token, Claims::getSubject);
 	}
 	
+	public String getRoleFromToken(String token) {
+		Claims claims = getAllClaimsFromToken(token);
+		String role = (String) claims.get("role");
+		
+		return role;
+	}
+	
 	//Retrieve expiration date from jwt token
 	public Date getExpirationDateFromToken(String token) {
 		return getClaimFromToken(token, Claims::getExpiration);
@@ -56,9 +68,22 @@ public class JwtTokenUtil implements Serializable{
 				.getBody();
 	}
 	
+	//Generates token from the user, but it requires the username as a 
+	// string for the second argument since the UserDetails service
+	// encrypts the username.
+	public String generateToken(UserDetails userDetails, String username) { 
+		Map<String, Object> claims = new HashMap<>();
+		claims.put("role", getFirstRoleFromUserDetails(userDetails));
+		claims.put("username", userDetails.getUsername().toString());
+		
+		return doGenerateToken(claims, username);
+	}
+	
 	//generate token from user
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
+		claims.put("role", getFirstRoleFromUserDetails(userDetails));
+		
 		return doGenerateToken(claims, userDetails.getUsername());
 	}
 	
@@ -78,10 +103,29 @@ public class JwtTokenUtil implements Serializable{
 	}
 
 	// Validate token
+	// TODO not validating properly
 	public Boolean validateToken(String token, UserDetails userDetails) {
 		final String username = getUsernameFromToken(token);
 		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
 	}
 	
+	public Boolean validateToken(String token, String username) {
+		String foundUsername = getUsernameFromToken(token);
+		
+		return (foundUsername.equals(username) && !isTokenExpired(token));
+	}
+	
+	/**
+	 * Only retrieves the first role from the UserDetails list
+	 * @param userDetails
+	 * @return
+	 */
+	public String getFirstRoleFromUserDetails(UserDetails userDetails) {
+		String role = null;
+		Iterator it = userDetails.getAuthorities().iterator();
+		role = it.next().toString();
+		
+		return role;
+	}
 
 }
