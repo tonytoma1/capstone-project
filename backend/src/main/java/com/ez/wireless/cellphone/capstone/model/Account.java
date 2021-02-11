@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "account")
@@ -23,7 +24,7 @@ public class Account {
 	@Column(name = "account_id")
 	private Integer accountId;
 	
-	@Column(name = "username")
+	@Column(name = "username", unique = true)
 	private String username;
 	
 	@Column(name = "password")

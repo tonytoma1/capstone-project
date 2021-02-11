@@ -63,10 +63,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Add a filter to validate the tokens with every request
 		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
 		.authorizeRequests()
-				.antMatchers("/api/register").permitAll()
-				.antMatchers("/api/authentication").permitAll()
-				.antMatchers("/api/account").hasRole("ADMIN")//.access("hasRole('ADMIN')")
-											.anyRequest().authenticated()
+				// Register and login end-points are open so the user can login and 
+		        // create an account
+				.antMatchers(HttpMethod.POST, "/api/register").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/authentication").permitAll()
+				
+				// Put the white listed end-points here
+				.antMatchers(HttpMethod.GET, "/api/device-company").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/condition").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/storage-capacity").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/service-provider").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/device").permitAll()
+				
+				// All other end-points are secured
+				.antMatchers("/api/account").hasRole("ADMIN")
+		
+				.anyRequest().hasRole("ADMIN")
 			.and()
 			// make sure we use stateless session; session won't be used to
 			// store user's state.
