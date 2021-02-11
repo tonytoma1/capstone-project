@@ -17,20 +17,20 @@ import com.ez.wireless.cellphone.capstone.service.ServiceProviderService;
 public class ServiceProviderController 
 {
 	@Autowired
-	private ServiceProviderService sps;
+	private ServiceProviderService serviceProviderService;
 	
 	@GetMapping
 	public List<ServiceProvider> getAllProviders()
 	{
-		return sps.getAllProviders();
+		return serviceProviderService.getAllProviders();
 	}
 	
 	@PostMapping
-	public void saveProvider(@RequestBody ServiceProvider sp)
+	public void saveProvider(@RequestBody ServiceProvider serviceProvider)
 	{
 		try
 		{
-			sps.saveProvider(sp);
+			serviceProviderService.saveProvider(serviceProvider);
 		}
 		catch(IllegalArgumentException e)
 		{

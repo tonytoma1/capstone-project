@@ -17,20 +17,20 @@ import com.ez.wireless.cellphone.capstone.service.NewOrdersService;
 
 public class NewOrdersController {
 	@Autowired
-	private NewOrdersService nos;
+	private NewOrdersService newOrderService;
 	
 	@GetMapping
 	public List<NewOrders> getAllNewOrders()
 	{
-		return nos.getAllNewOrders();
+		return newOrderService.getAllNewOrders();
 	}
 	
 	@PostMapping
-	public void saveOrders(@RequestBody NewOrders no)
+	public void saveOrders(@RequestBody NewOrders newOrders)
 	{
 		try
 		{
-			nos.saveOrders(no);
+			newOrderService.saveOrders(newOrders);
 		}
 		catch(IllegalArgumentException e)
 		{

@@ -19,7 +19,7 @@ import com.ez.wireless.cellphone.capstone.model.Role;
 @Service
 public class AccountService 
 {
-	private AccountRepository ar;
+	private AccountRepository accountRepository;
 	
 	@Autowired
 	private RoleRepository roleRepository;
@@ -31,9 +31,9 @@ public class AccountService
 	private PasswordEncoder bcryptPasswordEncoder;
 	
 	@Autowired
-	public AccountService(AccountRepository ar)
+	public AccountService(AccountRepository accountRepository)
 	{
-		this.ar = ar;
+		this.accountRepository = accountRepository;
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class AccountService
 	public List<Account> getAllAccounts()
 	{
 		List<Account> accounts = new ArrayList<>();
-		ar.findAll().forEach(x -> accounts.add(x));
+		accountRepository.findAll().forEach(x -> accounts.add(x));
 		return accounts;
 	}
 	
@@ -54,7 +54,7 @@ public class AccountService
 	 */
 	public Account getByUsername(String username)
 	{
-		return ar.findByUsername(username);
+		return accountRepository.findByUsername(username);
 	}
 	
 	/**
@@ -77,8 +77,7 @@ public class AccountService
 		account.setRole(userRole.get());
 		account.setUsername(accountDTO.getUsername());
 		account.setPassword(bcryptPasswordEncoder.encode(accountDTO.getPassword()));
-		
-		
-		return ar.save(account);
+	
+		return accountRepository.save(account);
 	}
 }

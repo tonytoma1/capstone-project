@@ -9,12 +9,12 @@ import com.ez.wireless.cellphone.capstone.repository.NewOrdersRepository;
 
 @Service
 public class NewOrdersService {
-private NewOrdersRepository nor;
+private NewOrdersRepository newOrdersRepository;
 	
 	@Autowired
-	public NewOrdersService(NewOrdersRepository nor)
+	public NewOrdersService(NewOrdersRepository newOrdersRepository)
 	{
-		this.nor = nor;
+		this.newOrdersRepository = newOrdersRepository;
 	}
 	
 	/**
@@ -24,7 +24,7 @@ private NewOrdersRepository nor;
 	public List<NewOrders> getAllNewOrders()
 	{
 		List<NewOrders> orders = new ArrayList<>();
-		nor.findAll().forEach(x -> orders.add(x));
+		newOrdersRepository.findAll().forEach(x -> orders.add(x));
 		return orders;
 	}
 	
@@ -34,8 +34,8 @@ private NewOrdersRepository nor;
 	 * @return The NewOrders if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */
-	public NewOrders saveOrders(NewOrders no) throws IllegalArgumentException
+	public NewOrders saveOrders(NewOrders newOrders) throws IllegalArgumentException
 	{
-		return nor.save(no);
+		return newOrdersRepository.save(newOrders);
 	}
 }

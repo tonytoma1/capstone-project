@@ -10,12 +10,12 @@ import com.ez.wireless.cellphone.capstone.repository.ServiceProviderRepository;
 @Service
 public class ServiceProviderService 
 {	
-	private ServiceProviderRepository spr;
+	private ServiceProviderRepository serviceProviderRepository;
 	
 	@Autowired
-	public ServiceProviderService(ServiceProviderRepository spr)
+	public ServiceProviderService(ServiceProviderRepository serviceProviderRepository)
 	{
-		this.spr = spr;
+		this.serviceProviderRepository = serviceProviderRepository;
 	}
 	
 	/**
@@ -25,7 +25,7 @@ public class ServiceProviderService
 	public List<ServiceProvider> getAllProviders()
 	{
 		List<ServiceProvider> providers = new ArrayList<>();
-		spr.findAll().forEach(x -> providers.add(x));
+		serviceProviderRepository.findAll().forEach(x -> providers.add(x));
 		return providers;
 	}
 	
@@ -35,8 +35,8 @@ public class ServiceProviderService
 	 * @return The ServiceProvider if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */
-	public ServiceProvider saveProvider(ServiceProvider sp) throws IllegalArgumentException
+	public ServiceProvider saveProvider(ServiceProvider serviceProvider) throws IllegalArgumentException
 	{
-		return spr.save(sp);
+		return serviceProviderRepository.save(serviceProvider);
 	}
 }

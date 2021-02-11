@@ -11,11 +11,11 @@ import com.ez.wireless.cellphone.capstone.repository.StorageCapacityRepository;
 public class StorageCapacityService {
 	
 	@Autowired
-	private StorageCapacityRepository scr; 
+	private StorageCapacityRepository storageCapacityRepository; 
 
-	public StorageCapacityService(StorageCapacityRepository scr)
+	public StorageCapacityService(StorageCapacityRepository storageCapacityRepository)
 	{
-		this.scr = scr;
+		this.storageCapacityRepository = storageCapacityRepository;
 	}
 	
 
@@ -27,7 +27,7 @@ public class StorageCapacityService {
 	public List<StorageCapacity> getAllStorageCapacity()
 	{
 		List<StorageCapacity> storage = new ArrayList<>();
-		scr.findAll().forEach(x -> storage.add(x));
+		storageCapacityRepository.findAll().forEach(x -> storage.add(x));
 		return storage;
 	}
 	
@@ -38,9 +38,9 @@ public class StorageCapacityService {
 	 * @return The StorageCapacity if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */
-	public StorageCapacity saveStorage(StorageCapacity sc) throws IllegalArgumentException
+	public StorageCapacity saveStorage(StorageCapacity storageCapacity) throws IllegalArgumentException
 	{
-		return scr.save(sc);
+		return storageCapacityRepository.save(storageCapacity);
 	
 }
 

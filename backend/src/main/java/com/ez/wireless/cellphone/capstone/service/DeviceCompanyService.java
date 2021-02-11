@@ -10,12 +10,12 @@ import com.ez.wireless.cellphone.capstone.repository.DeviceCompanyRepository;
 @Service
 public class DeviceCompanyService {
 
-private DeviceCompanyRepository dcr;
+private DeviceCompanyRepository deviceCompanyRepository;
 	
 	@Autowired
-	public DeviceCompanyService(DeviceCompanyRepository dcr)
+	public DeviceCompanyService(DeviceCompanyRepository deviceCompanyRepository)
 	{
-		this.dcr = dcr;
+		this.deviceCompanyRepository = deviceCompanyRepository;
 	}
 	
 	/**
@@ -25,7 +25,7 @@ private DeviceCompanyRepository dcr;
 	public List<DeviceCompany> getAllDeviceCompanies()
 	{
 		List<DeviceCompany> companies = new ArrayList<>();
-		dcr.findAll().forEach(x -> companies.add(x));
+		deviceCompanyRepository.findAll().forEach(x -> companies.add(x));
 		return companies;
 	}
 	
@@ -35,9 +35,9 @@ private DeviceCompanyRepository dcr;
 	 * @return The DeviceCompany if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */
-	public DeviceCompany saveDeviceCompany(DeviceCompany dc) throws IllegalArgumentException
+	public DeviceCompany saveDeviceCompany(DeviceCompany deviceCompany) throws IllegalArgumentException
 	{
-		return dcr.save(dc);
+		return deviceCompanyRepository.save(deviceCompany);
 	}
 
 

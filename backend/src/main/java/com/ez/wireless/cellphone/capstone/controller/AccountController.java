@@ -19,12 +19,12 @@ import com.ez.wireless.cellphone.capstone.service.AccountService;
 public class AccountController 
 {
 	@Autowired
-	private AccountService as;
+	private AccountService accountService;
 	
 	@GetMapping
 	public List<Account> getAll()
 	{
-		return as.getAllAccounts();
+		return accountService.getAllAccounts();
 	}
 	
 	@PostMapping
@@ -32,7 +32,7 @@ public class AccountController
 	{
 		try 
 		{
-			as.saveAccount(ac);
+			accountService.saveAccount(ac);
 		} 
 		catch (IllegalArgumentException e) 
 		{
