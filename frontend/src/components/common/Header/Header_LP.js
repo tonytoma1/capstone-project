@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import HeaderS from './HeaderS.css'
-import Logo from './logo.png'
+import HeaderS from './HeaderS.css';
+import Logo from './logo.png';
+import Cart from './cart.png';
 
 import {Container, Row, Col} from 'reactstrap';
 
@@ -42,8 +43,10 @@ class Header_LP extends Component
                     <table className="login-register-table">
                         <tr>
                             <td>Login</td>
-                            <td>Register</td>
-                            <td></td>
+                            <td className="td-login-register">Register</td>
+                            <td>
+                                <img src= {Cart} />
+                            </td>
                         </tr>
                     </table>
                 <hr/>
