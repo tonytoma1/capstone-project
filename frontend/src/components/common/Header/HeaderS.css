@@ -1,11 +1,13 @@
 .Title
 {
   font-weight: lighter;
-  font-family:'Times New Roman', Times, serif;
   position: absolute; 
-  margin-left: 110px;
-  margin-bottom: 700px;
-  display: block;
+  margin-left: 35px;
+  margin-bottom: 730px;
+  display: inline-block;
+  color: #3aafa9;
+  font-size: 41px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 .Container
@@ -17,14 +19,43 @@
     background-color: White;
     height: 150px;
     top: 0px;
-    height: fixed;
-    position: relative;
-    display: inline-block;
+    height: fixed;  
 }
 
 .I
 {
     height: 83px;
     margin-left: 20px;
+    display: inline-block;
 
 }
+
+.navigational-table {
+  display: inline-block;
+  position: absolute;
+  margin-left: 500px;
+}
+
+.login-register-table {
+  position: absolute;
+  margin-top: 25px;
+  margin-left: 1500px;
+  display: inline-block;
+  
+}
+
+.title-container {
+  display: inline-block;
+}
+ td {
+    margin-right: 7px;
+    margin-left: 7px;
+    color: #3aafa9;
+    width: 150px;
+    text-align: center;
+    padding: 3%;
+    font-size: 25px;
+}
+
+
+hr { border-top: 5px solid #3aafa9;}
