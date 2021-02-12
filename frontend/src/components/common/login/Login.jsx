@@ -1,6 +1,6 @@
 import React from 'react';
-
-import './login.css';
+import Logo from '../../../images/logo.png';
+import './login-css.css';
 
 function Login () {
 
@@ -9,7 +9,7 @@ function Login () {
     <div className="login-container">
 
         <figure>
-            <img src="logo.png" alt="Recommerce" />
+            <img src= {Logo} alt="Recommerce" />
             <figcaption>Recommerce</figcaption>
         </figure>
 
@@ -29,7 +29,7 @@ function Login () {
         
         <article> 
             Forgot password? Click 
-            <p> here.</p>
+            <p>&nbsp;here.</p>
         </article>
     </div>
     

@@ -10,6 +10,8 @@ html {
 
 .login-container {
     margin: auto auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
     border: #707070 1px solid;
     width: 40%;
     padding: 10px;
@@ -63,7 +65,7 @@ html {
 }
 
 .login-container section input {
-    margin-left: -5px;
+   
     font-size: 14px;
     width: 70%;
     padding-top: 6px;
@@ -79,6 +81,7 @@ html {
 
 .login-container section input:focus{
     border: #3AAFA9 solid 1px;
+    border-left: #3aafa9ad solid 1px;
     outline: none;
 }
 

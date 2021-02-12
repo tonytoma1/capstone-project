@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import HeaderS from './HeaderS.css';
-import Logo from './logo.png';
-import Cart from './cart.png';
+import Logo from '../../../images/logo.png';
+import Cart from '../../../images/cart.png';
 
-// import {Container, Row, Col} from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 
 /*  
             
