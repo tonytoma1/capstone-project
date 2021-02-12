@@ -1,0 +1,121 @@
+
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+
+    box-sizing: inherit;
+}
+
+
+.login-container {
+    margin: auto auto;
+    border: #707070 1px solid;
+    width: 40%;
+    padding: 10px;
+}
+
+.login-container figure  {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.login-container figure * {
+    display:block;
+}
+
+.login-container figure figcaption{
+    font-family: 'Segoe UI';
+    font-size: 43px;
+    text-align: center;
+    color:#3AAFA9;
+}
+
+.login-container figure img {
+    margin: auto auto;
+    width: 139px;
+    height:125px ;
+}
+
+
+.login-container section {
+    display: block;
+    text-align: center;
+    margin: auto auto;
+}
+
+.login-container section > * {
+    display: inline-block;
+    
+    border:#BCE0FD 1px solid;
+    padding: 10px;
+}
+
+.login-container section p {
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial;
+    width: 20%;
+    background-color: #3AAFA9;
+    text-align: left;
+    color: white;
+    
+}
+
+.login-container section input {
+    margin-left: -5px;
+    font-size: 14px;
+    width: 70%;
+    padding-top: 6px;
+    padding-bottom: 8px;
+}
+
+
+.login-container section input::placeholder {
+    font-style: italic;
+    opacity: 60%;
+}
+
+
+.login-container section input:focus{
+    border: #3AAFA9 solid 1px;
+    outline: none;
+}
+
+
+.login-container button{
+   display: block;
+   margin: auto auto;
+   margin-top: 40px;
+    border: #3AAFA9 solid 1px;
+    background-color: #3AAFA9;
+    padding: 5px 50px;
+    color: white;
+    font-size: 15px;
+    font-family: 'Segoe UI' ;
+}
+
+.login-container button:hover{
+    cursor: pointer;
+    background-color: #49e2da;
+    color: black
+ }
+
+.login-container article{
+    color: rgb(124, 124, 124);
+    margin-top: 20px;
+    padding-left: 10px;
+}
+
+ .login-container article p {
+    display: inline-block;
+    color: rgb(10, 111, 243);
+   
+ }
+
+ .login-container article p:hover {
+    cursor: pointer;
+    color: rgb(8, 55, 117);
+   
+ }
+
