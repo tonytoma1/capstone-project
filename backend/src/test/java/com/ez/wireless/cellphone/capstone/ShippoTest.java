@@ -121,8 +121,9 @@ class ShippoTest
 		}
 		HashMap<String, Object> transactionMap = new HashMap<String, Object>();
 		transactionMap.put("shipment", shipmentMap);
-		transactionMap.put("servicelevel_token", "usps_priority");
-		transactionMap.put("carrier_account", "b741b99f95e841639b54272834bc478c");
+		transactionMap.put("servicelevel_token", "fedex_ground");
+		//TODO
+		//transactionMap.put("carrier_account", );
 		try 
 		{
 			System.out.println(trans.create(transactionMap));
