@@ -1,3 +1,5 @@
+//In case easypost doesn't work
+/**
 package com.ez.wireless.cellphone.capstone.shipping;
 
 import java.util.HashMap;
@@ -21,7 +23,7 @@ public class ShippingLabel
 	/**
 	 * Returns an account for the shippo API that can be set by the user
 	 * @return the account map
-	 */
+	 /
 	private HashMap<String, Object> account(String accountType)
 	{
 		HashMap<String, Object> accountMap = new HashMap<String, Object>();
@@ -68,3 +70,4 @@ public class ShippingLabel
 	}
 	
 }
+**/
