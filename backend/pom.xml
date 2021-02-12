@@ -50,11 +50,17 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>	
 		
-		<!-- https://mvnrepository.com/artifact/com.goshippo/shippo-java-client -->
+		<!-- https://mvnrepository.com/artifact/com.goshippo/shippo-java-client 
 		<dependency>
 		    <groupId>com.goshippo</groupId>
 		    <artifactId>shippo-java-client</artifactId>
 		    <version>3.0.3</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.easypost/easypost-api-client -->
+		<dependency>
+		    <groupId>com.easypost</groupId>
+		    <artifactId>easypost-api-client</artifactId>
+		    <version>4.0.4</version>
 		</dependency>
 	</dependencies>
 
