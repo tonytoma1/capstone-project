@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import HeaderS from './HeaderS.css';
 import Logo from '../../../images/logo.png';
 import Cart from '../../../images/cart.png';
-
+import {Link} from "react-router-dom";
 import {Container, Row, Col} from 'reactstrap';
 
 /*  
@@ -42,7 +42,7 @@ class Header_LP extends Component
                     {/* Right most navigation */}
                     <table className="login-register-table">
                         <tr>
-                            <td>Login</td>
+                           <td> <Link to="/login">Login</Link> </td>
                             <td className="td-login-register">Register</td>
                             <td>
                                 <img src= {Cart} />

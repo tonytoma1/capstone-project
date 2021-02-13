@@ -13,6 +13,8 @@ import com.shippo.exception.APIConnectionException;
 import com.shippo.exception.APIException;
 import com.shippo.exception.AuthenticationException;
 import com.shippo.exception.InvalidRequestException;
+import com.shippo.model.CarrierAccount;
+import com.shippo.model.Rate;
 import com.shippo.model.Shipment;
 import com.shippo.model.Transaction;
 
@@ -46,6 +48,8 @@ class ShippoTest
 						parcelDistanceUnit		= "in";
 	private HashMap<String, Object> parcelMap;
 	private HashMap<String, Object> shipmentMap;
+	private HashMap<String, Object> accountMap;
+	private HashMap<String, Object> transactionMap;
 	
 	@BeforeEach
 	void setUp() throws Exception
@@ -69,6 +73,25 @@ class ShippoTest
 		addressFromMap.put("country", fromCountry);
 		addressFromMap.put("zip", fromMailCode);
 		
+		this.accountMap = new HashMap<String, Object>();
+		accountMap.put("carrier", "fedex");
+		accountMap.put("account_id", "lol");
+		accountMap.put("parameters", new HashMap<String, Object>() {
+			{
+				put("first_name", addressFromMap.get("name"));
+				put("last_name", addressFromMap.get("name"));
+				put("phone_number", "555-555-5555");
+				put("from_address_st", fromStreet);
+				put("from_address_city", fromCity);
+				put("from_address_state", "CA");
+				put("from_address_zip", "7799545");
+			}
+		});
+		accountMap.put("test", Boolean.TRUE);
+		accountMap.put("active", Boolean.FALSE);
+		
+		
+		
 		this.parcelMap = new HashMap<String, Object>();
 		parcelMap.put("length", parcelLength);
 		parcelMap.put("width", parcelWidth);
@@ -82,6 +105,7 @@ class ShippoTest
 		shipmentMap.put("address_from", addressFromMap);
 		shipmentMap.put("parcels", parcelMap);
 		shipmentMap.put("async", false);
+	
 		
 	}
 	
@@ -96,8 +120,30 @@ class ShippoTest
 	{
 		try 
 		{
-			System.out.println(ship.create(shipmentMap));
+			Shipment shipment = Shipment.create(shipmentMap);
+			System.out.println(shipment);
+			
+			Rate rate = shipment.getRates().get(0);
+			
+			HashMap<String, Object> transactionMap = new HashMap<String, Object>();
+			transactionMap.put("rate", rate.getObjectId());
+			transactionMap.put("async", false);
+			
+			Transaction transaction = Transaction.create(transactionMap);
+			
+			System.out.println(transaction);
+			
+			/*
+			CarrierAccount usps = CarrierAccount.create(accountMap);
+			
+			System.out.println(usps);
+			*/
+			//System.out.println(ship.create(shipmentMap));
 			//assertEquals(true, ship.getStatus().equals("SUCCESS"));
+			/*
+			Transaction transaction = Transaction.create(transactionMap);
+			System.out.println(transaction);
+			*/
 		} 
 		catch (AuthenticationException e) 
 		{
