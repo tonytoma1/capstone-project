@@ -86,7 +86,7 @@ html {
 }
 
 
-.login-container button{
+.login-container button, .submitButton{
    display: block;
    margin: auto auto;
    margin-top: 40px;

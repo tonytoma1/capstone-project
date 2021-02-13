@@ -8,7 +8,41 @@ function Login () {
     
     <div className="login-container">
 
+
         <figure>
+            <img src= {Logo} alt="Recommerce" />
+            <figcaption>Recommerce</figcaption>
+        </figure>
+
+       
+        <form>
+            <section>
+                <p>Email</p>
+                <input type="email" id="loginEmail" placeholder="Enter your Email here"/>
+            </section>
+
+            <section>
+            <p>Password</p>
+            <input type="Password" id="loginPassword" placeholder="Enter your Password here"/>
+            </section>
+            <input type="Submit" class="submitButton" id="loginSignIn" value="SignIn" />
+        </form>
+        
+        <article> 
+            Forgot password? Click 
+            <p>&nbsp;here.</p>
+        </article>
+    </div>
+    
+  )
+
+}
+
+export default Login;
+
+{/* FORM PREVIOUS CODE
+
+<figure>
             <img src= {Logo} alt="Recommerce" />
             <figcaption>Recommerce</figcaption>
         </figure>
@@ -26,15 +60,4 @@ function Login () {
 
         <button id="loginSignIn" value="SignIn"> Sign in </button>
 
-        
-        <article> 
-            Forgot password? Click 
-            <p>&nbsp;here.</p>
-        </article>
-    </div>
-    
-  )
-
-}
-
-export default Login;
+ */}
