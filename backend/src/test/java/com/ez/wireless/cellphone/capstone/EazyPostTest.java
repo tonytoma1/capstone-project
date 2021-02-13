@@ -9,7 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.easypost.EasyPost;
+import com.easypost.exception.EasyPostException;
 import com.easypost.model.Address;
+import com.easypost.model.Parcel;
+import com.easypost.model.Rate;
+import com.easypost.model.Shipment;
 
 class EazyPostTest 
 {
@@ -35,8 +39,9 @@ class EazyPostTest
 						parcelWidth				= 7,
 						parcelHight				= 10,
 						parcelWeight			= 70;
-	private String		parcelMassUnit			= "lb",
-						parcelDistanceUnit		= "in";
+	Map<String, Object> parcelMap = new HashMap<String, Object>();
+	Map<String, Object> shipmentMap = new HashMap<String, Object>();
+
 	
 	@BeforeEach
 	void setUp() throws Exception
@@ -56,14 +61,36 @@ class EazyPostTest
 		toAddressMap.put("zip", toMailCode);
 		Address toAddress = Address.create(toAddressMap);
 		
-		
+		parcelMap.put("height", parcelHight);
+		parcelMap.put("length", parcelLength);
+		parcelMap.put("width", parcelWidth);
+		parcelMap.put("weight", parcelWeight);
+		Parcel par = Parcel.create(parcelMap);
+		test(toAddress, fromAddress, par);
 	}
 	
 	
 	@Test
-	void test() 
+	void test(Address toAddress, Address fromAddress, Parcel par) 
 	{
-		fail("Not yet implemented");
+		shipmentMap.put("to_address", toAddress);
+		shipmentMap.put("from_address", fromAddress);
+		shipmentMap.put("parcel", par);
+		try 
+		{
+			Shipment ship = Shipment.create(shipmentMap);
+			for(Rate rate : ship.getRates()) {
+				  System.out.println(rate.getCarrier());
+				  System.out.println(rate.getService());
+				  System.out.println(rate.getRate());
+				  System.out.println(rate.getId());
+				}
+		} 
+		catch (EasyPostException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
