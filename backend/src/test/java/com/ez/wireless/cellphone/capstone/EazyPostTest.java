@@ -2,7 +2,9 @@ package com.ez.wireless.cellphone.capstone;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -27,12 +29,12 @@ class EazyPostTest
 	Map<String, Object> toAddressMap = new HashMap<String, Object>();
 	
 	private String		fromName				= "Jane Doe",
-						fromCompany				= "SAIT",
-						fromStreet				= "1301 16 Ave NW",
-						fromCity				= "Calgary",
+						fromCompany				= "Canada Post",
+						fromStreet				= "407 Main Ave W",
+						fromCity				= "Sundre",
 						fromGeographicalRegion 	= "Alberta",
 						fromCountry				= "Canada",
-						fromMailCode			= "T2M0L4";
+						fromMailCode			= "T0M1X0";
 	Map<String, Object> fromAddressMap = new HashMap<String, Object>();
 	
 	private double		parcelLength			= 5.5,
@@ -48,6 +50,8 @@ class EazyPostTest
 	{
 		EasyPost.apiKey = "EZTK49ff1046f34b4161b5d4531cd632f2c6PqxVBYFGS0cXZpSKqWSIbQ";
 		fromAddressMap.put("company", fromCompany);
+		fromAddressMap.put("country", fromCountry);
+		fromAddressMap.put("name", fromName);
 		fromAddressMap.put("street1", fromStreet);
 		fromAddressMap.put("city", fromCity);
 		fromAddressMap.put("state", fromGeographicalRegion);
@@ -55,6 +59,8 @@ class EazyPostTest
 		Address fromAddress = Address.create(fromAddressMap);
 		
 		toAddressMap.put("company", toCompany);
+		toAddressMap.put("country", toCountry);
+		toAddressMap.put("name", toName);
 		toAddressMap.put("street1", toStreet);
 		toAddressMap.put("city", toCity);
 		toAddressMap.put("state", toGeographicalRegion);
@@ -79,12 +85,15 @@ class EazyPostTest
 		try 
 		{
 			Shipment ship = Shipment.create(shipmentMap);
-			for(Rate rate : ship.getRates()) {
-				  System.out.println(rate.getCarrier());
-				  System.out.println(rate.getService());
-				  System.out.println(rate.getRate());
-				  System.out.println(rate.getId());
-				}
+			List<String> buyCarriers = new ArrayList<String>();
+			buyCarriers.add("CanadaPost");
+			List<String> buyServices = new ArrayList<String>();
+			buyServices.add("RegularParcel");
+			ship.buy(ship.lowestRate(buyCarriers, buyServices));
+			// Print PNG link
+			System.out.println(ship.getPostageLabel());
+			// Print Tracking Code
+			System.out.println(ship.getTrackingCode());
 		} 
 		catch (EasyPostException e) 
 		{
