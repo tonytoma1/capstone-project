@@ -49,30 +49,57 @@ class EazyPostTest
 	void setUp() throws Exception
 	{
 		EasyPost.apiKey = "EZTK49ff1046f34b4161b5d4531cd632f2c6PqxVBYFGS0cXZpSKqWSIbQ";
-		fromAddressMap.put("company", fromCompany);
-		fromAddressMap.put("country", fromCountry);
-		fromAddressMap.put("name", fromName);
-		fromAddressMap.put("street1", fromStreet);
-		fromAddressMap.put("city", fromCity);
-		fromAddressMap.put("state", fromGeographicalRegion);
-		fromAddressMap.put("zip", fromMailCode);
+		Map<String, Object> fromAddressMap = new HashMap<String, Object>();
+		fromAddressMap.put("company", "EasyPost");
+		fromAddressMap.put("street1", "417 Montgomery Street");
+		fromAddressMap.put("street2", "5th Floor");
+		fromAddressMap.put("city", "San Francisco");
+		fromAddressMap.put("state", "CA");
+		fromAddressMap.put("zip", "94104");
+		fromAddressMap.put("phone", "415-528-7555");
 		Address fromAddress = Address.create(fromAddressMap);
 		
-		toAddressMap.put("company", toCompany);
-		toAddressMap.put("country", toCountry);
-		toAddressMap.put("name", toName);
-		toAddressMap.put("street1", toStreet);
-		toAddressMap.put("city", toCity);
-		toAddressMap.put("state", toGeographicalRegion);
-		toAddressMap.put("zip", toMailCode);
+		Map<String, Object> toAddressMap = new HashMap<String, Object>();
+		toAddressMap.put("name", "George Costanza");
+		toAddressMap.put("company", "Vandelay Industries");
+		toAddressMap.put("street1", "1 E 161st St.");
+		toAddressMap.put("city", "Bronx");
+		toAddressMap.put("state", "NY");
+		toAddressMap.put("zip", "10451");
+
 		Address toAddress = Address.create(toAddressMap);
 		
-		parcelMap.put("height", parcelHight);
-		parcelMap.put("length", parcelLength);
-		parcelMap.put("width", parcelWidth);
-		parcelMap.put("weight", parcelWeight);
-		Parcel par = Parcel.create(parcelMap);
-		test(toAddress, fromAddress, par);
+//		fromAddressMap.put("company", fromCompany);
+//		fromAddressMap.put("country", fromCountry);
+//		fromAddressMap.put("name", fromName);
+//		fromAddressMap.put("street1", fromStreet);
+//		fromAddressMap.put("city", fromCity);
+//		fromAddressMap.put("state", fromGeographicalRegion);
+//		fromAddressMap.put("zip", fromMailCode);
+//		Address fromAddress = Address.create(fromAddressMap);
+//		
+//		toAddressMap.put("company", toCompany);
+//		toAddressMap.put("country", toCountry);
+//		toAddressMap.put("name", toName);
+//		toAddressMap.put("street1", toStreet);
+//		toAddressMap.put("city", toCity);
+//		toAddressMap.put("state", toGeographicalRegion);
+//		toAddressMap.put("zip", toMailCode);
+//		Address toAddress = Address.create(toAddressMap);
+//		
+//		parcelMap.put("height", parcelHight);
+//		parcelMap.put("length", parcelLength);
+//		parcelMap.put("width", parcelWidth);
+//		parcelMap.put("weight", parcelWeight);
+//		Parcel par = Parcel.create(parcelMap);
+		Map<String, Object> parcelMap = new HashMap<String, Object>();
+		parcelMap.put("height", 9);
+		parcelMap.put("width", 6);
+		parcelMap.put("length", 2);
+		parcelMap.put("weight", 10);
+
+		Parcel parcel = Parcel.create(parcelMap);
+		test(toAddress, fromAddress, parcel);
 	}
 	
 	
@@ -86,10 +113,15 @@ class EazyPostTest
 		{
 			Shipment ship = Shipment.create(shipmentMap);
 			List<String> buyCarriers = new ArrayList<String>();
-			buyCarriers.add("CanadaPost");
+			buyCarriers.add("USPS");
 			List<String> buyServices = new ArrayList<String>();
-			buyServices.add("RegularParcel");
+			buyServices.add("First");
 			ship.buy(ship.lowestRate(buyCarriers, buyServices));
+//			List<String> buyCarriers = new ArrayList<String>();
+//			buyCarriers.add("CanadaPost");
+//			List<String> buyServices = new ArrayList<String>();
+//			buyServices.add("RegularParcel");
+//			ship.buy(ship.lowestRate(buyCarriers, buyServices));
 			// Print PNG link
 			System.out.println(ship.getPostageLabel());
 			// Print Tracking Code
