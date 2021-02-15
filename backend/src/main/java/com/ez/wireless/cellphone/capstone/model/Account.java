@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "account")
 public class Account {
@@ -22,12 +24,14 @@ public class Account {
 	@SequenceGenerator(name="account_sequence", sequenceName = "account_sequence", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_sequence")
 	@Column(name = "account_id")
+	@JsonIgnore
 	private Integer accountId;
 	
 	@Column(name = "username", unique = true)
 	private String username;
 	
 	@Column(name = "password")
+	@JsonIgnore
 	private String password;
 
 	@OneToOne

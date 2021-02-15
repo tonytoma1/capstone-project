@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO change this 
-		http.csrf().and().csrf().disable()
+		http.cors().and().csrf().disable()
 		// Add a filter to validate the tokens with every request
 		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
 		.authorizeRequests()
@@ -67,6 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		        // create an account
 				.antMatchers(HttpMethod.POST, "/api/register").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/authentication").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/person").permitAll()
 				
 				// Put the white listed end-points here
 				.antMatchers(HttpMethod.GET, "/api/device-company").permitAll()
@@ -74,6 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/api/storage-capacity").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/service-provider").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/device").permitAll()
+				
 				
 				// All other end-points are secured
 				.antMatchers("/api/account").hasRole("ADMIN")
