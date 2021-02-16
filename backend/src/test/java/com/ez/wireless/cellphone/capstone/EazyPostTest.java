@@ -14,7 +14,6 @@ import com.easypost.EasyPost;
 import com.easypost.exception.EasyPostException;
 import com.easypost.model.Address;
 import com.easypost.model.Parcel;
-import com.easypost.model.Rate;
 import com.easypost.model.Shipment;
 
 class EazyPostTest 
@@ -123,7 +122,7 @@ class EazyPostTest
 //			buyServices.add("RegularParcel");
 //			ship.buy(ship.lowestRate(buyCarriers, buyServices));
 			// Print PNG link
-			System.out.println(ship.getPostageLabel());
+			System.out.println(ship.getPostageLabel().getLabelUrl());
 			// Print Tracking Code
 			System.out.println(ship.getTrackingCode());
 		} 
