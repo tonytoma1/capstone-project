@@ -8,6 +8,8 @@ import com.easypost.exception.EasyPostException;
 import com.easypost.model.Address;
 import com.easypost.model.Parcel;
 import com.easypost.model.Shipment;
+import com.ez.wireless.cellphone.capstone.model.Account;
+import com.ez.wireless.cellphone.capstone.service.AccountService;
 
 public class ShippingLabel 
 {
@@ -15,6 +17,7 @@ public class ShippingLabel
 	private Map<String, Object> fromAddressMap = new HashMap<String, Object>();
 	private Map<String, Object> parcelMap = new HashMap<String, Object>();
 	private Map<String, Object> shipmentMap = new HashMap<String, Object>();
+	private AccountService as;
 					
 	
 	public ShippingLabel(String name, String company, String street1, String street2, 
@@ -27,9 +30,27 @@ public class ShippingLabel
 	}
 	
 	//client
-	private Address toAddress()
+	/**
+	 * Takes in the client info from the database into a map, then converted into an address then returned.
+	 * @param ac the clients account in shorthand form
+	 * @return the client's address
+	 * @throws EasyPostException as info is assumed to be correct in the database
+	 */
+	private Address toAddress(Account ac) throws EasyPostException
 	{
 		Address toAddress = new Address();
+		toAddressMap.put("name", ac.getPerson().getFirstName() + " " + ac.getPerson().getLastName());
+		//toAddressMap.put("company", company);
+		toAddressMap.put("street1", ac.getPerson().getStreetAddress1());
+		toAddressMap.put("street2", ac.getPerson().getStreetAddress2());
+		toAddressMap.put("city", ac.getPerson().getCity());
+		toAddressMap.put("state", ac.getPerson().getState());
+		//toAddressMap.put("country", country);
+		toAddressMap.put("zip", ac.getPerson().getZip());
+		//toAddressMap.put("message", message);
+		toAddressMap.put("phone", ac.getPerson().getPhone());
+		toAddressMap.put("email", ac.getPerson().getEmail());
+		Address.create(toAddressMap);
 		return toAddress;
 	}
 	
