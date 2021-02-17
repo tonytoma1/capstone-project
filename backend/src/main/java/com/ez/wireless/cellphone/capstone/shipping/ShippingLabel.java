@@ -40,16 +40,16 @@ public class ShippingLabel
 	{
 		Address toAddress = new Address();
 		toAddressMap.put("name", ac.getPerson().getFirstName() + " " + ac.getPerson().getLastName());
-		//toAddressMap.put("company", company);
+		toAddressMap.put("company", ac.getPerson().getCompany());
 		toAddressMap.put("street1", ac.getPerson().getStreetAddress1());
 		toAddressMap.put("street2", ac.getPerson().getStreetAddress2());
 		toAddressMap.put("city", ac.getPerson().getCity());
 		toAddressMap.put("state", ac.getPerson().getState());
-		//toAddressMap.put("country", country);
+		toAddressMap.put("country", ac.getPerson().getCountry());
 		toAddressMap.put("zip", ac.getPerson().getZip());
-		//toAddressMap.put("message", message);
 		toAddressMap.put("phone", ac.getPerson().getPhone());
 		toAddressMap.put("email", ac.getPerson().getEmail());
+		toAddressMap.put("residential", ac.getPerson().isResidental());
 		Address.create(toAddressMap);
 		return toAddress;
 	}
@@ -87,6 +87,7 @@ public class ShippingLabel
 		fromAddressMap.put("message", message);
 		fromAddressMap.put("phone", phone);
 		fromAddressMap.put("email", email);
+		fromAddressMap.put("residential", email);
 		try 
 		{
 			Address.create(fromAddressMap);

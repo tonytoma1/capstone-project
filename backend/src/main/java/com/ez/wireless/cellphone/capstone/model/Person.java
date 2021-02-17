@@ -24,6 +24,9 @@ public class Person {
 	@Column(name = "street_address2")
 	private String streetAddress2;
 	
+	@Column(name = "country")
+	private String country;
+	
 	@Column(name = "state")
 	private String state;
 	
@@ -45,10 +48,55 @@ public class Person {
 	@Column(name = "phone")
 	private String phone;
 	
-	//TODO
-	//Not sure if this should go into account or person
-	//@Column(name = "is_residental")
-	//private Boolean isResidental;
+	@Column(name = "company")
+	private String company;
+	
+	
+	
+	/**
+	 * @return the country
+	 */
+	public String getCountry() {
+		return country;
+	}
+
+	/**
+	 * @param country the country to set
+	 */
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	/**
+	 * @return the company
+	 */
+	public String getCompany() {
+		return company;
+	}
+
+	/**
+	 * @param company the company to set
+	 */
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	/**
+	 * @return the isResidental
+	 */
+	public Boolean isResidental() {
+		return isResidental;
+	}
+
+	/**
+	 * @param isResidental the isResidental to set
+	 */
+	public void setResidentially(Boolean isResidental) {
+		this.isResidental = isResidental;
+	}
+
+	@Column(name = "is_residental")
+	private Boolean isResidental;
 
 	/**
 	 * @return the personId
