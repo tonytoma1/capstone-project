@@ -7,6 +7,7 @@ import com.easypost.EasyPost;
 import com.easypost.exception.EasyPostException;
 import com.easypost.model.Address;
 import com.easypost.model.Parcel;
+import com.easypost.model.Shipment;
 
 public class ShippingLabel 
 {
@@ -14,17 +15,6 @@ public class ShippingLabel
 	private Map<String, Object> fromAddressMap = new HashMap<String, Object>();
 	private Map<String, Object> parcelMap = new HashMap<String, Object>();
 	private Map<String, Object> shipmentMap = new HashMap<String, Object>();
-	
-	private String	toName,
-					toCompany,
-					toStreet,
-					toCity,
-					toGeoRegion,
-					toCountry,
-					toMailCode,
-					toMessage,
-					toPhone,
-					toEmail;
 					
 	
 	public ShippingLabel(String name, String company, String street1, String street2, 
@@ -36,12 +26,14 @@ public class ShippingLabel
 		
 	}
 	
+	//client
 	private Address toAddress()
 	{
 		Address toAddress = new Address();
 		return toAddress;
 	}
 	
+	//customer
 	/**
 	 * Takes in info passed from the constructor and puts them into a map. Which said map is converted into an address and returned.
 	 * Values that are sent as null will not be printed on the label. Only name, company, street1, city, GeoRegion, Country, and mailCode are required.
@@ -90,85 +82,10 @@ public class ShippingLabel
 	{
 		return null;
 	}
-
-	/**
-	 * @param toName the toName to set
-	 */
-	public void setToName(String toName) 
+	
+	private Shipment ship()
 	{
-		this.toName = toName;
-	}
-
-	/**
-	 * @param toCompany the toCompany to set
-	 */
-	public void setToCompany(String toCompany) 
-	{
-		this.toCompany = toCompany;
-	}
-
-	/**
-	 * @param toStreet the toStreet to set
-	 */
-	public void setToStreet(String toStreet) 
-	{
-		this.toStreet = toStreet;
-	}
-
-	/**
-	 * @param toCity the toCity to set
-	 */
-	public void setToCity(String toCity) 
-	{
-		this.toCity = toCity;
-	}
-
-	/**
-	 * @param toGeoRegion the toGeoRegion to set
-	 */
-	public void setToGeoRegion(String toGeoRegion) 
-	{
-		this.toGeoRegion = toGeoRegion;
-	}
-
-	/**
-	 * @param toCountry the toCountry to set
-	 */
-	public void setToCountry(String toCountry) 
-	{
-		this.toCountry = toCountry;
-	}
-
-	/**
-	 * @param toMailCode the toMailCode to set
-	 */
-	public void setToMailCode(String toMailCode) 
-	{
-		this.toMailCode = toMailCode;
-	}
-
-	/**
-	 * @param toMessage the toMessage to set
-	 */
-	public void setToMessage(String toMessage) 
-	{
-		this.toMessage = toMessage;
-	}
-
-	/**
-	 * @param toPhone the toPhone to set
-	 */
-	public void setToPhone(String toPhone) 
-	{
-		this.toPhone = toPhone;
-	}
-
-	/**
-	 * @param toEmail the toEmail to set
-	 */
-	public void setToEmail(String toEmail) 
-	{
-		this.toEmail = toEmail;
+		return null;
 	}
 	
 }

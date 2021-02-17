@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,12 @@ public class AccountController
 	public List<Account> getAll()
 	{
 		return accountService.getAllAccounts();
+	}
+	
+	@GetMapping("/{username}")
+	public Account getAccount(@PathVariable("username") String username)
+	{
+		return accountService.getByUsername(username);
 	}
 	
 	@PostMapping
