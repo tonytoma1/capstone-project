@@ -123,6 +123,7 @@ class EazyPostTest
 //			ship.buy(ship.lowestRate(buyCarriers, buyServices));
 			// Print PNG link
 			System.out.println(ship.getPostageLabel().getLabelUrl());
+			System.out.println(ship.getPostageLabel().getLabelPdfUrl());
 			// Print Tracking Code
 			System.out.println(ship.getTrackingCode());
 		} 
