@@ -44,4 +44,8 @@ back to the caller
 
 Attribute | Description
 -------------| ----------
+storage_capacity_size | Storage Capacity size of device. Can be used in the storage-capacity api. 
+string (NOT NULL)     
+
+service_provider_name |  Name of service provider for device. Can be used in service-provider api. 
 
