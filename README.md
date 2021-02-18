@@ -39,6 +39,7 @@ POST          | /api/person | Saves the person
 
 - JWTRequestFilter throws generic errors. Need to go back and modify it so it will send the correct error codes
 back to the caller
+- Pulling the client account in the shippinglabel class with the account object is not fully implemented yet. Hardcoded information is in it's place for now.
 
 # Atrributes 
 
