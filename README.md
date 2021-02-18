@@ -44,8 +44,18 @@ back to the caller
 
 Attribute | Type |  Description
 ------------- | ---------- | ----------
-storage_capacity_size | Storage Capacity size of device. Can be used in the storage-capacity api. 
-   
-
-service_provider_name |  Name of service provider for device. Can be used in service-provider api. 
+storage_capacity_size | string (NOT NULL) | Storage Capacity size of device. Can be used in the storage-capacity api.   
+service_provider_name |  string (NOT NULL) |  Name of service provider for device. Can be used in service-provider api. 
+device_company_name | string (NOT NULL) |  Name of device manufacturer. Can be used in device-company api. 
+condition_name | string (NOT NULL) | Condition of device. Can be used in the condition api. 
+street_address | string (NOT NULL) | Address of customer used for selling/buying purposes. Can be used in client-temp or person api. 
+state | string (NOT NULL) | State of customer used for selling/buying purposes. Can be used in client-temp or person api. 
+zip | string (NOT NULL) | Zip code of customer used for selling/buying purposes. Can be used in client-temp or person api. 
+country | string (NOT NULL) | Country of customer used for selling/buying purposes. Can be used in client-temp or person api. 
+email | string (NOT NULL) | Email of customer used for selling/buying purposes. Can be used in client-temp or person api. 
+total_price | double (NOT NULL) | Total price of users order. Can be used in new-orders api. 
+username | string (NOT NULL) | Username for users account. Can be used in account api. 
+password | string (NOT NULL) | Password for users account. Can be used in account api. 
+device_name | string (NOT NULL) | Name of device for buying/selling purposes. Can be used in device api.
+device_price | double (NOT NULL) | Price of device for buying/selling purposes. Can be used in device api.
 
