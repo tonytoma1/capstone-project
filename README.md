@@ -39,3 +39,8 @@ POST          | /api/person | Saves the person
 
 - JWTRequestFilter throws generic errors. Need to go back and modify it so it will send the correct error codes
 back to the caller
+
+# Atrributes 
+
+Attribute | Description
+
