@@ -122,3 +122,7 @@ html {
    
  }
 
+.login-error {
+    color: red;
+    text-align: center;
+}

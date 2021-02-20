@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
@@ -22,14 +23,14 @@ public class AccountController
 	@Autowired
 	private AccountService accountService;
 	
-	@GetMapping
+	@GetMapping(path = "/all")
 	public List<Account> getAll()
 	{
 		return accountService.getAllAccounts();
 	}
 	
-	@GetMapping("/{username}")
-	public Account getAccount(@PathVariable("username") String username)
+	@GetMapping
+	public Account getAccount(@RequestParam("username") String username)
 	{
 		return accountService.getByUsername(username);
 	}

@@ -16,6 +16,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import com.ez.wireless.cellphone.capstone.filter.JwtAuthenticationEntryPointFilter;
 import com.ez.wireless.cellphone.capstone.filter.JwtRequestFilter;
@@ -58,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// TODO change this 
+		// Enable CORS and disable CSRF
 		http.cors().and().csrf().disable()
 		// Add a filter to validate the tokens with every request
 		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
@@ -91,5 +94,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		        .sessionManagement()
 		        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
+	
+	// Used by spring security if CORS is enabled.
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source =
+            new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOriginPattern("http://localhost:3000"); // allowed on react app
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
+    }
 }
 

@@ -5,7 +5,8 @@ import AuthenticationService from '../../../services/authentication.service.js';
 import history from '../../../history.js';
 import Cookies from 'js-cookie';
 import  { Redirect } from 'react-router-dom'
-
+import UserService from 'services/user.service';
+import * as Constants from 'constants/global-constants';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -14,7 +15,8 @@ export default class Login extends React.Component {
         this.state = {
             email: '',
             password: '',
-            loggedIn: false
+            loggedIn: false,
+            failedLoginAttempt: false
         }
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -26,20 +28,25 @@ export default class Login extends React.Component {
         /* Check for a valid JWT token. If there is a valid token, then automatically 
            navigate the user to the home page. We want to prevent the user to login twice in a row.
          */
-        var jwtToken = Cookies.get("jwtToken");
+        var username;
+        try{
+            username = UserService.getUsernameFromJwtToken();
+            if(username != null) {
+                this.setState({loggedIn: true});
+            }
+        }
+        catch(e) {
+            console.log('Username not found during mounting of login component');
+            this.setState({loggedIn: false});
+        }
 
-        if(jwtToken != null) {
-            this.setState({loggedIn: true});
-        }
-        else {
-           this.setState({loggedIn: false});
-        }
+        
     }
 
     handleSubmit(event) {
         event.preventDefault();
         
-        // Authenticate the user and then send them to the home page.
+        // Authenticate the user and then send them to the account page.
         AuthenticationService.login(this.state.email, this.state.password)
             .then((response) => {
                 /*
@@ -55,15 +62,15 @@ export default class Login extends React.Component {
                 * we must keep sending the JWT token on each request. 
                 */
                 var jwtToken = response.data.token;
-                // Push the JWT token to a cookie
-                // expires in 1 day
-                Cookies.set("jwtToken", jwtToken, {expires: 1});
-                history.push("/");
+            
+                UserService.saveJwtToken(jwtToken);
+                history.push("/account");
                 window.location.reload();
               
 
             })
             .catch((error)  => {
+                this.setState({failedLoginAttempt: true});
                 console.log("error caught");
             });
             
@@ -85,12 +92,14 @@ export default class Login extends React.Component {
 
         render() {
             const {loggedIn} = this.state;
+            const {failedLoginAttempt} = this.state;
 
             if(loggedIn) {
-                return <Redirect to='/'/>;
+                return <Redirect to='/account'/>;
             }
 
             return(
+                
 
                 <div className="login-container">
                     <figure>
@@ -98,6 +107,8 @@ export default class Login extends React.Component {
                         <figcaption>Recommerce</figcaption>
                     </figure>
 
+                    {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
+                    
                     <form onSubmit={this.handleSubmit}>
                         <section>
                             <p>Email</p>
