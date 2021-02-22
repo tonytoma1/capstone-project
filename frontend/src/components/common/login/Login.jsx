@@ -28,19 +28,18 @@ export default class Login extends React.Component {
         /* Check for a valid JWT token. If there is a valid token, then automatically 
            navigate the user to the home page. We want to prevent the user to login twice in a row.
          */
-        var username;
-        try{
-            username = UserService.getUsernameFromJwtToken();
-            if(username != null) {
-                this.setState({loggedIn: true});
-            }
-        }
-        catch(e) {
-            console.log('Username not found during mounting of login component');
-            this.setState({loggedIn: false});
-        }
-
+        var token = Cookies.get("jwtToken");
         
+        if(token != null) {
+            this.setState({loggedIn: true});
+            console.log("logged in");
+            console.log(token);
+        }
+        else {
+            this.setState({loggedIn: false});
+            console.log("Not logged in");
+        }  
+              
     }
 
     handleSubmit(event) {
@@ -95,12 +94,11 @@ export default class Login extends React.Component {
             const {failedLoginAttempt} = this.state;
 
             if(loggedIn) {
-                return <Redirect to='/account'/>;
+                return <Redirect to="/account" />
             }
+            
 
             return(
-                
-
                 <div className="login-container">
                     <figure>
                         <img src= {Logo} alt="Recommerce" />

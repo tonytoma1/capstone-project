@@ -3,13 +3,15 @@ import UserService from 'services/user.service';
 import  { Redirect } from 'react-router-dom'
 import Header from 'components/common/Header/Header_LP';
 import Footer from 'components/common/footer/Footer';
+import Cookies from 'js-cookie';
 
 export default class Account extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            user: false
+            userFound: false,
+            user: null
         }
 
     }
@@ -17,27 +19,22 @@ export default class Account extends React.Component {
 
     componentDidMount() {
         // check to see if the user is logged in
-        var userFound;
-        try {
-            userFound = UserService.getUsernameFromJwtToken();
-            console.log(userFound);
+        // TODO Fix authentication and check if token is valid.
+        var userFound = Cookies.get("jwtToken");
 
-            this.setState({user: true });
+        if(userFound != null) {
+            this.setState({userFound: true});
+            console.log("user found");
         }
-        catch(error) {
-            // user not logged in.
-            this.setState({user: false});
+        else {
+            this.setState({userFound: false});
+            console.log("user not found");
         }
-        
     }
 
     render() {
         
-        const user = this.state;
-
-        if(user == false) {
-            return <Redirect to="/login"/>
-        }
+        
 
         return(<div>
             <Header/>

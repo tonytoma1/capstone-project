@@ -8,9 +8,9 @@ import jwt_decode from "jwt-decode";
 */
 class UserService {
 
-    async getUserByUsername() {
-
+    async getUser() {
         var usernameRetrieved = this.getUsernameFromJwtToken();
+
         var config = {
             headers: this.authenticationHeader(),
             params: {
@@ -18,15 +18,15 @@ class UserService {
             }
         }
         return await axios.get(Constants.API_URL + "account", config)
-                           .then(res => {return res})
-                           .catch(res => {return res});
+                           .then((res) => {return res})
+                           .catch((res) => {return res});
     }
 
 
     /*
      * Creates the authentication header so the backend API can verify the JWT Token 
      */
-    authenticationHeader() {
+   async authenticationHeader() {
         const token = Cookies.get(Constants.JWT_TOKEN);
 
         var jsonResult = {Authorization: 'Bearer ' + token};
@@ -34,7 +34,7 @@ class UserService {
         return jsonResult;
     }
 
-    getUsernameFromJwtToken() {
+   async getUsernameFromJwtToken() {
         const token = Cookies.get(Constants.JWT_TOKEN);
 
         if(token == null) {
@@ -50,12 +50,12 @@ class UserService {
         return username.sub;
     }
 
-    saveJwtToken(token) {
-        Cookies.set("jwtToken", token, {expires: 1});
+  async saveJwtToken(token) {
+        Cookies.set(Constants.JWT_TOKEN, token, {expires: 1});
     }
 
-    getJwtToken() {
-        return Cookies.get("jwtToken");
+    async getJwtToken() {
+        return Cookies.get(Constants.JWT_TOKEN);
     }
 }
 

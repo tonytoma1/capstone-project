@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -69,7 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// Register and login end-points are open so the user can login and 
 		        // create an account
 				.antMatchers(HttpMethod.POST, "/api/register").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/authentication").permitAll()
+				.antMatchers(HttpMethod.POST,"/api/authentication").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/person").permitAll()
 				
 				// Put the white listed end-points here
@@ -78,12 +79,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/api/storage-capacity").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/service-provider").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/device").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/account/**").permitAll()
-				
-				
+				//.antMatchers(HttpMethod.GET, "/api/account/**").permitAll()
+				.antMatchers("/api/account").hasAnyRole("ADMIN", "USER")
 				// All other end-points are secured
-				.antMatchers("/api/account").hasRole("ADMIN")
-		
 				.anyRequest().hasRole("ADMIN")
 			.and()
 			// make sure we use stateless session; session won't be used to
@@ -102,7 +100,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOriginPattern("http://localhost:3000"); // allowed on react app
+        config.addAllowedOriginPattern("*"); // allowed on react app
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);

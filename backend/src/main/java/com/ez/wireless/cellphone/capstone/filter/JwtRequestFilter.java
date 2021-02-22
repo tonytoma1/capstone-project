@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -55,13 +56,16 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			}
 			catch (IllegalArgumentException e) {
 				System.out.println("Unable to get JWT token");
+				response.sendError(HttpStatus.UNAUTHORIZED.value(), "Unable to get JWT Token");
 			}
 			catch (ExpiredJwtException e) {
 				System.out.println("JWT Token has expired");
+				response.sendError(HttpStatus.UNAUTHORIZED.value(), "JWT Token has expired");
 			}
 		}
 		else {
 			logger.warn("JWT Token does not begin with Bearer String");
+			//response.sendError(HttpStatus.UNAUTHORIZED.value(), "JWT Token does not begin with Bearer String");
 		}
 		
 		// Once we get the token validate it.

@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import Cookies from 'js-cookie';
 import * as Constants from 'constants/global-constants';
 import UserService from "services/user.service";
+import history from 'history.js';
 
 /*  
             
@@ -26,22 +27,35 @@ class Header_LP extends Component
         this.state = {
             isLoggedIn: false
         }
+
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    handleLogout() {
+        Cookies.remove("jwtToken");
+        history.push("/login");
+        window.location.reload();
     }
 
     componentDidMount() {
-        // check if the user has a jwt token
-        var username;
+        var token = Cookies.get("jwtToken");
 
-        try {
-            username = UserService.getUsernameFromJwtToken();
-
-            if(username != null) {
-                this.setState({isLoggedIn: true});
-            }
+        if(token != null) {
+            this.setState({isLoggedIn: true});
         }
-        catch(e) {
+        else {
             this.setState({isLoggedIn: false});
         }
+
+        /*
+        UserService.getUser()
+                    .then((res) => {
+                        this.setState({isLoggedIn: true});
+                    })
+                    .catch((res) => {
+                        this.setState({isLoggedIn: false});
+                    })
+                    */
     }
 
 
@@ -85,7 +99,7 @@ class Header_LP extends Component
                                 }
                                 {/* If the user is logged in, have the option to log out */}
                                 {isLoggedIn && 
-                                    <td>Logout</td>
+                                    <button onClick={this.handleLogout}>Logout</button>
                                 }
                                     <td>
                                         <img src= {Cart} />
