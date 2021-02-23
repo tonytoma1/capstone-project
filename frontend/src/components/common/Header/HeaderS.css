@@ -66,10 +66,18 @@ button {
   border: none;
   background: none;
 }
-
+/*
 .td-login-register {
-  border-left: solid 2px #3aafa9;
+  border-left: solid 1px #3aafa9;
 
 }
+*/
 
-hr { border-top: 5px solid #3aafa9;}
+hr { border-top: 5px solid #3aafa9;
+}
+
+.shopping-cart-image {
+  width: 40px;
+  height: 40px;
+  color:#3aafa9;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HeaderS from './HeaderS.css';
 import Logo from '../../../images/logo.png';
-import Cart from '../../../images/cart.png';
+import Cart from 'images/shopping-cart.png';
 import {Link} from "react-router-dom";
 import Cookies from 'js-cookie';
 import * as Constants from 'constants/global-constants';
@@ -102,7 +102,7 @@ class Header_LP extends Component
                                     <button onClick={this.handleLogout}>Logout</button>
                                 }
                                     <td>
-                                        <img src= {Cart} />
+                                        <img className="shopping-cart-image" src= {Cart} />
                                     </td>
                             </tr>
                         </tbody>

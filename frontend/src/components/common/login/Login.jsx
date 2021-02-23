@@ -124,7 +124,7 @@ export default class Login extends React.Component {
                         <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn" />
                     </form>
                     
-                    <article> 
+                    <article className="forgot-password"> 
                         Forgot password? Click 
                         <p>&nbsp;here.</p>
                     </article>
