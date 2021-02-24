@@ -19,22 +19,25 @@ export default class Account extends React.Component {
 
     componentDidMount() {
         // check to see if the user is logged in
-        // TODO Fix authentication and check if token is valid.
-        var userFound = Cookies.get("jwtToken");
-
-        if(userFound != null) {
-            this.setState({userFound: true});
-            console.log("user found");
-        }
-        else {
-            this.setState({userFound: false});
-            console.log("user not found");
-        }
+        UserService.isUserLoggedIn()
+                    .then((response) => {
+                        // The user is logged. Retrieve the account information.
+                        this.setState({userFound: true, user: response.data});
+                    })
+                    .catch((error) => {
+                        // The user isn't found.
+                        this.setState({userFound: false});
+                    })
     }
 
     render() {
         
-        
+        const {userFound} = this.state;
+
+        if(!userFound) {
+            {/* User isn't found. Send them back to the login screen */}
+            return <Redirect to="/login" />
+        }
 
         return(<div>
             <Header/>

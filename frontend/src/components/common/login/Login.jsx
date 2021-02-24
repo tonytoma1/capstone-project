@@ -23,24 +23,20 @@ export default class Login extends React.Component {
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    
     componentDidMount() {
-        /* Check for a valid JWT token. If there is a valid token, then automatically 
-           navigate the user to the home page. We want to prevent the user to login twice in a row.
-         */
-        var token = Cookies.get("jwtToken");
-        
-        if(token != null) {
-            this.setState({loggedIn: true});
-            console.log("logged in");
-            console.log(token);
-        }
-        else {
-            this.setState({loggedIn: false});
-            console.log("Not logged in");
-        }  
-              
+       // Check if the user is logged in
+        UserService.isUserLoggedIn()
+                    .then((response) => {
+                    // the user is logged in.
+                    this.setState({loggedIn: true});
+                })
+                .catch((error) => {
+                    // the user is not logged in.
+                    this.setState({loggedIn: false});
+                });             
     }
+    
 
     handleSubmit(event) {
         event.preventDefault();
