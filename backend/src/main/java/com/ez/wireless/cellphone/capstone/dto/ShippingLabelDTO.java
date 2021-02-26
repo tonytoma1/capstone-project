@@ -2,170 +2,233 @@ package com.ez.wireless.cellphone.capstone.dto;
 
 public class ShippingLabelDTO 
 {
-	private String	toName,
-					toCompany,
-					toStreet1,
-					toStreet2,
-					toCity,
-					toGeoRegion,
-					toCountry,
-					toMailCode,
-					toMessage,
-					toPhone,
-					toEmail;
-		
+	private String	fromFirstName,
+					fromLastName,
+					fromCompany,
+					fromStreet1,
+					fromStreet2,
+					fromCity,
+					fromGeoRegion,
+					fromCountry,
+					fromMailCode,
+					fromMessage,
+					fromPhone,
+					fromEmail,
+					postalService;
+	
+	private double weight;
+	private boolean residental;
+	
+	
+	
 	/**
-	 * @return the toName
+	 * @return the postalService
 	 */
-	public String getToName() {
-		return toName;
+	public String getPostalService() {
+		return postalService;
 	}
 
 	/**
-	 * @param toName the toName to set
+	 * @param postalService the postalService to set
 	 */
-	public void setToName(String toName) {
-		this.toName = toName;
+	public void setPostalService(String postalService) {
+		this.postalService = postalService;
+	}
+
+	/**
+	 * @return the weight
+	 */
+	public double getWeight() {
+		return weight;
+	}
+
+	/**
+	 * @param weight the weight to set
+	 */
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+
+	/**
+	 * @return the residental
+	 */
+	public boolean isResidental() {
+		return residental;
+	}
+
+	/**
+	 * @param residental the residental to set
+	 */
+	public void setResidental(boolean residental) {
+		this.residental = residental;
+	}
+
+	/**
+	 * @return the toFname
+	 */
+	public String getFromFirstName() {
+		return fromFirstName;
+	}
+
+	/**
+	 * @param toFname the toFname to set
+	 */
+	public void setFromFirstName(String toFname) {
+		this.fromFirstName = toFname;
+	}
+
+	/**
+	 * @return the toLname
+	 */
+	public String getFromLastName() {
+		return fromLastName;
+	}
+
+	/**
+	 * @param toLname the toLname to set
+	 */
+	public void setFromLastName(String toLname) {
+		this.fromLastName = toLname;
 	}
 
 	/**
 	 * @return the toCompany
 	 */
-	public String getToCompany() {
-		return toCompany;
+	public String getFromCompany() {
+		return fromCompany;
 	}
 
 	/**
 	 * @param toCompany the toCompany to set
 	 */
-	public void setToCompany(String toCompany) {
-		this.toCompany = toCompany;
+	public void setFromCompany(String toCompany) {
+		this.fromCompany = toCompany;
 	}
 
 	/**
 	 * @return the toStreet1
 	 */
-	public String getToStreet1() {
-		return toStreet1;
+	public String getFromStreet1() {
+		return fromStreet1;
 	}
 
 	/**
 	 * @param toStreet1 the toStreet1 to set
 	 */
-	public void setToStreet1(String toStreet1) {
-		this.toStreet1 = toStreet1;
+	public void setFromStreet1(String toStreet1) {
+		this.fromStreet1 = toStreet1;
 	}
 
 	/**
 	 * @return the toStreet2
 	 */
-	public String getToStreet2() {
-		return toStreet2;
+	public String getFromStreet2() {
+		return fromStreet2;
 	}
 
 	/**
 	 * @param toStreet2 the toStreet2 to set
 	 */
-	public void setToStreet2(String toStreet2) {
-		this.toStreet2 = toStreet2;
+	public void setFromStreet2(String toStreet2) {
+		this.fromStreet2 = toStreet2;
 	}
 
 	/**
 	 * @return the toCity
 	 */
-	public String getToCity() {
-		return toCity;
+	public String getFromCity() {
+		return fromCity;
 	}
 
 	/**
 	 * @param toCity the toCity to set
 	 */
-	public void setToCity(String toCity) {
-		this.toCity = toCity;
+	public void setFromCity(String toCity) {
+		this.fromCity = toCity;
 	}
 
 	/**
 	 * @return the toGeoRegion
 	 */
-	public String getToGeoRegion() {
-		return toGeoRegion;
+	public String getFromGeoRegion() {
+		return fromGeoRegion;
 	}
 
 	/**
 	 * @param toGeoRegion the toGeoRegion to set
 	 */
-	public void setToGeoRegion(String toGeoRegion) {
-		this.toGeoRegion = toGeoRegion;
+	public void setFromGeoRegion(String toGeoRegion) {
+		this.fromGeoRegion = toGeoRegion;
 	}
 
 	/**
 	 * @return the toCountry
 	 */
-	public String getToCountry() {
-		return toCountry;
+	public String getFromCountry() {
+		return fromCountry;
 	}
 
 	/**
 	 * @param toCountry the toCountry to set
 	 */
-	public void setToCountry(String toCountry) {
-		this.toCountry = toCountry;
+	public void setFromCountry(String toCountry) {
+		this.fromCountry = toCountry;
 	}
 
 	/**
 	 * @return the toMailCode
 	 */
-	public String getToMailCode() {
-		return toMailCode;
+	public String getFromMailCode() {
+		return fromMailCode;
 	}
 
 	/**
 	 * @param toMailCode the toMailCode to set
 	 */
-	public void setToMailCode(String toMailCode) {
-		this.toMailCode = toMailCode;
+	public void setFromMailCode(String toMailCode) {
+		this.fromMailCode = toMailCode;
 	}
 
 	/**
 	 * @return the toMessage
 	 */
-	public String getToMessage() {
-		return toMessage;
+	public String getFromMessage() {
+		return fromMessage;
 	}
 
 	/**
 	 * @param toMessage the toMessage to set
 	 */
-	public void setToMessage(String toMessage) {
-		this.toMessage = toMessage;
+	public void setFromMessage(String toMessage) {
+		this.fromMessage = toMessage;
 	}
 
 	/**
 	 * @return the toPhone
 	 */
-	public String getToPhone() {
-		return toPhone;
+	public String getFromPhone() {
+		return fromPhone;
 	}
 
 	/**
 	 * @param toPhone the toPhone to set
 	 */
-	public void setToPhone(String toPhone) {
-		this.toPhone = toPhone;
+	public void setFromPhone(String toPhone) {
+		this.fromPhone = toPhone;
 	}
 
 	/**
 	 * @return the toEmail
 	 */
-	public String getToEmail() {
-		return toEmail;
+	public String getFromEmail() {
+		return fromEmail;
 	}
 
 	/**
 	 * @param toEmail the toEmail to set
 	 */
-	public void setToEmail(String toEmail) {
-		this.toEmail = toEmail;
+	public void setFromEmail(String toEmail) {
+		this.fromEmail = toEmail;
 	}
 	
 }

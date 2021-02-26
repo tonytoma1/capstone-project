@@ -72,6 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, "/api/register").permitAll()
 				.antMatchers(HttpMethod.POST,"/api/authentication").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/person").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/account/label").permitAll()
 				
 				// Put the white listed end-points here
 				.antMatchers(HttpMethod.GET, "/api/device-company").permitAll()

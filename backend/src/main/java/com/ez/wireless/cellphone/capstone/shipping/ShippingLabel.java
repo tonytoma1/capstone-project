@@ -25,16 +25,15 @@ public class ShippingLabel
 	//private Account ac = ac.getAccountId();
 					
 	
-	public ShippingLabel(String name, String company, String street1, String street2, 
+	public ShippingLabel(String Fname, String Lname, String company, String street1, String street2, 
 			String city, String GeoRegion, String country, String mailCode, String message,
-			String phone, String email) throws EasyPostException
+			String phone, String email, boolean residental, String postalService, double weight) throws EasyPostException
 	{
-		EasyPost.apiKey = "insert key here";
-		shipmentMap.put("from_address", fromAddress(name, company, street1, street2, city, GeoRegion, country, mailCode, message, phone, email));
+		EasyPost.apiKey = "EZTK49ff1046f34b4161b5d4531cd632f2c6PqxVBYFGS0cXZpSKqWSIbQ";
+		shipmentMap.put("from_address", fromAddress(Fname, Lname, company, street1, street2, city, GeoRegion, country, mailCode, message, phone, email, residental));
 		//shipmentMap.put("to_address", toAddress(ac));
 		shipmentMap.put("to_address", toAddress());
-		shipmentMap.put("parcel", parcel("USPS",6)); //weight is in lb and not sure if it's going to by dynamic or not
-		System.out.println(ship("USPS"));
+		shipmentMap.put("parcel", parcel(postalService, weight)); //weight is in lb and not sure if it's going to by dynamic or not
 	}
 	
 	//client from database
@@ -46,18 +45,17 @@ public class ShippingLabel
 	 */
 	private Address toAddress(/*Account ac*/) throws EasyPostException
 	{
-		Address toAddress = new Address();
 		toAddressMap.put("name", "Frank Yakou");
 		toAddressMap.put("company", "Recommerse");
 		toAddressMap.put("street1", "2958 C Street");
-		toAddressMap.put("street2", null); //Null values won't show up on the shipping label
 		toAddressMap.put("city", "Los Angeles");
 		toAddressMap.put("state", "CA");
 		toAddressMap.put("country", "US");
-		toAddressMap.put("zip", 12345-6789);
+		toAddressMap.put("zip", 1234567);
 		toAddressMap.put("phone", 1234567890);
 		toAddressMap.put("email", "example@example.com");
 		toAddressMap.put("residential", false);
+		Address toAddress = Address.create(toAddressMap);
 		
 		//TODO
 //		toAddressMap.put("name", ac.getPerson().getFirstName() + " " + ac.getPerson().getLastName());
@@ -71,7 +69,6 @@ public class ShippingLabel
 //		toAddressMap.put("phone", ac.getPerson().getPhone());
 //		toAddressMap.put("email", ac.getPerson().getEmail());
 //		toAddressMap.put("residential", ac.getPerson().isResidental());
-		Address.create(toAddressMap);
 		return toAddress;
 	}
 	
@@ -79,7 +76,8 @@ public class ShippingLabel
 	/**
 	 * Takes in info passed from the constructor and puts them into a map. Which said map is converted into an address and returned.
 	 * Values that are sent as null will not be printed on the label. Only name, company, street1, city, GeoRegion, Country, and mailCode are required.
-	 * @param name The name of the person
+	 * @param Fname The first name of the person
+	 * @param Lname The last name of the person
 	 * @param company The company name
 	 * @param street1 The street location
 	 * @param street2 The second street location
@@ -90,14 +88,14 @@ public class ShippingLabel
 	 * @param message The message to the recipient
 	 * @param phone The Phone number
 	 * @param email The email address
+	 * @param residential if the person is shipping from a residence
 	 * @return The senders Address
 	 */
-	private Address fromAddress(String name, String company, String street1, String street2, 
+	private Address fromAddress(String Fname, String Lname, String company, String street1, String street2, 
 			String city, String GeoRegion, String country, String mailCode, String message,
-			String phone, String email)
+			String phone, String email, boolean residental)
 	{
-		Address fromAddress = new Address();
-		fromAddressMap.put("name", name);
+		fromAddressMap.put("name", Fname + " " + Lname);
 		fromAddressMap.put("company", company);
 		fromAddressMap.put("street1", street1);
 		fromAddressMap.put("street2", street2);
@@ -108,17 +106,18 @@ public class ShippingLabel
 		fromAddressMap.put("message", message);
 		fromAddressMap.put("phone", phone);
 		fromAddressMap.put("email", email);
-		fromAddressMap.put("residential", email);
+		fromAddressMap.put("residential", residental);
 		try 
 		{
-			Address.create(fromAddressMap);
+			Address fromAddress = Address.create(fromAddressMap);
+			return fromAddress;
 		} 
 		catch (EasyPostException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return fromAddress;
+		return null;
 	}
 	
 	/**
@@ -148,17 +147,17 @@ public class ShippingLabel
 			}
 			
 		}
-		Parcel parcel = new Parcel();
 		try 
 		{
-			Parcel.create(parcelMap);
+			Parcel parcel = Parcel.create(parcelMap);
+			return parcel;
 		} 
 		catch (EasyPostException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return parcel;
+		return null;
 	}
 	
 	/**
@@ -167,7 +166,7 @@ public class ShippingLabel
 	 * @param postalService postal service identifier
 	 * @return the shipping label image
 	 */
-	private String ship(String postalService)
+	public String ship(String postalService)
 	{
 		switch(postalService)
 		{
