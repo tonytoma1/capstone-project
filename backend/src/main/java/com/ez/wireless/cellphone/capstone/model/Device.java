@@ -31,22 +31,22 @@ public class Device
 	private String devicePrice;
 	
 	@OneToOne
-	@MapsId
+	//@MapsId
 	@JoinColumn(name = "storage_capacity_id")
 	private StorageCapacity storageCapacity;
 	
 	@OneToOne
-	@MapsId
+	//@MapsId
 	@JoinColumn(name = "condition_id")
 	private DeviceCondition deviceCondition;
 	
 	@OneToOne
-	@MapsId
+	//@MapsId
 	@JoinColumn(name = "service_provider_id")
 	private ServiceProvider serviceProvider;
 	
 	@OneToOne
-	@MapsId
+	//@MapsId
 	@JoinColumn(name = "device_company_id")
 	private DeviceCompany deviceCompany;
 

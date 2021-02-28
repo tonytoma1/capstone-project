@@ -9,6 +9,7 @@ import com.easypost.EasyPost;
 import com.easypost.exception.EasyPostException;
 import com.easypost.model.Address;
 import com.easypost.model.Parcel;
+import com.easypost.model.Rate;
 import com.easypost.model.Shipment;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
@@ -30,10 +31,13 @@ public class ShippingLabel
 			String phone, String email, boolean residental, String postalService, double weight) throws EasyPostException
 	{
 		EasyPost.apiKey = "EZTK49ff1046f34b4161b5d4531cd632f2c6PqxVBYFGS0cXZpSKqWSIbQ";
-		shipmentMap.put("from_address", fromAddress(Fname, Lname, company, street1, street2, city, GeoRegion, country, mailCode, message, phone, email, residental));
+		Address fromCustomerAddress = fromAddress(Fname, Lname, company, street1, street2, city, GeoRegion, country, mailCode, message, phone, email, residental);
+		Address clientToAddress = toAddress();
+		Parcel parcelMade = parcel(postalService, weight);
+		shipmentMap.put("to_address", clientToAddress);
+		shipmentMap.put("from_address", fromCustomerAddress);
 		//shipmentMap.put("to_address", toAddress(ac));
-		shipmentMap.put("to_address", toAddress());
-		shipmentMap.put("parcel", parcel(postalService, weight)); //weight is in lb and not sure if it's going to by dynamic or not
+		shipmentMap.put("parcel", parcelMade); //weight is in lb and not sure if it's going to by dynamic or not
 	}
 	
 	//client from database
@@ -46,16 +50,29 @@ public class ShippingLabel
 	private Address toAddress(/*Account ac*/) throws EasyPostException
 	{
 		toAddressMap.put("name", "Frank Yakou");
-		toAddressMap.put("company", "Recommerse");
-		toAddressMap.put("street1", "2958 C Street");
-		toAddressMap.put("city", "Los Angeles");
-		toAddressMap.put("state", "CA");
+		toAddressMap.put("company", "Recommerce");
+		toAddressMap.put("street1", "1 E 161st St.");
+		toAddressMap.put("city", "Bronx");
+		toAddressMap.put("state", "NY");
 		toAddressMap.put("country", "US");
-		toAddressMap.put("zip", 1234567);
+		toAddressMap.put("zip", 10451);
 		toAddressMap.put("phone", 1234567890);
 		toAddressMap.put("email", "example@example.com");
 		toAddressMap.put("residential", false);
-		Address toAddress = Address.create(toAddressMap);
+		
+		ArrayList<String> verification = new ArrayList<String>();
+		verification.add("delivery");
+		
+		toAddressMap.put("verify", verification);
+		
+		Address toAddress = null;
+		try {
+			toAddress = Address.create(toAddressMap);
+		}
+		catch(EasyPostException e) {
+			e.printStackTrace();
+		}
+		 
 		
 		//TODO
 //		toAddressMap.put("name", ac.getPerson().getFirstName() + " " + ac.getPerson().getLastName());
@@ -107,9 +124,17 @@ public class ShippingLabel
 		fromAddressMap.put("phone", phone);
 		fromAddressMap.put("email", email);
 		fromAddressMap.put("residential", residental);
+		
+		ArrayList<String> verification = new ArrayList<String>();
+		verification.add("delivery");
+		
+		fromAddressMap.put("verify", verification);
+		
+		Address fromAddress = null;
+
 		try 
 		{
-			Address fromAddress = Address.create(fromAddressMap);
+			fromAddress = Address.create(fromAddressMap);
 			return fromAddress;
 		} 
 		catch (EasyPostException e) 
@@ -180,7 +205,7 @@ public class ShippingLabel
 					buyCarriers.add(postalService);
 					List<String> buyServices = new ArrayList<String>();
 					buyServices.add("Express");
-					ship.buy(ship.lowestRate(buyCarriers, buyServices));
+					ship.buy(ship.lowestRate());
 					return ship.getPostageLabel().getLabelUrl();
 				} 
 				catch (EasyPostException e) 

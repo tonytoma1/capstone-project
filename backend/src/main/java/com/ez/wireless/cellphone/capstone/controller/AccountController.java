@@ -20,6 +20,7 @@ import com.ez.wireless.cellphone.capstone.dto.ShippingLabelDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
 import com.ez.wireless.cellphone.capstone.shipping.ShippingLabel;
+import com.ez.wireless.cellphone.capstone.shipping.ShippingLabelResponse;
 
 @RestController
 @RequestMapping("/api/account")
@@ -52,7 +53,12 @@ public class AccountController
 					sldto.getFromMailCode(), sldto.getFromMessage(), sldto.getFromPhone(), sldto.getFromEmail(),
 					sldto.isResidental(), sldto.getPostalService(), sldto.getWeight());
 			
-			return  ResponseEntity.ok(shippingLabel.ship(sldto.getPostalService()));
+			// TODO the shipping label class doesn't throw EasyPost exception. 
+			// easy post is thrown and not caught
+			ShippingLabelResponse shippingLabelResponse = 
+					new ShippingLabelResponse(shippingLabel.ship(sldto.getPostalService()));
+			
+			return  ResponseEntity.ok(shippingLabelResponse);
 		} 
 		catch (EasyPostException e) 
 		{
