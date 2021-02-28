@@ -30,6 +30,10 @@ public class Account {
 	@Column(name = "username", unique = true)
 	private String username;
 	
+	@Column(name="uuid")
+	@JsonIgnore
+	private String uuid;
+	
 	@Column(name = "password")
 	@JsonIgnore
 	private String password;

@@ -62,6 +62,23 @@ class UserService {
                            .catch((res) => {return res});
     }
 
+    /**
+     * Updates a user's UUID into the database
+     * @param {string} email the account holder's email
+     * @param {string} updatedUUID the uuid to be persisted into the database.
+     */
+    async updateUUID(email, updatedUUID) {
+        var config = {
+            params: {
+                resetUUID: updatedUUID,
+                username: email
+                
+            }
+        };
+
+        return await axios.post(Constants.API_URL + 'account/uuid', config);
+    }
+
     /*
      * Creates the authentication header so the backend API can verify the JWT Token 
      */
@@ -90,6 +107,10 @@ class UserService {
         return username.sub;
     }
 
+    getCondition() {
+        return axios.get(Constants.API_URL + "condition");
+    }
+
     saveJwtToken(token) {
         Cookies.set(Constants.JWT_TOKEN, token, {expires: 1});
     }
@@ -99,7 +120,7 @@ class UserService {
     }
 
     // Original way to check if the user is logged in.
-    // Dont use this function, but place it inside onComponentMount()
+    // Dont use this function. This function is used for testing purposes
     originalWayToTestForUserLogin() {
         try {
             /*

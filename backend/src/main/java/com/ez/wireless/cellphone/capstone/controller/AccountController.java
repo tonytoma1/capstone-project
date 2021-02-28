@@ -80,4 +80,19 @@ public class AccountController
 			throw new IllegalArgumentException("Account could not be saved");
 		}
 	}
+	
+	/**
+	 * Saves the UUID into an account
+	 * @param uuid The uuid that will be persisted into the database.
+	 * @param username the username of the user.
+	 */
+	@PostMapping(path = "/uuid")
+	public void insertUserUUID(@RequestParam(name = "resetUUID") String resetUUID, @RequestParam(name = "username") String username) {
+		// Get the user's account based on the username
+		System.out.println(resetUUID);
+		System.out.println(username);
+		// Persist the UUID into the database
+		
+		// throw an exception if the UUID wasn't persisted.
+	}
 }

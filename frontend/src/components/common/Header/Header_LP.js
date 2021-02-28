@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import HeaderS from './HeaderS.css';
-import Logo from '../../../images/logo.png';
+import Logo from 'images/logo.png';
 import Cart from 'images/shopping-cart.png';
 import {Link} from "react-router-dom";
 import Cookies from 'js-cookie';

@@ -43,8 +43,7 @@ export default class Account extends React.Component {
             <Header/>
             <h1>Account page </h1>
             <Footer/>
-            </div>
-            
+            </div>   
         );
     }
 }
