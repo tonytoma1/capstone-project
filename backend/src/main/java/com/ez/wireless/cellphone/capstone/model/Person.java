@@ -113,20 +113,6 @@ public class Person {
 	}
 
 	/**
-	 * @return the streetAddress
-	 */
-	public String getStreetAddress() {
-		return streetAddress1;
-	}
-
-	/**
-	 * @param streetAddress the streetAddress to set
-	 */
-	public void setStreetAddress(String streetAddress1) {
-		this.streetAddress1 = streetAddress1;
-	}
-
-	/**
 	 * @return the state
 	 */
 	public String getState() {

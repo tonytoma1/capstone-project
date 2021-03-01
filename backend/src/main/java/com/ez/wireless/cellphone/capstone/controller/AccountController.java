@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.easypost.exception.EasyPostException;
+import com.ez.wireless.cellphone.capstone.dto.AccountPersonDTO;
 import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
 import com.ez.wireless.cellphone.capstone.dto.ShippingLabelDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
@@ -102,11 +103,8 @@ public class AccountController
 	 * @param username the username of the user.
 	 */
 	@PostMapping(path = "/uuid")
-	public void insertUserUUID(@RequestBody AccountPersonRoleDTO ac) {
-		// Get the user's account based on the username
-		System.out.println(ac.getUuid());
-		System.out.println(ac.getUsername());
-		// Persist the UUID into the database
+	public void insertUserUUID(@RequestBody AccountPersonRoleDTO ac) 
+	{
 		try
 		{
 			accountService.saveAccount(ac);
@@ -116,6 +114,23 @@ public class AccountController
 			// throw an exception if the UUID wasn't persisted.
 			throw new IllegalArgumentException("Account could not be saved");
 		}
-		
+	}
+	
+	/**
+	 * Registers a user to a account
+	 * @param apDTO The account person data transfer object
+	 */
+	@PostMapping(path = "/register")
+	public void registerUser(@RequestBody AccountPersonDTO apDTO)
+	{
+		try
+		{
+			accountService.createAccount(apDTO);
+		}
+		catch (IllegalArgumentException e) 
+		{
+			// throw an exception if the UUID wasn't persisted.
+			throw new IllegalArgumentException("Account could not be saved");
+		}
 	}
 }

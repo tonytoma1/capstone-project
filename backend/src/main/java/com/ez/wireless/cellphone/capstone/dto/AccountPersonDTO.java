@@ -14,6 +14,24 @@ public class AccountPersonDTO {
 					lastName,
 					phone,
 					company;
+	
+	private	boolean isResidental;
+	
+	
+
+	/**
+	 * @return the isResidental
+	 */
+	public boolean isResidental() {
+		return isResidental;
+	}
+
+	/**
+	 * @param isResidental the isResidental to set
+	 */
+	public void setResidental(boolean isResidental) {
+		this.isResidental = isResidental;
+	}
 
 	/**
 	 * @return the username

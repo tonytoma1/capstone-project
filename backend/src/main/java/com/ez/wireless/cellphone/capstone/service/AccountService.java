@@ -11,6 +11,8 @@ import com.ez.wireless.cellphone.capstone.repository.AccountRepository;
 import com.ez.wireless.cellphone.capstone.repository.PersonRepository;
 import com.ez.wireless.cellphone.capstone.repository.RoleRepository;
 import java.util.Optional;
+
+import com.ez.wireless.cellphone.capstone.dto.AccountPersonDTO;
 import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.model.Person;
@@ -79,5 +81,33 @@ public class AccountService
 		account.setPassword(bcryptPasswordEncoder.encode(accountDTO.getPassword()));
 	
 		return accountRepository.save(account);
+	}
+	
+	/**
+	 * Creates an account and puts it on the account table
+	 * @param apDTO Account data transfer object
+	 * @return The account if it was successfully saved to the database 
+	 */
+	public Account createAccount(AccountPersonDTO apDTO)
+	{
+		Person per = new Person();
+		Account acc = new Account();
+		Role role = null;
+		per.setFirstName(apDTO.getFirstName());
+		per.setLastName(apDTO.getLastName());
+		per.setCompany(apDTO.getCompany());
+		per.setEmail(apDTO.getEmail());
+		per.setCity(apDTO.getCity());
+		per.setCountry(apDTO.getCountry());
+		per.setStreetAddress1(apDTO.getStreetAddress1());
+		per.setStreetAddress2(apDTO.getStreetAddress2());
+		per.setPhone(apDTO.getPhone());
+		per.setResidentially(apDTO.isResidental());
+		per.setZip(apDTO.getZip());
+		acc.setPerson(per);
+		acc.setRole(roleRepository.findByRoleName(role.getRoleName()));
+		acc.setUsername(apDTO.getUsername());
+		acc.setPassword(bcryptPasswordEncoder.encode(apDTO.getPassword()));
+		return accountRepository.save(acc);
 	}
 }

@@ -7,5 +7,5 @@ import com.ez.wireless.cellphone.capstone.model.Role;
 
 @Repository
 public interface RoleRepository extends CrudRepository<Role, Integer> {
-
+	Role findByRoleName(String role);
 }
