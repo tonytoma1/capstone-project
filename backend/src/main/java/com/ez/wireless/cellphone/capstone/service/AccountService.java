@@ -80,4 +80,8 @@ public class AccountService
 	
 		return accountRepository.save(account);
 	}
+	
+	public Account updateAccount(Account account) {
+		return accountRepository.save(account);
+	}
 }

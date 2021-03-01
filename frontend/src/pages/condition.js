@@ -4,7 +4,9 @@ import UserService from 'services/user.service';
 import Header_LP from '../components/common/Header/Header_LP';
 import Footer from '../components/common/footer/Footer';
 import Condition from '../components/condition/Condition';
-export default class Condition extends React.Component {
+
+
+export default class ConditionPage extends React.Component {
     constructor(props) {
         super();
         this.state = {
