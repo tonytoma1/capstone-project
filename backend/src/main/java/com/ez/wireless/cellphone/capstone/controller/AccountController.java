@@ -141,7 +141,7 @@ public class AccountController
 		catch(Exception e) {
 			System.out.println("failed");
 		}
-		
+	}
 
 	/**
 	 * Registers a user to a account

@@ -83,10 +83,11 @@ public class AccountService
 		return accountRepository.save(account);
 	}
 	
-<<<<<<< HEAD
+
 	public Account updateAccount(Account account) {
 		return accountRepository.save(account);
-=======
+	}
+
 	/**
 	 * Creates an account and puts it on the account table
 	 * @param apDTO Account data transfer object
@@ -109,10 +110,10 @@ public class AccountService
 		per.setResidentially(apDTO.isResidental());
 		per.setZip(apDTO.getZip());
 		acc.setPerson(per);
-		acc.setRole(roleRepository.findByRoleName(role.getRoleName()));
+		acc.setRole(roleRepository.findByRoleName("USER"));
 		acc.setUsername(apDTO.getUsername());
 		acc.setPassword(bcryptPasswordEncoder.encode(apDTO.getPassword()));
 		return accountRepository.save(acc);
->>>>>>> f82a819effab7a70062ad8602fe1b2a08b3c2a91
+
 	}
 }
