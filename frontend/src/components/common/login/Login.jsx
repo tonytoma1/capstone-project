@@ -22,6 +22,7 @@ export default class Login extends React.Component {
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.sendToForgotPasswordPage = this.sendToForgotPasswordPage.bind(this);
     }
     
     componentDidMount() {
@@ -85,6 +86,13 @@ export default class Login extends React.Component {
         this.setState({password: event.target.value});
     }
 
+    // Sends the user to the forgot password page.
+    sendToForgotPasswordPage(event) {
+        event.preventDefault();
+        history.push("/forgot-password");
+        window.location.reload();
+    }
+
         render() {
             const {loggedIn} = this.state;
             const {failedLoginAttempt} = this.state;
@@ -122,7 +130,7 @@ export default class Login extends React.Component {
                     
                     <article className="forgot-password"> 
                         Forgot password? Click 
-                        <p>&nbsp;here.</p>
+                        <p>&nbsp;<a onClick={this.sendToForgotPasswordPage}>here.</a></p>
                     </article>
                 </div>
             );

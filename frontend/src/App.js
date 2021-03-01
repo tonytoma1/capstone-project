@@ -3,6 +3,8 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import LoginPage from './pages/login-page'
 import HomePage from './pages/home';
 import AccountPage from './pages/account.js';
+import RegistrationPage from './pages/registration-page.js'
+import ForgotPasswordPage from './pages/forgot-password-page.js';
 import history from './history';
 import ConditionPage from './pages/condition';
 
@@ -22,6 +24,14 @@ class App extends React.Component {
             <Route path="/account">
               <AccountPage />
             </Route>
+            <Route path="/register">
+              <RegistrationPage />
+            </Route>
+            <Route path="/forgot-password">
+              <ForgotPasswordPage />
+            </Route>
+
+           
     
             <Route path="/">
               <HomePage />

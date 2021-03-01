@@ -10,13 +10,12 @@ package com.ez.wireless.cellphone.capstone.dto;
  */
 public class AccountPersonRoleDTO {
 	
-	private String username;
+	private String username,
+			password,
+			uuid;
 	
-	private String password;
-	
-	private int roleId;
-	
-	private int personId;
+	private int roleId,
+				personId;
 
 	
 	/**
@@ -73,6 +72,20 @@ public class AccountPersonRoleDTO {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	/**
+	 * @return the uuid
+	 */
+	public String getUuid() {
+		return uuid;
+	}
+
+	/**
+	 * @param uuid the uuid to set
+	 */
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 	
 	

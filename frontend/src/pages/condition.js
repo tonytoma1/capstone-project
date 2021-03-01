@@ -1,10 +1,27 @@
 import React from 'react';
+import UserService from 'services/user.service';
 
 import Header_LP from '../components/common/Header/Header_LP';
 import Footer from '../components/common/footer/Footer';
 import Condition from '../components/condition/Condition';
+export default class Condition extends React.Component {
+    constructor(props) {
+        super();
+        this.state = {
+            condition: null
+        }
+    }
 
-class Condition extends React.Component {
+    componentDidMount() {
+        UserService.getCondition()
+                    .then((response) => {
+                        this.setState({condition: response.data});
+                    })
+                    .catch((error) => {
+                        this.setState({condition: null});
+                    })
+    }
+
 
     render() {
         return(

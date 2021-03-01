@@ -30,6 +30,10 @@ public class Account {
 	@Column(name = "username", unique = true)
 	private String username;
 	
+	@Column(name="uuid")
+	@JsonIgnore
+	private String uuid;
+	
 	@Column(name = "password")
 	@JsonIgnore
 	private String password;
@@ -113,8 +117,20 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+	/**
+	 * @return the uuid
+	 */
+	public String getUuid() {
+		return uuid;
+	}
+
+	/**
+	 * @param uuid the uuid to set
+	 */
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 	
 	
 }

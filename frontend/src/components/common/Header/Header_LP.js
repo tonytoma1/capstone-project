@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import HeaderS from './HeaderS.css';
-import Logo from '../../../images/logo.png';
+import Logo from 'images/logo.png';
 import Cart from 'images/shopping-cart.png';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import * as Constants from 'constants/global-constants';
 import UserService from "services/user.service";
@@ -19,8 +19,7 @@ import history from 'history.js';
         <hr/>
         </header></div>
 */
-class Header_LP extends Component
-{
+class Header_LP extends Component {
     constructor(props) {
         super(props);
 
@@ -40,11 +39,11 @@ class Header_LP extends Component
     componentDidMount() {
         var token = Cookies.get("jwtToken");
 
-        if(token != null) {
-            this.setState({isLoggedIn: true});
+        if (token != null) {
+            this.setState({ isLoggedIn: true });
         }
         else {
-            this.setState({isLoggedIn: false});
+            this.setState({ isLoggedIn: false });
         }
 
         /*
@@ -59,20 +58,20 @@ class Header_LP extends Component
     }
 
 
-    render(){
+    render() {
 
-        const {isLoggedIn} = this.state;
+        const { isLoggedIn } = this.state;
 
-        return(
+        return (
             <div>
                 <header className="Container">
                     <div className="title-container">
-                    <img className="I" src= {Logo}/>
-                    <h2 className="Title">Recommerce</h2>
+                        <img className="I" src={Logo} />
+                        <h2 className="Title">Recommerce</h2>
                     </div>
-            
+
                     {/* Middle navigation */}
-                   
+
                     <table className="navigational-table">
                         <tbody>
                             <tr>
@@ -87,31 +86,33 @@ class Header_LP extends Component
                     {/* Right most navigation */}
                     <table className="login-register-table">
                         <tbody>
-                           <tr>
+                            <tr>
                                 {/* Check to see if the user is not logged in */}
-                                {!isLoggedIn && 
-                                <td> 
-                                    <Link to="/login">Login</Link> 
-                                </td>
+                                {!isLoggedIn &&
+                                    <td>
+                                        <Link to="/login">Login</Link>
+                                    </td>
                                 }
-                                {!isLoggedIn && 
-                                    <td className="td-login-register">Register</td>
+                                {!isLoggedIn &&
+                                    <td className="td-login-register">
+                                 <Link to="/register" style={{color:  '#3aafa9'}}>Register</Link>
+                                      </td>
                                 }
                                 {/* If the user is logged in, have the option to log out */}
-                                {isLoggedIn && 
+                                {isLoggedIn &&
                                     <button onClick={this.handleLogout}>Logout</button>
                                 }
-                                    <td>
-                                        <img className="shopping-cart-image" src= {Cart} />
-                                    </td>
+                                <td>
+                                    <img className="shopping-cart-image" src={Cart} />
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                <hr/>
+                    <hr />
                 </header>
             </div>
-        
-      )
+
+        )
     }
 }
 
