@@ -1,0 +1,75 @@
+
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+
+    box-sizing: inherit;
+}
+
+
+.condition-container {
+    margin: auto auto;
+    margin-bottom: 100px;
+    width: 87%;
+    padding: 10px;
+}
+
+.condition-container .bc {
+    font-size: 15px;
+}
+
+.condition-container .phone{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.condition-container .current {
+    font-weight: bold;
+}
+
+.condition-container .phone-image img{
+    width: 150px;
+    height: 150px;
+}
+
+.condition-container  ul {
+    font-size: 20px;
+}
+
+.condition-select #select-row{
+    width: 70%;
+    margin: auto auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.condition-select .select-col{
+    margin-left: 50px;
+    padding: 5px;
+    font-family: Segoe UI;
+
+    border: 1px solid #707070;
+    border-radius: 25px;
+
+    font-weight: 400;
+}
+
+.condition-select .select-col:hover{
+   cursor: pointer;
+}
+
+.condition-select .offer {
+    border-color: #3aafa9;
+    justify-content: center;
+}
+
+.condition-select .offer .hz-line {
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+
+

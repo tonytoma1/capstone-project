@@ -4,7 +4,7 @@ import LoginPage from './pages/login-page'
 import HomePage from './pages/home';
 import AccountPage from './pages/account.js';
 import history from './history';
-
+import ConditionPage from './pages/condition';
 
 class App extends React.Component {
 
@@ -26,7 +26,7 @@ class App extends React.Component {
             <Route path="/">
               <HomePage />
             </Route>
-    
+
           </Switch>
     
         </Router>
