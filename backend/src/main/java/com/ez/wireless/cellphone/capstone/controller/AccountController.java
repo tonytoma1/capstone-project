@@ -15,8 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.easypost.exception.EasyPostException;
+
+import com.ez.wireless.cellphone.capstone.dto.AccountDTO;
+import com.ez.wireless.cellphone.capstone.dto.AccountPersonDTO;
+
 import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
 import com.ez.wireless.cellphone.capstone.dto.ShippingLabelDTO;
+import com.ez.wireless.cellphone.capstone.mail.EmailService;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
 import com.ez.wireless.cellphone.capstone.shipping.ShippingLabel;
@@ -28,6 +33,9 @@ public class AccountController
 {
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private EmailService emailService; 
 	
 	@GetMapping(path = "/all")
 	public List<Account> getAll()
@@ -102,20 +110,55 @@ public class AccountController
 	 * @param username the username of the user.
 	 */
 	@PostMapping(path = "/uuid")
-	public void insertUserUUID(@RequestBody AccountPersonRoleDTO ac) {
+	public void insertUserUUID(@RequestBody AccountDTO ac) {
 		// Get the user's account based on the username
 		System.out.println(ac.getUuid());
 		System.out.println(ac.getUsername());
+		Account foundAccount = accountService.getByUsername(ac.getUsername());
+		foundAccount.setUuid(ac.getUuid());
 		// Persist the UUID into the database
 		try
 		{
-			accountService.saveAccount(ac);
+			accountService.updateAccount(foundAccount);
 		}
 		catch (IllegalArgumentException e) 
 		{
 			// throw an exception if the UUID wasn't persisted.
 			throw new IllegalArgumentException("Account could not be saved");
 		}
+	}
+	
+
+	@PostMapping(path = "/mail-uuid")
+	public void mailUserUUID(@RequestParam("email") String email, @RequestParam("uuid") String uuid) {
 		
+		
+		System.out.println("Sending Email.....");
+		try {
+			String websiteUrl = "lol";
+			emailService.sendForgetPasswordLink(email, uuid, websiteUrl);
+		}
+		catch(Exception e) {
+			System.out.println("failed");
+		}
+	}
+
+	/**
+	 * Registers a user to a account
+	 * @param apDTO The account person data transfer object
+	 */
+	@PostMapping(path = "/register")
+	public void registerUser(@RequestBody AccountPersonDTO apDTO)
+	{
+		try
+		{
+			accountService.createAccount(apDTO);
+		}
+		catch (IllegalArgumentException e) 
+		{
+			// throw an exception if the UUID wasn't persisted.
+			throw new IllegalArgumentException("Account could not be saved");
+		}
+
 	}
 }

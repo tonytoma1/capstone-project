@@ -70,13 +70,17 @@ class UserService {
     async updateUUID(email, updatedUUID) {
         var config = {
             params: {
-                resetUUID: updatedUUID,
+                uuid: updatedUUID,
                 username: email
                 
             }
         };
 
-        return await axios.post(Constants.API_URL + 'account/uuid', config);
+        return await axios.post(Constants.API_URL + 'account/uuid', {
+            uuid: updatedUUID,
+            username: email
+            
+        });
     }
 
     /*
@@ -105,6 +109,13 @@ class UserService {
         }
 
         return username.sub;
+    }
+
+    async sendUUIDEmail(email, uuid) {
+        return await axios.post(Constants.API_URL +"/account/mail-uuid", {
+            email: email, 
+            uuid: uuid
+        });
     }
 
     getCondition() {
