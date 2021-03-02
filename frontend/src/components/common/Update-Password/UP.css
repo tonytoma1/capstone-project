@@ -1,0 +1,147 @@
+body
+{
+    background-color: lightgrey;
+}
+
+.block
+{
+  background-color: white;
+  height: 600px;
+  width: 500px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+
+.logo
+{
+  height: 100px;
+  margin-top: 19px;
+  margin-left: 189px;
+  position: absolute;
+}
+
+.block h2
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: lighter;
+    clear: both;
+    margin-top: 130px;
+    margin-left: 134px;
+    position: absolute;
+    color: #3aafa9;
+}
+.block table
+{
+    margin-top: 00px;
+    margin-left: 90px;
+    position: absolute;
+}
+
+.block tr
+{
+    position: absolute;
+    margin-top: 200px;
+}
+.block section {
+    text-align: center;
+}
+
+.block section p {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial;
+    width: 80px;
+    background-color: #3AAFA9;
+    text-align: center;
+    color: white;
+    position: absolute;
+    margin-top: 250px;
+    margin-right:25px ;
+}
+
+.block section input {
+   
+    font-size: 14px;
+    width: auto;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    margin-top: 250px;
+    margin-left: 105px;
+    height: 23px;
+}
+
+
+.block section input::placeholder {
+    font-style: italic;
+    opacity: 60%;
+}
+.block section {
+    display: block;
+    text-align: center;
+}
+
+.block section > * {
+    display: inline-block;
+    border:#BCE0FD 1px solid;
+    padding: 10px;
+}
+
+.block section input::placeholder {
+    font-style: italic;
+    opacity: 60%;
+}
+
+
+.block section .CP { 
+    font-size: 14px;
+    width: auto;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    margin-top: 20px;
+    margin-left: 105px;
+    height: 23px;
+}
+
+.block section .CP { 
+    font-size: 14px;
+    width: auto;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    margin-top: 20px;
+    margin-left: 105px;
+    height: 23px;
+}
+
+.block section .CPL { 
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial;
+    width: 80px;
+    background-color: #3AAFA9;
+    text-align: center;
+    color: white;
+    position: absolute;
+    margin-top: 20px;
+    margin-right:25px ;
+}
+
+.block button
+{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial;
+    width: 80px;
+    background-color: #3AAFA9;
+    text-align: center;
+    color: white;
+    position: absolute;
+    margin-top: 120px;
+    margin-left: 200px;
+    padding: 3%;
+    height: 60px;
+    border: white;
+}
