@@ -1,17 +1,14 @@
 import React, { Component } from "react";
-import HeaderS from './HeaderS.css';
 import Logo from 'images/logo.png';
 import { Link } from "react-router-dom";
 class HeaderReg extends Component {
-    constructor(props) {
-        super(props);
-    }
+  
     render() {
         return (
             <div>
                 <header className="Container">
                     <div className="title-container">
-                        <img className="I" src={Logo} />
+                        <img className="I" src={Logo} alt="logo"/>
                         <h2 className="Title">Recommerce</h2>
                     </div>
 
@@ -30,9 +27,13 @@ class HeaderReg extends Component {
                     {/* Right most navigation */}
                     <table className="login-register-table">
                         <tbody>
-                            <td>
+                            <tr>
+                                <td>
                                 <Link to="/login" style={{color:  '#3aafa9'}}>Login</Link>
-                            </td>
+                                </td>
+                            </tr>
+                               
+                           
                         </tbody>
                     </table>
                     <hr />
