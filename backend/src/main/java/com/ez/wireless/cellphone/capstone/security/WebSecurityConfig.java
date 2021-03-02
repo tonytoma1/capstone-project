@@ -77,7 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// AccountController white-list
 				.antMatchers(HttpMethod.POST, "/api/account/label").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/account/uuid").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/account/mail-uuid").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/account/updatepassword").permitAll()
 				
 				// Put the white listed end-points here
 				.antMatchers(HttpMethod.GET, "/api/device-company").permitAll()

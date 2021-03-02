@@ -48,6 +48,13 @@ class UserService {
         return axios.get(Constants.API_URL.concat("account"), config);
     }
 
+  updateAccountPassword(uuid, password) {
+        return axios.post(Constants.API_URL.concat("account/updatepassword"), {
+            uuid: uuid,
+            password: password
+        });
+    }
+
     async getUser() {
         var usernameRetrieved = this.getUsernameFromJwtToken();
 
@@ -112,10 +119,8 @@ class UserService {
     }
 
     async sendUUIDEmail(email, uuid) {
-        return await axios.post(Constants.API_URL +"/account/mail-uuid", {
-            email: email, 
-            uuid: uuid
-        });
+
+        return await axios.post(Constants.API_URL + "/account/mailuuid");
     }
 
     getCondition() {

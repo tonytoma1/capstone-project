@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +23,8 @@ import com.ez.wireless.cellphone.capstone.dto.AccountPersonDTO;
 
 import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
 import com.ez.wireless.cellphone.capstone.dto.ShippingLabelDTO;
-import com.ez.wireless.cellphone.capstone.mail.EmailService;
+import com.ez.wireless.cellphone.capstone.dto.UUIDEmailDTO;
+import com.ez.wireless.cellphone.capstone.dto.UpdatePasswordDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
 import com.ez.wireless.cellphone.capstone.shipping.ShippingLabel;
@@ -35,7 +38,8 @@ public class AccountController
 	private AccountService accountService;
 	
 	@Autowired
-	private EmailService emailService; 
+    private JavaMailSender javaMailSender;
+	
 	
 	@GetMapping(path = "/all")
 	public List<Account> getAll()
@@ -116,9 +120,10 @@ public class AccountController
 		System.out.println(ac.getUsername());
 		Account foundAccount = accountService.getByUsername(ac.getUsername());
 		foundAccount.setUuid(ac.getUuid());
-		// Persist the UUID into the database
+		
 		try
 		{
+			// Persist the UUID into the database
 			accountService.updateAccount(foundAccount);
 		}
 		catch (IllegalArgumentException e) 
@@ -126,21 +131,26 @@ public class AccountController
 			// throw an exception if the UUID wasn't persisted.
 			throw new IllegalArgumentException("Account could not be saved");
 		}
+		
+		// Send mail
+		String websiteUrl = "http://localhost:3000/change-password?uuid=" + ac.getUuid();
+		SimpleMailMessage msg = new SimpleMailMessage();
+		msg.setTo(ac.getUsername());
+		msg.setSubject("Reset password");
+		msg.setText("Click here to reset password: " + websiteUrl);
+		
+		javaMailSender.send(msg);
 	}
 	
-
-	@PostMapping(path = "/mail-uuid")
-	public void mailUserUUID(@RequestParam("email") String email, @RequestParam("uuid") String uuid) {
+	
+	@PostMapping(path = "/updatepassword")
+	public void updatePassword(@RequestBody UpdatePasswordDTO updatePasswordDto) {
+		Account foundAccount = accountService.getByUuid(updatePasswordDto.getUuid());
 		
+		foundAccount.setPassword(updatePasswordDto.getPassword());
 		
-		System.out.println("Sending Email.....");
-		try {
-			String websiteUrl = "lol";
-			emailService.sendForgetPasswordLink(email, uuid, websiteUrl);
-		}
-		catch(Exception e) {
-			System.out.println("failed");
-		}
+		accountService.updateAccount(foundAccount);
+		
 	}
 
 	/**

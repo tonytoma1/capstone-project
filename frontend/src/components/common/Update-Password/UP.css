@@ -1,7 +1,4 @@
-body
-{
-    background-color: lightgrey;
-}
+
 
 .block
 {
@@ -127,6 +124,10 @@ body
     position: absolute;
     margin-top: 20px;
     margin-right:25px ;
+}
+
+.logo {
+    height: 100px;
 }
 
 .block button

@@ -59,6 +59,10 @@ public class AccountService
 		return accountRepository.findByUsername(username);
 	}
 	
+	public Account getByUuid(String uuid) {
+		return accountRepository.findByUuid(uuid);
+	}
+	
 	/**
 	 * Saves the Account to the account table
 	 * @param account The account
@@ -85,6 +89,7 @@ public class AccountService
 	
 
 	public Account updateAccount(Account account) {
+		account.setPassword(bcryptPasswordEncoder.encode(account.getPassword()));
 		return accountRepository.save(account);
 	}
 

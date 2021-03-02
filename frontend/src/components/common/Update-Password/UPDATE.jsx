@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import UP from './UP.css';
 import Logo from 'images/logo.png';
 
-class updatePsswrd extends Component {
+import 'components/common/Update-Password/UP.css'; 
+
+export default class UpdatePassword extends Component {
 
     render()
     {

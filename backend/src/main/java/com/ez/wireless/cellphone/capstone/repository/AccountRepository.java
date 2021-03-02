@@ -8,4 +8,6 @@ import com.ez.wireless.cellphone.capstone.model.Account;
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Integer> {
 	Account findByUsername(String username);
+	
+	Account findByUuid(String uuid);
 }

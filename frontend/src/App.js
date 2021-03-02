@@ -5,6 +5,7 @@ import HomePage from './pages/home';
 import AccountPage from './pages/account.js';
 import RegistrationPage from './pages/registration-page.js'
 import ForgotPasswordPage from './pages/forgot-password-page.js';
+import ChangePasswordPage from './pages/change-password-page.js';
 import history from './history';
 import ConditionPage from './pages/condition';
 
@@ -27,12 +28,14 @@ class App extends React.Component {
             <Route path="/register">
               <RegistrationPage />
             </Route>
+            <Route path="/change-password">
+              <ChangePasswordPage />
+            </Route>
+
             <Route path="/forgot-password">
               <ForgotPasswordPage />
             </Route>
 
-           
-    
             <Route path="/">
               <HomePage />
             </Route>
