@@ -41,12 +41,19 @@ public class AuthenticationController {
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest)
 	throws Exception {
 		
+		System.out.println("createAuthenticationToken() hit");
+		
+		
 		authenticateUser(jwtRequest.getUsername(), jwtRequest.getPassword());
+		
 		
 		UserDetails userDetails = jwtUserDetailsService
 									.loadUserByUsername(jwtRequest.getUsername());
 		
 		String token = jwtTokenUtil.generateToken(userDetails, jwtRequest.getUsername());
+		
+		System.out.println("Login Accepted");
+		System.out.println(token);
 		
 		return ResponseEntity.ok(new JwtResponse(token));
 	}

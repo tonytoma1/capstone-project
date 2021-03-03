@@ -103,6 +103,9 @@ public class AccountService
 		Person per = new Person();
 		Account acc = new Account();
 		Role role = null;
+		
+		System.out.println(apDTO.getPassword());
+		
 		per.setFirstName(apDTO.getFirstName());
 		per.setLastName(apDTO.getLastName());
 		per.setCompany(apDTO.getCompany());
@@ -114,9 +117,15 @@ public class AccountService
 		per.setPhone(apDTO.getPhone());
 		per.setResidentially(apDTO.isResidental());
 		per.setZip(apDTO.getZip());
-		acc.setPerson(per);
+		
+		personRepository.save(per);
+		
+		Person personFound = personRepository
+				.findByFirstNameAndLastNameAndStreetAddress1(per.getFirstName(), per.getLastName(), per.getStreetAddress1());
+		
+		acc.setPerson(personFound);
 		acc.setRole(roleRepository.findByRoleName("USER"));
-		acc.setUsername(apDTO.getUsername());
+		acc.setUsername(apDTO.getEmail());
 		acc.setPassword(bcryptPasswordEncoder.encode(apDTO.getPassword()));
 		return accountRepository.save(acc);
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Logo from '../../../images/logo.png';
 import axios from 'axios';
+import history from '../../../history';
 import './register.css';
 
 
@@ -35,9 +36,12 @@ export default class Register extends Component {
     submitHandler = e => {
         e.preventDefault();
         console.log(this.state);
-        axios.post("http://localhost:8080/api/register", this.state)
+        axios.post("http://localhost:8080/api/account/register", this.state)
             .then(response => {
                 console.log(response);
+                history.push("/login");
+                window.location.reload();
+               
             })
             .catch(error => {
                 console.log(error);

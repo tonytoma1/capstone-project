@@ -41,11 +41,10 @@ export default class Login extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        
-        // Authenticate the user and then send them to the account page.
-        AuthenticationService.login(this.state.email, this.state.password)
-            .then((response) => {
-                /*
+         
+
+            // Authenticate the user and then send them to the account page
+               /*
                 * Each JWT token must begin with 'Bearer' keyword, and then a space must be applied
                 * between the JWT token and the 'Bearer' keyword.
                 * For example, a complete JWT token will look like this:
@@ -57,22 +56,19 @@ export default class Login extends React.Component {
                 * Moving forward, in order to retrieve secured endpoints from the backend, 
                 * we must keep sending the JWT token on each request. 
                 */
-                var jwtToken = response.data.token;
-            
-                UserService.saveJwtToken(jwtToken);
-                history.push("/account");
-                window.location.reload();
-              
-
-            })
-            .catch((error)  => {
-                this.setState({failedLoginAttempt: true});
-                console.log("error caught");
-            });
-            
-        
-       
-      
+                let response = AuthenticationService.login(this.state.email, this.state.password)
+                                                    .then((response) => {
+                                                        var jwtToken = response.data.token;
+                                                        UserService.saveJwtToken(jwtToken);
+                                                        history.push("/account");
+                                                        window.location.reload();
+                                                    })
+                                                    .catch((error) => {
+                                                        this.setState({failedLoginAttempt: true});
+                                                        console.log("error caught");
+                                                    })
+                
+         
     }
 
     // Changes the email state every time the email input is modified.

@@ -11,14 +11,7 @@ const API_URL = "http://localhost:8080/api/";
             password: pass
         }
 
-      return await axios.post(loginUrl, jsonDataSent)
-                .then((response) =>  {
-                    return response; })
-                    .catch((response) => {
-                        return response;
-                    });
-                   
-        
+      return await axios.post(loginUrl, jsonDataSent);
     }
 }
 

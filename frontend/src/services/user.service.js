@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import * as Constants from 'constants/global-constants';
 import jwt_decode from "jwt-decode";
 
+
 /*
 * Retrieves the user info from the backend.
 */
@@ -28,8 +29,17 @@ class UserService {
                 return Promise.reject("JWT or Username invalid");
             }
             
+            var jsonResult = {Authorization: 'Bearer '.concat(jwtToken)};
+
+            var config = {
+                headers: jsonResult,
+                params: {
+                    username: username
+                }
+            }
+
             // 3. Get the account information
-          return await this.getAccount(username, jwtToken)
+            return await axios.get(Constants.API_URL.concat("account"), config);
         
         
     }

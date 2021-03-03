@@ -26,6 +26,11 @@ public class PersonService {
 		return personList;
 	}
 	
+	
+	public Person findPerson(Person person) {
+		return personRepository.findByFirstNameAndLastNameAndStreetAddress1(person.getFirstName(), person.getLastName(), person.getStreetAddress1());
+	}
+	
 	/**
 	 * Saves the person to the person table
 	 * @param person to be saved to the table

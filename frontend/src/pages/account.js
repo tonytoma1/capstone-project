@@ -10,23 +10,20 @@ export default class Account extends React.Component {
         super(props);
 
         this.state = {
-            userFound: false,
+            userFound: true,
             user: null
         }
 
     }
 
-
     componentDidMount() {
         // check to see if the user is logged in
         UserService.isUserLoggedIn()
                     .then((response) => {
-                        // The user is logged. Retrieve the account information.
-                        this.setState({userFound: true, user: response.data});
+                        this.setState({userFound: true, user: response});
                     })
                     .catch((error) => {
-                        // The user isn't found.
-                        this.setState({userFound: false});
+                        this.setState({userFound: false, user: null});
                     })
     }
 
@@ -38,12 +35,13 @@ export default class Account extends React.Component {
             {/* User isn't found. Send them back to the login screen */}
             return <Redirect to="/login" />
         }
-
-        return(<div>
-            <Header/>
-            <h1>Account page </h1>
-            <Footer/>
-            </div>   
-        );
+        else {
+            return(<div>
+                <Header/>
+                <h1>Account page </h1>
+                <Footer/>
+                </div>   
+            );
+        }
     }
 }

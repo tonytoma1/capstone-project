@@ -17,7 +17,7 @@ import com.ez.wireless.cellphone.capstone.service.AccountService;
  *
  */
 @RestController
-@RequestMapping("/api/register")
+//@RequestMapping("/api/register")
 public class RegistrationController {
 
 	@Autowired
