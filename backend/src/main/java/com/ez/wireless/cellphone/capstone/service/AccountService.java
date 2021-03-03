@@ -63,6 +63,10 @@ public class AccountService
 		return accountRepository.findByUuid(uuid);
 	}
 	
+	public Account getByUuidAndUsername(String uuid, String username) {
+		return accountRepository.findByUuidAndUsername(uuid, username);
+	}
+	
 	/**
 	 * Saves the Account to the account table
 	 * @param account The account

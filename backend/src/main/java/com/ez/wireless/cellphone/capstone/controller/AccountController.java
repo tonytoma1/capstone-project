@@ -133,7 +133,7 @@ public class AccountController
 		}
 		
 		// Send mail
-		String websiteUrl = "http://localhost:3000/change-password?uuid=" + ac.getUuid();
+		String websiteUrl = "http://localhost:3000/change-password?uuid=" + ac.getUuid() + "&email=" + ac.getUsername();
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setTo(ac.getUsername());
 		msg.setSubject("Reset password");
@@ -145,7 +145,11 @@ public class AccountController
 	
 	@PostMapping(path = "/updatepassword")
 	public void updatePassword(@RequestBody UpdatePasswordDTO updatePasswordDto) {
-		Account foundAccount = accountService.getByUuid(updatePasswordDto.getUuid());
+		Account foundAccount = 
+				accountService.getByUuidAndUsername(updatePasswordDto.getUuid(), updatePasswordDto.getEmail());
+		
+		//Account foundAccount = accountService.getByUsername(updatePasswordDto.getEmail());
+		
 		
 		foundAccount.setPassword(updatePasswordDto.getPassword());
 		

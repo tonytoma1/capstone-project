@@ -58,9 +58,10 @@ class UserService {
         return axios.get(Constants.API_URL.concat("account"), config);
     }
 
-  updateAccountPassword(uuid, password) {
+  updateAccountPassword(uuid, password, email) {
         return axios.post(Constants.API_URL.concat("account/updatepassword"), {
             uuid: uuid,
+            email: email,
             password: password
         });
     }

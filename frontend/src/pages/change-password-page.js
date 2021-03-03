@@ -29,17 +29,18 @@ export default class ChangePasswordPage extends React.Component {
         let search = window.location.search;
         let params = new URLSearchParams(search);
         let uuid = params.get('uuid');
+        let email = params.get("email");
         
         let password = this.state.confirmPassword;
 
-        try {
-            UserService.updateAccountPassword(uuid, password);
-            history.push("/login");
-            window.location.reload();
-        }
-        catch(e) {
+            UserService.updateAccountPassword(uuid, password, email)
+                        .then((response) => {
+                            history.push("/login");
+                            window.location.reload();
+                        })
+                        .catch((error) => {
 
-        }
+                        });
     }
 
     handleNewPasswordChange(event) {
