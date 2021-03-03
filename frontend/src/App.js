@@ -8,6 +8,7 @@ import ForgotPasswordPage from './pages/forgot-password-page.js';
 import ChangePasswordPage from './pages/change-password-page.js';
 import history from './history';
 import ConditionPage from './pages/condition';
+import StorageCapacityPage from './pages/storage-capacity';
 
 class App extends React.Component {
 
@@ -34,6 +35,10 @@ class App extends React.Component {
 
             <Route path="/forgot-password">
               <ForgotPasswordPage />
+            </Route>
+            
+            <Route path="/storage-capacity">
+              <StorageCapacityPage/>
             </Route>
 
             <Route path="/">

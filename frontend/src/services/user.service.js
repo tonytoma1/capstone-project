@@ -138,6 +138,10 @@ class UserService {
         return axios.get(Constants.API_URL + "condition");
     }
 
+    getStorage() {
+       
+    }
+
     saveJwtToken(token) {
         Cookies.set(Constants.JWT_TOKEN, token, {expires: 1});
     }
