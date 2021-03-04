@@ -19,7 +19,7 @@ function confirmOrder()
                 	<p>Password</p>
                 	<input type="password" id="PaypalPassword"  onChange={this.handlePaypalPassword} placeholder="I think this what it says" required/>
                 </section>
-				<br>
+				<br />
 				<section>
                 	<p>First Name</p>
                 	<input type="text" id="FirstName"  onChange={this.handleFirstName} placeholder="First name here" required/>
