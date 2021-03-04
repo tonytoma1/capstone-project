@@ -122,12 +122,9 @@ public class AccountService
 		per.setResidentially(apDTO.isResidental());
 		per.setZip(apDTO.getZip());
 		
-		personRepository.save(per);
+		Person person = personRepository.save(per);
 		
-		Person personFound = personRepository
-				.findByFirstNameAndLastNameAndStreetAddress1(per.getFirstName(), per.getLastName(), per.getStreetAddress1());
-		
-		acc.setPerson(personFound);
+		acc.setPerson(person);
 		acc.setRole(roleRepository.findByRoleName("USER"));
 		acc.setUsername(apDTO.getEmail());
 		acc.setPassword(bcryptPasswordEncoder.encode(apDTO.getPassword()));

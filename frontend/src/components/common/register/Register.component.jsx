@@ -10,7 +10,6 @@ export default class Register extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userName: "",
             password: "",
             streetAddress1: "",
             streetAddress2: "",
@@ -59,13 +58,14 @@ export default class Register extends Component {
                 </figure>
                 <form onSubmit={this.submitHandler} >
                     <section>
-                        <p>Username</p>
-                        <input type="text" name="userName" value={userName} onChange={this.changeHandler} />
+                        <p>email</p>
+                        <input type="text" name="email" value={email} onChange={this.changeHandler} />
                     </section>
                     <section>
                         <p>Password</p>
                         <input type="Password" name="password" value={password} onChange={this.changeHandler} />
                     </section>
+                    <br></br>
                     <section>
                         <p>streetAddress1</p>
                         <input type="text" name="streetAddress1" value={streetAddress1} onChange={this.changeHandler} />
@@ -90,10 +90,7 @@ export default class Register extends Component {
                         <p>City</p>
                         <input type="text" name="city" value={city} onChange={this.changeHandler} />
                     </section>
-                    <section>
-                        <p>email</p>
-                        <input type="text" name="email" value={email} onChange={this.changeHandler} />
-                    </section>
+                    <br/>
                     <section>
                         <p>firstName</p>
                         <input type="text" name="firstName" value={firstName} onChange={this.changeHandler} />

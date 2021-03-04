@@ -1,8 +1,7 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
 public class AccountPersonDTO {
-	private String 	username,
-					password,
+	private String  password,
 					streetAddress1,
 					streetAddress2,
 					country,
@@ -31,20 +30,6 @@ public class AccountPersonDTO {
 	 */
 	public void setResidental(boolean isResidental) {
 		this.isResidental = isResidental;
-	}
-
-	/**
-	 * @return the username
-	 */
-	public String getUsername() {
-		return username;
-	}
-
-	/**
-	 * @param username the username to set
-	 */
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	/**

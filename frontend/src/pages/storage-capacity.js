@@ -12,6 +12,10 @@ export default class StorageCapcityPage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        
+    }
+
 
 
     render() {
