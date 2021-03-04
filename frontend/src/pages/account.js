@@ -1,10 +1,12 @@
 import React from 'react';
 import UserService from 'services/user.service';
-import  { Redirect } from 'react-router-dom'
+import  { Link, Redirect } from 'react-router-dom'
 import Header from 'components/common/Header/Header_LP';
 import Footer from 'components/common/footer/Footer';
 import Cookies from 'js-cookie';
 import history from '../history';
+import Banner from 'images/iconimage.png';
+import 'css/user-account.css';
 
 export default class Account extends React.Component {
     constructor(props) {
@@ -38,11 +40,24 @@ export default class Account extends React.Component {
     }
 
     render() {
-        
+    /*
+    * Need to add user's name to welcome message. 
+    * Add various components 
+    */
             return(<div>
                 <Header/>
-                <h1>Account page </h1>
+                <div className = "iconImage">
+                <img src = {Banner} />
+                </div>
+                <h1> Welcome to your account, !</h1>
+                <div className = "information">
+                    <p>User information:</p>
+                </div>
+                <div className = "orderHistory">
+                    <p>Order history:</p>
+                </div>
                 <Footer/>
+               
                 </div>   
             );
     
