@@ -35,8 +35,12 @@ export default class ChangePasswordPage extends React.Component {
 
             UserService.updateAccountPassword(uuid, password, email)
                         .then((response) => {
+                            params.delete('uuid');
+                            params.delete('email');
+
                             history.push("/login");
                             window.location.reload();
+                            
                         })
                         .catch((error) => {
 
