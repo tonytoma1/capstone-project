@@ -4,14 +4,14 @@ const API_URL = "http://localhost:8080/api/";
  class AuthenticationService {
 
     // Attempts login
-    async login(user, pass) {
+     login(user, pass) {
         var loginUrl = API_URL + "authentication";
         var jsonDataSent = {
             username: user,
             password: pass
         }
 
-      return await axios.post(loginUrl, jsonDataSent);
+      return  axios.post(loginUrl, jsonDataSent);
     }
 }
 
