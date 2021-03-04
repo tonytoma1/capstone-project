@@ -4,7 +4,6 @@ import Footer from 'components/common/footer/Footer';
 import Logo from 'images/logo.png';
 import { v4 as uuidv4 } from 'uuid';
 import UserService from 'services/user.service';
-import NodeMailer from 'nodemailer';
 import history from '../history';
 import 'components/common/login/login-css.css';
 import 'css/forgot-password-page.css';
