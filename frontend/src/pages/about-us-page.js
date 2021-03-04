@@ -3,7 +3,6 @@ import Header from 'components/common/Header/Header_LP';
 import Footer from 'components/common/footer/Footer';
 
 import DeviceImage from 'images/phonetest.jpg';
-
 import {Image, Container, Row, Col, Card} from 'react-bootstrap';
 
 

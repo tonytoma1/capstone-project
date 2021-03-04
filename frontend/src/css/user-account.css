@@ -1,6 +1,6 @@
 img{
-    width: 150;
-    height: 150px;
+    width: 300;
+    height: 300px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -9,10 +9,50 @@ h1{
     text-align: center;
 }
 
-#my_header {
-    display:table;
-    margin:auto; 
+.information{
+    text-align: left;
+    display: inline;
+    width: 60%;
+    float: left; 
+    padding: 100px;
+    
 }
-#my_header div {
-    display:table-cell;
+.orderHistory{
+    text-align: center;
+    width: 40%;
+    float: right;
+    padding: 88px;
+   
+}
+
+.orders{
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #3AAFA9;
+    border-collapse: collapse;
+
+}
+
+.orders td{
+    border: 1px solid black;
+
+}
+.orders th{
+    border: 1px solid black;
+
+}
+
+.float{
+    width: 50%;
+    float: left;
+    padding: 20px;
+}
+.float h2{
+    text-align: center;
+}
+.userInfo .labels{
+    text-align: center;
+}
+.buttons{
+    text-align: center;
 }
