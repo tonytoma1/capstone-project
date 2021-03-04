@@ -77,7 +77,7 @@ class Header_LP extends Component {
                             <tr>
                                 <td>Home</td>
                                 <td>Sell Device</td>
-                                <td>About</td>
+                                <td><Link to="/about">About</Link></td>
                             </tr>
                         </tbody>
                     </table>

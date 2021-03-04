@@ -9,6 +9,7 @@ import ChangePasswordPage from './pages/change-password-page.js';
 import history from './history';
 import ConditionPage from './pages/condition';
 import StorageCapacityPage from './pages/storage-capacity';
+import AboutUsPage from './pages/about-us-page';
 
 class App extends React.Component {
 
@@ -31,6 +32,10 @@ class App extends React.Component {
             </Route>
             <Route path="/change-password">
               <ChangePasswordPage />
+            </Route>
+
+            <Route path="/about">
+              <AboutUsPage/>
             </Route>
 
             <Route path="/forgot-password">
