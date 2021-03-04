@@ -56,17 +56,18 @@ export default class Login extends React.Component {
                 * Moving forward, in order to retrieve secured endpoints from the backend, 
                 * we must keep sending the JWT token on each request. 
                 */
-                let response = AuthenticationService.login(this.state.email, this.state.password)
-                                                    .then((response) => {
-                                                        var jwtToken = response.data.token;
-                                                        UserService.saveJwtToken(jwtToken);
-                                                        history.push("/account");
-                                                        window.location.reload();
-                                                    })
-                                                    .catch((error) => {
-                                                        this.setState({failedLoginAttempt: true});
-                                                        console.log("error caught");
-                                                    })
+                AuthenticationService.login(this.state.email, this.state.password)
+                                     .then((response) => {
+                                             var jwtToken = response.data.token;
+                                             UserService.saveJwtToken(jwtToken);
+                                            history.push("/account");
+                                            window.location.reload();
+                                            })
+                                            .catch((error) => {
+                                                this.setState({failedLoginAttempt: true});
+                                                console.log("error caught");
+                                                console.log(error);
+                                            });
                 
          
     }
