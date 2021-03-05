@@ -8,6 +8,10 @@ import {Image, Container, Row, Col, Card, Form, FormGroup} from 'react-bootstrap
 import {Input, Label, Button} from 'reactstrap';
 import Map from 'components/map/Map';
 
+
+
+
+
 import 'css/about-us-page.css';
 
 export default class AboutUsPage extends React.Component {
