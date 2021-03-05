@@ -5,6 +5,13 @@ import Footer from 'components/common/footer/Footer';
 import DeviceImage from 'images/phonetest.jpg';
 import { Container, Row, Col, Card} from 'reactstrap';
 
+import {Image, Container, Row, Col, Card, Form, FormGroup} from 'react-bootstrap';
+import {Input, Label, Button} from 'reactstrap';
+import Map from 'components/map/Map';
+
+
+
+
 
 import 'css/about-us-page.css';
 
@@ -55,11 +62,27 @@ export default class AboutUsPage extends React.Component {
 
                         <Row>
                             <Col>
+                                <Form>
+                                    <FormGroup>
+                                        <Label for="firstName">First Name</Label>
+                                        <Input type="text" name="firstName" placeholder="John"></Input>
+                                    </FormGroup>
 
+                                    <FormGroup>
+                                        <Label for="lastName">Last Name</Label>
+                                        <Input type="text" name="lastName" placeholder="Smith"></Input>
+                                    </FormGroup>
+
+                                    <FormGroup>
+                                        <Label for="message">Message</Label>
+                                        <Input type="textarea" name="message"></Input>
+                                    </FormGroup>
+                                    <Button>Submit</Button>
+                                </Form>
                             </Col>
 
                             <Col>
-
+                                <Map></Map>
                             </Col>
                         </Row>
 
