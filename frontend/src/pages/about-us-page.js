@@ -3,7 +3,7 @@ import Header from 'components/common/Header/Header_LP';
 import Footer from 'components/common/footer/Footer';
 
 import DeviceImage from 'images/phonetest.jpg';
-import { Container, Row, Col, Card} from 'reactstrap';
+//import { Container, Row, Col, Card} from 'reactstrap';
 
 import {Image, Container, Row, Col, Card, Form, FormGroup} from 'react-bootstrap';
 import {Input, Label, Button} from 'reactstrap';

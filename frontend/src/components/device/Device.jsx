@@ -53,7 +53,7 @@ import twelveProMax from '../../images/phones/12promax.png';
 
 
 
-export default class Login extends React.Component {
+export default class Device extends React.Component {
 
     /////////////////////////////////////
     constructor(props) {
