@@ -3,8 +3,10 @@ import React from 'react';
 
 import Header_LP from '../components/common/Header/Header_LP';
 import Footer from '../components/common/footer/Footer';
-import Condition from '../components/condition/Condition';
 
+
+import Device from '../components/device/Device';
+import Test from '../components/condition/Condition';
 
 
 export default class Home extends React.Component {
@@ -14,7 +16,9 @@ export default class Home extends React.Component {
         return(
             <div>
                 <Header_LP />
+                <Device />
                 <h1>Home</h1>
+                <Footer />
             </div>
 
             

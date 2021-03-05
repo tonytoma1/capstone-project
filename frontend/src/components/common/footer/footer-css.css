@@ -1,4 +1,52 @@
-.footer {
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+
+  box-sizing: inherit;
+}
+
+.footer-container{
+  margin-top: 130px;
+  padding: 90px 150px;
+
+  color:white;
+  background-color: #3aafa9;
+}
+
+.footer-container .contact{
+  display: flex;
+  align-items: center;
+}
+.footer-container .contact figcaption a{
+   text-align: center;
+   color:white;
+}
+
+.footer-container .contact img{
+  display: inline;
+  height: 25px;
+  width: 25px;
+  margin: 2px 10px ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .footer {
     width: 100%;
     margin-top: 75px;
     display: flex;
@@ -66,4 +114,4 @@
     font-family: RobotoBold;
     font-size: large;
     margin: 0px 20px;
-  }
+  } */

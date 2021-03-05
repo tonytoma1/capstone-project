@@ -18,14 +18,14 @@ export default class Condition extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            bgColor: ""
-        }
-       
     }
 
-    handleClick=(e)=>{
+    /**
+     * will change the color of buttons' background to white 
+     * and then change the targeted to cyan
+     * @param {button} e - this the condition selection 
+     */
+    handleClick = (e) =>{
 
         var parentROW = document.getElementById("select-row");
         var childCOL = parentROW.getElementsByClassName("select-col");
@@ -39,15 +39,11 @@ export default class Condition extends React.Component {
         e.target.style.backgroundColor = '#3aafa9';
         e.target.style.fontWeight = '700';
         
-
     }
 
 
     render(){
-
             return(
-
-                
                 <div class="condition-container">
                      <Breadcrumb className="bc">
                     
@@ -74,7 +70,6 @@ export default class Condition extends React.Component {
                     <div className="phone">
                         <figure className="phone-image">
                             <img src={Phone} />
-
                         </figure>
 
                         <ul>
