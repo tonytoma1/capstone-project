@@ -46,13 +46,6 @@ import twelvePro from '../../images/phones/12pro.png';
 import twelveProMax from '../../images/phones/12promax.png';
 
 
-
-
-
-
-
-
-
 export default class Device extends React.Component {
 
     /////////////////////////////////////
@@ -60,10 +53,23 @@ export default class Device extends React.Component {
         super(props);
 
         this.state = {
+            device: null
         }
     }
 
+    componentDidMount() {
+        UserService.getModels()
+                    .then((response) => {
+                        this.setState({device: response.data});
+                    })
+                    .catch((error) => {
+                        
+                    })
+
+    }
+
     handleClick = (e) =>{
+
         console.log("tell:" + e.currentTarget.id)
         
         
@@ -137,7 +143,7 @@ export default class Device extends React.Component {
 
                     <figure className="phone-image" id="xr" onClick={this.handleClick}>
                         <img src={xr} />
-                        <figcaption>  XR</figcaption >
+                        <figcaption>  XR</figcaption>
                     </figure>
 
                     <figure className="phone-image" id="xs" onClick={this.handleClick}>
@@ -199,30 +205,6 @@ export default class Device extends React.Component {
                         <img src={twelveProMax} />
                         <figcaption>  12 Pro Max</figcaption>
                     </figure>
-
-
-                    
-
-
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 </div>
             </div>  

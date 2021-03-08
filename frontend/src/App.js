@@ -11,6 +11,8 @@ import ConditionPage from './pages/condition';
 import StorageCapacityPage from './pages/storage-capacity';
 import AboutUsPage from './pages/about-us-page';
 
+import SellDevicePage from 'pages/sell-device-page';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -35,6 +37,10 @@ class App extends React.Component {
             </Route>
             <Route path="/change-password">
               <ChangePasswordPage />
+            </Route>
+
+            <Route path="/sell-device">
+              <SellDevicePage/>
             </Route>
 
             <Route path="/about">

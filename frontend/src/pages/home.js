@@ -16,7 +16,7 @@ export default class Home extends React.Component {
         return(
             <div>
                 <Header_LP />
-                <Device />
+              
                 <h1>Home</h1>
                 <Footer />
             </div>

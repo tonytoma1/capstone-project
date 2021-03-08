@@ -75,8 +75,8 @@ class Header_LP extends Component {
                     <table className="navigational-table">
                         <tbody>
                             <tr>
-                                <td>Home</td>
-                                <td>Sell Device</td>
+                                <td><Link to="/">Home</Link></td>
+                                <td><Link to="/sell-device">Sell Device</Link></td>
                                 <td><Link to="/about">About</Link></td>
                             </tr>
                         </tbody>
