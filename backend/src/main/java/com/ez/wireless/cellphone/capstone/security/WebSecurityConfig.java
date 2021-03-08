@@ -86,6 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/api/storage-capacity").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/service-provider").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/device").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/model").permitAll()
 				//.antMatchers(HttpMethod.GET, "/api/account/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/account").hasAnyRole("ADMIN", "USER")
 				// All other end-points are secured

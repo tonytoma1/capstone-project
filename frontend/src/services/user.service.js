@@ -58,6 +58,10 @@ class UserService {
         return axios.get(Constants.API_URL.concat("account"), config);
     }
 
+    async getModels() {
+        return await axios.get(Constants.API_URL + "model");
+    }
+
   updateAccountPassword(uuid, password, email) {
         return axios.post(Constants.API_URL.concat("account/updatepassword"), {
             uuid: uuid,
@@ -78,6 +82,10 @@ class UserService {
         return await axios.get(Constants.API_URL + "account", config)
                            .then((res) => {return res})
                            .catch((res) => {return res});
+    }
+
+    async getDevices() {
+        return await axios.get(Constants.API_URL + "device");
     }
 
     /**
