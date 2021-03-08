@@ -21,7 +21,7 @@ export default class ConfirmOrder extends React.Component {
             lastName: "",
             phone: "",
             company: "",
-            isResidential: false
+            isResidential: true
         }
        
     }
@@ -37,7 +37,7 @@ export default class ConfirmOrder extends React.Component {
         axios.post("http://localhost:8080/api/orders-complete", this.state)
             .then(response => {
                 console.log(response);
-                history.push("/login");
+                history.push("/shipping-label");
                 window.location.reload();
                
             })
