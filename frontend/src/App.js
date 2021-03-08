@@ -52,9 +52,7 @@ class App extends React.Component {
             <Route path="/">
               <HomePage />
             </Route>
-
           </Switch>
-    
         </Router>
         </div>
     );
