@@ -27,8 +27,6 @@ export default class AboutUsPage extends React.Component {
                     <h1 className="header-text">About us</h1> 
                 </div>    
 
-                
-
                 {/*Banner */}
                 <div className="wrapper"> 
                     <Container>

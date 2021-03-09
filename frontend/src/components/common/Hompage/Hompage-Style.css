@@ -1,0 +1,100 @@
+.top
+{
+ background-image: url("./FIND.jpg");
+ height: 400px;
+ object-fit:fill;
+ position: relative;
+ margin-bottom: 0px;
+ margin-top: 0px;
+}
+
+.SD
+{
+  width: 28%;
+  padding: 10px;
+  background-color: white;
+  border: transparent;
+  position: absolute;
+  margin-top: 125px;
+  margin-left: 550px;
+}
+
+.SD h5
+{
+ color: #3aafa9;
+ font-size: xx-large;
+ font-family: 'Times New Roman', Times, serif;
+ font-style: normal;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.set
+{
+    font-size: 60px;
+    font-weight: lighter;
+    font-style: normal;
+    font-family: 'Times New Roman', Times, serif;
+    color: #3aafa9 ;
+}
+
+.SD button
+{
+    background-color: #3aafa9;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 16px;
+    margin-left: 75px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.box-set 
+{
+    
+}
+.box 
+{
+    background: white;
+    float: left;
+    margin: 1.858736059%;
+    width: 29.615861214%;
+    height: 10%;
+    size: fixed;
+    border: 5px solid #3aafa9;
+    display:block;
+    overflow: hidden;
+}
+
+.box h2 
+{
+    text-align: center;
+    font-weight: lighter;
+    font-style: normal;
+    font-family: 'Times New Roman', Times, serif;
+    color: #3aafa9 ;
+}
+
+.box h5
+{
+    font-family: 'Times New Roman', Times, serif;
+}
+  
+.box2
+{
+    background: white;
+    float: left;
+    margin-bottom: 20px;
+    width: 35%;
+    height: 10%;
+    size: fixed;
+    border: 5px solid #3aafa9;
+    margin-left: 500px;
+    margin-top: 30px;
+    align-self: center;
+}
