@@ -8,6 +8,92 @@ html {
 
 .footer-container{
   margin-top: 130px;
+  /* padding: 30px 125px 15px 125px; */
+  padding: 90px 150px;
+  clear: both;
+  color:white;
+  background-color: #38ada6;
+}
+
+.footer-container .aboutrecommerce{
+  max-height: 150px;
+  margin-left: 0;
+}
+
+.footer-container .about-us{
+  font-size: 13px;
+  line-height: .1;
+  font-style: italic;
+}
+
+.footer-container .title{
+  display: block;
+  margin-top: 25px;
+
+  padding-left: 5px;
+  border-left: 6px solid black;
+  color: black;
+  font-size: 13px;
+  font-weight: 500;
+
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.footer-container .content{
+  display: block;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.footer-container .content:hover{
+  border-left: 6px solid white;
+  cursor: pointer;
+  background-color: rgba(141, 140, 140, 0.554);
+  font-style: italic;
+}
+
+.reserved{
+  padding: 25px 50px;
+  margin-bottom: 0;
+
+  background-color: #267973;
+  color: rgb(29, 29, 29);
+
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+
+  box-sizing: inherit;
+}
+
+.footer-container{
+  margin-top: 130px;
   padding: 90px 150px;
   clear: both;
   color:white;
@@ -33,7 +119,7 @@ html {
 
 
 
-
+ */
 
 
 

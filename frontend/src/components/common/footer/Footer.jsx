@@ -6,39 +6,108 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'reactstrap';
 
 
+
 import number from '../../../images/phone-call.png'
 import mail from '../../../images/mail.png'
+import logo from '../../../images/visuals/about.gif'
+
 
 function Footer () {
 
   return (
 
+<div>
       <div className='footer-container'>
         <Row>
           <Col >
-
-            <figure className='contact'>
-              <img src={number} alt=""/>
-
-              
-              <figcaption> <a href="tel:+800 123 1234">+800 123 1234</a></figcaption>
-            </figure>
-
-            <figure className='contact'>
-              <img src={mail} alt=""/>
-              <figcaption> 
-                <a href="mailto:example.test@email.com">example.test@email.com</a>
-              </figcaption>
-            </figure>
+                <img src={logo} alt="" className="aboutrecommerce"/>
+                
+                <span className="about-us"> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Quisque pretium tristique tempus. Morbi aliquam dictum ante eu viverra. Phasellus id."</span>
           </Col>
 
+          <Col >
 
+              <span className="title"> CUSTOMER SERVICE </span>
 
+              <span className="content">Contact Us</span>
+              <span className="content">Ordering & Payment</span>
+              <span className="content">Shipping</span>
+              <span className="content">Returns</span>
+              <span className="content">FAQ</span>
 
-          <Col >.col-6 .col-sm-4</Col>
-          <Col >.col-sm-4</Col>
+          </Col>
+          <Col >
+
+          <span className="title"> INFORMATION </span>
+              <span className="content">Privacy Policy</span>
+              <span className="content">Terms & Conditions</span>
+          
+          </Col>
         </Row>
+
       </div>
+      <section className="reserved">&#169; 2021 Recommerce. All Rights Reserved.</section>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // <div className='footer-container'>
+      //   <Row>
+      //     <Col >
+
+      //       <figure className='contact'>
+      //         <img src={number} alt=""/>
+
+              
+      //         <figcaption> <a href="tel:+800 123 1234">+800 123 1234</a></figcaption>
+      //       </figure>
+
+      //       <figure className='contact'>
+      //         <img src={mail} alt=""/>
+      //         <figcaption> 
+      //           <a href="mailto:example.test@email.com">example.test@email.com</a>
+      //         </figcaption>
+      //       </figure>
+      //     </Col>
+
+
+
+
+      //     <Col >.col-6 .col-sm-4</Col>
+      //     <Col >.col-sm-4</Col>
+      //   </Row>
+      // </div>
 
 
     // <section className="footer">
