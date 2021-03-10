@@ -16,6 +16,30 @@ import SellDevicePage from 'pages/sell-device-page';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+import {Provider} from 'react-redux';
+
+import {store} from 'redux';
+
+import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE} from 'redux-action';
+
+const currentState = {
+  model: null,
+  storage: null,
+  condition: null, 
+  service_provider: null,
+  shopping_cart: []
+}
+
+function initialState(state = currentState, action) {
+  switch(action.type) {
+      case MODEL:
+        return {
+          model: action.payload
+        };
+  }
+}
+
+
 class App extends React.Component {
 
   render() {

@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 				// Register and login end-points are open so the user can login and 
 		        // create an account
-				.antMatchers(HttpMethod.POST, "/api/register").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/account/register").permitAll()
 				.antMatchers(HttpMethod.POST,"/api/authentication").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/person").permitAll()
 			
@@ -80,6 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, "/api/account/updatepassword").permitAll()
 				
 				.antMatchers(HttpMethod.POST, "/api/role").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/model").permitAll()
 				
 				// Put the white listed end-points here
 				.antMatchers(HttpMethod.GET, "/api/device-company").permitAll()
