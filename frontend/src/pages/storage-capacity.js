@@ -4,6 +4,7 @@ import Header from 'components/common/Header/Header';
 import Footer from 'components/common/footer/Footer';
 
 import Storage from 'components/storage/Storage';
+import {connect} from 'react-redux';
 
 export default class StorageCapcityPage extends React.Component {
     constructor(props) {

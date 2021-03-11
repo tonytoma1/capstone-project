@@ -15,6 +15,7 @@ export default class Account extends React.Component {
         this.state = {
             userFound: true,
             user: null,
+            orders: [],
             firstName: '',
             lastName: '',
             email: '',
@@ -23,31 +24,52 @@ export default class Account extends React.Component {
             country: '',
             city: '',
             state: '',
-            zip: ''
+            zip: '',
+           
         }
 
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         // check to see if the user is logged in
         try {
-            UserService.isUserLoggedIn()
-            .then((response) => {
-                this.setState({userFound: true, user: response});
-                this.setState({firstName: response.data.person.firstName, lastName: response.data.person.lastName,
-                email: response.data.person.email, streetAddress1: response.data.person.streetAddress1, phone: response.data.person.phone,
-                country: response.data.person.country, city: response.data.person.city, state: response.data.person.state,
-                zip: response.data.person.zip })   
-            })
-            .catch((error) => {
-                this.setState({userFound: false, user: null});
+            let userFound = await UserService.isUserLoggedIn();
+            this.setState({userFound: true, user: userFound});
 
-                console.log(error);
-               history.push("/login");
-            });
+            this.setState({firstName: userFound.data.person.firstName, 
+                          lastName: userFound.data.person.lastName,
+                          email: userFound.data.person.email, 
+                          streetAddress1: userFound.data.person.streetAddress1, 
+                          phone: userFound.data.person.phone,
+                          country: userFound.data.person.country, 
+                          city: userFound.data.person.city, 
+                          state: userFound.data.person.state,
+                          zip: userFound.data.person.zip,
+                      
+                        }); 
+            //check to see if user is admin
+             if(userFound.data.role.roleName === "ADMIN"){
+                history.push("/admin");
+                window.location.reload();
+            }
         }
         catch(e) {
             console.log(e);
+            this.setState({userFound: false, user: null});
+            history.push("/login");
+            window.location.reload();
+        }
+
+        // Find the customer's orders
+        try {
+            
+            let ordersFound = await UserService.getOrdersBasedOnEmail(this.state.email);
+            this.setState({orders: ordersFound});
+                
+        }
+        catch(e) {
+            // No orders found
+            console.log("No orders found");
         }
         
     }

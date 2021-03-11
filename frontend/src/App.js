@@ -10,7 +10,7 @@ import history from './history';
 import ConditionPage from './pages/condition';
 import StorageCapacityPage from './pages/storage-capacity';
 import AboutUsPage from './pages/about-us-page';
-
+import AdminPage from'./pages/admin.page';
 import SellDevicePage from 'pages/sell-device-page';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,26 +18,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Provider} from 'react-redux';
 
-import {store} from 'redux';
+import {createStore} from 'redux';
 
 import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE} from 'redux-action';
 
 const currentState = {
-  model: null,
-  storage: null,
-  condition: null, 
-  service_provider: null,
+  model: '',
+  storage: '',
+  condition: '', 
+  service_provider: '',
   shopping_cart: []
 }
 
-function initialState(state = currentState, action) {
+function reducer(state = currentState, action) {
   switch(action.type) {
       case MODEL:
         return {
           model: action.payload
         };
+      default: 
+        return {
+          state
+        };
   }
 }
+
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 
 class App extends React.Component {
@@ -45,45 +51,51 @@ class App extends React.Component {
   render() {
     return(
         <div className="App">
-        <Router history={history}>
-    
-          <Switch>
-            
-            <Route path="/login">
-              <LoginPage />
-            </Route>
+        <Provider store={store} >
+          <Router history={history}>
+      
+            <Switch>
+              
+              <Route path="/login">
+                <LoginPage />
+              </Route>
 
-            <Route path="/account">
-              <AccountPage />
-            </Route>
-            <Route path="/register">
-              <RegistrationPage />
-            </Route>
-            <Route path="/change-password">
-              <ChangePasswordPage />
-            </Route>
+              <Route path="/admin">
+                <AdminPage />
+              </Route>
 
-            <Route path="/sell-device">
-              <SellDevicePage/>
-            </Route>
+              <Route path="/account">
+                <AccountPage />
+              </Route>
+              <Route path="/register">
+                <RegistrationPage />
+              </Route>
+              <Route path="/change-password">
+                <ChangePasswordPage />
+              </Route>
 
-            <Route path="/about">
-              <AboutUsPage/>
-            </Route>
+              <Route path="/sell-device">
+                <SellDevicePage/>
+              </Route>
 
-            <Route path="/forgot-password">
-              <ForgotPasswordPage />
-            </Route>
-            
-            <Route path="/storage-capacity">
-              <StorageCapacityPage/>
-            </Route>
+              <Route path="/about">
+                <AboutUsPage/>
+              </Route>
 
-            <Route path="/">
-              <HomePage />
-            </Route>
-          </Switch>
-        </Router>
+              <Route path="/forgot-password">
+                <ForgotPasswordPage />
+              </Route>
+              
+              <Route path="/storage-capacity">
+                <StorageCapacityPage/>
+              </Route>
+
+              <Route path="/">
+                <HomePage />
+              </Route>
+            </Switch>
+          </Router>
+        </Provider>
         </div>
     );
   }
