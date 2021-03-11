@@ -8,16 +8,11 @@ import './device-css.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'reactstrap';
-import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
-  } from 'reactstrap';
-import { List } from 'reactstrap';
+import {connect} from 'react-redux';
 
+import {MODEL, addPhoneComponent} from 'redux-action';
 
-export default class Device extends React.Component {
+class Device extends React.Component {
 
     /////////////////////////////////////
     constructor(props) {
@@ -39,13 +34,11 @@ export default class Device extends React.Component {
 
     }
 
-    handleClick = (e) =>{
+     handleClick(modelName) {
+        console.log(modelName);
 
-        console.log("tell:" + e.currentTarget.id)
-        
-        
-    }
-    
+        this.props.dispatch(addPhoneComponent(MODEL, modelName));
+    }    
     /////////////////////////////////////
     render(){
         return(
@@ -66,21 +59,24 @@ export default class Device extends React.Component {
                 <div className="selection">
 
                 {this.state.device.map((devicesObj) => {
+                    
                     return (
-                        <figure className="phone-image">
+                        <figure className="phone-image" onClick={() => this.handleClick(devicesObj.modelName)}>
                             <img src= {devicesObj.modelImage}/>
                             <p>{devicesObj.modelName}</p>
                         </figure>
-                    );
-                })
-
-                }
-                    
-                    
-
+                    );        
+                })}
                 </div>
             </div>  
-            /////////////////////////////////////
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        model: state.model
+    };
+}
+
+export default connect(mapStateToProps) (Device);
