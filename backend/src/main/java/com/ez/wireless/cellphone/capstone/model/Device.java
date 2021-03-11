@@ -24,11 +24,17 @@ public class Device
 	@Column(name = "device_id")
 	private Integer deviceId;
 	
+	/*
 	@Column(name = "device_name")
 	private String deviceName;
+	*/
+	
+	@OneToOne
+	@JoinColumn(name = "model_id")
+	private Model model;
 	
 	@Column(name = "device_price")
-	private String devicePrice;
+	private double devicePrice;
 	
 	@OneToOne
 	//@MapsId
@@ -64,31 +70,33 @@ public class Device
 		this.deviceId = deviceId;
 	}
 
+	
+
 	/**
-	 * @return The Device name
+	 * @return the model
 	 */
-	public String getDeviceName() {
-		return deviceName;
+	public Model getModel() {
+		return model;
 	}
 
 	/**
-	 * @param deviceName The Device name
+	 * @param model the model to set
 	 */
-	public void setDeviceName(String deviceName) {
-		this.deviceName = deviceName;
+	public void setModel(Model model) {
+		this.model = model;
 	}
 
 	/**
 	 * @return The device price
 	 */
-	public String getDevicePrice() {
+	public double getDevicePrice() {
 		return devicePrice;
 	}
 
 	/**
 	 * @param devicePrice the device price
 	 */
-	public void setDevicePrice(String devicePrice) {
+	public void setDevicePrice(double devicePrice) {
 		this.devicePrice = devicePrice;
 	}
 
