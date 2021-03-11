@@ -1,7 +1,7 @@
 import React from 'react';
 import UserService from 'services/user.service';
 import  { Link, Redirect } from 'react-router-dom'
-import Header from 'components/common/Header/Header_LP';
+import Header from 'components/common/Header/Header';
 import Footer from 'components/common/footer/Footer';
 import Cookies from 'js-cookie';
 import history from '../history';

@@ -1,7 +1,7 @@
 import React from 'react';
 // import Header_LP from '../components/common/Header/Header_LP';
 
-import Header_LP from '../components/common/Header/Header_LP';
+import Header_LP from '../components/common/Header/Header';
 import Footer from '../components/common/footer/Footer';
 import Hompage from '../components/common/Hompage/Homepage';
 

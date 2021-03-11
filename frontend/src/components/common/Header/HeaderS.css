@@ -1,4 +1,157 @@
-.Title
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+
+  box-sizing: inherit;
+}
+
+
+.header-container {
+  background-color: white;
+  border-bottom:5px solid #3aafa9;
+}
+
+
+.header-container .explore{
+  background-color: rgb(172, 172, 172);
+
+}
+
+.header-container .explore .explore-buttons{
+  width: 80%;
+  padding-left: 10%;
+}
+
+.header-container .explore .explore-buttons Button{
+  
+  border-radius: 0;
+  border: none;
+  background-color: rgb(172, 172, 172);
+} 
+
+.header-container .explore .explore-buttons Button:hover{
+  background-color: rgb(152, 207, 166);
+} 
+
+/* main header */
+
+/*   --> DESKTOP CSS*/
+        .header-container .main-width{
+          width: 80%;
+          margin: auto auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          
+        }
+
+        .header-container .main-width .logo{
+          position: relative;
+          margin: 0;
+          max-height: 100px;
+        }
+
+        #mobile, .myLinks , .myLinks *{
+          display: none;
+        }
+
+
+        .header-container  .main-width .not-logged-in{
+          display: inline-block;
+          vertical-align: middle;
+
+        }
+
+        .header-container .not-logged-in .button{
+            color: #3aafa9;
+            text-align: center;
+            font-size: 25px;
+            padding: 0 10px;
+            font-weight: normal;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            text-decoration: underline;
+
+        }
+
+/*   --> PHONE CSS*/
+
+  @media only screen and (max-width: 600px) {
+
+
+      .header-container .main-width{
+        width: 100%;
+      }
+
+      .header-container .main-width .logo{
+        max-height: 70px;
+        padding-left: 10px;
+      }
+
+      #desktop, .explore{
+        display: none;
+      }
+
+      #mobile{
+        display: block;
+      }
+
+      #mobile div{
+          display: flex;
+      }
+
+      #mobile div img{
+        
+        position: relative;
+        margin: 0;
+        max-height:70px;
+        padding: 23px;
+
+        opacity: 70%;
+        /* background-color: aqua; */
+      }
+
+      .myLinks{
+        background-color: #3aafa9;
+        text-align: right;
+      }
+
+      .myLinks .Link{
+        
+        display: block;
+        color: white;
+        width: 90%;
+        padding: 15px;
+        font-size: 25px;
+        margin: auto auto;
+
+        border-bottom: rgb(85, 84, 84) 1px solid;
+      }
+
+    
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .Title
 {
   font-weight: lighter;
   position: absolute; 
@@ -71,7 +224,7 @@ button {
   border-left: solid 1px #3aafa9;
 
 }
-*/
+
 
 hr { border-top: 5px solid #3aafa9;
 }
@@ -80,4 +233,4 @@ hr { border-top: 5px solid #3aafa9;
   width: 40px;
   height: 40px;
   color:#3aafa9;
-}
+} */

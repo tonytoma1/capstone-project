@@ -1,7 +1,7 @@
 import React from 'react';
 import UserService from 'services/user.service';
 
-import Header_LP from '../components/common/Header/Header_LP';
+import Header_LP from '../components/common/Header/Header';
 import Footer from '../components/common/footer/Footer';
 import Condition from '../components/condition/Condition';
 
