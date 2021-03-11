@@ -1,12 +1,16 @@
 import React from 'react';
-import Logo from '../../../images/logo.png';
 import './login-css.css';
 import AuthenticationService from '../../../services/authentication.service.js';
 import history from '../../../history.js';
 import Cookies from 'js-cookie';
-import  { Redirect } from 'react-router-dom'
 import UserService from 'services/user.service';
 import * as Constants from 'constants/global-constants';
+
+
+import { InputGroup, Input } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import  { Redirect } from 'react-router-dom'
+
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -100,35 +104,38 @@ export default class Login extends React.Component {
             
 
             return(
-                <div className="login-container">
-                    <figure>
-                        <img src= {Logo} alt="Recommerce" />
-                        <figcaption>Recommerce</figcaption>
-                    </figure>
+                <div>
+                        <div className="login-container">
 
-                    {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
-                    
-                    <form onSubmit={this.handleSubmit}>
-                        <section>
-                            <p>Email</p>
-                            <input type="email" id="loginEmail"  onChange={this.handleEmailChange} 
+                            <p className="login-title">Recommerce</p>
+                            <form onSubmit={this.handleSubmit}>
 
-                                                                placeholder="Enter your Email here"/>
-                        </section>
+                                <InputGroup className="ip-group"  type="email" id="loginEmail"  onChange={this.handleEmailChange} >
+                                    <Input placeholder="enter your email here" />
+                                </InputGroup>
 
-                        <section>
-                            <p>Password</p>
-                            <input type="Password" id="loginPassword"  onChange={this.handlePasswordChange} 
-                                                                    
-                                                                     placeholder="Enter your Password here"/>
-                        </section>
-                        <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn" />
-                    </form>
-                    
-                    <article className="forgot-password"> 
-                        Forgot password? Click 
-                        <p>&nbsp;<a onClick={this.sendToForgotPasswordPage}>here.</a></p>
-                    </article>
+                                <InputGroup className="ip-group" type="Password" id="loginPassword"  onChange={this.handlePasswordChange}>
+                                    <Input placeholder="enter your password here" />
+                                </InputGroup>
+
+                                {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
+                          
+                                <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />
+                                
+                            </form>
+                            
+                            <span className="forgot-password" > 
+                                <Link to="/forgot-password"> Forgot password?</Link>
+                            </span>
+
+
+                        </div>
+                        <div className="login-container register">
+                        <span className="login-register"> 
+                            No account yet?
+                            <Link to="/register"> Register</Link>
+                        </span>
+                    </div>
                 </div>
             );
         }

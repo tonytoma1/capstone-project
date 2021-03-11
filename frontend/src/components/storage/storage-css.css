@@ -1,0 +1,55 @@
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+
+    box-sizing: inherit;
+}
+
+.device-container {
+    margin: auto auto;
+    margin-bottom: 100px;
+    width: 87%;
+    padding: 10px;
+}
+
+.device-container .current {
+    font-weight: bold;
+}
+
+/* //////////////////////// */
+
+.device-container h2{
+    text-align: center;
+    padding: 30px;
+}
+
+.device-container .selection{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+
+    font-size: 'Segoe UI';
+    font-size: 25;
+}
+
+.device-container .phone-image{
+    padding: 20px;
+    /* flex-grow:1; */
+}
+
+.device-container .phone-image:hover{
+    cursor: pointer;
+    outline: 1px black solid;
+    font-weight: 700;
+}
+
+.device-container .phone-image img{
+    height: auto; 
+    max-height: 200px;
+}
+
+
+
+

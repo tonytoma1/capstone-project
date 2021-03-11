@@ -3,6 +3,8 @@ import React from 'react';
 import Header from 'components/common/Header/Header';
 import Footer from 'components/common/footer/Footer';
 
+import Storage from 'components/storage/Storage';
+
 export default class StorageCapcityPage extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +25,7 @@ export default class StorageCapcityPage extends React.Component {
             <div>
                 <Header />
 
-                <h1>Storage</h1>
+                <Storage />
 
                 <Footer />
             </div>

@@ -147,7 +147,7 @@ class UserService {
     }
 
     getStorage() {
-       
+        return axios.get(Constants.API_URL + "storage-capacity");
     }
 
     saveJwtToken(token) {
