@@ -7,4 +7,5 @@ import com.ez.wireless.cellphone.capstone.model.NewOrders;
 @Repository
 public interface NewOrdersRepository extends CrudRepository<NewOrders, Integer> {
 	
+	
 }

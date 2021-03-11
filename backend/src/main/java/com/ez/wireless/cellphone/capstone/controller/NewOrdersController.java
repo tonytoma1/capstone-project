@@ -13,9 +13,8 @@ import com.ez.wireless.cellphone.capstone.service.NewOrdersService;
 
 @RestController
 @RequestMapping("/api/new-orders")
-
-
 public class NewOrdersController {
+	
 	@Autowired
 	private NewOrdersService newOrderService;
 	

@@ -158,6 +158,10 @@ class UserService {
         return Cookies.get(Constants.JWT_TOKEN);
     }
 
+    async getOrdersBasedOnEmail(email) {
+        return await axios.get(Constants.API_URL + "user-order", {username: email})
+    } 
+
     // Original way to check if the user is logged in.
     // Dont use this function. This function is used for testing purposes
     originalWayToTestForUserLogin() {
