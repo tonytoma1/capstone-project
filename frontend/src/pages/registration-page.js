@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../components/common/footer/Footer'
-import HeaderReg from '../components/common/Header/Header_LP'
+import HeaderReg from '../components/common/Header/Header'
 import Register from '../components/common/register/Register.component'
 function RegistrationPage() {
     return (

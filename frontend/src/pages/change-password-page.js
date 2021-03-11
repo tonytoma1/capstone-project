@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Logo from 'images/logo.png';
-import Header from 'components/common/Header/Header_LP';
+import Header from 'components/common/Header/Header';
 import Footer from 'components/common/footer/Footer';
 import 'components/common/Update-Password/UP.css'; 
 import history from '../history';

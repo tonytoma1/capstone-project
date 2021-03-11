@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from 'components/common/Header/Header_LP';
+import Header from 'components/common/Header/Header';
 import Footer from 'components/common/footer/Footer';
 import Device from 'components/device/Device';
 

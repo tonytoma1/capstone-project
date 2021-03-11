@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from 'components/common/Header/Header_LP';
+import Header from 'components/common/Header/Header';
 import Footer from 'components/common/footer/Footer';
 
 import DeviceImage from 'images/phonetest.jpg';
@@ -76,7 +76,7 @@ export default class AboutUsPage extends React.Component {
                             </Col>
 
                             <Col>
-                                <Map></Map>
+                                <Map />
                             </Col>
                         </Row>
 
