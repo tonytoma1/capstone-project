@@ -14,7 +14,16 @@ export default class Account extends React.Component {
 
         this.state = {
             userFound: true,
-            user: null
+            user: null,
+            firstName: '',
+            lastName: '',
+            email: '',
+            streetAddress1: '',
+            phone: '',
+            country: '',
+            city: '',
+            state: '',
+            zip: ''
         }
 
     }
@@ -25,6 +34,10 @@ export default class Account extends React.Component {
             UserService.isUserLoggedIn()
             .then((response) => {
                 this.setState({userFound: true, user: response});
+                this.setState({firstName: response.data.person.firstName, lastName: response.data.person.lastName,
+                email: response.data.person.email, streetAddress1: response.data.person.streetAddress1, phone: response.data.person.phone,
+                country: response.data.person.country, city: response.data.person.city, state: response.data.person.state,
+                zip: response.data.person.zip })   
             })
             .catch((error) => {
                 this.setState({userFound: false, user: null});
@@ -44,115 +57,83 @@ export default class Account extends React.Component {
     * Need to add user's name to welcome message. 
     *  
     */
+   let {user, firstName, lastName, email, streetAddress1, phone, country, city, state, zip} = this.state;
+   console.log(user);
             return(<div>
                 <Header/>
-                <h1> Welcome to your account, Ryan!</h1>
+                <h1> Welcome to your account, {user != null ? <p>{user.data.person.firstName}</p> : null} </h1>
                 <div className = "iconImage">
                 <img src = {Image} />
+                <br/>
                 </div>
-                <div className = "float">
-                    <h2><span>Edit User Information:</span></h2>
-                    <div className = "userInfo">
-                     <div className = "labels">
-                    <label> First name: </label> 
-                    <div className = "inputT">
-                    <input type = "text"></input> 
-                    </div>                           
+                    <h2>Current information</h2>
+                    <div className = "information">
+                        <h5>Contact information</h5>
+                        <label> First Name:
+                        <input type ="text" value = {firstName}></input>
+                        </label>
+                        <br/>
+                        <label> Last Name:
+                            <input type = "text" value = {lastName}></input>
+                        </label>
+                        <br/>
+                        <label> Email: 
+                        <input type = "text" value = {email}></input>
+                        </label>
+                        <br/>
+                        <label> Phone Number: 
+                        <input type = "text" value = {phone}></input>
+                        </label>
+                        <br/>
+                        <h5>Shipping information</h5>
+                        <label> Country: 
+                        <input type = "text" value = {country}></input>
+                        </label>
+                        <br/>
+                        <label> State: 
+                        <input type = "text" value = {state}></input>
+                        </label>
+                        <br/>
+                        <label> City: 
+                        <input type = "text" value = {city}></input>
+                        </label>
+                        <br/>
+                        <label> Zip: 
+                        <input type = "text" value = {zip}></input>
+                        </label>
+                        <br/>
+                        <label> Address: 
+                        <input type = "text" value = {streetAddress1}></input>
+                        </label>
+                        <br/>
+                        <input type ="button" value = "Update information"></input>
                     </div>
-                    <br />
-                    <div className = "labels">
-                    <label> Last name: </label> 
-                    <div className = "inputT">
-                    <input type = "text"></input>
-                    </div>
-                    </div>
-                    <br />
-                    <div className = "labels">
-                    <label> Email: </label> 
-                    <div className = "inputT">
-                    <input type = "text"></input>
-                    </div>
-                    </div>
-                    <br />
-                    <div className = "labels">
-                    <label> Address: </label> 
-                    <div className = "inputT">
-                    <input type = "text"></input>
-                    </div>
-                    </div>
-                    <br />
-                    <div className = "labels">
-                    <label> Country: </label> 
-                    <div className = "inputT">
-                    <input type = "text"></input>
-                    </div>
-                    </div>
-                    <br />
-                    <div className = "labels">
-                    <label> State: </label> 
-                    <div className = "inputT">
-                    <input type = "text"></input>
-                    </div>
-                    </div>
-                    <br />
-                    <div className = "labels">
-                    <label> City: </label> 
-                    <div className = "inputT">
-                    <input type = "text"></input>
-                    </div>
-                    </div>
-                    <br />
-                    <div className = "labels">
-                    <label> Zip code: </label> 
-                    <div className = "inputT">
-                    <input type = "text"></input>
-                    </div>
-                    </div>
-                    <br />
-                    <div className = "labels">
-                    <label> Phone number: </label> 
-                    <div className = "inputT">
-                    <input type = "text"></input>
-                    </div>
-                    </div>
-                    <br />
-                    <div className = "buttons">
-                    <input type = "button" value = "Update information"></input>
-                    </div>
-                    </div>
-                </div>
-                <div className = "float">
-                    <h2><span>Order history</span></h2>
+                    <br/>
+                    <h2>Order history</h2>
                     <table className = "orders">
                         <div className = "inTable">
                         <tr>
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Item decription
-                        </th>
+                        <th> Date</th>
+                        <th>Item decription</th>
+                        <th>Price</th>
                         </tr>
                         <tr>
-                            <th>
-                                March 1, 2021
-                            </th>
-                            <th>
-                                Iphone 7 64GB
-                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             </tr>
                             <tr>
-                            <th>February 12, 2021</th>
-                            <th>Iphone 7 32GB</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             </tr>
                             <tr>
-                            <th>January 19, 2021</th>
-                            <th>Iphone 10 128GB </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             </tr>
                         </div>
                     </table>
-                </div>
-             
                 <Footer/>
                
                 </div>   

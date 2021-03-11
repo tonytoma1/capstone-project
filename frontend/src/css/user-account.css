@@ -5,16 +5,17 @@ img{
     margin-left: auto;
     margin-right: auto;
 }
-h1{
+h1, h2{
     text-align: center;
 }
 
 .information{
-    text-align: left;
-    display: inline;
-    width: 60%;
-    float: left; 
-    padding: 100px;
+    margin: auto;
+    width: 800px;
+    border: 3px solid #3AAFA9;
+    padding: 10px;
+    text-align: center;
+    
     
 }
 .orderHistory{
@@ -50,8 +51,14 @@ h1{
 .float h2{
     text-align: center;
 }
-.userInfo .labels{
-    text-align: center;
+label{
+    display: inline-block;
+    clear: left;
+    width: 295px;
+    text-align: right;
+}
+input {
+  display: inline-block;
 }
 .buttons{
     text-align: center;
