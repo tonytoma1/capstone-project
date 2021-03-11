@@ -24,7 +24,8 @@ export default class Account extends React.Component {
             country: '',
             city: '',
             state: '',
-            zip: ''
+            zip: '',
+           
         }
 
     }
@@ -43,7 +44,14 @@ export default class Account extends React.Component {
                           country: userFound.data.person.country, 
                           city: userFound.data.person.city, 
                           state: userFound.data.person.state,
-                          zip: userFound.data.person.zip }); 
+                          zip: userFound.data.person.zip,
+                      
+                        }); 
+            //check to see if user is admin
+             if(userFound.data.role.roleName === "ADMIN"){
+                history.push("/admin");
+                window.location.reload();
+            }
         }
         catch(e) {
             console.log(e);

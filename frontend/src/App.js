@@ -10,7 +10,7 @@ import history from './history';
 import ConditionPage from './pages/condition';
 import StorageCapacityPage from './pages/storage-capacity';
 import AboutUsPage from './pages/about-us-page';
-
+import AdminPage from'./pages/admin.page';
 import SellDevicePage from 'pages/sell-device-page';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -58,6 +58,10 @@ class App extends React.Component {
               
               <Route path="/login">
                 <LoginPage />
+              </Route>
+
+              <Route path="/admin">
+                <AdminPage />
               </Route>
 
               <Route path="/account">
