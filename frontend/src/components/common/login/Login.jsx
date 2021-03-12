@@ -94,6 +94,7 @@ export default class Login extends React.Component {
         window.location.reload();
     }
 
+   
         render() {
             const {loggedIn} = this.state;
             const {failedLoginAttempt} = this.state;
@@ -101,6 +102,7 @@ export default class Login extends React.Component {
             if(loggedIn) {
                 return <Redirect to="/account" />
             }
+
             
 
             return(

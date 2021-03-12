@@ -10,6 +10,7 @@ import Menu from 'images/visuals/menu.png';
 
 
 
+import  { Redirect } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { Button, ButtonGroup } from 'reactstrap';
 
@@ -101,15 +102,23 @@ export default class  Header extends React.Component {
 
       }
 
+    atLaunch(){
+        if( window.location.pathname === "/login"){
+            document.getElementById("desktop").style.display = "none";
+        }
+     }
 
-
+     goToHome(){
+        return <Redirect to="/" />
+     }
+     
     render() {
 
         const { isLoggedIn } = this.state;
 
         return (
 
-            <div className="header-container">
+            <div className="header-container" onLoad={this.atLaunch()}>
 
                 <div className="explore">
                     <ButtonGroup className="explore-buttons">
@@ -129,12 +138,12 @@ export default class  Header extends React.Component {
 
                 <div className="main-width">
 
-                    <img src={Logo} alt="Recommerce" className="logo"/>
+                    <img src={Logo} alt="Recommerce" className="logo" onClick={this.goToHome()}/>
 
                     <div className="not-logged-in" id="desktop">
-                        <span className="button">Login </span>
+                        <span className="button"><Link to="/login">Login</Link> </span>
                         <span className="">|</span>
-                        <span className="button">Register </span>
+                        <span className="button"><Link to="/Register">Register</Link> </span>
                     </div>
 
                     <div className="not-logged-in" id="mobile">
@@ -172,8 +181,10 @@ export default class  Header extends React.Component {
 
                 </div>
 
-            </div>
+            </div >
 
         );
+
+         
     }
 }
