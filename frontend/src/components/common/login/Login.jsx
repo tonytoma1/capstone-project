@@ -117,7 +117,7 @@ export default class Login extends React.Component {
                                 </InputGroup>
 
                                 <InputGroup className="ip-group" type="Password" id="loginPassword"  onChange={this.handlePasswordChange}>
-                                    <Input placeholder="enter your password here" />
+                                    <Input type={"password"} placeholder="enter your password here" />
                                 </InputGroup>
 
                                 {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
