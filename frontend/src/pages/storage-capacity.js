@@ -4,9 +4,13 @@ import Header from 'components/common/Header/Header';
 import Footer from 'components/common/footer/Footer';
 import UserService from 'services/user.service';
 
+<<<<<<< HEAD
 import history from '../history';
 
 import {STORAGE, MODEL, addPhoneComponent} from 'redux-action';
+=======
+import Storage from 'components/storage/Storage';
+>>>>>>> 2d14578382cc23ee088835efc8b1e0bb5f04ebf6
 import {connect} from 'react-redux';
 
 class StorageCapcityPage extends React.Component {
@@ -46,6 +50,7 @@ class StorageCapcityPage extends React.Component {
             <div>
                 <Header />
 
+            {/* Merge this content to the storage page */}
                 <h1>Storage</h1>
                 {
                     this.state.storageSizes.map(data => {
@@ -55,6 +60,7 @@ class StorageCapcityPage extends React.Component {
                     })
                 }
                 
+                <Storage />
 
                 <Footer />
             </div>

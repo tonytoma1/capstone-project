@@ -8,6 +8,80 @@ html {
 }
 
 
+.test{
+    display: inline-block;
+}
+
+.login-container{
+
+    max-width: 350px;
+    margin: auto auto;
+    text-align: center;
+    position: static;
+
+    margin-top: 5%;
+
+    padding: 30px;
+    border: 1px solid rgb(179, 178, 178);
+}
+
+.login-title{
+    font-family: 'Seymour One', sans-serif;
+    margin: 0;
+    padding: 5%;
+    font-size: 26px;
+    color:#3AAFA9;
+}
+
+.ip-group{
+    padding: 5px;
+}
+
+.submitButton{
+    width: 95%;
+    border-radius: 4px ;
+}
+
+
+.login-container .forgot-password{
+    margin-top: 20px;
+    display: block;
+    color: cornflowerblue;
+}
+
+.register {
+    margin-top: 5px;
+}
+
+
+
+@media only screen and (max-width: 430px) {
+    .login-container{
+        border: none;
+    }
+    .register {
+        margin-top: 0;
+    }
+    
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
 .login-container {
     margin: auto auto;
     margin-top: 50px;
@@ -27,8 +101,8 @@ html {
 }
 
 .login-container figure figcaption{
-    font-family: 'Segoe UI';
-    font-size: 43px;
+    font-family: 'Seymour One', sans-serif;
+    font-size: 5px;
     text-align: center;
     color:#3AAFA9;
 }
@@ -129,4 +203,4 @@ html {
 
 .forgot-password {
     text-align: center;
-}
+}  */  

@@ -159,6 +159,9 @@ class UserService {
 
    async getStorageBasedOnModel(modelName) {
        await axios.get(Constants.API_URL + "");
+   }
+    getStorage() {
+        return axios.get(Constants.API_URL + "storage-capacity");
     }
 
     saveJwtToken(token) {

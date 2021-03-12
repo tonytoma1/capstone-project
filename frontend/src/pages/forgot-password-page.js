@@ -5,9 +5,11 @@ import Logo from 'images/logo.png';
 import { v4 as uuidv4 } from 'uuid';
 import UserService from 'services/user.service';
 import history from '../history';
-import 'components/common/login/login-css.css';
+
 import 'css/forgot-password-page.css';
 
+import reset from 'images/visuals/reset.png';
+import { InputGroup, Input } from 'reactstrap';
 
  export default class ForgotPasswordPage extends React.Component {
     constructor(props) {
@@ -61,11 +63,29 @@ import 'css/forgot-password-page.css';
                 <Header />
                 <div className="login-container">
 
-                    <figure>
-                        <img src= {Logo} alt="Recommerce" />
-                        <figcaption>Recommerce</figcaption>
-                    </figure>
+                    <img src={reset} alt="lost" className="reset-img"/>
+                    
+                    <p className="login-title">Recommerce</p>
 
+                    <p className="forgot-description"> 
+                        Enter your email and we'll send you a link 
+                        to get your password reset.
+                    </p>
+
+                    <form onSubmit={this.sendRecoverPasswordRequest}>
+
+                        <InputGroup className="ip-group"  type="email" id="loginEmail"  onChange={this.handleEmailChange} >
+                            <Input placeholder="enter your email here" />
+                        </InputGroup>
+
+                        <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="Submit" value="Send"/>
+                    </form>
+                </div>
+
+
+                {/* <div className="login-container">
+
+                        <figcaption>Recommerce</figcaption>
                     <h2 className="recover-password-header">Recover Password</h2>
 
                     <form onSubmit={this.sendRecoverPasswordRequest}>
@@ -73,12 +93,11 @@ import 'css/forgot-password-page.css';
                         <section>
                             <p>Email</p>
                             <input type="email" id="loginEmail"  onChange={this.handleEmailChange} 
-
-                                                                placeholder="Enter your Email here"/>
+                                placeholder="Enter your Email here"/>
                         </section>
                         <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="Submit" />
                     </form>
-                </div>
+                </div> */}
 
 
                 <Footer />
