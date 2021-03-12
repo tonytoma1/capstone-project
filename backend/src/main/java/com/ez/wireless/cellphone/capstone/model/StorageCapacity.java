@@ -19,7 +19,7 @@ public class StorageCapacity {
 	private Integer storageCapacityId;
 	
 	@Column(name = "storage_capacity_size")
-	private double storageCapacitySize;
+	private Integer storageCapacitySize;
 
 	/**
 	 * @return the storageCapacityId
@@ -38,14 +38,14 @@ public class StorageCapacity {
 	/**
 	 * @return the storageCapacitySize
 	 */
-	public double getStorageCapacitySize() {
+	public Integer getStorageCapacitySize() {
 		return storageCapacitySize;
 	}
 
 	/**
 	 * @param storageCapacitySize the storageCapacitySize to set
 	 */
-	public void setStorageCapacitySize(double storageCapacitySize) {
+	public void setStorageCapacitySize(Integer storageCapacitySize) {
 		this.storageCapacitySize = storageCapacitySize;
 	}
 	

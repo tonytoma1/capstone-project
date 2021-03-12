@@ -7,10 +7,13 @@ import * as Constants from 'constants/global-constants';
 import './device-css.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import history from '../../history';
+
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import {connect} from 'react-redux';
 
 import {MODEL, addPhoneComponent} from 'redux-action';
+
 
 class Device extends React.Component {
 
@@ -38,6 +41,9 @@ class Device extends React.Component {
         console.log(modelName);
 
         this.props.dispatch(addPhoneComponent(MODEL, modelName));
+
+        history.push("/storage-capacity");
+        window.location.reload();
     }    
     /////////////////////////////////////
     render(){
@@ -61,7 +67,8 @@ class Device extends React.Component {
                 {this.state.device.map((devicesObj) => {
                     
                     return (
-                        <figure className="phone-image" onClick={() => this.handleClick(devicesObj.modelName)}>
+                        <figure className="phone-image" onClick={() => this.handleClick(devicesObj.modelName)}
+                                key={devicesObj.modelName}>
                             <img src= {devicesObj.modelImage}/>
                             <p>{devicesObj.modelName}</p>
                         </figure>

@@ -79,8 +79,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, "/api/account/uuid").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/account/updatepassword").permitAll()
 				
+				// TODO remove this endpoints before deployment
 				.antMatchers(HttpMethod.POST, "/api/role").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/model").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/service-provider").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/storage-capacity").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/condition").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/device").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/device-company").permitAll()
 				
 				// Put the white listed end-points here
 				.antMatchers(HttpMethod.GET, "/api/device-company").permitAll()

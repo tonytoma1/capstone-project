@@ -88,6 +88,17 @@ class UserService {
         return await axios.get(Constants.API_URL + "device");
     }
 
+    async getDevicesBasedOnModelName(deviceModelName) {
+
+        var config = {
+            params: {
+                modelName: deviceModelName
+            }
+        }
+
+        return await axios.get(Constants.API_URL + "device", config);
+    }
+
     /**
      * Updates a user's UUID into the database
      * @param {string} email the account holder's email
@@ -146,8 +157,8 @@ class UserService {
         return axios.get(Constants.API_URL + "condition");
     }
 
-    getStorage() {
-       
+   async getStorageBasedOnModel(modelName) {
+       await axios.get(Constants.API_URL + "");
     }
 
     saveJwtToken(token) {

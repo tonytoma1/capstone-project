@@ -17,12 +17,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import {Provider} from 'react-redux';
-
 import {createStore} from 'redux';
 
-import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE} from 'redux-action';
+// Persists the redux state after each refresh 
+import {persistStore, persistReducer} from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react'
+import storage from 'redux-persist/lib/storage';
 
-const currentState = {
+import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE} from 'redux-action';
+import ServiceProviderPage from 'pages/service-provider-page';
+
+let currentState = {
   model: '',
   storage: '',
   condition: '', 
@@ -34,8 +39,20 @@ function reducer(state = currentState, action) {
   switch(action.type) {
       case MODEL:
         return {
-          model: action.payload
+          model: action.payload,
+          storage: state.storage,
+          condition: state.condition,
+          service_provider: state.service_provider,
+          shopping_cart: state.shopping_cart
         };
+      case STORAGE: 
+      return {
+        model: state.model,
+        storage: action.payload,
+        condition: state.condition,
+        service_provider: state.service_provider,
+        shopping_cart: state.shopping_cart
+      };
       default: 
         return {
           state
@@ -43,8 +60,16 @@ function reducer(state = currentState, action) {
   }
 }
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const persistConfig = {
+  key: 'root',
+  storage
+}
 
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+// const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); 
+const store = createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); 
+let persistor = persistStore(store);
 
 class App extends React.Component {
 
@@ -52,49 +77,54 @@ class App extends React.Component {
     return(
         <div className="App">
         <Provider store={store} >
-          <Router history={history}>
-      
-            <Switch>
-              
-              <Route path="/login">
-                <LoginPage />
-              </Route>
+          <PersistGate loading={null} persistor={persistor}>
+            <Router history={history}>  
+              <Switch>
+                
+                <Route path="/login">
+                  <LoginPage />
+                </Route>
 
-              <Route path="/admin">
-                <AdminPage />
-              </Route>
+                <Route path="/admin">
+                  <AdminPage />
+                </Route>
 
-              <Route path="/account">
-                <AccountPage />
-              </Route>
-              <Route path="/register">
-                <RegistrationPage />
-              </Route>
-              <Route path="/change-password">
-                <ChangePasswordPage />
-              </Route>
+                <Route path="/account">
+                  <AccountPage />
+                </Route>
+                <Route path="/register">
+                  <RegistrationPage />
+                </Route>
+                <Route path="/change-password">
+                  <ChangePasswordPage />
+                </Route>
 
-              <Route path="/sell-device">
-                <SellDevicePage/>
-              </Route>
+                <Route path="/sell-device">
+                  <SellDevicePage/>
+                </Route>
 
-              <Route path="/about">
-                <AboutUsPage/>
-              </Route>
+                <Route path="/about">
+                  <AboutUsPage/>
+                </Route>
 
-              <Route path="/forgot-password">
-                <ForgotPasswordPage />
-              </Route>
-              
-              <Route path="/storage-capacity">
-                <StorageCapacityPage/>
-              </Route>
+                <Route path="/forgot-password">
+                  <ForgotPasswordPage />
+                </Route>
+                
+                <Route path="/storage-capacity">
+                  <StorageCapacityPage/>
+                </Route>
 
-              <Route path="/">
-                <HomePage />
-              </Route>
-            </Switch>
-          </Router>
+                <Route path="/service-provider">
+                  <ServiceProviderPage/>
+                </Route>
+
+                <Route path="/">
+                  <HomePage />
+                </Route>
+              </Switch>
+            </Router>
+          </PersistGate>
         </Provider>
         </div>
     );
