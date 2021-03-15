@@ -164,6 +164,10 @@ class UserService {
         return axios.get(Constants.API_URL + "storage-capacity");
     }
 
+    getNetwork() {
+        return axios.get(Constants.API_URL + "service-provider");
+    }
+
     saveJwtToken(token) {
         Cookies.set(Constants.JWT_TOKEN, token, {expires: 1});
     }

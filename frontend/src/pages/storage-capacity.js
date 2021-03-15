@@ -54,40 +54,41 @@ class StorageCapcityPage extends React.Component {
     
     render() {
         return(
-            <div>
+            <div >
                 <Header />
 
-                <Breadcrumb className="bc">
-                    
-                        <BreadcrumbItem  >
-                            <Link to="/sell-device" > Device </Link>
-                        </BreadcrumbItem>
+                <div className="device-container">
+                                <Breadcrumb className="bc">
+                                    
+                                        <BreadcrumbItem  >
+                                            <Link to="/sell-device" > Device </Link>
+                                        </BreadcrumbItem>
 
-                        <BreadcrumbItem  >
-                             <span  className="current">Storage</span>
-                        </BreadcrumbItem>
-                </Breadcrumb>
+                                        <BreadcrumbItem  >
+                                            <span  className="current">Storage</span>
+                                        </BreadcrumbItem>
+                                </Breadcrumb>
 
 
-            
-          <div className="button-container">
+                            
+                <div className="button-container">
 
-         
-            {/* Merge this content to the storage page */}
-                <h1>Storage</h1>
-                {
-                    this.state.storageSizes.map(data => {
-                        return (
-                            <Button outline color="success" size="lg" className="buttons-storage" onClick={() => this.handleClick(data.storageCapacity.storageCapacitySize) }>{data.storageCapacity.storageCapacitySize} GB</Button>
-                        )
-                    })
-                }
+                        
+                            {/* Merge this content to the storage page */}
+                                <h1>Storage</h1>
+                                {
+                                    this.state.storageSizes.map(data => {
+                                        return (
+                                            <Button outline color="success" size="lg" className="buttons-storage" onClick={() => this.handleClick(data.storageCapacity.storageCapacitySize) }>{data.storageCapacity.storageCapacitySize} GB</Button>
+                                        )
+                                    })
+                                }
 
-            </div>
-            
-                
-             {/*   <Storage /> */}
-
+                            </div>
+                            
+                                
+                            {/* <Storage /> */}
+                </div>
                 <Footer />
             </div>
         );
