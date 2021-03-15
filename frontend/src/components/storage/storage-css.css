@@ -50,6 +50,15 @@ html {
     max-height: 200px;
 }
 
+.button-container {
+    text-align: center;
+
+}
+
+.button-container h1 {
+    margin-bottom: 50px;
+}
+
 
 
 

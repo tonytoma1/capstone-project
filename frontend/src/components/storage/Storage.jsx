@@ -16,26 +16,22 @@ import {
   } from 'reactstrap';
 import { List } from 'reactstrap';
 
+import {connect} from 'react-redux';
 
-export default class Strorage extends React.Component {
 
-    /////////////////////////////////////
-    constructor(props) {
+class Storage extends React.Component {
+    constructor(props){
         super(props);
 
         this.state = {
             storage: []
         }
     }
+   
 
-    componentDidMount() {
-        UserService.getModels()
-                    .then((response) => {
-                        this.setState({storage: response.data});
-                    })
-                    .catch((error) => {
-                        
-                    })
+    async componentDidMount() {
+        let result = await UserService.getDevicesBasedOnModelName(this.props.model);
+        this.setState({storage: result.data});
 
     }
 
@@ -66,16 +62,15 @@ export default class Strorage extends React.Component {
 
                 <div className="selection">
 
-                {this.state.storage.map((devicesObj) => {
-                    return (
-                        <figure className="phone-image">
-                            <img src= {devicesObj.modelImage}/>
-                            <p>{devicesObj.modelName}</p>
-                        </figure>
-                    );
-                })
 
+                {
+                    this.state.storage.map(data => {
+                        return (
+                            <button className="buttons" onClick={() => this.handleClick(data.storageCapacity.storageCapacitySize) }>{data.storageCapacity.storageCapacitySize}</button>
+                        )
+                    })
                 }
+              
                     
                     
 
@@ -85,3 +80,12 @@ export default class Strorage extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        model: state.model,
+        storage: state.storage
+    };
+}
+
+export default connect(mapStateToProps) (Storage);

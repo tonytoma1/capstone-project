@@ -4,11 +4,21 @@ import Header from 'components/common/Header/Header';
 import Footer from 'components/common/footer/Footer';
 import UserService from 'services/user.service';
 
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
+
 import history from '../history';
 
 import {STORAGE, MODEL, addPhoneComponent} from 'redux-action';
 import Storage from 'components/storage/Storage';
 import {connect} from 'react-redux';
+
+import {Button} from 'reactstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import 'components/storage/storage-css.css'
 
 class StorageCapcityPage extends React.Component {
     constructor(props) {
@@ -47,17 +57,36 @@ class StorageCapcityPage extends React.Component {
             <div>
                 <Header />
 
+                <Breadcrumb className="bc">
+                    
+                        <BreadcrumbItem  >
+                            <Link to="/sell-device" > Device </Link>
+                        </BreadcrumbItem>
+
+                        <BreadcrumbItem  >
+                             <span  className="current">Storage</span>
+                        </BreadcrumbItem>
+                </Breadcrumb>
+
+
+            
+          <div className="button-container">
+
+         
             {/* Merge this content to the storage page */}
                 <h1>Storage</h1>
                 {
                     this.state.storageSizes.map(data => {
                         return (
-                            <button className="buttons" onClick={() => this.handleClick(data.storageCapacity.storageCapacitySize) }>{data.storageCapacity.storageCapacitySize}</button>
+                            <Button outline color="success" size="lg" className="buttons-storage" onClick={() => this.handleClick(data.storageCapacity.storageCapacitySize) }>{data.storageCapacity.storageCapacitySize} GB</Button>
                         )
                     })
                 }
+
+            </div>
+            
                 
-                <Storage />
+             {/*   <Storage /> */}
 
                 <Footer />
             </div>

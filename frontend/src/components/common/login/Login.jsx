@@ -113,7 +113,7 @@ export default class Login extends React.Component {
 
             return(
                 <div >
-    <img src={bg} className="log-bg"/>
+                 <img src={bg} className="log-bg"/>
                     
                 <div className="login-container">
 
@@ -131,28 +131,28 @@ export default class Login extends React.Component {
                             <h4> Enter your details below to continue</h4>
 
                             <form onSubmit={this.handleSubmit}>
-                            <label> Email</label>
-                            <InputGroup className="ip-group"  type="email" onChange={this.handleEmailChange} >
-                                <InputGroupText  className="text"><img src={Email} alt="password"/></InputGroupText>
-                                <Input className="ip" type={"email"} placeholder="enter your email here" id="loginEmail" onChange={this.written} required/>
-                            </InputGroup>
+                                <label> Email</label>
+                                <InputGroup className="ip-group"  type="email" onChange={this.handleEmailChange} >
+                                    <InputGroupText  className="text"><img src={Email} alt="password"/></InputGroupText>
+                                    <Input className="ip" type={"email"} placeholder="enter your email here" id="loginEmail" onChange={this.written} required/>
+                                </InputGroup>
 
                             
-                            <label> Password</label>
-                            <InputGroup className="ip-group"  onChange={this.handlePasswordChange}>
-                                <InputGroupText className="text"><img src={Password} alt="password"/></InputGroupText>
-                                <Input className="ip" type={"password"} id="loginPassword" placeholder="enter your password here" required/>
-                            </InputGroup>
+                                <label> Password</label>
+                                <InputGroup className="ip-group"  onChange={this.handlePasswordChange}>
+                                    <InputGroupText className="text"><img src={Password} alt="password"/></InputGroupText>
+                                    <Input className="ip" type={"password"} id="loginPassword" placeholder="enter your password here" required/>
+                                </InputGroup>
 
-                            <span className="forgot-password" > 
+                                <span className="forgot-password" > 
                                 <Link to="/forgot-password"> Forgot password?</Link>
-                            </span>
+                                </span>
 
 
-                            <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />
+                                <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />
 
-                            {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
-</form>
+                                {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
+                            </form>
                             
                             <div className="small-footer">
                                 <hr></hr>
@@ -164,68 +164,20 @@ export default class Login extends React.Component {
                             </div>
                     </div> 
                 
+
+
+
+
+
+
+
+                   
                     </div>
 
 
 
 
-
-
-
-
-
-
-
-
-                    {/* <div>
-<div>
-        <div className="login-container">
-
-            <p className="login-title">Recommerce</p>
-            <form onSubmit={this.handleSubmit}>
-
-                <InputGroup className="ip-group"  type="email"   onChange={this.handleEmailChange} >
-                    <Input className="ip" type={"email"} placeholder="enter your email here" id="loginEmail" onChange={this.written} />
-                </InputGroup>
-
-                <InputGroup className="ip-group"  onChange={this.handlePasswordChange}>
-                    <Input className="ip" type={"password"} id="loginPassword" placeholder="enter your password here" />
-                </InputGroup>
-
-                {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
-          
-                <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />
-                
-            </form>
-            
-            <span className="forgot-password" > 
-                <Link to="/forgot-password"> Forgot password?</Link>
-            </span>
-
-
-        </div>
-        
 </div>
-    <div className="login-container register">
-    <span className="login-register"> 
-        No account yet?
-        <Link to="/register"> Register</Link>
-    </span>
-</div>
-</div> */}
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
