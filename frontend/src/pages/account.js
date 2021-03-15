@@ -56,8 +56,8 @@ export default class Account extends React.Component {
         catch(e) {
             console.log(e);
             this.setState({userFound: false, user: null});
-            history.push("/login");
-            window.location.reload();
+            history.push("/account");
+            // window.location.reload();
         }
 
         // Find the customer's orders

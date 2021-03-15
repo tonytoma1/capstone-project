@@ -109,7 +109,7 @@ export default class  Header extends React.Component {
      }
 
      goToHome(){
-        return <Redirect to="/" />
+        window.location.href = '/';
      }
      
     render() {
@@ -118,7 +118,7 @@ export default class  Header extends React.Component {
 
         return (
 
-            <div className="header-container" onLoad={this.atLaunch()}>
+            <div className="header-container" >
 
                 <div className="explore">
                     <ButtonGroup className="explore-buttons">
@@ -138,7 +138,7 @@ export default class  Header extends React.Component {
 
                 <div className="main-width">
 
-                    <img src={Logo} alt="Recommerce" className="logo" onClick={this.goToHome()}/>
+                    <img src={Logo} alt="Recommerce" className="logo" onClick={this.goToHome}/>
 
                     <div className="not-logged-in" id="desktop">
                         <span className="button"><Link to="/login">Login</Link> </span>

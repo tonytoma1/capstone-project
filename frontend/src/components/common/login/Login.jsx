@@ -6,8 +6,13 @@ import Cookies from 'js-cookie';
 import UserService from 'services/user.service';
 import * as Constants from 'constants/global-constants';
 
+import Logo from '../../../images/visuals/logo.png';
+import Email from '../../../images/visuals/email.png';
+import Password from '../../../images/visuals/padlock.png';
+import bg from '../../../images/visuals/login-bg.jpg';
 
-import { InputGroup, Input } from 'reactstrap';
+
+import { InputGroup, InputGroupText, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import  { Redirect } from 'react-router-dom'
 
@@ -44,7 +49,7 @@ export default class Login extends React.Component {
     
 
     handleSubmit(event) {
-        event.preventDefault();
+   event.preventDefault();
          
 
             // Authenticate the user and then send them to the account page
@@ -94,7 +99,10 @@ export default class Login extends React.Component {
         window.location.reload();
     }
 
-   
+    goToRegister(){
+        window.location.href = '/register';
+    }
+
         render() {
             const {loggedIn} = this.state;
             const {failedLoginAttempt} = this.state;
@@ -103,43 +111,127 @@ export default class Login extends React.Component {
                 return <Redirect to="/account" />
             }
 
-            
-
             return(
-                <div>
-                        <div className="login-container">
+                <div >
+    <img src={bg} className="log-bg"/>
+                    
+                <div className="login-container">
 
-                            <p className="login-title">Recommerce</p>
+                    <div className="left">
+                        <img src={Logo} />
+                        <h2> Welcome, Friend!</h2>
+                        <h5> Log in with your email and password on the right. Dont have an account yet? click register below!</h5>
+
+                        <button onClick={this.goToRegister} > REGISTER </button>
+                   
+                    </div>
+
+                    <div className="right">
+                            <h3> Login</h3>
+                            <h4> Enter your details below to continue</h4>
+
                             <form onSubmit={this.handleSubmit}>
+                            <label> Email</label>
+                            <InputGroup className="ip-group"  type="email" onChange={this.handleEmailChange} >
+                                <InputGroupText  className="text"><img src={Email} alt="password"/></InputGroupText>
+                                <Input className="ip" type={"email"} placeholder="enter your email here" id="loginEmail" onChange={this.written} required/>
+                            </InputGroup>
 
-                                <InputGroup className="ip-group"  type="email" id="loginEmail"  onChange={this.handleEmailChange} >
-                                    <Input placeholder="enter your email here" />
-                                </InputGroup>
-
-                                <InputGroup className="ip-group" type="Password" id="loginPassword"  onChange={this.handlePasswordChange}>
-                                    <Input placeholder="enter your password here" />
-                                </InputGroup>
-
-                                {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
-                          
-                                <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />
-                                
-                            </form>
                             
+                            <label> Password</label>
+                            <InputGroup className="ip-group"  onChange={this.handlePasswordChange}>
+                                <InputGroupText className="text"><img src={Password} alt="password"/></InputGroupText>
+                                <Input className="ip" type={"password"} id="loginPassword" placeholder="enter your password here" required/>
+                            </InputGroup>
+
                             <span className="forgot-password" > 
                                 <Link to="/forgot-password"> Forgot password?</Link>
                             </span>
 
 
-                        </div>
-                        <div className="login-container register">
-                        <span className="login-register"> 
-                            No account yet?
-                            <Link to="/register"> Register</Link>
-                        </span>
+                            <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />
+
+                            {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
+</form>
+                            
+                            <div className="small-footer">
+                                <hr></hr>
+                                <Link to="/" className="link"> Home</Link>
+                                <Link to="/about" className="link"> Contact</Link>
+                                <Link to="/About" className="link"> About us</Link>
+
+                                <section className="small-footer-reserved">&#169; 2021 Recommerce. All Rights Reserved.</section>
+                            </div>
+                    </div> 
+                
                     </div>
-                </div>
-            );
+
+
+
+
+
+
+
+
+
+
+
+
+                    {/* <div>
+<div>
+        <div className="login-container">
+
+            <p className="login-title">Recommerce</p>
+            <form onSubmit={this.handleSubmit}>
+
+                <InputGroup className="ip-group"  type="email"   onChange={this.handleEmailChange} >
+                    <Input className="ip" type={"email"} placeholder="enter your email here" id="loginEmail" onChange={this.written} />
+                </InputGroup>
+
+                <InputGroup className="ip-group"  onChange={this.handlePasswordChange}>
+                    <Input className="ip" type={"password"} id="loginPassword" placeholder="enter your password here" />
+                </InputGroup>
+
+                {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
+          
+                <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />
+                
+            </form>
+            
+            <span className="forgot-password" > 
+                <Link to="/forgot-password"> Forgot password?</Link>
+            </span>
+
+
+        </div>
+        
+</div>
+    <div className="login-container register">
+    <span className="login-register"> 
+        No account yet?
+        <Link to="/register"> Register</Link>
+    </span>
+</div>
+</div> */}
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           );
         }
     }
 
