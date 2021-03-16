@@ -10,8 +10,9 @@ import history from './history';
 import ConditionPage from './pages/condition';
 import StorageCapacityPage from './pages/storage-capacity';
 import AboutUsPage from './pages/about-us-page';
-import AdminPage from'./pages/admin.page';
+import AdminPage from './pages/admin.page';
 import SellDevicePage from 'pages/sell-device-page';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -26,6 +27,7 @@ import storage from 'redux-persist/lib/storage';
 
 import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE} from 'redux-action';
 import ServiceProviderPage from 'pages/service-provider-page';
+import CreateUserComponent from 'components/admin/CreateUserComponent';
 
 let currentState = {
   model: '',
@@ -92,12 +94,14 @@ class App extends React.Component {
                 <Route path="/account">
                   <AccountPage />
                 </Route>
+                <Route path="/add" component={CreateUserComponent}></Route>
                 <Route path="/register">
                   <RegistrationPage />
                 </Route>
                 <Route path="/change-password">
                   <ChangePasswordPage />
                 </Route>
+
 
                 <Route path="/sell-device">
                   <SellDevicePage/>
