@@ -14,6 +14,7 @@ import AdminPage from './pages/admin.page';
 import SellDevicePage from 'pages/sell-device-page';
 
 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -55,6 +56,14 @@ function reducer(state = currentState, action) {
         service_provider: state.service_provider,
         shopping_cart: state.shopping_cart
       };
+      case SERVICE_PROVIDER: 
+      return {
+        model: state.model,
+        storage: state.storage,
+        condition: state.condition,
+        service_provider: action.payload,
+        shopping_cart: state.shopping_cart
+      }
       default: 
         return {
           state
@@ -121,6 +130,10 @@ class App extends React.Component {
 
                 <Route path="/service-provider">
                   <ServiceProviderPage/>
+                </Route>
+
+                <Route path="/condition">
+                  <ConditionPage/>
                 </Route>
 
                 <Route path="/">

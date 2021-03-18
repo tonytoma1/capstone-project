@@ -56,17 +56,20 @@ public class AccountController
 	@PostMapping(path = "/label")
 	public ResponseEntity<?> generateLabel(@RequestBody ShippingLabelDTO sldto) 
 	{
+		//Generate shipping label
+
 		ShippingLabel shippingLabel;
-	    //Generate shipping label
+
 		try 
 		{
-			shippingLabel = new ShippingLabel(sldto.getFromFirstName(), sldto.getFromLastName(), sldto.getFromCompany(), sldto.getFromStreet1(),
-					sldto.getFromStreet2(), sldto.getFromCity(), sldto.getFromGeoRegion(), sldto.getFromCountry(),
-					sldto.getFromMailCode(), sldto.getFromMessage(), sldto.getFromPhone(), sldto.getFromEmail(),
+			shippingLabel = new ShippingLabel(sldto.getFromFirstName(), sldto.getFromLastName(), 
+					sldto.getFromCompany(), sldto.getFromStreet1(),
+					sldto.getFromStreet2(), sldto.getFromCity(), 
+					sldto.getFromGeoRegion(), sldto.getFromCountry(),
+					sldto.getFromMailCode(), sldto.getFromMessage(), 
+					sldto.getFromPhone(), sldto.getFromEmail(),
 					sldto.isResidental(), sldto.getPostalService(), sldto.getWeight());
 			
-			// TODO the shipping label class doesn't throw EasyPost exception. 
-			// easy post is thrown and not caught
 			ShippingLabelResponse shippingLabelResponse = 
 					new ShippingLabelResponse(shippingLabel.ship(sldto.getPostalService()));
 			

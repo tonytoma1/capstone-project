@@ -95,4 +95,14 @@ public class ModelController {
 	public List<Model> getModels() {
 		return modelService.getAllModels();
 	}
+	
+	/**
+	 * Gets a model based on the model name
+	 * @param modelName the name of the device model
+	 * @return Model if model was found
+	 */
+	@GetMapping(path = "find")
+	public Model getModelByModelName(@RequestParam String modelName) {
+		return modelService.getModelByModelName(modelName);
+	}
 }

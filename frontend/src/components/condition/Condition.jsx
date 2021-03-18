@@ -14,7 +14,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Phone from '../../images/phonetest.jpg';
 
-export default class Condition extends React.Component {
+
+import {connect} from 'react-redux';
+
+ class Condition extends React.Component {
 
     constructor(props) {
         super(props);
@@ -73,9 +76,9 @@ export default class Condition extends React.Component {
                         </figure>
 
                         <ul>
-                            <li>iPhone 5s</li>
-                            <li>64gb</li>
-                            <li>Network provider</li>
+                            <li>{this.props.model}</li>
+                            <li>{this.props.storage}GB</li>
+                            <li>{this.props.service_provider}</li>
                         </ul>  
                     </div> 
 
@@ -132,4 +135,14 @@ export default class Condition extends React.Component {
         }
     
     }
+
+    function mapStateToProps(state) {
+        return {
+            model: state.model,
+            storage: state.storage,
+            service_provider: state.service_provider
+        };
+    }
+
+    export default connect(mapStateToProps) (Condition);
 

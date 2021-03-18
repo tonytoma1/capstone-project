@@ -45,7 +45,6 @@ class StorageCapcityPage extends React.Component {
 
     handleClick(storageSize) {
         this.props.dispatch(addPhoneComponent(STORAGE, storageSize));
-        this.props.dispatch(addPhoneComponent(MODEL, this.props.model));
 
         history.push("/service-provider");
         window.location.reload();

@@ -8,13 +8,13 @@ const apiUrl= 'http://localhost:8080/api/person';
 class AdminService{
 
 
-verifyAdmin() {
+async verifyAdmin() {
     const token = Cookies.get(Constants.JWT_TOKEN);
     var jsonResult = {Authorization: 'Bearer '.concat(token)};
     var config = {
         headers: jsonResult
     }
-    return  axios.get(apiUrl, config);
+    return await axios.get(apiUrl, config);
 }
 
 deleteEmployee(personId){

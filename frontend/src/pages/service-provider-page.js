@@ -9,7 +9,7 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
-import {STORAGE, MODEL, addPhoneComponent} from 'redux-action';
+import {STORAGE, MODEL, SERVICE_PROVIDER,addPhoneComponent} from 'redux-action';
 import UserService from 'services/user.service';
 import history from '../history';
 
@@ -35,28 +35,17 @@ class ServiceProviderPage extends React.Component {
       }
 
       
-      handleClick(storageSize) {
-        this.props.dispatch(addPhoneComponent(STORAGE, storageSize));
-        this.props.dispatch(addPhoneComponent(MODEL, this.props.model));
-        // this.props.dispatch(addPhoneComponent(NETWORK, networkProvider));
+      handleClick(service_provider) {
+        this.props.dispatch(addPhoneComponent(SERVICE_PROVIDER, service_provider));
 
         history.push("/condition");
         window.location.reload();
-    }
-
-
-    componentDidMount() {
-        
     }
 
     render() {
         return(
             <div>
                <Header/>
-               {/* <p>{this.props.model}</p>
-               <p>{this.props.storage}</p> */}
-
-
                <div className="device-container">
                                 <Breadcrumb className="bc">
                                     
@@ -81,7 +70,10 @@ class ServiceProviderPage extends React.Component {
                                 {
                                     this.state.networkProvider.map(data => {
                                         return (
-                                            <Button outline color="success" size="lg" className="buttons-storage" onClick={() => this.handleClick(data.networkProvider.networkProvider) }>{data.networkProvider.networkProvider} </Button>
+                                            <Button outline color="success" size="lg" className="buttons-storage" 
+                                            onClick={() => this.handleClick(data.serviceProvider.serviceProviderName) }>
+                                                {data.serviceProvider.serviceProviderName}
+                                            </Button>
                                         )
                                     })
                                 }

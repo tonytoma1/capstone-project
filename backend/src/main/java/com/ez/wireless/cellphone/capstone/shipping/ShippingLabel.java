@@ -31,13 +31,15 @@ public class ShippingLabel
 			String phone, String email, boolean residental, String postalService, double weight) throws EasyPostException
 	{
 		EasyPost.apiKey = "EZTK49ff1046f34b4161b5d4531cd632f2c6PqxVBYFGS0cXZpSKqWSIbQ";
-		Address fromCustomerAddress = fromAddress(Fname, Lname, company, street1, street2, city, GeoRegion, country, mailCode, message, phone, email, residental);
+		Address fromCustomerAddress = fromAddress(Fname, Lname, company, street1, street2, city, GeoRegion, country, 
+												  mailCode, message, phone, email, residental);
 		Address clientToAddress = toAddress();
 		Parcel parcelMade = parcel(postalService, weight);
 		shipmentMap.put("to_address", clientToAddress);
 		shipmentMap.put("from_address", fromCustomerAddress);
-		//shipmentMap.put("to_address", toAddress(ac));
-		shipmentMap.put("parcel", parcelMade); //weight is in lb and not sure if it's going to by dynamic or not
+		
+		// Weight is in lbs
+		shipmentMap.put("parcel", parcelMade); 
 	}
 	
 	//client from database
