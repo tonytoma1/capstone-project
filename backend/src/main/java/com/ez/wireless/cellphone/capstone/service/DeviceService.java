@@ -56,15 +56,10 @@ public class DeviceService
 	 * @return a list of device objects
 	 */
 	public List<Device> findDevicesBasedOnModelName(String modelName) {
-		ArrayList<Device> devices = new ArrayList<Device>();
 		
-		deviceRepository.findAll().forEach(x -> {
-			if(x.getModel().getModelName().equalsIgnoreCase(modelName)) {
-				devices.add(x);
-			}
-		});
+		Model model = modelRepository.findByModelName(modelName);		
+		return deviceRepository.findByModel(model);
 		
-		return devices;
 	}
 	
 	
