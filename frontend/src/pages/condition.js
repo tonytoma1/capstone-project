@@ -15,13 +15,7 @@ export default class ConditionPage extends React.Component {
     }
 
     componentDidMount() {
-        UserService.getCondition()
-                    .then((response) => {
-                        this.setState({condition: response.data});
-                    })
-                    .catch((error) => {
-                        this.setState({condition: null});
-                    })
+
     }
 
 

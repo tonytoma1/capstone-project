@@ -3,7 +3,7 @@ const API_URL = "http://localhost:8080/api/";
 
  class AuthenticationService {
 
-    // Attempts login
+    // Attempts to login the user
     async login(user, pass) {
         var loginUrl = API_URL + "authentication";
         var jsonDataSent = {

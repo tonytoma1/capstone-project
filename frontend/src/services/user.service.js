@@ -62,6 +62,17 @@ class UserService {
         return await axios.get(Constants.API_URL + "model");
     }
 
+    async getModelByName(deviceModelName) {
+
+        var config = {
+            params: {
+                modelName: deviceModelName
+            }
+        }
+
+        return await axios.get(Constants.API_URL + "model/find", config);
+    }
+
   updateAccountPassword(uuid, password, email) {
         return axios.post(Constants.API_URL.concat("account/updatepassword"), {
             uuid: uuid,

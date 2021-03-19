@@ -68,32 +68,30 @@ public class JwtTokenUtil implements Serializable{
 				.getBody();
 	}
 	
-	//Generates token from the user, but it requires the username as a 
+	// Generates token for the user, but it requires the username as a 
 	// string for the second argument since the UserDetails service
 	// encrypts the username.
+	// This Method was Referenced from: https://www.javainuse.com/spring/boot-jwt
 	public String generateToken(UserDetails userDetails, String username) { 
 		Map<String, Object> claims = new HashMap<>();
 		claims.put("role", getFirstRoleFromUserDetails(userDetails));
-		//claims.put("username", userDetails.getUsername().toString());
 		
-		return doGenerateToken(claims, username);
+		return generateJWTTokenForUser(claims, username);
 	}
 	
-	//generate token from user
+	//generate token for the user
+	// Reference: https://www.javainuse.com/spring/boot-jwt
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
 		claims.put("role", getFirstRoleFromUserDetails(userDetails));
 		
-		return doGenerateToken(claims, userDetails.getUsername());
+		return generateJWTTokenForUser(claims, userDetails.getUsername());
 	}
 	
 	
-	//while creating the token -
-	//1. Define  claims of the token, like Issuer, Expiration, Subject, and the ID
-	//2. Sign the JWT using the HS512 algorithm and secret key.
-	//3. According to JWS Compact Serialization(https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41#section-3.1)
-	//   compaction of the JWT to a URL-safe string 
-	private String doGenerateToken(Map<String, Object> claims, String subject) {
+	// Create JWT token
+	// This Method was Referenced from: https://www.javainuse.com/spring/boot-jwt
+	private String generateJWTTokenForUser(Map<String, Object> claims, String subject) {
 		return Jwts.builder().setClaims(claims)
 					  .setSubject(subject)
 					  .setIssuedAt(new Date(System.currentTimeMillis()))

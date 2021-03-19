@@ -41,15 +41,12 @@ public class AuthenticationController {
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest)
 	throws Exception {
 		
-		System.out.println("createAuthenticationToken() hit");
-		
-		
 		authenticateUser(jwtRequest.getUsername(), jwtRequest.getPassword());
 		
+
+		UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(jwtRequest.getUsername());
 		
-		UserDetails userDetails = jwtUserDetailsService
-									.loadUserByUsername(jwtRequest.getUsername());
-		
+		// Method was referenced from: https://www.javainuse.com/spring/boot-jwt
 		String token = jwtTokenUtil.generateToken(userDetails, jwtRequest.getUsername());
 		
 		System.out.println("Login Accepted");

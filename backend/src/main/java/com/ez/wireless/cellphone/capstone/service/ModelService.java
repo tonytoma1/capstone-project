@@ -23,6 +23,10 @@ public class ModelService {
 		return phoneModels;
 	}
 	
+	public Model getModelByModelName(String modelName) {
+		return modelRepository.findByModelName(modelName);
+	}
+	
 	/**
 	 * Saves a phone model to the database
 	 * @param model the phone model to be saved.
