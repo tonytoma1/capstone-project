@@ -40,19 +40,33 @@ public class AccountController
 	@Autowired
     private JavaMailSender javaMailSender;
 	
-	
+	/**
+	 * Gets all of the accounts from the database when called with the /all URL map.
+	 * @return the account service
+	 */
 	@GetMapping(path = "/all")
 	public List<Account> getAll()
 	{
 		return accountService.getAllAccounts();
 	}
 	
+	/**
+	 * Gets a specific account when provided with a username.
+	 * @param username The Username
+	 * @author Dakota Harvey
+	 * @return the account service
+	 */
 	@GetMapping
 	public Account getAccount(@RequestParam("username") String username)
 	{
 		return accountService.getByUsername(username);
 	}
 	
+	/**
+	 * Generates a shipping label with information provided from the front end with the call of /label URL map. 
+	 * @param sldto Shipping Label Data Transfer Object
+	 * @return the shipping label
+	 */
 	@PostMapping(path = "/label")
 	public ResponseEntity<?> generateLabel(@RequestBody ShippingLabelDTO sldto) 
 	{
@@ -83,6 +97,10 @@ public class AccountController
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Shipping label was not processed");  
 	}
 	
+	/**
+	 * Saves an account to the database when the /save URL file path is called.
+	 * @param ac Account Person Role Data Transfer Object
+	 */
 	@PostMapping(path = "/save")
 	public void saveAccount(@RequestBody AccountPersonRoleDTO ac)
 	{
@@ -145,7 +163,10 @@ public class AccountController
 		javaMailSender.send(msg);
 	}
 	
-	
+	/**
+	 * Updates the password on a account when /updatepassword URL filepath is called.
+	 * @param updatePasswordDto Update Password Data Transfer Object
+	 */
 	@PostMapping(path = "/updatepassword")
 	public void updatePassword(@RequestBody UpdatePasswordDTO updatePasswordDto) {
 		Account foundAccount = 
@@ -161,7 +182,7 @@ public class AccountController
 	}
 
 	/**
-	 * Registers a user to a account
+	 * Registers a user to a account when the /register URL filepath is called.
 	 * @param apDTO The account person data transfer object
 	 */
 	@PostMapping(path = "/register")

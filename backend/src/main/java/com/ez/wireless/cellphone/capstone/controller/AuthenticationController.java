@@ -37,6 +37,12 @@ public class AuthenticationController {
 	@Autowired
 	private JwtUserDetailsService jwtUserDetailsService;
 	
+	/**
+	 * Creates an authentication token 
+	 * @param jwtRequest
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest)
 	throws Exception {

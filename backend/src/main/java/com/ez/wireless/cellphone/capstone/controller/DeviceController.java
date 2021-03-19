@@ -21,17 +21,30 @@ public class DeviceController
 	@Autowired
 	private DeviceService deviceService;
 	
+	/**
+	 * Gets all the rows of the device table when the /all URL identifier is called
+	 * @return the devices
+	 */
 	@GetMapping(path = "/all")
 	public List<Device> getAll()
 	{
 		return deviceService.getAllDevices();
 	}
 	
+	/**
+	 * Gets rows from the device table that match the device name
+	 * @param modelName The model name of the device
+	 * @return The device based on the model name 
+	 */
 	@GetMapping
 	public List<Device> getDeviceBasedOnModelName(@RequestParam String modelName){
 		return deviceService.findDevicesBasedOnModelName(modelName);
 	}
 	
+	/**
+	 * Saves a device to the device table
+	 * @param device The device
+	 */
 	@PostMapping
 	public void saveNewDevice(@RequestBody DeviceDTO device) {
 		try {

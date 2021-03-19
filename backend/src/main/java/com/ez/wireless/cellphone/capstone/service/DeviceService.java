@@ -42,7 +42,7 @@ public class DeviceService
 	
 	/**
 	 * Gets all the rows in the device table
-	 * @return
+	 * @return The list of accounts
 	 */
 	public List<Device> getAllDevices()
 	{
@@ -90,6 +90,8 @@ public class DeviceService
 	
 	/**
 	 * Returns all the storage size based on model name
+	 * @param modelName the model name
+	 * @return the storage size
 	 */
 	public List<StorageCapacity> getAllStorageBasedOnModelName(String modelName) {
 		

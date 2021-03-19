@@ -16,12 +16,20 @@ import com.ez.wireless.cellphone.capstone.service.DeviceCompanyService;
 		@Autowired
 		private DeviceCompanyService deviceCompanyService;
 		
+		/**
+		 * Retrieves all of the Device_Company rows from the database
+		 * @return a list of DeviceCompany objects
+		 */
 		@GetMapping
 		public List<DeviceCompany> getAllCompanies()
 		{
 			return deviceCompanyService.getAllDeviceCompanies();
 		}
 		
+		/**
+		 * Saves a DeviceCompany to the Device_Company row in the database
+		 * @param deviceCompany The Device Company
+		 */
 		@PostMapping
 		public void saveDeviceCompany(@RequestBody DeviceCompany deviceCompany)
 		{

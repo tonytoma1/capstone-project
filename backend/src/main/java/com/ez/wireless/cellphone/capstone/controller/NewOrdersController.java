@@ -18,12 +18,20 @@ public class NewOrdersController {
 	@Autowired
 	private NewOrdersService newOrderService;
 	
+	/**
+	 * Gets all of the new orders from the New_Orders table
+	 * @return the new orders
+	 */
 	@GetMapping
 	public List<NewOrders> getAllNewOrders()
 	{
 		return newOrderService.getAllNewOrders();
 	}
 	
+	/**
+	 * Saves a mew order object to the New_Orders table in the database.
+	 * @param newOrders The new order
+	 */
 	@PostMapping
 	public void saveOrders(@RequestBody NewOrders newOrders)
 	{
