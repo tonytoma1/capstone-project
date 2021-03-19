@@ -23,6 +23,7 @@ html {
     display: flex;
     align-items: center;
     padding: 20px;
+    
 }
 
 
@@ -31,8 +32,8 @@ html {
 }
 
 .condition-container .phone-image img{
-    width: 150px;
-    height: 150px;
+    height: auto; 
+    max-height: 200px;
 }
 
 .condition-container  ul {
@@ -73,3 +74,14 @@ html {
 
 
 
+#one{
+    color: white;
+    background-color:#3aafa9 ;
+}
+
+.row{
+    min-height: 350px;
+}
+#one, #two, #three, #four, .filler :hover{
+    cursor: pointer;
+}

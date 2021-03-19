@@ -75,6 +75,41 @@ import {connect} from 'react-redux';
 
     changeTabs = (tabNumber) => {
         this.setState({activeTab: tabNumber});
+
+        document.getElementById("one").style.backgroundColor ="white";
+        document.getElementById("one").style.color ="#007bff";
+
+        document.getElementById("two").style.backgroundColor ="white";
+        document.getElementById("two").style.color ="#007bff";
+
+        document.getElementById("three").style.backgroundColor ="white";
+        document.getElementById("three").style.color ="#007bff";
+
+        document.getElementById("four").style.backgroundColor ="white";
+        document.getElementById("four").style.color ="#007bff";
+
+        switch(tabNumber){
+            case "1": 
+                document.getElementById("one").style.backgroundColor ="#3aafa9";
+                document.getElementById("one").style.color ="white";
+                document.getElementById("offer-1").style.borderTopLeftRadius = "0px";
+            break;
+            case "2": 
+                document.getElementById("two").style.backgroundColor ="#3aafa9";
+                document.getElementById("two").style.color ="white";
+            break;
+            case "3": 
+                document.getElementById("three").style.backgroundColor ="#3aafa9";
+                document.getElementById("three").style.color ="white";
+            break;
+            case "4": 
+                document.getElementById("four").style.backgroundColor ="#3aafa9";
+                document.getElementById("four").style.color ="white";
+                document.getElementById("offer-4").style.borderTopRightRadius = "0px";
+            break;
+        }
+
+
     }
 
     /**
@@ -152,29 +187,29 @@ import {connect} from 'react-redux';
                             </Row>
                         */}
                         
-
+                       
 
                             <Nav tabs fill >
                                 <NavItem onClick={() => this.changeTabs("1")}>
-                                    <NavLink>Broken</NavLink>
+                                    <NavLink id="one">Broken</NavLink>
                                 </NavItem>
                                 <NavItem onClick={() => this.changeTabs("2")}>
-                                    <NavLink>Fair</NavLink>
+                                    <NavLink id="two" >Fair</NavLink>
                                 </NavItem>
-                                <NavItem onClick={() => this.changeTabs("3")}>
-                                    <NavLink>Good</NavLink>
+                                <NavItem  onClick={() => this.changeTabs("3")}>
+                                    <NavLink id="three">Good</NavLink>
                                 </NavItem>
                                 <NavItem onClick={() => this.changeTabs("4")}>
-                                    <NavLink>Excellent</NavLink>
+                                    <NavLink  id="four">Excellent</NavLink>
                                 </NavItem>
                             </Nav>
 
                             <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="1">
-                                    <Row>
+                                    <Row className="row">
                                         <Col>
-                                            <Card className="offer">
-                                                <CardBody >
+                                            <Card className="offer" id="offer-1">
+                                                <CardBody>
 
                                                     <CardText className="list-cont"> 
                                                         
@@ -272,7 +307,7 @@ import {connect} from 'react-redux';
                                 <TabPane tabId="4">
                                     <Row>
                                         <Col>
-                                        <Card className="offer">
+                                        <Card className="offer" id="offer-4">
                                                 <CardBody >
 
                                                     <CardText className="list-cont"> 

@@ -40,6 +40,8 @@ class ServiceProviderPage extends React.Component {
     //     this.props.dispatch(addPhoneComponent(MODEL, this.props.model));
     //     this.props.dispatch(addPhoneComponent(NETWORK, networkProvider));
     //   }
+
+    
       handleClick(service_provider) {
         this.props.dispatch(addPhoneComponent(SERVICE_PROVIDER, service_provider));
 

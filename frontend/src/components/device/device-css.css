@@ -9,7 +9,7 @@ html {
 .device-container {
     margin: auto auto;
     margin-bottom: 100px;
-    width: 87%;
+    
     padding: 10px;
 }
 
@@ -32,22 +32,26 @@ html {
 
     font-size: 'Segoe UI';
     font-size: 25;
+
+    width: 95%;
+    margin: auto auto;
 }
 
-.device-container .phone-image{
-    padding: 20px;
+.device-container .select-phone-image{
+    padding: 20px; 
+    width: 15%;
     /* flex-grow:1; */
 }
 
-.device-container .phone-image:hover{
+.device-container .select-phone-image:hover{
     cursor: pointer;
     outline: 1px black solid;
     font-weight: 700;
 }
 
-.device-container .phone-image img{
+.device-container .select-phone-image img{
     height: auto; 
-    max-height: 200px;
+    max-height: 125px;
 }
 
 

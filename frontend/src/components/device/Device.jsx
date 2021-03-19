@@ -64,16 +64,17 @@ class Device extends React.Component {
 
                 <div className="selection">
 
-                {this.state.device.map((devicesObj) => {
-                    
-                    return (
-                        <figure className="phone-image" onClick={() => this.handleClick(devicesObj.modelName)}
-                                key={devicesObj.modelName}>
-                            <img src= {devicesObj.modelImage}/>
-                            <p>{devicesObj.modelName}</p>
-                        </figure>
-                    );        
-                })}
+                    {this.state.device.map((devicesObj) => {
+                        
+                        return (
+                            <figure className="select-phone-image" onClick={() => this.handleClick(devicesObj.modelName)}
+                                    key={devicesObj.modelName}>
+                                <img src= {devicesObj.modelImage}/>
+                                <p>{devicesObj.modelName}</p>
+                            </figure>
+                        );        
+                     })}
+
                 </div>
             </div>  
         );
