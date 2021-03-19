@@ -38,7 +38,7 @@ class ServiceProviderPage extends React.Component {
       handleClick(storageSize) {
         this.props.dispatch(addPhoneComponent(STORAGE, storageSize));
         this.props.dispatch(addPhoneComponent(MODEL, this.props.model));
-        // this.props.dispatch(addPhoneComponent(NETWORK, networkProvider));
+        this.props.dispatch(addPhoneComponent(NETWORK, networkProvider));
 
         history.push("/condition");
         window.location.reload();
