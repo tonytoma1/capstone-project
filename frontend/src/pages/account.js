@@ -24,9 +24,64 @@ export default class Account extends React.Component {
             city: '',
             state: '',
             zip: ''
-        }
-
+        };
+        this.fNameChange = this.fNameChange.bind(this);
+        this.lNameChange = this.lNameChange.bind(this);
+        this.emailChange = this.emailChange.bind(this);
+        this.phoneChange = this.phoneChange.bind(this);
+        this.countryChange = this.countryChange.bind(this);
+        this.stateChange = this.stateChange.bind(this);
+        this.cityChange = this.cityChange.bind(this);
+        this.zipChange = this.zipChange.bind(this);
+        this.streetAddress1Change = this.streetAddress1Change.bind(this);
     }
+    fNameChange(e) {
+        this.setState({
+            fName: e.target.value
+        })
+    }
+    lNameChange(e) {
+        this.setState({
+            lName: e.target.value
+        })
+    }
+    emailChange(e) {
+        this.setState({
+            email: e.target.value
+        })
+    }
+    phoneChange(e) {
+        this.setState({
+            phone: e.target.value
+        })
+    }
+    countryChange(e) {
+        this.setState({
+            country: e.target.value
+        })
+    }
+    stateChange(e) {
+        this.setState({
+            state: e.target.value
+        })
+    }
+    cityChange(e) {
+        this.setState({
+            city: e.target.value
+        })
+    }
+    zipChange(e) {
+        this.setState({
+            zip: e.target.value
+        })
+    }
+    streetAddress1Change(e) {
+        this.setState({
+            streetAddress1: e.target.value
+        })
+    }
+
+
 
     componentDidMount() {
         // check to see if the user is logged in
@@ -51,14 +106,14 @@ export default class Account extends React.Component {
         }
         
     }
-    handleChange(event) {
-        this.setState({fName: event.target.value})
-      }
-    
+
+componentDidUpdate(){
+    console.log(this.state);
+}
 
 
     render() {
-   let {user, firstName, lastName, email, streetAddress1, phone, country, city, state, zip} = this.state;
+   let {user, fName, lName, email, streetAddress1, phone, country, city, state, zip} = this.state;
    console.log(user);
             return(<div>
                 <Header/>
@@ -68,13 +123,60 @@ export default class Account extends React.Component {
                 <br/>
                 </div>
                    
+                    
+                    {/* Update user info / *can* edit */}
+                    <h2>Update information:</h2>
+                    <form onSubmit={this.handleSubmit}> 
+                    <div className = "information">
+                    <label> First Name:
+                        <input type ="text" name="fName" 
+                        value = {this.state.fName}  onChange={this.fNameChange}></input>
+                        </label>
+                        <br/>
+                        <label> Last Name:
+                            <input type = "text" name = "lName" value = {this.state.lName} onChange={this.lNameChange}></input>
+                        </label>
+                        <br/>
+                        <label> Email: 
+                        <input type = "text" name = "email" value = {this.state.email}  onChange={this.emailChange}></input>
+                        </label>
+                        <br/>
+                        <label> Phone Number: 
+                        <input type = "text" name = "phone" value = {this.state.phone}  onChange={this.phoneChange}></input>
+                        </label>
+                        <br/>
+                        <h5>Shipping information</h5>
+                        <label> Country: 
+                        <input type = "text" name = "country" value = {this.state.country}  onChange={this.countryChange}></input>
+                        </label>
+                        <br/>
+                        <label> State: 
+                        <input type = "text" name = "state" value = {this.state.state}  onChange={this.stateChange}></input>
+                        </label>
+                        <br/>
+                        <label> City: 
+                        <input type = "text" name = "city" value = {this.state.city}  onChange={this.cityChange}></input>
+                        </label>
+                        <br/>
+                        <label> Zip: 
+                        <input type = "text" name = "zip" value = {this.state.zip}  onChange={this.zipChange}></input>
+                        </label>
+                        <br/>
+                        <label> Address: 
+                        <input type = "text" value = {this.state.streetAddress1}  onChange={this.streetAddress1Change}></input>
+                        </label>
+                        <br/>
+                        <button onClick = {this.handleClick}>Update information</button>
+                    </div>
+                    </form>
+
                     {/* User info / *cannot* edit */}
                     <h2>Current information</h2>
                     <div className = "information">
                         <h5>Contact information</h5>
-                        <p><b>First name:</b> {firstName} </p>
+                        <p><b>First name:</b> {fName} </p>
                         <br/>
-                        <p><b>Last name:</b> {lastName}</p>
+                        <p><b>Last name:</b> {lName}</p>
                         <br/>
                         <p><b>Email:</b> {email}</p>
                         <br/>
@@ -93,50 +195,6 @@ export default class Account extends React.Component {
                         <br/>
                     </div>
                     <br/>
-
-                    {/* Update user info / *can* edit */}
-                    <h2>Update information:</h2>
-                    <div className = "information">
-                    <label> First Name:
-                        <input type ="text" name="fName" value={this.state.fName}
-                        onChange={this.handleChange.bind(this)}></input>
-                        </label>
-                        <br/>
-                        <label> Last Name:
-                            <input type = "text"></input>
-                        </label>
-                        <br/>
-                        <label> Email: 
-                        <input type = "text"></input>
-                        </label>
-                        <br/>
-                        <label> Phone Number: 
-                        <input type = "text"></input>
-                        </label>
-                        <br/>
-                        <h5>Shipping information</h5>
-                        <label> Country: 
-                        <input type = "text"></input>
-                        </label>
-                        <br/>
-                        <label> State: 
-                        <input type = "text"></input>
-                        </label>
-                        <br/>
-                        <label> City: 
-                        <input type = "text"></input>
-                        </label>
-                        <br/>
-                        <label> Zip: 
-                        <input type = "text"></input>
-                        </label>
-                        <br/>
-                        <label> Address: 
-                        <input type = "text"></input>
-                        </label>
-                        <br/>
-                        <button onClick = {this.onClick}>Update information</button>
-                    </div>
 
 
                   {/* Order Hisotry for user */}
