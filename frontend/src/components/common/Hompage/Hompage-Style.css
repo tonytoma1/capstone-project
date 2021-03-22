@@ -1,4 +1,130 @@
-.top
+
+
+.home-top{
+    min-height: 350px;
+    background-image: url("./FIND.jpg");
+    background-size: cover;
+    display: flex;
+}
+
+.home-top-sell{
+    margin: auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.904);
+
+    border-radius: 25px;
+    text-align: center;
+    width: 30%;
+    box-shadow: 0 4px 100px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.home-top-sell h5{
+    opacity: 100%;
+    font-size: 25px;
+    font-weight: 600;
+    font-style: italic;
+    color: #3aafa9;
+}
+
+.home-top-sell button{
+    border-radius: 30px;
+    padding: 1% 20%;
+    background-color: #3aafa9;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.home-top-sell button:hover{
+    background-color: #3aafa9a4;
+    font-weight: 600;
+
+}
+
+.home-bottom {
+    color: #3aafa9 ;
+}
+
+.home-cards{
+    display: flex;
+}
+
+.home-bottom .how-title{
+    padding: 2%;
+    font-weight: lighter;
+}
+
+
+.home-bottom-how{
+    outline: 1px solid black;
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    padding: 30px;
+    min-height: 300px;
+    display: flex;
+    flex-direction:column;
+    align-self: center;
+    
+}
+
+
+.home-bottom-how img{
+    width: 200px;
+    height: auto;
+    margin-top: auto;
+}
+
+.home-bottom-how .home-bottom-title{
+    font-weight: 500;
+    font-style: italic;
+    font-size: 25px;
+}
+
+.home-bottom-how  .home-bottom-description{
+ color: rgb(122, 122, 122);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .top
 {
  background-image: url("./FIND.jpg");
  height: 400px;
@@ -99,4 +225,4 @@
     margin-left: 500px;
     margin-top: 30px;
     align-self: center;
-}
+} */

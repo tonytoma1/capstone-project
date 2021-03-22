@@ -75,6 +75,18 @@ html {
 
         }
 
+
+        .logged-in{
+          display: flex;
+        }
+
+        .logged-in .cart{
+          max-width: 30px;
+          height: auto;
+          display: inline;
+          margin-left: 10px;
+        }
+
 /*   --> PHONE CSS*/
 
   @media only screen and (max-width: 600px) {
@@ -89,7 +101,11 @@ html {
         padding-left: 10px;
       }
 
-      #desktop, .explore{
+      #desktop{
+        margin-right: 10px;
+      }
+
+      .explore{
         display: none;
       }
 

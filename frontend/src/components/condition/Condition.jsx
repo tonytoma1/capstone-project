@@ -70,6 +70,9 @@ import {connect} from 'react-redux';
         }
         catch(e) {
 
+            
+
+
         }
     }
 
@@ -110,7 +113,10 @@ import {connect} from 'react-redux';
         }
 
 
+
     }
+
+    
 
     /**
      * will change the color of buttons' background to white 
@@ -135,7 +141,10 @@ import {connect} from 'react-redux';
 
 
     render(){
+        
             return(
+
+               
                 <div className="condition-container">
                      <Breadcrumb className="bc">
                     

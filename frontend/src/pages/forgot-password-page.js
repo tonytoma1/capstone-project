@@ -72,8 +72,7 @@ import bg from 'images/visuals/login-bg.jpg';
 
     render() {
         return(
-            <div >
-                <img src={bg} className="log-bg"/>
+            <div className="log-bg" >
                     
                 <div className="login-container">
                 <div className="right">

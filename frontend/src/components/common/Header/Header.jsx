@@ -7,9 +7,6 @@ import Cart from 'images/shopping-cart.png';
 import User from 'images/visuals/user.png';
 import Menu from 'images/visuals/menu.png';
 
-
-
-
 import  { Redirect } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { Button, ButtonGroup } from 'reactstrap';
@@ -20,6 +17,9 @@ import Cookies from 'js-cookie';
 import * as Constants from 'constants/global-constants';
 import UserService from "services/user.service";
 import history from 'history.js';
+
+
+import Nav from "./comp/nav";
 
 export default class  Header extends React.Component {
 
@@ -102,11 +102,7 @@ export default class  Header extends React.Component {
 
       }
 
-    atLaunch(){
-        if( window.location.pathname === "/login"){
-            document.getElementById("desktop").style.display = "none";
-        }
-     }
+   
 
      goToHome(){
         window.location.href = '/';
@@ -116,74 +112,87 @@ export default class  Header extends React.Component {
 
         const { isLoggedIn } = this.state;
 
-        return (
 
-            <div className="header-container" >
+        if(isLoggedIn){
+            return (
+                
+                <div className="header-container" >
+    
+                    <Nav />
+    
+                    <div className="main-width">
+    
+                        <img src={Logo} alt="Recommerce" className="logo" onClick={this.goToHome}/>
+    
+                        <div className="logged-in" id="desktop">
+                        <span className="button"><Link to="/Account">Account  </Link> </span>
+                            <img className="cart" src={Cart} alt />
 
-                <div className="explore">
-                    <ButtonGroup className="explore-buttons">
-                        <Link to="/" >
-                            <Button >Home</Button>
-                        </Link>
-
-                        <Link to="/sell-device" >
-                            <Button >Sell Device</Button>
-                        </Link>
-
-                        <Link to="/about" >
-                            <Button>About</Button>
-                        </Link>
-                    </ButtonGroup>
-                </div>
-
-                <div className="main-width">
-
-                    <img src={Logo} alt="Recommerce" className="logo" onClick={this.goToHome}/>
-
-                    <div className="not-logged-in" id="desktop">
-                        <span className="button"><Link to="/login">Login</Link> </span>
-                        <span className="">|</span>
-                        <span className="button"><Link to="/Register">Register</Link> </span>
-                    </div>
-
-                    <div className="not-logged-in" id="mobile">
-                        <div>
-                            <img src={User} alt='user' onClick={this.menu} id="user-icon"></img>
-                            <img src={Menu} alt='menu' onClick={this.menu} id="menu-icon"></img>
                         </div>
+    
+                        <div className="not-logged-in" id="mobile">
+                            <div>
+                                <img src={User} alt='user' onClick={this.menu} id="user-icon"></img>
+                                <img src={Menu} alt='menu' onClick={this.menu} id="menu-icon"></img>
+                            </div>
+                        </div>
+    
                     </div>
-
+    
+                    <div id="menu-links" className="myLinks">
+                            <Link to="/" className="Link">
+                               Home
+                            </Link>
+    
+                            <Link to="/sell-device" className="Link">
+                                Sell Device
+                            </Link>
+    
+                            <Link to="/about" className="Link">
+                               About
+                            </Link>
+                    </div>
+    
+                    <div id="user-links" className="myLinks">
+    
+                            <Link to="/account" className="Link">
+                               My Account
+                            </Link>
+    
+                            <Link to="/register" className="Link" onClick={this.handleLogout}>
+                                Log out
+                            </Link>
+    
+                    </div>
+    
                 </div>
+    
+            );
+        }else{
+            return (
+                
+                <div className="header-container" >
 
-                <div id="menu-links" className="myLinks">
-                        <Link to="/" className="Link">
-                           Home
-                        </Link>
 
-                        <Link to="/sell-device" className="Link">
-                            Sell Device
-                        </Link>
+                    <Nav />
+    
+                    <div className="main-width">
+    
+                        <img src={Logo} alt="Recommerce" className="logo" onClick={this.goToHome}/>
 
-                        <Link to="/about" className="Link">
-                           About
-                        </Link>
+                        <div className="not-logged-in" id="desktop">
+                            <span className="button"><Link to="/login">Sign in   </Link> </span>
+                        </div>
+
+                    </div>
+                
+    
                 </div>
+    
+            );
+        }
 
-                <div id="user-links" className="myLinks">
-
-                        <Link to="/login" className="Link">
-                           Login
-                        </Link>
-
-                        <Link to="/register" className="Link">
-                            Register
-                        </Link>
-
-                </div>
-
-            </div>
-
-        );
+        
 
          
     }

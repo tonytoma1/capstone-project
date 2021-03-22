@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import UserService from 'services/user.service';
 import * as Constants from 'constants/global-constants';
 
-import Logo from '../../../images/visuals/logo.png';
+import Logo from '../../../images/visuals/logo-white.png';
 import Email from '../../../images/visuals/email.png';
 import Password from '../../../images/visuals/padlock.png';
 import bg from '../../../images/visuals/login-bg.jpg';
@@ -112,8 +112,7 @@ export default class Login extends React.Component {
             }
 
             return(
-                <div >
-                 <img src={bg} className="log-bg"/>
+                <div className="log-bg" >
                     
                 <div className="login-container">
 
