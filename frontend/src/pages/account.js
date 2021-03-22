@@ -51,12 +51,13 @@ export default class Account extends React.Component {
         }
         
     }
+    handleChange(event) {
+        this.setState({fName: event.target.value})
+      }
+    
+
 
     render() {
-    /*
-    * Need to add user's name to welcome message. 
-    *  
-    */
    let {user, firstName, lastName, email, streetAddress1, phone, country, city, state, zip} = this.state;
    console.log(user);
             return(<div>
@@ -66,50 +67,81 @@ export default class Account extends React.Component {
                 <img src = {Image} />
                 <br/>
                 </div>
+                   
+                    {/* User info / *cannot* edit */}
                     <h2>Current information</h2>
                     <div className = "information">
                         <h5>Contact information</h5>
-                        <label> First Name:
-                        <input type ="text" value = {firstName}></input>
+                        <p><b>First name:</b> {firstName} </p>
+                        <br/>
+                        <p><b>Last name:</b> {lastName}</p>
+                        <br/>
+                        <p><b>Email:</b> {email}</p>
+                        <br/>
+                        <p><b>Phone number:</b> {phone}</p>
+                        <br/>
+                        <h5>Shipping information</h5>
+                        <p><b>Country:</b> {country}</p>
+                        <br/>
+                        <p><b>State:</b> {state}</p>
+                        <br/>
+                        <p><b>City:</b> {city}</p>
+                        <br/>
+                        <p><b>Zip:</b> {zip}</p>
+                        <br/>
+                        <p><b>Address:</b> {streetAddress1}</p>
+                        <br/>
+                    </div>
+                    <br/>
+
+                    {/* Update user info / *can* edit */}
+                    <h2>Update information:</h2>
+                    <div className = "information">
+                    <label> First Name:
+                        <input type ="text" name="fName" value={this.state.fName}
+                        onChange={this.handleChange.bind(this)}></input>
                         </label>
                         <br/>
                         <label> Last Name:
-                            <input type = "text" value = {lastName}></input>
+                            <input type = "text"></input>
                         </label>
                         <br/>
                         <label> Email: 
-                        <input type = "text" value = {email}></input>
+                        <input type = "text"></input>
                         </label>
                         <br/>
                         <label> Phone Number: 
-                        <input type = "text" value = {phone}></input>
+                        <input type = "text"></input>
                         </label>
                         <br/>
                         <h5>Shipping information</h5>
                         <label> Country: 
-                        <input type = "text" value = {country}></input>
+                        <input type = "text"></input>
                         </label>
                         <br/>
                         <label> State: 
-                        <input type = "text" value = {state}></input>
+                        <input type = "text"></input>
                         </label>
                         <br/>
                         <label> City: 
-                        <input type = "text" value = {city}></input>
+                        <input type = "text"></input>
                         </label>
                         <br/>
                         <label> Zip: 
-                        <input type = "text" value = {zip}></input>
+                        <input type = "text"></input>
                         </label>
                         <br/>
                         <label> Address: 
-                        <input type = "text" value = {streetAddress1}></input>
+                        <input type = "text"></input>
                         </label>
                         <br/>
-                        <input type ="button" value = "Update information"></input>
+                        <button onClick = {this.onClick}>Update information</button>
                     </div>
-                    <br/>
+
+
+                  {/* Order Hisotry for user */}
                     <h2>Order history</h2>
+                    <div className = "information">
                     <table className = "orders">
                         <div className = "inTable">
                         <tr>
@@ -134,6 +166,7 @@ export default class Account extends React.Component {
                             </tr>
                         </div>
                     </table>
+                    </div>
                 <Footer/>
                
                 </div>   

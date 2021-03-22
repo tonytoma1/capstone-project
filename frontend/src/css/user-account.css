@@ -57,9 +57,14 @@ label{
     width: 300px;
     text-align: right;
 }
+
 input {
   display: inline-block;
 }
-.buttons{
+button{
+    text-align: center;
+    font-size: 14pt;
+}
+p{
     text-align: center;
 }
