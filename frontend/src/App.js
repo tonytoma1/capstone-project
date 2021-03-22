@@ -63,6 +63,14 @@ function reducer(state = currentState, action) {
         condition: state.condition,
         service_provider: action.payload,
         shopping_cart: state.shopping_cart
+      };
+      case CONDITION: 
+      return {
+        model: state.model,
+        storage: state.storage,
+        condition: action.payload,
+        service_provider: state.service_provider,
+        shopping_cart: state.shopping_cart
       }
       default: 
         return {

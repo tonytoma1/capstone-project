@@ -34,9 +34,18 @@ class StorageCapcityPage extends React.Component {
 
       try {
         let result = await UserService.getDevicesBasedOnModelName(this.props.model);
-        this.setState({storageSizes: result.data});
+    
+        let storageArray = [];
 
-        console.log(this.state.storageSizes[0].storageCapacity.storageCapacitySize);
+        for(let i = 0; i < result.data.length; i++) {
+                storageArray.push(result.data[i].storageCapacity.storageCapacitySize);   
+        }
+
+        let unique = Array.from(new Set(storageArray));
+
+        this.setState({storageSizes: unique});
+
+        
       }
       catch(e) {
           console.log(e);
@@ -78,7 +87,7 @@ class StorageCapcityPage extends React.Component {
                                 {
                                     this.state.storageSizes.map(data => {
                                         return (
-                                            <Button outline color="success" size="lg" className="buttons-storage" onClick={() => this.handleClick(data.storageCapacity.storageCapacitySize) }>{data.storageCapacity.storageCapacitySize} GB</Button>
+                                            <Button outline color="success" size="lg" className="buttons-storage" onClick={() => this.handleClick(data) }>{data} GB</Button>
                                         )
                                     })
                                 }

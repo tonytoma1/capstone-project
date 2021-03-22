@@ -10,6 +10,8 @@ import {
   } from 'reactstrap';
 import { List } from 'reactstrap';
 
+import history from '../../history';
+import {CONDITION, addPhoneComponent} from 'redux-action.js';
 
 import './condition-css.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -76,6 +78,8 @@ import {connect} from 'react-redux';
         }
     }
 
+    
+
     changeTabs = (tabNumber) => {
         this.setState({activeTab: tabNumber});
 
@@ -137,6 +141,13 @@ import {connect} from 'react-redux';
         e.target.style.backgroundColor = '#3aafa9';
         e.target.style.fontWeight = '700';
         
+    }
+
+    setCondition(condition) {
+        this.props.dispatch(addPhoneComponent(CONDITION, condition));
+
+        history.push("/condition");
+        window.location.reload();
     }
 
 
@@ -238,9 +249,9 @@ import {connect} from 'react-redux';
                                                     <hr className="hz-line"></hr>
 
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
-                                                    <CardTitle tag="h5">$ xxxx</CardTitle>
+                                                    <CardTitle tag="h5">$ {this.state.brokenPrice}</CardTitle>
 
-                                                    <Button>Button</Button>
+                                                    <Button>Sell Device</Button>
                                                 </CardBody>
                                             </Card>
 
@@ -273,7 +284,7 @@ import {connect} from 'react-redux';
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
                                                     <CardTitle tag="h5">$ {this.state.fairPrice}</CardTitle>
 
-                                                    <Button>Button</Button>
+                                                    <Button >Sell Device</Button>
                                                 </CardBody>
                                             </Card>
                                         </Col>
@@ -304,9 +315,9 @@ import {connect} from 'react-redux';
                                                     <hr className="hz-line"></hr>
 
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
-                                                    <CardTitle tag="h5">$ xxxx</CardTitle>
+                                                    <CardTitle tag="h5">$ {this.state.goodPrice}</CardTitle>
 
-                                                    <Button>Button</Button>
+                                                    <Button>Sell Device</Button>
                                                 </CardBody>
                                             </Card>
                                         </Col>
@@ -337,9 +348,9 @@ import {connect} from 'react-redux';
                                                     <hr className="hz-line"></hr>
 
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
-                                                    <CardTitle tag="h5">$ xxxx</CardTitle>
+                                                    <CardTitle tag="h5">$ {this.state.excellentPrice}</CardTitle>
 
-                                                    <Button>Button</Button>
+                                                    <Button>Sell Device</Button>
                                                 </CardBody>
                                             </Card>
                                         </Col>
