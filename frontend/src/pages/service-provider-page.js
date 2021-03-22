@@ -26,8 +26,16 @@ class ServiceProviderPage extends React.Component {
 
         try {
           let result = await UserService.getDevicesBasedOnModelName(this.props.model);
-          this.setState({networkProvider: result.data});
-  
+
+          let serviceProviders = [];
+          for(let i = 0; i < result.data.length; i++) {
+                serviceProviders.push(result.data[i].serviceProvider.serviceProviderName);   
+            }
+
+          let serviceProvidersUniqueArray = Array.from(new Set(serviceProviders));
+
+          this.setState({networkProvider: serviceProvidersUniqueArray});
+          
         }
         catch(e) {
             console.log(e);
@@ -78,8 +86,8 @@ class ServiceProviderPage extends React.Component {
                                     this.state.networkProvider.map(data => {
                                         return (
                                             <Button outline color="success" size="lg" className="buttons-storage" 
-                                            onClick={() => this.handleClick(data.serviceProvider.serviceProviderName) }>
-                                                {data.serviceProvider.serviceProviderName}
+                                            onClick={() => this.handleClick(data) }>
+                                                {data}
                                             </Button>
                                         )
                                     })
