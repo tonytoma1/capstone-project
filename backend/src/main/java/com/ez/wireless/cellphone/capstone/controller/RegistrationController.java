@@ -14,15 +14,20 @@ import com.ez.wireless.cellphone.capstone.service.AccountService;
 /**
  * Registers a user to the database
  * @author Tony 
- *
  */
 @RestController
 //@RequestMapping("/api/register")
-public class RegistrationController {
-
+public class RegistrationController 
+{
 	@Autowired
 	private AccountService accountService;
 	
+	/**
+	 * Saves a user to the account, person, and role tables
+	 * @param accountPersonRoleDTO The account, person, and role data transfer object
+	 * @return A response for a successful save to the database
+	 * @throws Exception
+	 */
 	@PostMapping
 	public ResponseEntity<?> saveUser(@RequestBody AccountPersonRoleDTO accountPersonRoleDTO) throws Exception {
 		

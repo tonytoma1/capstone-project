@@ -29,7 +29,7 @@ public class NewOrdersController {
 	}
 	
 	/**
-	 * Saves a mew order object to the New_Orders table in the database.
+	 * Saves a new order object to the New_Orders table in the database.
 	 * @param newOrders The new order
 	 */
 	@PostMapping

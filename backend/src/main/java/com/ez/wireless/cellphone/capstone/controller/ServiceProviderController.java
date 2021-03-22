@@ -19,12 +19,20 @@ public class ServiceProviderController
 	@Autowired
 	private ServiceProviderService serviceProviderService;
 	
+	/**
+	 * Gets all the service providers from the Service_Provider table
+	 * @return the service providers
+	 */
 	@GetMapping
 	public List<ServiceProvider> getAllProviders()
 	{
 		return serviceProviderService.getAllProviders();
 	}
 	
+	/**
+	 * Saves a service provider to the Service_Provider table
+	 * @param serviceProvider the service provider
+	 */
 	@PostMapping
 	public void saveProvider(@RequestBody ServiceProvider serviceProvider)
 	{
