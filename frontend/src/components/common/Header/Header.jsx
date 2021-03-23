@@ -126,8 +126,9 @@ export default class  Header extends React.Component {
     
                         <div className="logged-in" id="desktop">
                         <span className="button"><Link to="/Account">Account  </Link> </span>
-                            <img className="cart" src={Cart} alt />
+                        <span className="button"><Link to="/login" onClick={this.handleLogout}>Logout  </Link> </span>
 
+                            <img className="cart" src={Cart} alt />
                         </div>
     
                         <div className="not-logged-in" id="mobile">
@@ -182,6 +183,7 @@ export default class  Header extends React.Component {
 
                         <div className="not-logged-in" id="desktop">
                             <span className="button"><Link to="/login">Sign in   </Link> </span>
+                            <img className="cart" src={Cart} alt />
                         </div>
 
                     </div>

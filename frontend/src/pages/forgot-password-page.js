@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import reset from 'images/visuals/forgot.png';
 import { InputGroup, InputGroupText, Input } from 'reactstrap';
 
-import Logo from 'images/visuals/logo.png';
+import Logo from 'images/visuals/logo-white.png';
 import Email from 'images/visuals/email.png';
 import Password from 'images/visuals/padlock.png';
 import bg from 'images/visuals/login-bg.jpg';
@@ -87,7 +87,7 @@ import bg from 'images/visuals/login-bg.jpg';
                                 </InputGroup>
 
                             
-                            <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="Submit" value="Reset Password"/>
+                            <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="Submit" value="Send Link"/>
                             
                             <p className="reset-error" id="reset-error">Link was sent into your E-mail. Please check you account and you can close this window.</p>
 

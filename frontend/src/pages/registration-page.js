@@ -5,9 +5,9 @@ import Register from '../components/common/register/Register.component'
 function RegistrationPage() {
     return (
         <div className="App">
-            <HeaderReg />
+            {/* <HeaderReg /> */}
             <Register />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

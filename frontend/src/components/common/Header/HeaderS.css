@@ -64,15 +64,19 @@ html {
 
         }
 
-        .header-container .not-logged-in .button{
+        .header-container .not-logged-in,.logged-in .button{
             color: #3aafa9;
             text-align: center;
             font-size: 25px;
-            padding: 0 10px;
+            padding: 0px 10px;
             font-weight: normal;
             font-family:Georgia, 'Times New Roman', Times, serif;
             text-decoration: underline;
 
+        }
+
+        .header-container .not-logged-in .button:hover ,.logged-in .button:hover{
+         background-color: aquamarine;
         }
 
 
@@ -80,9 +84,9 @@ html {
           display: flex;
         }
 
-        .logged-in .cart{
-          max-width: 30px;
-          height: auto;
+        .logged-in .cart,.not-logged-in .cart{
+          width: 30px;
+          height: 30px;
           display: inline;
           margin-left: 10px;
         }

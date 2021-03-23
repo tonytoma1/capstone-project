@@ -1,13 +1,26 @@
 
-html {
-    box-sizing: border-box;
-  }
-  *, *:before, *:after {
 
-    box-sizing: inherit;
+.login-container{
+    width: 80%;
 }
 
 
+.left {
+    flex-shrink:1;
+}
+
+.right{
+    flex-grow: 3; 
+}
+
+.asterisk{
+    color: rgb(238, 86, 31);
+    font-weight: 700;
+}
+
+
+
+/* 
 .register-container {
     margin: auto auto;
     margin-top: 50px;
@@ -123,4 +136,4 @@ html {
     color: rgb(8, 55, 117);
    
  }
-
+ */
