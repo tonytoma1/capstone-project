@@ -1,7 +1,35 @@
 
 
-.login-container{
-    width: 80%;
+
+.log-bg{
+
+    background-image: url("../../../images/visuals/login-bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    background-size: 100% 100%;
+
+}
+
+
+.registration-container{
+
+    width: 65%;
+    margin: auto auto;
+    margin-top: 5%;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    
+    box-shadow: 0 4px 100px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background-color: rgba(255, 255, 255, 0.979);
 }
 
 
@@ -11,11 +39,39 @@
 
 .right{
     flex-grow: 3; 
+    padding-top: 40px;
 }
 
 .asterisk{
     color: rgb(238, 86, 31);
     font-weight: 700;
+} 
+
+.registration-container .ip-group{
+    width: 80%;
+}
+
+.registration-container .right label{
+    margin-top: 20px;
+}
+
+.registration-container  .next {
+    color: #297470;
+    margin-top: 20px;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-decoration: underline;
+}
+
+.registration-container .next:hover {
+    cursor: pointer;
+    color: royalblue;
+}
+
+.registration-container .next:active {
+    color: orchid;
 }
 
 

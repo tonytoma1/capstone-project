@@ -28,6 +28,10 @@ public class ClientTempController {
 		return clientTempService.getAllClientTemp();
 	}
 	
+	/**
+	 * Saves a client to the client_temp row in the database
+	 * @param clientTemp The temporary Client
+	 */
 	@PostMapping
 	public void saveClientTemp(@RequestBody ClientTemp clientTemp) {
 		try {

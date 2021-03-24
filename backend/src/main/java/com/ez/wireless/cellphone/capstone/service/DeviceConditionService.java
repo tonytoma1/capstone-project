@@ -20,7 +20,7 @@ public class DeviceConditionService {
 	}
 	
 	/**
-	 * Gets all of the rows in the device_condition a table
+	 * Gets all of the rows in the device_condition table
 	 * @return a list of device conditions
 	 */
 	public List<DeviceCondition> getAllConditions() {

@@ -17,12 +17,20 @@ public class StorageCapacityController
 	@Autowired
 	private StorageCapacityService storageCapacityService; 
 	
+	/**
+	 * Gets all the storages capacities from the Storage_Capacity table
+	 * @return the storage capacities
+	 */
 	@GetMapping
 	public List<StorageCapacity> getAllStorageCapacity()
 	{
 		return storageCapacityService.getAllStorageCapacity();
 	}
 	
+	/**
+	 * Saves a storage capacity to the Storage_Capacity table
+	 * @param storageCapacity the storage capacity
+	 */
 	@PostMapping
 	public void saveStorage(@RequestBody StorageCapacity storageCapacity)
 	{

@@ -18,12 +18,20 @@ public class OrdersCompleteController
 	@Autowired
 	private OrdersCompleteService ordersCompleteService;
 	
+	/**
+	 * Gets all of the complete orders from the orders_complete table
+	 * @return the orders
+	 */
 	@GetMapping
 	public List<OrdersComplete> getAllOrdersComplete() 
 	{
 		return ordersCompleteService.getAllOrdersComplete();
 	}
 	
+	/**
+	 * Saves a complete order object to the orders_complete table in the database.
+	 * @param ordersComplete The complete order
+	 */
 	@PostMapping
 	public void saveOrdersComplete(@RequestBody OrdersComplete ordersComplete) {
 		try {

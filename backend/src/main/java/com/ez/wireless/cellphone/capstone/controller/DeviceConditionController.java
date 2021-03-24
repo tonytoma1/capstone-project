@@ -19,12 +19,19 @@ public class DeviceConditionController {
 	@Autowired
 	private DeviceConditionService deviceConditionService;
 
-	
+	/**
+	 * Retrieves all of the device_condition rows from the database
+	 * @return a list of DeviceCondtion objects
+	 */
 	@GetMapping
 	public List<DeviceCondition> getAllConditions() {
 		return deviceConditionService.getAllConditions();
 	}
 	
+	/**
+	 * Saves a DeviceCondtion to the device_condition row in the database
+	 * @param condition The Device Condition
+	 */
 	@PostMapping
 	public void saveCondition(@RequestBody DeviceCondition condition) {
 		try {

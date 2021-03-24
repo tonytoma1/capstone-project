@@ -91,6 +91,10 @@ public class ModelController {
 			return modelService.saveModel(model);
 	}
 	
+	/**
+	 * Gets all of the models from the model table
+	 * @return the model object
+	 */
 	@GetMapping
 	public List<Model> getModels() {
 		return modelService.getAllModels();

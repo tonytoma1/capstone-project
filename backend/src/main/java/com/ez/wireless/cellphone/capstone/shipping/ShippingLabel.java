@@ -14,6 +14,10 @@ import com.easypost.model.Shipment;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
 
+/**
+ * Creates a shipping label using the EasyPost API
+ * @author Dakota Harvey
+ */
 public class ShippingLabel 
 {
 	private Map<String, Object> toAddressMap = new HashMap<String, Object>();
@@ -25,11 +29,31 @@ public class ShippingLabel
 	//TODO implement proper calling of the client account from the account object
 	//private Account ac = ac.getAccountId();
 					
-	
+	/**
+	 * Takes in information from the frontend, calls local methods to map the to and from a addresses out, creates a parcel from the postal service
+	 * and weight of a package. Then calls the API to create a shipping label for the end user.
+	 * @param Fname First name
+	 * @param Lname Last name
+	 * @param company Company (Optional if residential is true)
+	 * @param street1 First addressed street
+	 * @param street2 Second addressed street
+	 * @param city City/town Name
+	 * @param GeoRegion Geographical Region (E.G. State, Province, etc.)
+	 * @param country Country
+	 * @param mailCode Mail code (E.G. zip code, postal code, etc.)
+	 * @param message Message to recipient (Optional)
+	 * @param phone Phone number
+	 * @param email Email Address
+	 * @param residental Address residentiality 
+	 * @param postalService Postal Service Provider (E.G. USPS, Canada Post, etc.)
+	 * @param weight Package weight
+	 * @throws EasyPostException Said exception is being handled by the subclasses
+	 */
 	public ShippingLabel(String Fname, String Lname, String company, String street1, String street2, 
 			String city, String GeoRegion, String country, String mailCode, String message,
 			String phone, String email, boolean residental, String postalService, double weight) throws EasyPostException
 	{
+		//Change from testing apikey
 		EasyPost.apiKey = "EZTK49ff1046f34b4161b5d4531cd632f2c6PqxVBYFGS0cXZpSKqWSIbQ";
 		Address fromCustomerAddress = fromAddress(Fname, Lname, company, street1, street2, city, GeoRegion, country, 
 												  mailCode, message, phone, email, residental);

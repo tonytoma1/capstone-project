@@ -6,10 +6,11 @@ import './register.css';
 
 import { InputGroup, InputGroupText, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import  { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import Email from '../../../images/visuals/email.png';
 import Password from '../../../images/visuals/padlock.png';
+import User from 'images/visuals/user.png';
 
 
 export default class Register extends Component {
@@ -36,7 +37,7 @@ export default class Register extends Component {
 
     changeHandler = e => {
         this.setState({ [e.target.name]: e.target.value })
-        this.setState({isResidential: e.target.checked})
+        this.setState({ isResidential: e.target.checked })
     }
 
     submitHandler = e => {
@@ -47,52 +48,87 @@ export default class Register extends Component {
                 console.log(response);
                 history.push("/login");
                 window.location.reload();
-               
+
             })
             .catch(error => {
                 console.log(error);
             })
     }
 
+    goToSign() {
+        window.location.href = '/login';
+
+    }
+
 
     render() {
         const { userName, password, streetAddress1, streetAddress2, country, state, zip, city, email, firstName, lastName, phone, company, isResidential } = this.state;
-       
+
         return (
 
             <div className="log-bg" >
-                <div className="login-container">
+                <div className="registration-container">
 
                     <div className="left">
                         <img src={Logo} />
                         <h2> About you</h2>
-                        <h5> 
+                        <h5>
                             Enter your information on the right. Required fields will have a ( <span className="asterisk">*</span> ).
-                             <br/><br/>If you already have an account with us, click the Sign In button below.
+                             <br /><br />If you already have an account with us, click the Sign In button below.
                         </h5>
 
-                        <button onClick={this.goToRegister} > SIGN IN </button>
-                   
+                        <button onClick={this.goToSign} > SIGN IN </button>
+
                     </div>
 
                     <div className="right">
-                            <h3> Registration</h3>
-                            <h4> Enter your details below</h4>
+                        <h3> Registration</h3>
+                        <h4> Enter your details below</h4>
+
+
+                        <div className="first">
+                            <label> First Name <span className="asterisk">*</span></label>
+                            <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+                                <InputGroupText className="text"><img src={User} alt="password" /></InputGroupText>
+                                <Input className="ip" type={"text"} placeholder="enter your firstname here" id="loginEmail" required />
+                            </InputGroup>
+
+                            <label> Last Name </label>
+                            <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+                                <InputGroupText className="text"><img src={User} alt="password" /></InputGroupText>
+                                <Input className="ip" type={"text"} placeholder="enter your lastname here" id="loginEmail" />
+                            </InputGroup>
 
                             <label> Email <span className="asterisk">*</span></label>
-                                <InputGroup className="ip-group"  type="email" onChange={this.handleEmailChange} >
-                                    <InputGroupText  className="text"><img src={Email} alt="password"/></InputGroupText>
-                                    <Input className="ip" type={"email"} placeholder="enter your email here" id="loginEmail" onChange={this.written} required/>
-                                </InputGroup>
+                            <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+                                <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
+                                <Input className="ip" type={"email"} placeholder="enter your email here" id="loginEmail" required />
+                            </InputGroup>
 
-                    </div> 
-                
+                            <label> Password <span className="asterisk">*</span></label>
+                            <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+                                <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
+                                <Input className="ip" type={"email"} placeholder="enter your password here" id="loginEmail" required />
+                            </InputGroup>
+
+                            <label> Re-enter Password <span className="asterisk">*</span></label>
+                            <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+                                <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
+                                <Input className="ip" type={"email"} placeholder="Re-enter your password" id="loginEmail" required />
+                            </InputGroup>
+                        </div>
+                      
+
+                        <div className="next"> Next &#8640; </div>
+
                     </div>
 
+                </div>
 
 
 
-</div>
+
+            </div>
 
             // <div className="register-container">
             //     <figure>
@@ -153,13 +189,13 @@ export default class Register extends Component {
             //         <section>
             //         <p>Is Residential</p>
             //         <input type="checkbox"  name="isResidential" value={isResidential} onChange={this.changeHandler} />
-                    
+
             //         </section>
             //             <button type="submit">Submit</button>
             //     </form>
             // </div>
-        
-        
+
+
         );
     }
 }
