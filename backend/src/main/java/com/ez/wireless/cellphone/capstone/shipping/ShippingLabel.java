@@ -37,7 +37,7 @@ public class ShippingLabel
 	 * @param company Company (Optional if residential is true)
 	 * @param street1 First addressed street
 	 * @param street2 Second addressed street
-	 * @param city City Location
+	 * @param city City/town Name
 	 * @param GeoRegion Geographical Region (E.G. State, Province, etc.)
 	 * @param country Country
 	 * @param mailCode Mail code (E.G. zip code, postal code, etc.)
