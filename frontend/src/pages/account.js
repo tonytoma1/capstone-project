@@ -24,13 +24,8 @@ export default class Account extends React.Component {
             country: '',
             city: '',
             state: '',
-<<<<<<< HEAD
             zip: '',
-           
-        }
-
-=======
-            zip: ''
+        
         };
         this.fNameChange = this.fNameChange.bind(this);
         this.lNameChange = this.lNameChange.bind(this);
@@ -71,7 +66,7 @@ export default class Account extends React.Component {
         this.setState({
             state: e.target.value
         })
->>>>>>> 4746c9f (most functionality for the update)
+
     }
     cityChange(e) {
         this.setState({
@@ -88,6 +83,10 @@ export default class Account extends React.Component {
             streetAddress1: e.target.value
         })
     }
+ 
+
+
+
 
 
 
