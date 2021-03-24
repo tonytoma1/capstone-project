@@ -106,6 +106,7 @@ export default class Account extends React.Component {
         }
         
     }
+ 
 
 componentDidUpdate(){
     console.log(this.state);
