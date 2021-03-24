@@ -26,6 +26,7 @@ export default class Account extends React.Component {
             state: '',
             zip: '',
         
+        
         };
         this.fNameChange = this.fNameChange.bind(this);
         this.lNameChange = this.lNameChange.bind(this);
@@ -94,7 +95,9 @@ export default class Account extends React.Component {
         // check to see if the user is logged in
         try {
             let userFound = await UserService.isUserLoggedIn();
-            this.setState({userFound: true, user: userFound});
+            console.log(userFound);
+            //let ordersFound =  await UserService.getOrdersByUsername(userFound.data.person.email);
+              let ordersFound = [];
 
             this.setState({firstName: userFound.data.person.firstName, 
                           lastName: userFound.data.person.lastName,
@@ -105,6 +108,10 @@ export default class Account extends React.Component {
                           city: userFound.data.person.city, 
                           state: userFound.data.person.state,
                           zip: userFound.data.person.zip,
+                          orders: ordersFound,
+                          userFound: true, 
+                          user: userFound
+
                       
                         }); 
             //check to see if user is admin
@@ -118,18 +125,6 @@ export default class Account extends React.Component {
             this.setState({userFound: false, user: null});
             history.push("/account");
             // window.location.reload();
-        }
-
-        // Find the customer's orders
-        try {
-            
-            let ordersFound = await UserService.getOrdersBasedOnEmail(this.state.email);
-            this.setState({orders: ordersFound});
-                
-        }
-        catch(e) {
-            // No orders found
-            console.log("No orders found");
         }
         
     }
@@ -158,11 +153,11 @@ componentDidUpdate(){
                     <div className = "information">
                     <label> First Name:
                         <input type ="text" name="fName" 
-                        value = {this.state.fName}  onChange={this.fNameChange}></input>
+                        value = {this.state.firstName}  onChange={this.fNameChange}></input>
                         </label>
                         <br/>
                         <label> Last Name:
-                            <input type = "text" name = "lName" value = {this.state.lName} onChange={this.lNameChange}></input>
+                            <input type = "text" name = "lName" value = {this.state.lastName} onChange={this.lNameChange}></input>
                         </label>
                         <br/>
                         <label> Email: 
@@ -230,26 +225,27 @@ componentDidUpdate(){
                     <div className = "information">
                     <table className = "orders">
                         <div className = "inTable">
-                        <tr>
-                        <th> Date</th>
-                        <th>Item decription</th>
-                        <th>Price</th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            </tr>
-                            <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            </tr>
-                            <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            </tr>
+            
+                        {
+                            this.state.orders.length === 0 ? <tr><td colspan="3">No Orders at this time</td></tr> 
+                                                            :  <tr>
+                                                            <th> Date</th>
+                                                            <th>Item decription</th>
+                                                            <th>Price</th>
+                                                            </tr>
+                        }
+
+                        {
+                            this.state.orders.map((ordersFound) => {
+                                return(
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>ordersFound.totalPrice</td>
+                                    </tr>
+                                );
+                            })
+                        }
                         </div>
                     </table>
                     </div>

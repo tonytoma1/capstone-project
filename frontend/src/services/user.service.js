@@ -62,6 +62,18 @@ class UserService {
         return await axios.get(Constants.API_URL + "model");
     }
 
+    async getOrdersByUsername(email) {
+
+        var config = {
+            params: {
+                username: email
+            }
+        }
+
+
+        return await axios.get(Constants.API_URL + "new-orders/user-order", config);
+    }
+
     async getModelByName(deviceModelName) {
 
         var config = {
