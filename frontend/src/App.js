@@ -14,7 +14,6 @@ import AdminPage from './pages/admin.page';
 import SellDevicePage from 'pages/sell-device-page';
 
 
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -29,6 +28,7 @@ import storage from 'redux-persist/lib/storage';
 import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE} from 'redux-action';
 import ServiceProviderPage from 'pages/service-provider-page';
 import CreateUserComponent from 'components/admin/CreateUserComponent';
+import ConfirmOrderPage from 'pages/confirm-order';
 
 let currentState = {
   model: '',
@@ -143,6 +143,11 @@ class App extends React.Component {
                 <Route path="/condition">
                   <ConditionPage/>
                 </Route>
+
+                <Route path="/confirm-order">
+                  <ConfirmOrderPage/>
+                </Route>
+
 
                 <Route path="/">
                   <HomePage />

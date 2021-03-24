@@ -1,9 +1,10 @@
 import React from 'react';
 import Logo from '../../../images/logo.png';
+import history from '../../../history';
 import axios from 'axios';
 import './order.css';
 
-export default class ConfirmOrder extends React.Component {
+export default class ConfirmOrderPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -21,7 +22,8 @@ export default class ConfirmOrder extends React.Component {
             lastName: "",
             phone: "",
             company: "",
-            isResidential: true
+            isResidential: true,
+			password: ""
         }
        
     }
@@ -59,10 +61,6 @@ export default class ConfirmOrder extends React.Component {
 		                	<p>PayPal Email</p>
 		                	<input type="email" name="PayPalEmail" value={email}  onChange={this.handleEmail} placeholder="Required Fields" required/>
 		                </section>
-						<section>
-		                	<p>Password</p>
-		                	<input type="password" name="PaypalPassword" value={password}  onChange={this.handlePassword} placeholder="I think this what it says" required/>
-		                </section>
 						<br />
 						<section>
 		                	<p>First Name</p>
@@ -97,19 +95,81 @@ export default class ConfirmOrder extends React.Component {
 		                	<input type="text" name="streetAddress2" value={streetAddress2} onChange={this.handleStreetAddress1} placeholder="Address here"/>
 		                </section>
 						<section>
-		                	<p>Address 1</p>
-		                	<input type="text" name="address" value={streetAddress} onChange={this.handleStreetAddress1} placeholder="Address here" required/>
-		                </section>
-						<section>
 		                	<p>Zip Code</p>
 		                	<input type="number" name="zip" value={zip} onChange={this.handleZip} placeholder="123456" required/>
 		                </section>
-						{/* USA is forced for now
+				
+						<section>
+		                	<p>State</p>
+		                	<input type="text" name="email"  onChange={this.handleEmail} placeholder="Required Fields" required/>
+							<select name="state" value={state} onChange={this.handleState} size="5" required>
+								<option value="AL">Alabama</option>
+								<option value="AK">Alaska</option>
+								<option value="AZ">Arizona</option>
+								<option value="AR">Arkansas</option>
+								<option value="CA">California</option>
+								<option value="CO">Colorado</option>
+								<option value="CT">Connecticut</option>
+								<option value="DE">Delaware</option>
+								<option value="DC">District Of Columbia</option>
+								<option value="FL">Florida</option>
+								<option value="GA">Georgia</option>
+								<option value="HI">Hawaii</option>
+								<option value="ID">Idaho</option>
+								<option value="IL">Illinois</option>
+								<option value="IN">Indiana</option>
+								<option value="IA">Iowa</option>
+								<option value="KS">Kansas</option>
+								<option value="KY">Kentucky</option>
+								<option value="LA">Louisiana</option>
+								<option value="ME">Maine</option>
+								<option value="MD">Maryland</option>
+								<option value="MA">Massachusetts</option>
+								<option value="MI">Michigan</option>
+								<option value="MN">Minnesota</option>
+								<option value="MS">Mississippi</option>
+								<option value="MO">Missouri</option>
+								<option value="MT">Montana</option>
+								<option value="NE">Nebraska</option>
+								<option value="NV">Nevada</option>
+								<option value="NH">New Hampshire</option>
+								<option value="NJ">New Jersey</option>
+								<option value="NM">New Mexico</option>
+								<option value="NY">New York</option>
+								<option value="NC">North Carolina</option>
+								<option value="ND">North Dakota</option>
+								<option value="OH">Ohio</option>
+								<option value="OK">Oklahoma</option>
+								<option value="OR">Oregon</option>
+								<option value="PA">Pennsylvania</option>
+								<option value="RI">Rhode Island</option>
+								<option value="SC">South Carolina</option>
+								<option value="SD">South Dakota</option>
+								<option value="TN">Tennessee</option>
+								<option value="TX">Texas</option>
+								<option value="UT">Utah</option>
+								<option value="VT">Vermont</option>
+								<option value="VA">Virginia</option>
+								<option value="WA">Washington</option>
+								<option value="WV">West Virginia</option>
+								<option value="WI">Wisconsin</option>
+								<option value="WY">Wyoming</option>															
+							</select> 
+		                </section>
+						
+						<input type="Submit" className="submitButton" id="OrderConfirm" defaultValue="Confirm" />
+					</form>
+				</div>	
+			);
+	    }
+}
+
+	/* USA is forced for now
 						<section>
 		                	<p>Country</p>
 							<select name="state" value={country} onChange={this.handleCountry} size="5" required disabled>
 								<option value="AF">Afghanistan</option>
-								<option value="AX">Åland Islands</option>
+								<option value="AX">ï¿½land Islands</option>
 								<option value="AL">Albania</option>
 								<option value="DZ">Algeria</option>
 								<option value="AS">American Samoa</option>
@@ -162,10 +222,10 @@ export default class ConfirmOrder extends React.Component {
 								<option value="CD">Congo, the Democratic Republic of the</option>
 								<option value="CK">Cook Islands</option>
 								<option value="CR">Costa Rica</option>
-								<option value="CI">Côte d'Ivoire</option>
+								<option value="CI">Cï¿½te d'Ivoire</option>
 								<option value="HR">Croatia</option>
 								<option value="CU">Cuba</option>
-								<option value="CW">Curaçao</option>
+								<option value="CW">Curaï¿½ao</option>
 								<option value="CY">Cyprus</option>
 								<option value="CZ">Czech Republic</option>
 								<option value="DK">Denmark</option>
@@ -288,11 +348,11 @@ export default class ConfirmOrder extends React.Component {
 								<option value="PT">Portugal</option>
 								<option value="PR">Puerto Rico</option>
 								<option value="QA">Qatar</option>
-								<option value="RE">Réunion</option>
+								<option value="RE">Rï¿½union</option>
 								<option value="RO">Romania</option>
 								<option value="RU">Russian Federation</option>
 								<option value="RW">Rwanda</option>
-								<option value="BL">Saint Barthélemy</option>
+								<option value="BL">Saint Barthï¿½lemy</option>
 								<option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
 								<option value="KN">Saint Kitts and Nevis</option>
 								<option value="LC">Saint Lucia</option>
@@ -359,68 +419,4 @@ export default class ConfirmOrder extends React.Component {
 								<option value="ZW">Zimbabwe</option>
 							</select>
 		                </section>
-						*/}  
-						<section>
-		                	<p>State</p>
-		                	<input type="text" name="email"  onChange={this.handleEmail} placeholder="Required Fields" required/>
-							<select name="state" value={state} onChange={this.handleState} size="5" required>
-								<option value="AL">Alabama</option>
-								<option value="AK">Alaska</option>
-								<option value="AZ">Arizona</option>
-								<option value="AR">Arkansas</option>
-								<option value="CA">California</option>
-								<option value="CO">Colorado</option>
-								<option value="CT">Connecticut</option>
-								<option value="DE">Delaware</option>
-								<option value="DC">District Of Columbia</option>
-								<option value="FL">Florida</option>
-								<option value="GA">Georgia</option>
-								<option value="HI">Hawaii</option>
-								<option value="ID">Idaho</option>
-								<option value="IL">Illinois</option>
-								<option value="IN">Indiana</option>
-								<option value="IA">Iowa</option>
-								<option value="KS">Kansas</option>
-								<option value="KY">Kentucky</option>
-								<option value="LA">Louisiana</option>
-								<option value="ME">Maine</option>
-								<option value="MD">Maryland</option>
-								<option value="MA">Massachusetts</option>
-								<option value="MI">Michigan</option>
-								<option value="MN">Minnesota</option>
-								<option value="MS">Mississippi</option>
-								<option value="MO">Missouri</option>
-								<option value="MT">Montana</option>
-								<option value="NE">Nebraska</option>
-								<option value="NV">Nevada</option>
-								<option value="NH">New Hampshire</option>
-								<option value="NJ">New Jersey</option>
-								<option value="NM">New Mexico</option>
-								<option value="NY">New York</option>
-								<option value="NC">North Carolina</option>
-								<option value="ND">North Dakota</option>
-								<option value="OH">Ohio</option>
-								<option value="OK">Oklahoma</option>
-								<option value="OR">Oregon</option>
-								<option value="PA">Pennsylvania</option>
-								<option value="RI">Rhode Island</option>
-								<option value="SC">South Carolina</option>
-								<option value="SD">South Dakota</option>
-								<option value="TN">Tennessee</option>
-								<option value="TX">Texas</option>
-								<option value="UT">Utah</option>
-								<option value="VT">Vermont</option>
-								<option value="VA">Virginia</option>
-								<option value="WA">Washington</option>
-								<option value="WV">West Virginia</option>
-								<option value="WI">Wisconsin</option>
-								<option value="WY">Wyoming</option>															
-							</select> 
-		                </section>
-						
-						<input type="Submit" className="submitButton" id="OrderConfirm" defaultValue="Confirm" />
-					</form>
-				</div>	
-			);
-	    }
-}
+						*/  

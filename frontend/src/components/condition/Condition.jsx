@@ -42,13 +42,19 @@ import {connect} from 'react-redux';
             let deviceImageUrl = await UserService.getModelByName(this.props.model);
             let device = await UserService.getDevicesBasedOnModelName(this.props.model);
             let deviceArray = device.data;
+            let deviceMap = new Map();
             this.setState({modelImage: deviceImageUrl.data.modelImage});
 
 
             // Get all of the device prices and place them into the appropriate state.
             for(let i = 0; i < deviceArray.length; i++) {
                 let condition = deviceArray[i].deviceCondition.conditonName;
+
+                // Get the device price and deviceId
                 let price = deviceArray[i].devicePrice;
+                let deviceId = deviceArray[i].deviceId;
+                
+                deviceMap.set(deviceId, price);
                 
                 switch(condition) {
                     case 'Fair':
@@ -68,6 +74,7 @@ import {connect} from 'react-redux';
               
             }
 
+            console.log(deviceMap);
             
         }
         catch(e) {
@@ -145,6 +152,8 @@ import {connect} from 'react-redux';
 
     setCondition(condition) {
         this.props.dispatch(addPhoneComponent(CONDITION, condition));
+
+        
 
         history.push("/condition");
         window.location.reload();

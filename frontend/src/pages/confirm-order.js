@@ -1,13 +1,13 @@
 import React from 'react';
 import Footer from '../components/common/footer/Footer';
 import Header_LP from '../components/common/Header/Header';
-import confirmOrder from '../components/common/order/confirm-order';
+import ConfirmOrderPage from '../components/common/order/confirm-order';
 
 function confirmOrder() {
   return (
-    <div className="App">
+    <div>
     <Header_LP />
-	<confirmOrder />
+	<ConfirmOrderPage />
     <Footer />
     </div>
   );

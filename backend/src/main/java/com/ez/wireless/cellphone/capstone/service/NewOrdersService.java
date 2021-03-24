@@ -37,11 +37,10 @@ public class NewOrdersService {
 		return orders;
 	}
 	
-	@GetMapping(path = "user-order")
-	public List<NewOrders> getOrdersBasedOnUser(@RequestParam String username) {
-		List<NewOrders> orders = new ArrayList<>();
-		
+	public List<NewOrders> getOrdersBasedOnUser(String username) {
 		Account foundAccount = accountService.getByUsername(username);
+		
+		ArrayList<NewOrders> orders = new ArrayList<NewOrders>();
 		
 		newOrdersRepository.findAll().forEach(x -> {
 			if(x.getAccountId() == foundAccount.getAccountId()) {
