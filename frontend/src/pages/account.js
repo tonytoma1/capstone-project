@@ -128,6 +128,10 @@ export default class Account extends React.Component {
         }
         
     }
+
+    handleClick() {
+        
+    }
  
 
 componentDidUpdate(){

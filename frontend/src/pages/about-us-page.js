@@ -32,6 +32,7 @@ export default class AboutUsPage extends React.Component {
                     <Container>
                         <Row>
 
+
                             <Col>
                                     <img src={DeviceImage} fluid />
                             </Col>
@@ -39,10 +40,18 @@ export default class AboutUsPage extends React.Component {
 
                                 <Col>
                                     <Card style={{ width: '20rem', padding: '10px' }} >
-                                        <Card.Title>Fast Service</Card.Title>
+                                        <div class = "card text-center">
+                                        <Card.Title>We Specialize In: </Card.Title>
                                         <Card.Text>
-                                            We specialize in buying old mobile devices. 
+                                            Fast Service
                                         </Card.Text>
+                                        <Card.Text>
+                                            Buying old mobile devices
+                                        </Card.Text>
+                                        <Card.Text>
+                                            Quality Product
+                                        </Card.Text>
+                                        </div>
                                     </Card>
                                 </Col>
                             
@@ -78,8 +87,7 @@ export default class AboutUsPage extends React.Component {
                             <Col>
                                 <Map />
                             </Col>
-                        </Row>
-
+                        </Row>    
                     </Container>
                 </div>
 

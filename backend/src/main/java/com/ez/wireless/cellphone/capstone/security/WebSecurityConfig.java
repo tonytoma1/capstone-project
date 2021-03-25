@@ -98,6 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/api/model/find").permitAll()
 				//.antMatchers(HttpMethod.GET, "/api/account/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/account").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.GET, "/api/new-orders/**").hasAnyRole("USER", "ADMIN")
 				// All other end-points are secured
 				.anyRequest().hasRole("ADMIN")
 			.and()

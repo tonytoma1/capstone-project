@@ -4,7 +4,7 @@ import './footer-css.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Container, Row, Col } from 'reactstrap';
-
+import {Link} from 'react-router-dom';
 
 
 import number from '../../../images/phone-call.png'
@@ -22,14 +22,11 @@ function Footer () {
           <Col >
                 <img src={logo} alt="" className="aboutrecommerce"/>
                 
-                <span className="about-us"> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Quisque pretium tristique tempus. Morbi aliquam dictum ante eu viverra. Phasellus id."</span>
           </Col>
 
           <Col >
 
               <span className="title"> CUSTOMER SERVICE </span>
-
               <span className="content">Contact Us</span>
               <span className="content">Ordering & Payment</span>
               <span className="content">Shipping</span>
