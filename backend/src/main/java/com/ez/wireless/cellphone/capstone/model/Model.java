@@ -24,7 +24,6 @@ public class Model {
 	@SequenceGenerator(name="model_sequence", sequenceName = "model_sequence", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "model_sequence")
 	@Column(name = "model_id")
-	@JsonIgnore
 	private Integer modelId;
 	
 	@Column(name =  "model_name", unique = true)
