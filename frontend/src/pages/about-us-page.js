@@ -31,15 +31,11 @@ export default class AboutUsPage extends React.Component {
                 <div className="wrapper"> 
                     <Container>
                         <Row>
-
-
                             <Col>
                                     <img src={DeviceImage} fluid />
                             </Col>
-
-
                                 <Col>
-                                    <Card style={{ width: '20rem', padding: '10px' }} >
+                                    <Card style={{ width: '20rem', padding: '40px', border: 'none' }} >
                                         <div class = "card text-center">
                                         <Card.Title>We Specialize In: </Card.Title>
                                         <Card.Text>
@@ -56,13 +52,7 @@ export default class AboutUsPage extends React.Component {
                                 </Col>
                             
                         </Row>
-
-                        <Row>
-                            <Col>
                                 <h1>Contact us</h1>
-                            </Col>
-                        </Row>
-
                         <Row>
                             <Col>
                                 <Form>
