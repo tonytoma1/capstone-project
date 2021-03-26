@@ -2,6 +2,7 @@ package com.ez.wireless.cellphone.capstone.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +37,7 @@ public class NewOrders {
 	@Column(name = "total_price")
 	private Double totalPrice;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "device_id")
 	private Device devices;
 	

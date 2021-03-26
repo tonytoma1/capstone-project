@@ -59,25 +59,7 @@ public class Device
 	@JoinColumn(name = "device_company_id")
 	private DeviceCompany deviceCompany;
 	
-	@OneToMany(mappedBy = "devices")
-	private List<NewOrders> newOrders;
 	
-	
-	
-
-	/**
-	 * @return the newOrders
-	 */
-	public List<NewOrders> getNewOrders() {
-		return newOrders;
-	}
-
-	/**
-	 * @param newOrders the newOrders to set
-	 */
-	public void setNewOrders(List<NewOrders> newOrders) {
-		this.newOrders = newOrders;
-	}
 
 	/**
 	 * @return The device ID
