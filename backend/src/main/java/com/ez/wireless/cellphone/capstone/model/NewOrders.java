@@ -37,7 +37,7 @@ public class NewOrders {
 	@Column(name = "total_price")
 	private Double totalPrice;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "device_id")
 	private Device devices;
 	
