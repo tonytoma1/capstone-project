@@ -50,11 +50,11 @@ export default class AdminComponent extends React.Component {
             <div>
                 {this.state.isLoading ? 'Loading...' : <div>
                 <h2 className="text-center">Persons Lists</h2>
-                <div className="row">
+              
                     <Link to='/add/id'>
                         <button className="btn btn-primary">Add</button>
                     </Link>
-                </div>
+               
                 <div className="row">
                     <table className="table table-striped table-bordered">
                         <thead className="thead-dark">
