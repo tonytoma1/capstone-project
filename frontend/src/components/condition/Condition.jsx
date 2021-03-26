@@ -158,12 +158,19 @@ import {connect} from 'react-redux';
         
     }
 
-    addItemToCart(condition, deviceId) {
+    addItemToCart(condition, deviceId, price) {
         this.props.dispatch(addPhoneComponent(CONDITION, condition));
         // add item to cart
-        this.props.dispatch(addPhoneComponent(CART, deviceId));
+        let deviceAdded = {deviceId: deviceId, 
+                           model: this.props.model,
+                           modelImage: this.state.modelImage,
+                           serviceProvider: this.props.service_provider,
+                           storage: this.props.storage,
+                           condition: condition,
+                           price: price}
+
+        this.props.dispatch(addPhoneComponent(CART, deviceAdded));
         
-        console.log(deviceId);
     
 
         /*
@@ -274,7 +281,7 @@ import {connect} from 'react-redux';
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
                                                     <CardTitle tag="h5">$ {this.state.brokenPrice}</CardTitle>
 
-                                                    <Button onClick={() => this.addItemToCart('Broken', this.state.deviceMap.get('Broken').deviceId)}>
+                                                    <Button onClick={() => this.addItemToCart('Broken', this.state.deviceMap.get('Broken').deviceId, this.state.brokenPrice)}>
                                                     Sell Device</Button>
                                                 </CardBody>
                                             </Card>
@@ -308,7 +315,7 @@ import {connect} from 'react-redux';
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
                                                     <CardTitle tag="h5">$ {this.state.fairPrice}</CardTitle>
 
-                                                    <Button onClick={() => this.addItemToCart('Fair', this.state.deviceMap.get('Fair').deviceId)}>
+                                                    <Button onClick={() => this.addItemToCart('Fair', this.state.deviceMap.get('Fair').deviceId, this.state.fairPrice)}>
                                                         Sell Device
                                                     </Button>
                                                 </CardBody>
@@ -343,7 +350,7 @@ import {connect} from 'react-redux';
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
                                                     <CardTitle tag="h5">$ {this.state.goodPrice}</CardTitle>
 
-                                                    <Button onClick={() => this.addItemToCart('Good', this.state.deviceMap.get('Good').deviceId)}>
+                                                    <Button onClick={() => this.addItemToCart('Good', this.state.deviceMap.get('Good').deviceId, this.state.goodPrice)}>
                                                     Sell Device</Button>
                                                 </CardBody>
                                             </Card>
@@ -377,7 +384,7 @@ import {connect} from 'react-redux';
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
                                                     <CardTitle tag="h5">$ {this.state.excellentPrice}</CardTitle>
 
-                                                    <Button onClick={() => this.addItemToCart('Excellent', this.state.deviceMap.get('Excellent').deviceId)}>
+                                                    <Button onClick={() => this.addItemToCart('Excellent', this.state.deviceMap.get('Excellent').deviceId, this.state.excellentPrice)}>
                                                     Sell Device</Button>
                                                 </CardBody>
                                             </Card>

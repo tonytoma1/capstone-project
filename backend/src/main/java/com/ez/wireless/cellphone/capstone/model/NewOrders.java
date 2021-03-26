@@ -5,8 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.ez.wireless.cellphone.capstone.model.Account;
+import com.ez.wireless.cellphone.capstone.model.ClientTemp;
 
 @Entity
 @Table(name = "New_Orders")
@@ -18,11 +23,13 @@ public class NewOrders {
 	@Column(name = "new_order_id")
 	private Integer newOrderId;
 	
-	@Column(name = "client_temp_id")
-	private Integer clientTempId;
+	@OneToOne
+	@JoinColumn(name = "client_temp_id")
+	private ClientTemp clientTemp;
 	
-	@Column(name = "account_id")
-	private Integer accountId;
+	@OneToOne
+	@JoinColumn(name = "account_id")
+	private Account account;
 	
 	@Column(name = "total_price")
 	private Double totalPrice;
@@ -41,33 +48,6 @@ public class NewOrders {
 		this.newOrderId = newOrderId;
 	}
 	
-	/**
-	 * @return the clientTempId
-	 */
-	public Integer getClientTempId() {
-		return clientTempId;
-	}
-	
-	/**
-	 * @param clientTempId the clientTempId to set
-	 */
-	public void setClientTempId(Integer clientTempId) {
-		this.clientTempId = clientTempId;
-	}
-
-	/**
-	 * @return the accountId
-	 */
-	public Integer getAccountId() {
-		return accountId;
-	}
-	
-	/**
-	 * @param accountId the accountId to set
-	 */
-	public void setAccountId(Integer accountId) {
-		this.accountId = accountId;
-	}
 
 	/**
 	 * @return the totalPrice
@@ -82,6 +62,38 @@ public class NewOrders {
 	public void setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
+	/**
+	 * @return the clientTempId
+	 */
+	public ClientTemp getClientTemp() {
+		return clientTemp;
+	}
+
+	/**
+	 * @param clientTempId the clientTempId to set
+	 */
+	public void setClientTemp(ClientTemp clientTemp) {
+		this.clientTemp = clientTemp;
+	}
+
+	/**
+	 * @return the accountId
+	 */
+	public Account getAccount() {
+		return account;
+	}
+
+	/**
+	 * @param accountId the accountId to set
+	 */
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+
+	
+	
 	
 	
 }
