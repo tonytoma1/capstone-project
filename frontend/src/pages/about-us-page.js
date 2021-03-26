@@ -52,6 +52,9 @@ export default class AboutUsPage extends React.Component {
                                 </Col>
                             
                         </Row>
+                        <div className = "box">
+
+                       
                                 <h1>Contact us</h1>
                         <Row>
                             <Col>
@@ -78,6 +81,7 @@ export default class AboutUsPage extends React.Component {
                                 <Map />
                             </Col>
                         </Row>    
+                        </div>
                     </Container>
                 </div>
 
