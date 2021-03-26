@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ez.wireless.cellphone.capstone.model.Role;
 import com.ez.wireless.cellphone.capstone.service.RoleService;
 
+/**
+ * 
+ * @author Dakota Harvey
+ */
 @RestController
 @RequestMapping("/api/role")
 public class RoleController {

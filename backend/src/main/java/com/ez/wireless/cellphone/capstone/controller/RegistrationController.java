@@ -13,7 +13,7 @@ import com.ez.wireless.cellphone.capstone.service.AccountService;
 
 /**
  * Registers a user to the database
- * @author Tony 
+ * @author Tony Toma
  */
 @RestController
 //@RequestMapping("/api/register")

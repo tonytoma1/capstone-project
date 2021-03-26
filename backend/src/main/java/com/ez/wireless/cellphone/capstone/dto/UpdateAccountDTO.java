@@ -1,5 +1,9 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
+/**
+ * 
+ * @author Tony Toma
+ */
 public class UpdateAccountDTO {
 	
 	private String city;

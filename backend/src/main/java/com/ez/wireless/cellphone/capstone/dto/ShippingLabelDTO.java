@@ -1,5 +1,9 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
+/**
+ * 
+ * @author Dakota Harvey
+ */
 public class ShippingLabelDTO 
 {
 	private String	fromFirstName,

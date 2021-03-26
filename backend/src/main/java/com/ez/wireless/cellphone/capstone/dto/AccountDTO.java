@@ -1,5 +1,9 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
+/**
+ * Data transfer object used when registering an account to the database.
+ * @author Dakota Harvey
+ */
 public class AccountDTO {
 	
 	public String username;

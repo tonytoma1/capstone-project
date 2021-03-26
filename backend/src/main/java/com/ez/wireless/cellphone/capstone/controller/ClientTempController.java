@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ez.wireless.cellphone.capstone.model.ClientTemp;
 import com.ez.wireless.cellphone.capstone.service.ClientTempService;
 
+/**
+ * 
+ * @author Dakota Harvey
+ */
 @RestController
 @RequestMapping("/api/client-temp")
 public class ClientTempController {

@@ -27,7 +27,7 @@ public class ShippingLabel
 	//private AccountService as;
 	
 	//TODO implement proper calling of the client account from the account object
-	//private Account ac = ac.getAccountId();
+	//private Account ac = ac.getByUsername("Franks username");
 					
 	/**
 	 * Takes in information from the frontend, calls local methods to map the to and from a addresses out, creates a parcel from the postal service
@@ -73,8 +73,20 @@ public class ShippingLabel
 	 * @return the client's address
 	 * @throws EasyPostException as info is assumed to be correct in the database
 	 */
-	private Address toAddress(/*Account ac*/) throws EasyPostException
+	private Address toAddress() throws EasyPostException
 	{
+//		toAddressMap.put("name", ac.getPerson().getFirstName() + " " + ac.getPerson().getLastName());
+//		toAddressMap.put("company", ac.getPerson().getCompany());
+//		toAddressMap.put("street1", ac.getPerson().getStreetAddress1());
+//		toAddressMap.put("street2", ac.getPerson().getStreetAddress2());
+//		toAddressMap.put("city", ac.getPerson().getCity());
+//		toAddressMap.put("state", ac.getPerson().getState());
+//		toAddressMap.put("country", ac.getPerson().getCountry());
+//		toAddressMap.put("zip", ac.getPerson().getZip());
+//		toAddressMap.put("phone", ac.getPerson().getPhone());
+//		toAddressMap.put("email", ac.getPerson().getEmail());
+//		toAddressMap.put("residential", ac.getPerson().isResidental());
+		
 		toAddressMap.put("name", "Frank Yakou");
 		toAddressMap.put("company", "Recommerce");
 		toAddressMap.put("street1", "1 E 161st St.");
@@ -98,20 +110,6 @@ public class ShippingLabel
 		catch(EasyPostException e) {
 			e.printStackTrace();
 		}
-		 
-		
-		//TODO
-//		toAddressMap.put("name", ac.getPerson().getFirstName() + " " + ac.getPerson().getLastName());
-//		toAddressMap.put("company", ac.getPerson().getCompany());
-//		toAddressMap.put("street1", ac.getPerson().getStreetAddress1());
-//		toAddressMap.put("street2", ac.getPerson().getStreetAddress2());
-//		toAddressMap.put("city", ac.getPerson().getCity());
-//		toAddressMap.put("state", ac.getPerson().getState());
-//		toAddressMap.put("country", ac.getPerson().getCountry());
-//		toAddressMap.put("zip", ac.getPerson().getZip());
-//		toAddressMap.put("phone", ac.getPerson().getPhone());
-//		toAddressMap.put("email", ac.getPerson().getEmail());
-//		toAddressMap.put("residential", ac.getPerson().isResidental());
 		return toAddress;
 	}
 	

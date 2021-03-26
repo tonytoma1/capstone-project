@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ez.wireless.cellphone.capstone.model.ServiceProvider;
 import com.ez.wireless.cellphone.capstone.service.ServiceProviderService;
 
+/**
+ * 
+ * @author Dakota Harvey
+ */
 @RestController
 @RequestMapping("/api/service-provider")
 public class ServiceProviderController 
