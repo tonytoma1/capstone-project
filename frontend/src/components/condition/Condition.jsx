@@ -11,7 +11,7 @@ import {
 import { List } from 'reactstrap';
 
 import history from '../../history';
-import {CONDITION, addPhoneComponent} from 'redux-action.js';
+import {CONDITION, CART, addPhoneComponent} from 'redux-action.js';
 
 import './condition-css.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -33,20 +33,24 @@ import {connect} from 'react-redux';
             brokenPrice: '',
             fairPrice: '',
             goodPrice: '',
-            excellentPrice: ''
+            excellentPrice: '',
+            deviceMap: new Map()
         }
     }
 
     async componentDidMount() {
         try {
             let deviceImageUrl = await UserService.getModelByName(this.props.model);
-            let device = await UserService.getDevicesBasedOnModelName(this.props.model);
+          //  let device = await UserService.getDevicesBasedOnModelName(this.props.model);
+            let device = await UserService.getDevicesBasedOnConditions(this.props.model, this.props.storage, 
+                                                                       this.props.service_provider);
             let deviceArray = device.data;
             let deviceMap = new Map();
             this.setState({modelImage: deviceImageUrl.data.modelImage});
 
 
             // Get all of the device prices and place them into the appropriate state.
+            console.log(deviceArray);
             for(let i = 0; i < deviceArray.length; i++) {
                 let condition = deviceArray[i].deviceCondition.conditonName;
 
@@ -54,25 +58,29 @@ import {connect} from 'react-redux';
                 let price = deviceArray[i].devicePrice;
                 let deviceId = deviceArray[i].deviceId;
                 
-                deviceMap.set(deviceId, price);
                 
                 switch(condition) {
                     case 'Fair':
                         this.setState({fairPrice: price});
+                        deviceMap.set('Fair', {price: price, deviceId: deviceId});
                         break;
                     case 'Broken':
                         this.setState({brokenPrice: price});
+                        deviceMap.set('Broken', {price: price, deviceId: deviceId});
                         break;
                     case 'Good':
                         this.setState({goodPrice: price});
+                        deviceMap.set('Good', {price: price, deviceId: deviceId});
                         break;
                     case 'Excellent': 
                         this.setState({excellentPrice: price});
+                        deviceMap.set('Excellent', {price: price, deviceId: deviceId});
                         break;
-                }
-            
+                }        
               
             }
+
+            this.setState({deviceMap: deviceMap});
 
             console.log(deviceMap);
             
@@ -150,14 +158,20 @@ import {connect} from 'react-redux';
         
     }
 
-    setCondition(condition) {
+    addItemToCart(condition, deviceId) {
         this.props.dispatch(addPhoneComponent(CONDITION, condition));
-
+        // add item to cart
+        this.props.dispatch(addPhoneComponent(CART, deviceId));
         
+        console.log(deviceId);
+    
 
+        /*
         history.push("/condition");
         window.location.reload();
+        */
     }
+
 
 
     render(){
@@ -260,7 +274,8 @@ import {connect} from 'react-redux';
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
                                                     <CardTitle tag="h5">$ {this.state.brokenPrice}</CardTitle>
 
-                                                    <Button>Sell Device</Button>
+                                                    <Button onClick={() => this.addItemToCart('Broken', this.state.deviceMap.get('Broken').deviceId)}>
+                                                    Sell Device</Button>
                                                 </CardBody>
                                             </Card>
 
@@ -293,7 +308,9 @@ import {connect} from 'react-redux';
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
                                                     <CardTitle tag="h5">$ {this.state.fairPrice}</CardTitle>
 
-                                                    <Button >Sell Device</Button>
+                                                    <Button onClick={() => this.addItemToCart('Fair', this.state.deviceMap.get('Fair').deviceId)}>
+                                                        Sell Device
+                                                    </Button>
                                                 </CardBody>
                                             </Card>
                                         </Col>
@@ -326,7 +343,8 @@ import {connect} from 'react-redux';
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
                                                     <CardTitle tag="h5">$ {this.state.goodPrice}</CardTitle>
 
-                                                    <Button>Sell Device</Button>
+                                                    <Button onClick={() => this.addItemToCart('Good', this.state.deviceMap.get('Good').deviceId)}>
+                                                    Sell Device</Button>
                                                 </CardBody>
                                             </Card>
                                         </Col>
@@ -359,7 +377,8 @@ import {connect} from 'react-redux';
                                                     <CardSubtitle tag="h6" className="mb-2 text-muted">Your offer</CardSubtitle>
                                                     <CardTitle tag="h5">$ {this.state.excellentPrice}</CardTitle>
 
-                                                    <Button>Sell Device</Button>
+                                                    <Button onClick={() => this.addItemToCart('Excellent', this.state.deviceMap.get('Excellent').deviceId)}>
+                                                    Sell Device</Button>
                                                 </CardBody>
                                             </Card>
                                         </Col>

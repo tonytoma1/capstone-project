@@ -41,6 +41,13 @@ public class DeviceController
 		return deviceService.findDevicesBasedOnModelName(modelName);
 	}
 	
+	@GetMapping(path = "/find")
+	public List<Device> getDevices(@RequestParam String modelName, @RequestParam Integer storageSize,
+												  @RequestParam String serviceProviderName) {
+		
+		return deviceService.findDevices(modelName, storageSize, serviceProviderName);
+	}
+	
 	/**
 	 * Saves a device to the device table
 	 * @param device The device

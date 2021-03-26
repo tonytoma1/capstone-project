@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoProperties.Storage;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ez.wireless.cellphone.capstone.repository.DeviceCompanyRepository;
 import com.ez.wireless.cellphone.capstone.repository.DeviceConditionRepository;
@@ -62,6 +63,14 @@ public class DeviceService
 		
 	}
 	
+	
+	public List<Device> findDevices(String modelName, Integer storageSize, String serviceProviderName) {
+		Model model = modelRepository.findByModelName(modelName);
+		StorageCapacity storageCapacity = storageCapacityRepository.findByStorageCapacitySize(storageSize);
+		ServiceProvider serviceProvider = serviceProviderRepository.findByServiceProviderName(serviceProviderName);
+		
+		return deviceRepository.findByModelAndStorageCapacityAndServiceProvider(model, storageCapacity, serviceProvider);
+	}
 	
 	
 	/**

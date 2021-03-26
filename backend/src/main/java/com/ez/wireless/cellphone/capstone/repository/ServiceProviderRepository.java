@@ -8,5 +8,5 @@ import com.ez.wireless.cellphone.capstone.model.ServiceProvider;
 @Repository
 public interface ServiceProviderRepository extends CrudRepository<ServiceProvider, Integer> 
 {
-
+	ServiceProvider findByServiceProviderName(String serviceProviderName);
 }

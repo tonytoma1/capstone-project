@@ -67,6 +67,10 @@ public class AccountService
 		return accountRepository.findByUuidAndUsername(uuid, username);
 	}
 	
+	public Account getByAccountId(Long accountId) {
+		return accountRepository.findByAccountId(accountId);
+	}
+	
 	/**
 	 * Saves the Account to the account table
 	 * @param account The account
