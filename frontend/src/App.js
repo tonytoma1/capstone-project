@@ -35,7 +35,7 @@ let currentState = {
   storage: '',
   condition: '', 
   service_provider: '',
-  shopping_cart: []
+  shopping_cart: new Array()
 }
 
 function reducer(state = currentState, action) {
@@ -83,7 +83,7 @@ function reducer(state = currentState, action) {
 
       default: 
         return {
-          state
+          ...state
         };
   }
 }
