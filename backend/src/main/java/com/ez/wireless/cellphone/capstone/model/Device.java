@@ -3,6 +3,8 @@ package com.ez.wireless.cellphone.capstone.model;
 import com.ez.wireless.cellphone.capstone.model.DeviceCondition;
 import com.ez.wireless.cellphone.capstone.model.StorageCapacity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -55,6 +58,26 @@ public class Device
 	//@MapsId
 	@JoinColumn(name = "device_company_id")
 	private DeviceCompany deviceCompany;
+	
+	@OneToMany(mappedBy = "devices")
+	private List<NewOrders> newOrders;
+	
+	
+	
+
+	/**
+	 * @return the newOrders
+	 */
+	public List<NewOrders> getNewOrders() {
+		return newOrders;
+	}
+
+	/**
+	 * @param newOrders the newOrders to set
+	 */
+	public void setNewOrders(List<NewOrders> newOrders) {
+		this.newOrders = newOrders;
+	}
 
 	/**
 	 * @return The device ID

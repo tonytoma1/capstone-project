@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -33,6 +35,28 @@ public class NewOrders {
 	
 	@Column(name = "total_price")
 	private Double totalPrice;
+	
+	@ManyToOne
+	@JoinColumn(name = "device_id")
+	private Device devices;
+	
+	
+	
+	
+
+	/**
+	 * @return the devices
+	 */
+	public Device getDevices() {
+		return devices;
+	}
+
+	/**
+	 * @param devices the devices to set
+	 */
+	public void setDevices(Device devices) {
+		this.devices = devices;
+	}
 
 	/**
 	 * @return the newOrderId
