@@ -24,6 +24,7 @@ import com.ez.wireless.cellphone.capstone.dto.AccountPersonDTO;
 import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
 import com.ez.wireless.cellphone.capstone.dto.ShippingLabelDTO;
 import com.ez.wireless.cellphone.capstone.dto.UUIDEmailDTO;
+import com.ez.wireless.cellphone.capstone.dto.UpdateAccountDTO;
 import com.ez.wireless.cellphone.capstone.dto.UpdatePasswordDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
@@ -198,5 +199,10 @@ public class AccountController
 			throw new IllegalArgumentException("Account could not be saved");
 		}
 
+	}
+	
+	@PostMapping(path = "/update-account/{id}")
+	public void updateUser(@PathVariable Long id, @RequestBody UpdateAccountDTO updateAccountDTO) {
+		//Account account = accountService.get
 	}
 }

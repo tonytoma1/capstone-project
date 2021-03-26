@@ -122,6 +122,18 @@ class UserService {
         return await axios.get(Constants.API_URL + "device", config);
     }
 
+    async getDevicesBasedOnConditions(model, storageSize, serviceProvider) {
+        var config = {
+            params: {
+                modelName: model,
+                storageSize: storageSize,
+                serviceProviderName: serviceProvider
+            }
+        }
+
+        return await axios.get(Constants.API_URL + "device/find", config);
+    }
+
     /**
      * Updates a user's UUID into the database
      * @param {string} email the account holder's email

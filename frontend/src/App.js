@@ -25,7 +25,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage';
 
-import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE} from 'redux-action';
+import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE, CART} from 'redux-action';
 import ServiceProviderPage from 'pages/service-provider-page';
 import CreateUserComponent from 'components/admin/CreateUserComponent';
 import AddDeviceComponent from 'components/admin/AddDeviceComponent';
@@ -74,6 +74,15 @@ function reducer(state = currentState, action) {
         service_provider: state.service_provider,
         shopping_cart: state.shopping_cart
       }
+      case CART: 
+      return {
+        model: state.model,
+        storage: state.storage,
+        condition: state.condition,
+        service_provider: state.service_provider,
+        shopping_cart: [...state.shopping_cart, action.payload]
+      }
+
       default: 
         return {
           state

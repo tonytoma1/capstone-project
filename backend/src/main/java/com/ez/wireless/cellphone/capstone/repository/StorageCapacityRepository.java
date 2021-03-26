@@ -5,5 +5,5 @@ import com.ez.wireless.cellphone.capstone.model.StorageCapacity;
 
 public interface StorageCapacityRepository extends CrudRepository<StorageCapacity, Integer> 
 {
-	
+	StorageCapacity findByStorageCapacitySize(Integer storageCapacitySize);
 }
