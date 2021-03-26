@@ -5,8 +5,8 @@ import { data } from 'jquery';
 import { Link } from 'react-router-dom';
 import history from '../../history';
 
-//let a = AdminService.verifyAdmin();
-//console.log(a);
+let a = AdminService.verifyAdmin();
+console.log(a);
 
 export default class AdminComponent extends React.Component {
     constructor(props) {

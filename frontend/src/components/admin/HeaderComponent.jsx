@@ -14,9 +14,13 @@ export default class HeaderComponent extends Component {
                 <header>
                     <nav className="navbar navbar-expand-md navbar-dark bg-primary">
                     <div className="navbar-brand">Admin Management Page</div>
+                    <Link to='/admin'>
+                    <div className="navbar-brand">View Account</div>
+                    </Link>
                     <Link to='/vieworders'>
                     <div className="navbar-brand">View Orders</div>
                     </Link>
+                    
                     
                     </nav>
                 </header>
