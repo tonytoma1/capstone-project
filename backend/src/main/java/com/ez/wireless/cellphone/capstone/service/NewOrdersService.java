@@ -43,7 +43,7 @@ public class NewOrdersService {
 		ArrayList<NewOrders> orders = new ArrayList<NewOrders>();
 		
 		newOrdersRepository.findAll().forEach(x -> {
-			if(x.getAccountId() == foundAccount.getAccountId()) {
+			if(x.getAccount().getAccountId() == foundAccount.getAccountId()) {
 				orders.add(x);
 			}
 		});
