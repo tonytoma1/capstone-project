@@ -14,6 +14,10 @@ import com.ez.wireless.cellphone.capstone.dto.DeviceDTO;
 import com.ez.wireless.cellphone.capstone.model.Device;
 import com.ez.wireless.cellphone.capstone.service.DeviceService;
 
+/**
+ * 
+ * @author Tony Toma
+ */
 @RestController
 @RequestMapping("/api/device")
 public class DeviceController 

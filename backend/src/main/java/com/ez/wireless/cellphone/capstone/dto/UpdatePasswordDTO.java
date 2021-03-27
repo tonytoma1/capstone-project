@@ -1,5 +1,8 @@
 package com.ez.wireless.cellphone.capstone.dto;
-
+/**
+ * 
+ * @author Dakota Harvey
+ */
 public class UpdatePasswordDTO {
 	
 	private String uuid;

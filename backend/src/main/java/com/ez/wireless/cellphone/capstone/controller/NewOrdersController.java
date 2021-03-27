@@ -14,6 +14,10 @@ import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.model.NewOrders;
 import com.ez.wireless.cellphone.capstone.service.NewOrdersService;
 
+/**
+ * 
+ * @author Dakota Harvey
+ */
 @RestController
 @RequestMapping("/api/new-orders")
 public class NewOrdersController {

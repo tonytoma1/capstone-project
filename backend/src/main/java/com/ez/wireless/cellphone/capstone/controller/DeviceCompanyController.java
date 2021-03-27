@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ez.wireless.cellphone.capstone.model.DeviceCompany;
 import com.ez.wireless.cellphone.capstone.service.DeviceCompanyService;
 
+	/**
+	 * 
+	 * @author Dakota Harvey
+	 */
 	@RestController
 	@RequestMapping("/api/device-company")
 	public class DeviceCompanyController {	

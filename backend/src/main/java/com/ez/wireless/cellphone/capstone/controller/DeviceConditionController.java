@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ez.wireless.cellphone.capstone.model.DeviceCondition;
 import com.ez.wireless.cellphone.capstone.service.DeviceConditionService;
 
+/**
+ * 
+ * @author Tony Toma
+ */
 @RestController
 @RequestMapping("/api/condition")
 public class DeviceConditionController {

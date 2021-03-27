@@ -31,6 +31,10 @@ import com.ez.wireless.cellphone.capstone.service.AccountService;
 import com.ez.wireless.cellphone.capstone.shipping.ShippingLabel;
 import com.ez.wireless.cellphone.capstone.shipping.ShippingLabelResponse;
 
+/**
+ * 
+ * @author Tony Toma
+ */
 @RestController
 @RequestMapping("/api/account")
 public class AccountController 
@@ -54,7 +58,6 @@ public class AccountController
 	/**
 	 * Gets a specific account when provided with a username.
 	 * @param username The Username
-	 * @author Dakota Harvey
 	 * @return the account service
 	 */
 	@GetMapping

@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ez.wireless.cellphone.capstone.model.Person;
 import com.ez.wireless.cellphone.capstone.service.PersonService;
 
+/**
+ * 
+ * @author Tony Toma
+ */
 @RestController
 @RequestMapping("/api/person")
 public class PersonController {

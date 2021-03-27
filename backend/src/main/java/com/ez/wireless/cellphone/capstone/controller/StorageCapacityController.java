@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ez.wireless.cellphone.capstone.model.StorageCapacity;
 import com.ez.wireless.cellphone.capstone.service.StorageCapacityService;
 
+/**
+ * 
+ * @author Tony Toma
+ */
 @RestController
 @RequestMapping("/api/storage-capacity")
 public class StorageCapacityController 

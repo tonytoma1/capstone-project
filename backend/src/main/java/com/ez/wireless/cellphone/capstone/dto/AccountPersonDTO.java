@@ -1,5 +1,9 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
+/**
+ * 
+ * @author Tony Toma
+ */
 public class AccountPersonDTO {
 	private String  password,
 					streetAddress1,
