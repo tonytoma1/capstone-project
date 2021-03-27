@@ -91,6 +91,10 @@ html {
           margin-left: 10px;
         }
 
+        .dropdown-box {
+            display: inline;
+        }
+
 /*   --> PHONE CSS*/
 
   @media only screen and (max-width: 600px) {
