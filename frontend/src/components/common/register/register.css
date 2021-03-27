@@ -1,7 +1,117 @@
 
 
+.registration-container{
+    width: 100%;
+}
 
-.log-bg{
+.registration-container .left{
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+}
+
+.asterisk{
+    color: rgb(238, 86, 31);
+    font-weight: 700;
+} 
+
+
+.registration-container .right{
+    width: 50%;
+    position: absolute;
+    left: 500px;
+}
+
+.registration-container .right .first .name #names {
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.name-cont{
+    width: 50%;
+    display: inline-block;
+}
+
+
+.right .reg-btn {
+    margin: 4rem auto;
+    min-width: 45%;
+    text-align: center;
+
+    background-color:#3AAFA9;
+    color: white;
+    padding: 5px 75px;
+    display: inline-block;
+    margin-left: 20px;
+
+    text-transform: uppercase;
+
+    border-radius: 10px;
+    letter-spacing: 3px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: all .1s ease-in-out;
+}
+
+.right .back{
+    color: #3AAFA9;
+    background-color: unset;
+    border: solid 1px;
+    
+}
+
+.right .reg-btn:hover{
+    cursor: pointer;
+    opacity: 80%;
+    color: rgb(41, 41, 41);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#return-add{
+    display: none;
+}
+
+#sign{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .log-bg{
 
     background-image: url("../../../images/visuals/login-bg.jpg");
     background-attachment: fixed;
@@ -42,10 +152,6 @@
     padding-top: 40px;
 }
 
-.asterisk{
-    color: rgb(238, 86, 31);
-    font-weight: 700;
-} 
 
 .registration-container .ip-group{
     width: 80%;
@@ -72,7 +178,7 @@
 
 .registration-container .next:active {
     color: orchid;
-}
+} */
 
 
 

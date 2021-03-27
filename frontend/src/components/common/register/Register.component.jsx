@@ -30,7 +30,9 @@ export default class Register extends Component {
             lastName: "",
             phone: "",
             company: "",
-            isResidential: false
+            isResidential: false,
+            matchingPass: false,
+            complete: false
 
         }
     }
@@ -57,79 +59,256 @@ export default class Register extends Component {
 
     goToSign() {
         window.location.href = '/login';
+    }
 
+    nextButton  = () => {
+        var fname = document.getElementById("reg-fname").value;
+        var lname = document.getElementById("reg-lname").value;
+
+        var email = document.getElementById("reg-email").value;
+        var pass = document.getElementById("reg-pass").value;
+        var repass = document.getElementById("reg-re-pass").value;
+
+        
+        if(fname === "" || email === "" || pass === "" || repass === ""){
+
+            this.setState ( {complete: true,  matchingPass: false});
+        }
+        else if (pass !== repass){
+            this.setState ( {complete: false,  matchingPass: true});
+        }else{
+            this.setState ( {complete: false,  matchingPass: false});
+
+            document.getElementById('login-info').style.display= "none";
+            document.getElementById('return-add').style.display= "inline";
+
+            document.getElementById('sign').style.display= "inline";
+            document.getElementById('next').style.display= "none";
+        }
+    }
+
+    backButton  = () => {
+        document.getElementById('login-info').style.display= "block";
+        document.getElementById('return-add').style.display= "none";
+
+        document.getElementById('sign').style.display= "none";
+            document.getElementById('next').style.display= "inline-block";
     }
 
 
     render() {
         const { userName, password, streetAddress1, streetAddress2, country, state, zip, city, email, firstName, lastName, phone, company, isResidential } = this.state;
-
+        const {matchingPass} = this.state;
+        const {complete} = this.state;
         return (
+            
 
-            <div className="log-bg" >
-                <div className="registration-container">
+            <div className="registration-container ">
 
-                    <div className="left">
-                        <img src={Logo} />
-                        <h2> About you</h2>
-                        <h5>
-                            Enter your information on the right. Required fields will have a ( <span className="asterisk">*</span> ).
-                             <br /><br />If you already have an account with us, click the Sign In button below.
-                        </h5>
+                <div className="left">
+                    <img src={Logo} />
+                    <h2> About you</h2>
+                    <h5>
+                        Enter your information on the right. Required fields will have a ( <span className="asterisk">*</span> ).
+                              <br /><br />If you already have an account with us, click the Sign In button below.
+                         </h5>
 
-                        <button onClick={this.goToSign} > SIGN IN </button>
-
-                    </div>
-
-                    <div className="right">
-                        <h3> Registration</h3>
-                        <h4> Enter your details below</h4>
+                    <button onClick={this.goToSign} > SIGN IN </button>
+                </div>
 
 
-                        <div className="first">
-                            <label> First Name <span className="asterisk">*</span></label>
-                            <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
-                                <InputGroupText className="text"><img src={User} alt="password" /></InputGroupText>
-                                <Input className="ip" type={"text"} placeholder="enter your firstname here" id="loginEmail" required />
-                            </InputGroup>
+                <div className="right">
+                    <h3> Registration</h3>
+                    <h4> Enter your details below</h4>
 
-                            <label> Last Name </label>
-                            <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
-                                <InputGroupText className="text"><img src={User} alt="password" /></InputGroupText>
-                                <Input className="ip" type={"text"} placeholder="enter your lastname here" id="loginEmail" />
-                            </InputGroup>
+                    <form onSubmit={this.submitHandler} >
+                        <div className="first" id="login-info">
+                            <div className="name">
+
+                                <div className="name-cont">
+                                    <label> First Name <span className="asterisk">*</span></label>
+                                    <InputGroup className="ip-group" id="names" type="email"  onChange={this.handleEmailChange} >
+
+                                        <Input className="ip" type={"text"} id="reg-fname" placeholder="enter your firstname here"  required />
+                                    </InputGroup>
+                                </div>
+                                <div className="name-cont">
+                                    <label> Last Name </label>
+                                    <InputGroup className="ip-group" id="names" type="email" onChange={this.handleEmailChange} >
+                                        <Input className="ip" type={"text"} placeholder="enter your lastname here" id="reg-lname" />
+                                    </InputGroup>
+                                </div>
+                            </div>
 
                             <label> Email <span className="asterisk">*</span></label>
                             <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
                                 <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
-                                <Input className="ip" type={"email"} placeholder="enter your email here" id="loginEmail" required />
+                                <Input className="ip" type={"email"} placeholder="enter your email here" id="reg-email" required />
                             </InputGroup>
 
                             <label> Password <span className="asterisk">*</span></label>
                             <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
-                                <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
-                                <Input className="ip" type={"email"} placeholder="enter your password here" id="loginEmail" required />
+                                <InputGroupText className="text"><img src={Password} alt="password" /></InputGroupText>
+                                <Input className="ip" type={"password"} placeholder="enter your password here" id="reg-pass" required />
                             </InputGroup>
 
                             <label> Re-enter Password <span className="asterisk">*</span></label>
                             <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
-                                <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
-                                <Input className="ip" type={"email"} placeholder="Re-enter your password" id="loginEmail" required />
+                                <InputGroupText className="text"><img src={Password} alt="password" /></InputGroupText>
+                                <Input className="ip" type={"password"} placeholder="Re-enter your password" id="reg-re-pass" required />
                             </InputGroup>
                         </div>
-                      
 
-                        <div className="next"> Next &#8640; </div>
+
+                        
+                    <div className="first" id="return-add">
+
+                        <div>Your Return Address</div>
+
+                        <label> Phone number </label>
+                        <InputGroup className="ip-group" >
+                            <Input className="ip" type={"phone"} placeholder="enter your phone number here" id="reg-phone"/>
+                        </InputGroup>
+
+                        <label> Street Address 1<span className="asterisk">*</span></label>
+                        <InputGroup className="ip-group">
+                            <Input className="ip" type={"text"} placeholder="enter your address 1" id="reg-street1"  required />
+                        </InputGroup>
+
+                        <label> Street Address 2</label>
+                        <InputGroup className="ip-group"  >
+                            <Input className="ip" type={"text"} placeholder="enter your address 2" id="reg-street2"/>
+                        </InputGroup>
+
+                        <div className="name">
+                            <div className="name-cont">
+                                <label> Zip Code <span className="asterisk">*</span></label>
+                                <InputGroup className="ip-group" id="names">
+                                    <Input className="ip" type={"text"} placeholder="enter your zip code here" id="reg-zip" required />
+                                </InputGroup>
+                            </div>
+                            <div className="name-cont">
+                                <label> City <span className="asterisk">*</span></label>
+                                <InputGroup className="ip-group" id="names"  >
+                                    <Input className="ip" type={"text"} placeholder="enter your city here" id="reg-city" required/>
+                                </InputGroup>
+                            </div>
+                        </div>
+                        <div className="name">
+                            <div className="name-cont">
+                                <label> State <span className="asterisk">*</span></label>
+                                <InputGroup className="ip-group" id="names">
+                                    <Input className="ip" type={"text"} placeholder="enter your state here" id="reg-state" required />
+                                </InputGroup>
+                            </div>
+                            <div className="name-cont">
+                                <label> Country <span className="asterisk">*</span></label>
+                                <InputGroup className="ip-group" id="names"  >
+                                    <Input className="ip" type={"text"} placeholder="enter your country here" id="reg-country" required/>
+                                </InputGroup>
+                            </div>
+                        </div>
+
+
+
+
 
                     </div>
 
+                    {complete && <p className="login-error">Complete all Required fields <span className="asterisk">*</span></p>}
+                    {matchingPass && <p className="login-error">Make sure you enter a matching password</p>}
+
+                        <section className="reg-btn back" onClick={this.backButton}> &#8637; Back</section>
+                        <section className="reg-btn" onClick={this.nextButton} id="next"> Next &#8640;</section>
+                        <input type="submit" value="Sign up" id="sign" className="reg-btn" /> 
+                        
+                    </form>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
             </div>
 
+
+            // --> ver 2
+
+            // <div className="log-bg" >
+            //     <div className="registration-container">
+
+            //         <div className="left">
+            //             <img src={Logo} />
+            //             <h2> About you</h2>
+            //             <h5>
+            //                 Enter your information on the right. Required fields will have a ( <span className="asterisk">*</span> ).
+            //                  <br /><br />If you already have an account with us, click the Sign In button below.
+            //             </h5>
+
+            //             <button onClick={this.goToSign} > SIGN IN </button>
+
+            //         </div>
+
+            //         <div className="right">
+            //             <h3> Registration</h3>
+            //             <h4> Enter your details below</h4>
+
+
+            //             <div className="first">
+            //                 <label> First Name <span className="asterisk">*</span></label>
+            //                 <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+            //                     <InputGroupText className="text"><img src={User} alt="password" /></InputGroupText>
+            //                     <Input className="ip" type={"text"} placeholder="enter your firstname here" id="loginEmail" required />
+            //                 </InputGroup>
+
+            //                 <label> Last Name </label>
+            //                 <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+            //                     <InputGroupText className="text"><img src={User} alt="password" /></InputGroupText>
+            //                     <Input className="ip" type={"text"} placeholder="enter your lastname here" id="loginEmail" />
+            //                 </InputGroup>
+
+            //                 <label> Email <span className="asterisk">*</span></label>
+            //                 <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+            //                     <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
+            //                     <Input className="ip" type={"email"} placeholder="enter your email here" id="loginEmail" required />
+            //                 </InputGroup>
+
+            //                 <label> Password <span className="asterisk">*</span></label>
+            //                 <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+            //                     <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
+            //                     <Input className="ip" type={"email"} placeholder="enter your password here" id="loginEmail" required />
+            //                 </InputGroup>
+
+            //                 <label> Re-enter Password <span className="asterisk">*</span></label>
+            //                 <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
+            //                     <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
+            //                     <Input className="ip" type={"email"} placeholder="Re-enter your password" id="loginEmail" required />
+            //                 </InputGroup>
+            //             </div>
+
+
+            //             <div className="next"> Next &#8640; </div>
+
+            //         </div>
+
+            //     </div>
+            // </div>
+
+
+
+            // --> ver 1
             // <div className="register-container">
             //     <figure>
             //         <img src={Logo} alt="Recommerce" />

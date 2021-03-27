@@ -140,7 +140,7 @@ export default class  Header extends React.Component {
     
                     </div>
     
-                    <div id="menu-links" className="myLinks">
+                    <div id="menu-links"  className="myLinks">
                             <Link to="/" className="Link">
                                Home
                             </Link>
