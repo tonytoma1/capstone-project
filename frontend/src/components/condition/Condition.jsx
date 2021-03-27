@@ -170,13 +170,12 @@ import {connect} from 'react-redux';
                            price: price}
 
         this.props.dispatch(addPhoneComponent(CART, deviceAdded));
-        
-    
 
-        /*
-        history.push("/condition");
+        // TODO clear the redux state except for the shopping cart
+        
+        history.push("/confirm-order");
         window.location.reload();
-        */
+        
     }
 
 

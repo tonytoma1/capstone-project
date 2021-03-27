@@ -1,5 +1,7 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
+import java.util.List;
+
 /**
  * 
  * @author Dakota Harvey
@@ -23,8 +25,24 @@ public class ShippingLabelDTO
 	private double weight;
 	private boolean residental;
 	
+	private List<DeviceOrderDTO> device;
 	
 	
+
+	/**
+	 * @return the device
+	 */
+	public List<DeviceOrderDTO> getDevice() {
+		return device;
+	}
+
+	/**
+	 * @param device the device to set
+	 */
+	public void setDevice(List<DeviceOrderDTO> device) {
+		this.device = device;
+	}
+
 	/**
 	 * @return the postalService
 	 */

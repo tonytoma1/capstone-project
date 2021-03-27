@@ -3,8 +3,12 @@ import Logo from '../../../images/logo.png';
 import history from '../../../history';
 import axios from 'axios';
 import './order.css';
+import {Form, Col, InputGroup, FormControl} from 'react-bootstrap';
+import {connect} from 'react-redux';
+import userService from 'services/user.service';
+import { Envelope } from 'react-bootstrap-icons';
 
-export default class ConfirmOrderPage extends React.Component {
+class ConfirmOrderPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -25,6 +29,8 @@ export default class ConfirmOrderPage extends React.Component {
             isResidential: true,
 			password: ""
         }
+
+		this.changeHandler = this.changeHandler.bind(this);
        
     }
 
@@ -35,17 +41,14 @@ export default class ConfirmOrderPage extends React.Component {
 
     submitHandler = e => {
         e.preventDefault();
-        console.log(this.state);
-        axios.post("http://localhost:8080/api/orders-complete", this.state)
-            .then(response => {
-                console.log(response);
-                history.push("/shipping-label");
-                window.location.reload();
-               
-            })
-            .catch(error => {
-                console.log(error);
-            })
+
+		// Stringify the json shopping cart items
+		let shoppingCartItems = JSON.stringify(this.props.shopping_cart);
+
+		userService.placeOrder(this.state, shoppingCartItems);
+
+        
+        
     }
 
 	render() {
@@ -56,10 +59,41 @@ export default class ConfirmOrderPage extends React.Component {
 		            	<img src= {Logo} alt="Recommerce" />
 		            	<figcaption>Recommerce</figcaption>
 		            </figure>
-					<form onSubmit={this.submitHandler}>
+					<Form>
+						<Form.Row>
+							<Col>
+								<Form.Label className="label">PayPal Email</Form.Label>
+								<InputGroup>
+									<InputGroup.Prepend>
+										<InputGroup.Text> <Envelope/></InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl placeOrder="PayPal Email"></FormControl>
+								</InputGroup>
+								
+							</Col>
+						</Form.Row>
+					</Form>
+				</div>	
+			);
+	    }
+}
+
+function mapStateToProps(state) {
+	return {
+		model: state.model,
+		storage: state.storage,
+		service_provider: state.service_provider,
+		shopping_cart: state.shopping_cart
+	};
+}
+
+export default connect(mapStateToProps) (ConfirmOrderPage);
+
+	/*
+	<form onSubmit={this.submitHandler}>
 						<section>
 		                	<p>PayPal Email</p>
-		                	<input type="email" name="PayPalEmail" value={email}  onChange={this.handleEmail} placeholder="Required Fields" required/>
+		                	<input type="email" name="PayPalEmail" value={this.state.email}  onChange={this.changeHandler} placeholder="Required Fields" required/>
 		                </section>
 						<br />
 						<section>
@@ -79,12 +113,8 @@ export default class ConfirmOrderPage extends React.Component {
 		                	<input type="text" name="Company" value={company} onChange={this.handleCompany} placeholder="First name here"/>
 		                </section>
 						<section>
-		                	<p>Residental Address</p>
-		                	<input type="checkbox" name="residential" value={isResidential} onChange={this.handleisResidential} />
-		                </section>
-						<section>
 		                	<p>Phone</p>
-		                	<input type="number" name="Phone" value={phone} onChange={this.handlePhone} placeholder="123456" required/>
+		                	<input type="text" name="Phone" value={phone} onChange={this.handlePhone} placeholder="619-555-5555" required/>
 		                </section>
 						<section>
 		                	<p>Address 1</p>
@@ -160,11 +190,10 @@ export default class ConfirmOrderPage extends React.Component {
 						<input type="Submit" className="submitButton" id="OrderConfirm" defaultValue="Confirm" />
 					</form>
 				</div>	
-			);
-	    }
-}
+	
 
-	/* USA is forced for now
+
+	USA is forced for now
 						<section>
 		                	<p>Country</p>
 							<select name="state" value={country} onChange={this.handleCountry} size="5" required disabled>

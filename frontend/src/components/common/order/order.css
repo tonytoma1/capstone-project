@@ -7,6 +7,10 @@ html {
     box-sizing: inherit;
 }
 
+.label{
+    text-align: left;
+}
+
 
 .confirm-order-container {
     margin: auto auto;

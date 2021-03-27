@@ -85,6 +85,18 @@ class UserService {
         return await axios.get(Constants.API_URL + "model/find", config);
     }
 
+    /**
+     * 
+     * @param {Object} personObject contains information about the person 
+     * @param {Array} shoppingCart contains the items in the shopping cart
+     */
+    async placeOrder(personObject, shoppingCart) {
+
+        console.log("Person: " + personObject);
+        console.log("Shopping cart: " + shoppingCart);
+
+    }
+
   updateAccountPassword(uuid, password, email) {
         return axios.post(Constants.API_URL.concat("account/updatepassword"), {
             uuid: uuid,
