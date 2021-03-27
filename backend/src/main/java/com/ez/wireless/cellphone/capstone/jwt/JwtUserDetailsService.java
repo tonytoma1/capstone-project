@@ -17,12 +17,9 @@ import com.ez.wireless.cellphone.capstone.repository.AccountRepository;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
 
 /**
- * 
- * 
  * The authentication manager uses this class 
  * to find the user from the database based on the username
- * @author Tony
- *
+ * @author Tony Toma
  */
 @Service
 public class JwtUserDetailsService implements UserDetailsService {

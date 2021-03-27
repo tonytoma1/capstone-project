@@ -6,11 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
-
 import number from '../../../images/phone-call.png'
 import mail from '../../../images/mail.png'
 import logo from '../../../images/visuals/about.gif'
-
 
 function Footer () {
 
@@ -28,8 +26,8 @@ function Footer () {
 
               <span className="title"> CUSTOMER SERVICE </span>
               <span className="content">Contact Us</span>
-              <span className="content">Ordering & Payment</span>
-              <span className="content">Shipping</span>
+              <span className="content"><Link to="./ordering">Ordering & Payment</Link></span>
+              <span className="content"><Link to="./shipping">Shipping</Link></span>
               <span className="content">Returns</span>
               <span className="content">FAQ</span>
 

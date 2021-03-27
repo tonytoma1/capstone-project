@@ -4,8 +4,7 @@ import java.io.Serializable;
 
 /**
  * This is the JWT request object that is sent to the controller
- * @author Tony
- *
+ * @author Tony Toma
  * Referenced from this guide: https://www.javainuse.com/spring/boot-jwt
  */
 public class JwtRequest implements Serializable{

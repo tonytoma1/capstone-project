@@ -20,8 +20,7 @@ import com.ez.wireless.cellphone.capstone.jwt.JwtUserDetailsService;
 
 /**
  * Responsible for the authentication of the user
- * @author Tony
- *
+ * @author Tony Toma
  */
 @RestController
 @CrossOrigin

@@ -19,7 +19,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-/*
+/**
  * The JwtTokenUtil is responsible for performing JWT operations 
  * like creation and validation.
  * It makes use of the io.jsonwebtoken.Jwts for achieving this. 

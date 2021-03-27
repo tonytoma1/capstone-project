@@ -5,8 +5,7 @@ package com.ez.wireless.cellphone.capstone.dto;
  * 
  * For more info visit: https://stackabuse.com/data-transfer-object-pattern-in-java-implementation-and-mapping
  *  and:    https://stackoverflow.com/questions/54914807/null-values-are-inserted-in-the-foreign-key-fields-with-hibernate
- * @author Tony 
- *
+ * @author Tony Toma
  */
 public class AccountPersonRoleDTO {
 	

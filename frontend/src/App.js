@@ -28,7 +28,12 @@ import storage from 'redux-persist/lib/storage';
 import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE, CART, REMOVE_ITEM} from 'redux-action';
 import ServiceProviderPage from 'pages/service-provider-page';
 import CreateUserComponent from 'components/admin/CreateUserComponent';
+import AddDeviceComponent from 'components/admin/AddDeviceComponent';
 import ConfirmOrderPage from 'pages/confirm-order';
+import ViewOrdersComponent from 'components/admin/ViewOrders.component';
+
+import Ordering from 'pages/ordering';
+import Shipping from 'pages/shipping';
 
 let currentState = {
   model: '',
@@ -132,6 +137,9 @@ class App extends React.Component {
                   <AccountPage />
                 </Route>
                 <Route path="/add" component={CreateUserComponent}></Route>
+                <Route path="/vieworders" component={ViewOrdersComponent}></Route>
+               
+                
                 <Route path="/register">
                   <RegistrationPage />
                 </Route>
@@ -168,6 +176,13 @@ class App extends React.Component {
                   <ConfirmOrderPage/>
                 </Route>
 
+                <Route path="/ordering">
+                  <Ordering />
+                </Route>
+
+                <Route path="/shipping">
+                  <Shipping />
+                </Route>
 
                 <Route path="/">
                   <HomePage />
