@@ -8,18 +8,20 @@ import java.util.List;
  */
 public class ShippingLabelDTO 
 {
-	private String	fromFirstName,
-					fromLastName,
+	private String	fromFirstName, 
+					fromLastName, 
 					fromCompany,
-					fromStreet1,
-					fromStreet2,
-					fromCity,
-					fromGeoRegion,
-					fromCountry,
-					fromMailCode,
+					fromStreet1,  
+					fromStreet2, 
+					fromCity, 
+					// the state
+					fromGeoRegion, 
+					fromCountry, 
+					// zip code
+					fromMailCode, 
 					fromMessage,
-					fromPhone,
-					fromEmail,
+					fromPhone, 
+					fromEmail, 
 					postalService;
 	
 	private double weight;

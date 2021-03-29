@@ -92,8 +92,21 @@ class UserService {
      */
     async placeOrder(personObject, shoppingCart) {
 
-        console.log("Person: " + personObject);
-        console.log("Shopping cart: " + shoppingCart);
+        var config = {
+                fromFirstName: personObject.firstName,
+                fromLastName: personObject.lastName,
+                fromCity: personObject.city,
+                fromCountry: personObject.country,
+                fromGeoRegion: personObject.state,
+                fromStreet1: personObject.streetAddress1,
+                fromStreet2: personObject.streetAddress2,
+                fromMailCode: personObject.zip,
+                fromPhone: personObject.phone,
+                fromEmail: personObject.email,
+                device: shoppingCart
+        }
+;
+        return await axios.post(Constants.API_URL + "account/label", config);
 
     }
 

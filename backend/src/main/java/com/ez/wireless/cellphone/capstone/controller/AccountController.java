@@ -77,6 +77,8 @@ public class AccountController
 		//Generate shipping label
 
 		ShippingLabel shippingLabel;
+		sldto.setPostalService("USPS");
+		sldto.setWeight(5);
 
 		try 
 		{
@@ -90,6 +92,8 @@ public class AccountController
 			
 			ShippingLabelResponse shippingLabelResponse = 
 					new ShippingLabelResponse(shippingLabel.ship(sldto.getPostalService()));
+			
+			// TODO Shipping label didn't throw an error. Submit the orders in new orders
 			
 			return  ResponseEntity.ok(shippingLabelResponse);
 		} 
