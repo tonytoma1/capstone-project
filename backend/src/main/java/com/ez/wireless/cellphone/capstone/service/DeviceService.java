@@ -63,6 +63,10 @@ public class DeviceService
 		
 	}
 	
+	public Device findDeviceById(int deviceId) {
+		return deviceRepository.findByDeviceId(deviceId);
+	}
+	
 	
 	public List<Device> findDevices(String modelName, Integer storageSize, String serviceProviderName) {
 		Model model = modelRepository.findByModelName(modelName);

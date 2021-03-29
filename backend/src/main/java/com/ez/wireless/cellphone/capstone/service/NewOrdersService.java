@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ez.wireless.cellphone.capstone.dto.ShippingLabelDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
+import com.ez.wireless.cellphone.capstone.model.ClientTemp;
+import com.ez.wireless.cellphone.capstone.model.Device;
 import com.ez.wireless.cellphone.capstone.model.NewOrders;
 import com.ez.wireless.cellphone.capstone.repository.NewOrdersRepository;
 
@@ -18,6 +21,13 @@ public class NewOrdersService {
 	@Autowired
 	private AccountService accountService;
 	
+	@Autowired
+	private DeviceService deviceService;
+	
+	@Autowired
+	private ClientTempService clientTempService;
+	
+	@Autowired
 	private NewOrdersRepository newOrdersRepository;
 	
 	@Autowired
@@ -49,6 +59,30 @@ public class NewOrdersService {
 		});
 		
 		return orders;
+	}
+	
+	public boolean saveOrders(ShippingLabelDTO shippingLabelDTO) {
+		ClientTemp clientTempCreating = new ClientTemp();//clientTempService.saveClientTemp(clientTemp)
+		clientTempCreating.setCountry(shippingLabelDTO.getFromCountry());
+		clientTempCreating.setEmail(shippingLabelDTO.getFromEmail());
+		clientTempCreating.setState(shippingLabelDTO.getFromGeoRegion());
+		clientTempCreating.setStreetAddress(shippingLabelDTO.getFromStreet1());
+		clientTempCreating.setZip(shippingLabelDTO.getFromMailCode());
+		
+		ClientTemp clientReturned = clientTempService.saveClientTemp(clientTempCreating);
+		
+		for(int i = 0; i < shippingLabelDTO.getDevice().size(); i++) {
+			Device device = deviceService.findDeviceById(shippingLabelDTO.getDevice().get(i).getDeviceId());
+			NewOrders newOrders = new NewOrders();
+			newOrders.setClientTemp(clientReturned);		
+			newOrders.setDevices(device);
+			newOrders.setTotalPrice(device.getDevicePrice());
+			newOrdersRepository.save(newOrders);
+		
+		}
+		
+		return true;
+		
 	}
 	
 	/**
