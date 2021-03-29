@@ -3,14 +3,17 @@ import Logo from '../../../images/logo.png';
 import history from '../../../history';
 import axios from 'axios';
 import './order.css';
+import {Form, Col, InputGroup, FormControl, Button} from 'react-bootstrap';
+import {connect} from 'react-redux';
+import UserService from 'services/user.service';
+import { Envelope, Person, Building, Telephone, Signpost2, Mailbox, Map } from 'react-bootstrap-icons';
 
-export default class ConfirmOrderPage extends React.Component {
+class ConfirmOrderPage extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            bgColor: "",
 			streetAddress1: "",
             streetAddress2: "",
             country: "US",
@@ -18,48 +21,243 @@ export default class ConfirmOrderPage extends React.Component {
             zip: "",
             city: "",
             email: "",
+			confirmEmail: "",
             firstName: "",
             lastName: "",
             phone: "",
             company: "",
             isResidential: true,
-			password: ""
         }
+
+		this.changeHandler = this.changeHandler.bind(this);
+		this.submitHandler = this.submitHandler.bind(this);
        
     }
 
 	changeHandler = e => {
         this.setState({ [e.target.name]: e.target.value })
-        this.setState({isResidential: e.target.checked})
     }
 
-    submitHandler = e => {
+
+    async submitHandler(e) {
         e.preventDefault();
-        console.log(this.state);
-        axios.post("http://localhost:8080/api/orders-complete", this.state)
-            .then(response => {
-                console.log(response);
-                history.push("/shipping-label");
-                window.location.reload();
-               
-            })
-            .catch(error => {
-                console.log(error);
-            })
+
+		// Stringify the json shopping cart items
+		let shoppingCartItems = this.props.shopping_cart;
+		await UserService.placeOrder(this.state, shoppingCartItems)
+					.then((response) => {
+						console.log(response.data.shippingLabelUrl);
+					})
+					.catch((error) => {
+
+					})
     }
 
 	render() {
-	        const { streetAddress1, streetAddress2, country, state, zip, city, email, firstName, lastName, phone, company, isResidential } = this.state;
 		        return (
 				<div className="confirm-order-container">
 					<figure>
 		            	<img src= {Logo} alt="Recommerce" />
 		            	<figcaption>Recommerce</figcaption>
 		            </figure>
-					<form onSubmit={this.submitHandler}>
+					<Form>
+					
+						<Form.Row>
+							<Col>
+								<Form.Label className="label">PayPal Email</Form.Label>
+								<InputGroup>
+									<InputGroup.Prepend>
+										<InputGroup.Text> <Envelope/></InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl type="email" name="email" placeholder="PayPal Email" onChange={this.changeHandler}></FormControl>
+								</InputGroup>
+							</Col>
+						</Form.Row>
+
+						<Form.Row>
+							<Col>
+								<Form.Label className="label">Confirm PayPal Email</Form.Label>
+								<InputGroup>
+									<InputGroup.Prepend>
+										<InputGroup.Text> <Envelope/></InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl type="email" name="confirmEmail" placeholder="PayPal Email" onChange={this.changeHandler}></FormControl>
+								</InputGroup>
+							</Col>
+
+						</Form.Row>
+
+						<Form.Row>
+							<Col>
+								<Form.Label className="label">First Name</Form.Label>
+								<InputGroup>
+								<InputGroup.Prepend>
+									<InputGroup.Text> <Person/></InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl type="text" name="firstName" placeholder="John" onChange={this.changeHandler}></FormControl>
+								</InputGroup>
+							</Col>
+
+							<Col>
+								<Form.Label className="label">Last Name</Form.Label>
+								<InputGroup>
+								<InputGroup.Prepend>
+									<InputGroup.Text> <Person/></InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl type="text" name="lastName" placeholder="Doe" onChange={this.changeHandler}></FormControl>
+								</InputGroup>
+							</Col>
+						</Form.Row>
+
+						<Form.Row>
+							<Col>
+								<Form.Label className="label">City</Form.Label>
+								<InputGroup>
+								<InputGroup.Prepend>
+									<InputGroup.Text> <Building/></InputGroup.Text>
+								</InputGroup.Prepend>
+									<FormControl type="text" placeholder="San Diego" name="city" onChange={this.changeHandler}></FormControl>
+								</InputGroup>
+							</Col>
+
+							<Col>
+								<Form.Label className="label">State</Form.Label>
+								<InputGroup>
+									<InputGroup.Prepend>
+										<InputGroup.Text><Map/></InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl as="select" name="state" onChange={this.changeHandler}>
+										<option selected="selected">Please Select a State</option>
+										<option value="AL">Alabama</option>
+										<option value="AK">Alaska</option>
+										<option value="AZ">Arizona</option>
+										<option value="AR">Arkansas</option>
+										<option value="CA">California</option>
+										<option value="CO">Colorado</option>
+										<option value="CT">Connecticut</option>
+										<option value="DE">Delaware</option>
+										<option value="DC">District Of Columbia</option>
+										<option value="FL">Florida</option>
+										<option value="GA">Georgia</option>
+										<option value="HI">Hawaii</option>
+										<option value="ID">Idaho</option>
+										<option value="IL">Illinois</option>
+										<option value="IN">Indiana</option>
+										<option value="IA">Iowa</option>
+										<option value="KS">Kansas</option>
+										<option value="KY">Kentucky</option>
+										<option value="LA">Louisiana</option>
+										<option value="ME">Maine</option>
+										<option value="MD">Maryland</option>
+										<option value="MA">Massachusetts</option>
+										<option value="MI">Michigan</option>
+										<option value="MN">Minnesota</option>
+										<option value="MS">Mississippi</option>
+										<option value="MO">Missouri</option>
+										<option value="MT">Montana</option>
+										<option value="NE">Nebraska</option>
+										<option value="NV">Nevada</option>
+										<option value="NH">New Hampshire</option>
+										<option value="NJ">New Jersey</option>
+										<option value="NM">New Mexico</option>
+										<option value="NY">New York</option>
+										<option value="NC">North Carolina</option>
+										<option value="ND">North Dakota</option>
+										<option value="OH">Ohio</option>
+										<option value="OK">Oklahoma</option>
+										<option value="OR">Oregon</option>
+										<option value="PA">Pennsylvania</option>
+										<option value="RI">Rhode Island</option>
+										<option value="SC">South Carolina</option>
+										<option value="SD">South Dakota</option>
+										<option value="TN">Tennessee</option>
+										<option value="TX">Texas</option>
+										<option value="UT">Utah</option>
+										<option value="VT">Vermont</option>
+										<option value="VA">Virginia</option>
+										<option value="WA">Washington</option>
+										<option value="WV">West Virginia</option>
+										<option value="WI">Wisconsin</option>
+										<option value="WY">Wyoming</option>	
+									</FormControl>
+								</InputGroup>
+							</Col>
+						</Form.Row>
+
+						
+						<Form.Row>
+							<Col>
+								<Form.Label className="label">Phone</Form.Label>
+								<InputGroup>
+								<InputGroup.Prepend>
+									<InputGroup.Text> <Telephone/></InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl type="text" placeholder="619-555-5555" name="phone"  onChange={this.changeHandler}></FormControl>
+								</InputGroup>
+							</Col>
+						</Form.Row>
+
+						<Form.Row>
+							<Col>
+								<Form.Label className="label">Address 1</Form.Label>
+								<InputGroup>
+								<InputGroup.Prepend>
+									<InputGroup.Text> <Signpost2/> </InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl type="text" placeholder="123 Street" name="streetAddress1"  onChange={this.changeHandler}></FormControl>
+								</InputGroup>
+							</Col>
+							<Col>
+								<Form.Label className="label">Address 2</Form.Label>
+								<InputGroup>
+								<InputGroup.Prepend>
+									<InputGroup.Text> <Signpost2/> </InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl type="text" placeholder="Aparament #112" name="streetAddress2"  onChange={this.changeHandler}></FormControl>
+								</InputGroup>
+							</Col>
+						</Form.Row>
+
+						<Form.Row>
+							<Col>
+								<Form.Label className="label">Zip Code</Form.Label>
+								<InputGroup>
+								<InputGroup.Prepend>
+									<InputGroup.Text> <Mailbox/> </InputGroup.Text>
+									</InputGroup.Prepend>
+									<FormControl type="text" placeholder="92102" name="zip"  onChange={this.changeHandler}></FormControl>
+								</InputGroup>
+							</Col>
+						</Form.Row>
+
+						<Form.Row>
+							<Col>
+								<Button onClick={this.submitHandler}>Submit</Button>
+							</Col>
+						</Form.Row>
+
+					</Form>
+				</div>	
+			);
+	    }
+}
+
+function mapStateToProps(state) {
+	return {
+		model: state.model,
+		storage: state.storage,
+		service_provider: state.service_provider,
+		shopping_cart: state.shopping_cart
+	};
+}
+
+export default connect(mapStateToProps) (ConfirmOrderPage);
+
+	/*
+	<form onSubmit={this.submitHandler}>
 						<section>
 		                	<p>PayPal Email</p>
-		                	<input type="email" name="PayPalEmail" value={email}  onChange={this.handleEmail} placeholder="Required Fields" required/>
+		                	<input type="email" name="PayPalEmail" value={this.state.email}  onChange={this.changeHandler} placeholder="Required Fields" required/>
 		                </section>
 						<br />
 						<section>
@@ -79,12 +277,8 @@ export default class ConfirmOrderPage extends React.Component {
 		                	<input type="text" name="Company" value={company} onChange={this.handleCompany} placeholder="First name here"/>
 		                </section>
 						<section>
-		                	<p>Residental Address</p>
-		                	<input type="checkbox" name="residential" value={isResidential} onChange={this.handleisResidential} />
-		                </section>
-						<section>
 		                	<p>Phone</p>
-		                	<input type="number" name="Phone" value={phone} onChange={this.handlePhone} placeholder="123456" required/>
+		                	<input type="text" name="Phone" value={phone} onChange={this.handlePhone} placeholder="619-555-5555" required/>
 		                </section>
 						<section>
 		                	<p>Address 1</p>
@@ -160,11 +354,10 @@ export default class ConfirmOrderPage extends React.Component {
 						<input type="Submit" className="submitButton" id="OrderConfirm" defaultValue="Confirm" />
 					</form>
 				</div>	
-			);
-	    }
-}
+	
 
-	/* USA is forced for now
+
+	USA is forced for now
 						<section>
 		                	<p>Country</p>
 							<select name="state" value={country} onChange={this.handleCountry} size="5" required disabled>

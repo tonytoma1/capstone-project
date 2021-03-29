@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 import history from '../../history';
 import HeaderComponent from './HeaderComponent';
 import './table.css' ;
+
+/*
 let a = AdminService.viewOrder();
 console.log(a);
-
+*/
 export default class ViewOrdersComponent extends React.Component {
     constructor(props) {
         super(props);

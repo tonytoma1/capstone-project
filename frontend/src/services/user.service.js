@@ -85,6 +85,31 @@ class UserService {
         return await axios.get(Constants.API_URL + "model/find", config);
     }
 
+    /**
+     * 
+     * @param {Object} personObject contains information about the person 
+     * @param {Array} shoppingCart contains the items in the shopping cart
+     */
+    async placeOrder(personObject, shoppingCart) {
+
+        var config = {
+                fromFirstName: personObject.firstName,
+                fromLastName: personObject.lastName,
+                fromCity: personObject.city,
+                fromCountry: personObject.country,
+                fromGeoRegion: personObject.state,
+                fromStreet1: personObject.streetAddress1,
+                fromStreet2: personObject.streetAddress2,
+                fromMailCode: personObject.zip,
+                fromPhone: personObject.phone,
+                fromEmail: personObject.email,
+                device: shoppingCart
+        }
+;
+        return await axios.post(Constants.API_URL + "account/label", config);
+
+    }
+
   updateAccountPassword(uuid, password, email) {
         return axios.post(Constants.API_URL.concat("account/updatepassword"), {
             uuid: uuid,

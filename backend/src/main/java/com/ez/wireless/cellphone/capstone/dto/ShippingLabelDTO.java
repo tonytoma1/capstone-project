@@ -1,30 +1,50 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
+import java.util.List;
+
 /**
  * 
  * @author Dakota Harvey
  */
 public class ShippingLabelDTO 
 {
-	private String	fromFirstName,
-					fromLastName,
+	private String	fromFirstName, 
+					fromLastName, 
 					fromCompany,
-					fromStreet1,
-					fromStreet2,
-					fromCity,
-					fromGeoRegion,
-					fromCountry,
-					fromMailCode,
+					fromStreet1,  
+					fromStreet2, 
+					fromCity, 
+					// the state
+					fromGeoRegion, 
+					fromCountry, 
+					// zip code
+					fromMailCode, 
 					fromMessage,
-					fromPhone,
-					fromEmail,
+					fromPhone, 
+					fromEmail, 
 					postalService;
 	
 	private double weight;
 	private boolean residental;
 	
+	private List<DeviceOrderDTO> device;
 	
 	
+
+	/**
+	 * @return the device
+	 */
+	public List<DeviceOrderDTO> getDevice() {
+		return device;
+	}
+
+	/**
+	 * @param device the device to set
+	 */
+	public void setDevice(List<DeviceOrderDTO> device) {
+		this.device = device;
+	}
+
 	/**
 	 * @return the postalService
 	 */

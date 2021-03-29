@@ -20,8 +20,12 @@ import history from 'history.js';
 
 
 import Nav from "./comp/nav";
+import { Dropdown, ListGroup, Badge } from "react-bootstrap";
 
-export default class  Header extends React.Component {
+import {connect} from 'react-redux';
+import {CART, REMOVE_ITEM, addPhoneComponent} from 'redux-action';
+
+class  Header extends React.Component {
 
     constructor(props) {
         super(props);
@@ -59,6 +63,11 @@ export default class  Header extends React.Component {
                     })
                     */
     }
+
+    removeItemFromCart(index) {
+        this.props.dispatch(addPhoneComponent(REMOVE_ITEM, index));
+    }
+
 
     menu = (e) => {
         var menu = document.getElementById("menu-links");
@@ -127,8 +136,7 @@ export default class  Header extends React.Component {
                         <div className="logged-in" id="desktop">
                         <span className="button"><Link to="/Account">Account  </Link> </span>
                         <span className="button"><Link to="/login" onClick={this.handleLogout}>Logout  </Link> </span>
-
-                            <img className="cart" src={Cart} alt />
+                                  <img className="cart" src={Cart} alt />
                         </div>
     
                         <div className="not-logged-in" id="mobile">
@@ -183,7 +191,42 @@ export default class  Header extends React.Component {
 
                         <div className="not-logged-in" id="desktop">
                             <span className="button"><Link to="/login">Sign in   </Link> </span>
-                            <img className="cart" src={Cart} alt />
+                            <Dropdown className="dropdown-box">
+                                <Dropdown.Toggle variant="none" id="dropdown-basic">
+                                    <img className="cart" src={Cart} alt /> <Badge pill>{this.props.shopping_cart.length}</Badge>
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    {
+                                        this.props.shopping_cart.map((device, index) => {
+                                            return(
+                                                <Dropdown.Item>
+                                                    <ListGroup>
+                                                        <ListGroup.Item>
+                                                        <img src={device.modelImage}/>
+                                                        </ListGroup.Item>
+                                                        <ListGroup.Item>{device.model}</ListGroup.Item>
+                                                        <ListGroup.Item>{device.storage}GB</ListGroup.Item>
+                                                        <ListGroup.Item>{device.serviceProvider}</ListGroup.Item>
+                                                        <ListGroup.Item>{device.condition}</ListGroup.Item>
+                                                        <ListGroup.Item>${device.price}</ListGroup.Item>
+                                                        {console.log(device.model + ': Index: ' + index)}
+                                                        <ListGroup.Item><Button onClick={() => {this.removeItemFromCart(index)}}>Remove</Button></ListGroup.Item>
+                                                    </ListGroup>
+                                                </Dropdown.Item>
+                                                
+                                            )
+                                                    
+                                        })
+                                    }
+                                    
+                                    
+                                    
+
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            
+                           
                         </div>
 
                     </div>
@@ -199,3 +242,12 @@ export default class  Header extends React.Component {
          
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        shopping_cart: state.shopping_cart
+       
+    };
+}
+
+export default connect(mapStateToProps) (Header);

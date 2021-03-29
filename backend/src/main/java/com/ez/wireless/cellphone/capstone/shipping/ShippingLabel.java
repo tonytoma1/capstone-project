@@ -104,12 +104,9 @@ public class ShippingLabel
 		toAddressMap.put("verify", verification);
 		
 		Address toAddress = null;
-		try {
-			toAddress = Address.create(toAddressMap);
-		}
-		catch(EasyPostException e) {
-			e.printStackTrace();
-		}
+		
+		toAddress = Address.create(toAddressMap); 
+		
 		return toAddress;
 	}
 	
@@ -131,10 +128,11 @@ public class ShippingLabel
 	 * @param email The email address
 	 * @param residential if the person is shipping from a residence
 	 * @return The senders Address
+	 * @throws EasyPostException 
 	 */
 	private Address fromAddress(String Fname, String Lname, String company, String street1, String street2, 
 			String city, String GeoRegion, String country, String mailCode, String message,
-			String phone, String email, boolean residental)
+			String phone, String email, boolean residental) throws EasyPostException
 	{
 		fromAddressMap.put("name", Fname + " " + Lname);
 		fromAddressMap.put("company", company);
@@ -156,17 +154,9 @@ public class ShippingLabel
 		
 		Address fromAddress = null;
 
-		try 
-		{
-			fromAddress = Address.create(fromAddressMap);
-			return fromAddress;
-		} 
-		catch (EasyPostException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		fromAddress = Address.create(fromAddressMap);
+		return fromAddress;
+		
 	}
 	
 	/**
@@ -175,8 +165,9 @@ public class ShippingLabel
 	 * @param postalService postal service identifier 
 	 * @param weight parcel weight
 	 * @return the parcel
+	 * @throws EasyPostException 
 	 */
-	private Parcel parcel(String postalService, double weight)
+	private Parcel parcel(String postalService, double weight) throws EasyPostException
 	{
 		switch(postalService)
 		{
@@ -196,17 +187,12 @@ public class ShippingLabel
 			}
 			
 		}
-		try 
-		{
+		
 			Parcel parcel = Parcel.create(parcelMap);
 			return parcel;
-		} 
-		catch (EasyPostException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		 
+		
+		
 	}
 	
 	/**
@@ -214,16 +200,16 @@ public class ShippingLabel
 	 * a png image of the shipping label. Postal service identifiers are located at https://www.easypost.com/docs/api/java#carrier-tracking-strings
 	 * @param postalService postal service identifier
 	 * @return the shipping label image
+	 * @throws EasyPostException 
 	 */
-	public String ship(String postalService)
+	public String ship(String postalService) throws EasyPostException
 	{
 		switch(postalService)
-		{
+		{	
+			
 			//for future cases refer to https://www.easypost.com/docs/api/java#carrier-tracking-strings for postalService
 			case "USPS":
-			{
-				try 
-				{
+			default:
 					Shipment ship = Shipment.create(shipmentMap);
 					List<String> buyCarriers = new ArrayList<String>();
 					buyCarriers.add(postalService);
@@ -231,15 +217,8 @@ public class ShippingLabel
 					buyServices.add("Express");
 					ship.buy(ship.lowestRate());
 					return ship.getPostageLabel().getLabelUrl();
-				} 
-				catch (EasyPostException e) 
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				break;
-			}
+					
 		}
-		return null;
+		
 	}
 }

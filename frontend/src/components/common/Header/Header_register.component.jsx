@@ -8,7 +8,10 @@ class HeaderReg extends Component {
             <div>
                 <header className="Container">
                     <div className="title-container">
-                        <img className="I" src={Logo} alt="logo"/>
+                            
+                                 
+                        <img className="cart" src={Cart} alt />        
+                               
                         <h2 className="Title">Recommerce</h2>
                     </div>
 
