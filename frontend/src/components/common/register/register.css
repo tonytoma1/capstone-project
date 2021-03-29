@@ -20,6 +20,7 @@
     width: 50%;
     position: absolute;
     left: 500px;
+    padding-top: 4%;
 }
 
 .registration-container .right .first .name #names {
@@ -27,7 +28,6 @@
     display: flex;
     justify-content: space-between;
 }
-
 
 .name-cont{
     width: 50%;
@@ -79,15 +79,36 @@
     display: none;
 }
 
+.reg-info {
+    color: #383838;
+}
+
+.reg-info .checkMe {
+    text-align: left;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.reg-info .reg-info-radio{
+    display: inline-block;
+    width: unset;
+    
+    color: #383838;
+}
+
+.reg-info .residential-radio{
+    margin: auto 5px auto 50px;
+}
 
 
+.right h4{
+    margin-bottom: 20px;
+}
 
-
-
-
-
-
-
+.your-return-add{
+    font-size: 20px;
+    color: #383838;
+}
 
 
 

@@ -43,10 +43,15 @@ export default class Register extends Component {
     }
 
     submitHandler = e => {
+
         e.preventDefault();
+
         console.log(this.state);
         axios.post("http://localhost:8080/api/account/register", this.state)
             .then(response => {
+
+
+
                 console.log(response);
                 history.push("/login");
                 window.location.reload();
@@ -61,47 +66,48 @@ export default class Register extends Component {
         window.location.href = '/login';
     }
 
-    nextButton  = () => {
-        var fname = document.getElementById("reg-fname").value;
-        var lname = document.getElementById("reg-lname").value;
+    nextButton = () => {
+        var fname = "" + document.getElementById("reg-fname").value;
+        var lname = "" + document.getElementById("reg-lname").value;
 
-        var email = document.getElementById("reg-email").value;
-        var pass = document.getElementById("reg-pass").value;
-        var repass = document.getElementById("reg-re-pass").value;
+        var email = "" + document.getElementById("reg-email").value;
+        var pass = "" + document.getElementById("reg-pass").value;
+        var repass = "" + document.getElementById("reg-re-pass").value;
 
-        
-        if(fname === "" || email === "" || pass === "" || repass === ""){
 
-            this.setState ( {complete: true,  matchingPass: false});
+        if (fname === "" || email === "" || pass === "" || repass === "") {
+
+            this.setState({ complete: true, matchingPass: false });
         }
-        else if (pass !== repass){
-            this.setState ( {complete: false,  matchingPass: true});
-        }else{
-            this.setState ( {complete: false,  matchingPass: false});
+        else if (pass !== repass) {
+            this.setState({ complete: false, matchingPass: true });
+        } else {
+            this.setState({ complete: false, matchingPass: false });
 
-            document.getElementById('login-info').style.display= "none";
-            document.getElementById('return-add').style.display= "inline";
+            document.getElementById('login-info').style.display = "none";
+            document.getElementById('return-add').style.display = "inline";
 
-            document.getElementById('sign').style.display= "inline";
-            document.getElementById('next').style.display= "none";
+            document.getElementById('sign').style.display = "inline";
+            document.getElementById('next').style.display = "none";
+
         }
     }
 
-    backButton  = () => {
-        document.getElementById('login-info').style.display= "block";
-        document.getElementById('return-add').style.display= "none";
+    backButton = () => {
+        document.getElementById('login-info').style.display = "block";
+        document.getElementById('return-add').style.display = "none";
 
-        document.getElementById('sign').style.display= "none";
-            document.getElementById('next').style.display= "inline-block";
+        document.getElementById('sign').style.display = "none";
+        document.getElementById('next').style.display = "inline-block";
     }
 
 
     render() {
         const { userName, password, streetAddress1, streetAddress2, country, state, zip, city, email, firstName, lastName, phone, company, isResidential } = this.state;
-        const {matchingPass} = this.state;
-        const {complete} = this.state;
+        const { matchingPass } = this.state;
+        const { complete } = this.state;
         return (
-            
+
 
             <div className="registration-container ">
 
@@ -127,15 +133,15 @@ export default class Register extends Component {
 
                                 <div className="name-cont">
                                     <label> First Name <span className="asterisk">*</span></label>
-                                    <InputGroup className="ip-group" id="names" type="email"  onChange={this.handleEmailChange} >
+                                    <InputGroup className="ip-group" id="names" type="email" onChange={this.handleEmailChange} >
 
-                                        <Input className="ip" type={"text"} id="reg-fname" placeholder="enter your firstname here"  required />
+                                        <Input className="ip" type={"text"}  name="firstName" value={firstName} onChange={this.changeHandler}id="reg-fname" placeholder="enter your firstname here" required />
                                     </InputGroup>
                                 </div>
                                 <div className="name-cont">
                                     <label> Last Name </label>
                                     <InputGroup className="ip-group" id="names" type="email" onChange={this.handleEmailChange} >
-                                        <Input className="ip" type={"text"} placeholder="enter your lastname here" id="reg-lname" />
+                                        <Input className="ip" type={"text"} name="lastName" value={lastName} onChange={this.changeHandler} placeholder="enter your lastname here" id="reg-lname" />
                                     </InputGroup>
                                 </div>
                             </div>
@@ -143,13 +149,13 @@ export default class Register extends Component {
                             <label> Email <span className="asterisk">*</span></label>
                             <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
                                 <InputGroupText className="text"><img src={Email} alt="password" /></InputGroupText>
-                                <Input className="ip" type={"email"} placeholder="enter your email here" id="reg-email" required />
+                                <Input className="ip" type={"email"}  name="email" placeholder="enter your email here" id="reg-email" value={email} onChange={this.changeHandler} required />
                             </InputGroup>
 
                             <label> Password <span className="asterisk">*</span></label>
                             <InputGroup className="ip-group" type="email" onChange={this.handleEmailChange} >
                                 <InputGroupText className="text"><img src={Password} alt="password" /></InputGroupText>
-                                <Input className="ip" type={"password"} placeholder="enter your password here" id="reg-pass" required />
+                                <Input className="ip"  name="password"  type={"password"} placeholder="enter your password here" value={password} onChange={this.changeHandler} id="reg-pass" required />
                             </InputGroup>
 
                             <label> Re-enter Password <span className="asterisk">*</span></label>
@@ -160,68 +166,86 @@ export default class Register extends Component {
                         </div>
 
 
-                        
-                    <div className="first" id="return-add">
 
-                        <div>Your Return Address</div>
+                        <div className="first" id="return-add">
 
-                        <label> Phone number </label>
-                        <InputGroup className="ip-group" >
-                            <Input className="ip" type={"phone"} placeholder="enter your phone number here" id="reg-phone"/>
-                        </InputGroup>
+                            <div className="your-return-add">Your Return Address</div>
 
-                        <label> Street Address 1<span className="asterisk">*</span></label>
-                        <InputGroup className="ip-group">
-                            <Input className="ip" type={"text"} placeholder="enter your address 1" id="reg-street1"  required />
-                        </InputGroup>
+                            <label> Phone number </label>
+                            <InputGroup className="ip-group" >
+                                <Input className="ip" name="phone" type={"phone"} placeholder="enter your phone number here"  value={phone} onChange={this.changeHandler} id="reg-phone" />
+                            </InputGroup>
 
-                        <label> Street Address 2</label>
-                        <InputGroup className="ip-group"  >
-                            <Input className="ip" type={"text"} placeholder="enter your address 2" id="reg-street2"/>
-                        </InputGroup>
+                            <label> Street Address 1<span className="asterisk">*</span></label>
+                            <InputGroup className="ip-group">
+                                <Input className="ip" type={"text"}   name="streetAddress1" placeholder="enter your address 1" value={streetAddress1} onChange={this.changeHandler} id="reg-street1" required />
+                            </InputGroup>
 
-                        <div className="name">
-                            <div className="name-cont">
-                                <label> Zip Code <span className="asterisk">*</span></label>
-                                <InputGroup className="ip-group" id="names">
-                                    <Input className="ip" type={"text"} placeholder="enter your zip code here" id="reg-zip" required />
-                                </InputGroup>
+                            <label> Street Address 2</label>
+                            <InputGroup className="ip-group"  >
+                                <Input className="ip" type={"text"}  name="streetAddress2" placeholder="enter your address 2" value={streetAddress2} onChange={this.changeHandler} id="reg-street2" />
+                            </InputGroup>
+
+                            <div className="name">
+                                <div className="name-cont">
+                                    <label> Zip Code <span className="asterisk">*</span></label>
+                                    <InputGroup className="ip-group" id="names">
+                                        <Input className="ip" type={"text"} name="zip" value={zip} onChange={this.changeHandler} placeholder="enter your zip code here" id="reg-zip" required />
+                                    </InputGroup>
+                                </div>
+                                <div className="name-cont">
+                                    <label> City <span className="asterisk">*</span></label>
+                                    <InputGroup className="ip-group" id="names"  >
+                                        <Input className="ip" type={"text"} name="city" value={city} onChange={this.changeHandler} placeholder="enter your city here" id="reg-city" required />
+                                    </InputGroup>
+                                </div>
                             </div>
-                            <div className="name-cont">
-                                <label> City <span className="asterisk">*</span></label>
-                                <InputGroup className="ip-group" id="names"  >
-                                    <Input className="ip" type={"text"} placeholder="enter your city here" id="reg-city" required/>
-                                </InputGroup>
+                            <div className="name">
+                                <div className="name-cont">
+                                    <label> State <span className="asterisk">*</span></label>
+                                    <InputGroup className="ip-group" id="names">
+                                        <Input className="ip" type={"text"}  name="state" value={state} onChange={this.changeHandler}  placeholder="enter your state here" id="reg-state" required />
+                                    </InputGroup>
+                                </div>
+                                <div className="name-cont">
+                                    <label> Country <span className="asterisk">*</span></label>
+                                    <InputGroup className="ip-group" id="names"  >
+                                        <Input className="ip" type={"text"}  name="country" value={country} onChange={this.changeHandler} placeholder="enter your country here" id="reg-country" required />
+                                    </InputGroup>
+                                </div>
                             </div>
+
+                            <label> Company</label>
+                            <InputGroup className="ip-group"  >
+                                <Input className="ip" type={"text"}  name="company" placeholder="enter your company" value={company} onChange={this.changeHandler} id="reg-street2" />
+                            </InputGroup>
+
+
+                            <div className="reg-info">
+                                <p className="checkMe">is this a Residential Area?  </p>
+                               <input type="checkbox"  className="residential-radio"name="isResidential" value={isResidential} onChange={this.changeHandler} />
+                               <label className="reg-info-radio">  YES </label>
+                            </div>
+
+                            <div className="reg-info">
+                                <p className="checkMe">
+                                    By clicking Sign Up, you agree to our Terms and Privaryt Policy.
+                                    You may receive e-mail notification from us and can opt out any time.
+                            </p>
+
+                            </div>
+
+
+
                         </div>
-                        <div className="name">
-                            <div className="name-cont">
-                                <label> State <span className="asterisk">*</span></label>
-                                <InputGroup className="ip-group" id="names">
-                                    <Input className="ip" type={"text"} placeholder="enter your state here" id="reg-state" required />
-                                </InputGroup>
-                            </div>
-                            <div className="name-cont">
-                                <label> Country <span className="asterisk">*</span></label>
-                                <InputGroup className="ip-group" id="names"  >
-                                    <Input className="ip" type={"text"} placeholder="enter your country here" id="reg-country" required/>
-                                </InputGroup>
-                            </div>
-                        </div>
 
-
-
-
-
-                    </div>
-
-                    {complete && <p className="login-error">Complete all Required fields <span className="asterisk">*</span></p>}
-                    {matchingPass && <p className="login-error">Make sure you enter a matching password</p>}
+                        {complete && <p className="login-error">Complete all Required fields <span className="asterisk">*</span></p>}
+                        {matchingPass && <p className="login-error">Make sure you enter a matching password</p>}
 
                         <section className="reg-btn back" onClick={this.backButton}> &#8637; Back</section>
                         <section className="reg-btn" onClick={this.nextButton} id="next"> Next &#8640;</section>
-                        <input type="submit" value="Sign up" id="sign" className="reg-btn" /> 
-                        
+                        <input type="submit" value="Sign up" id="sign" className="reg-btn" />
+
                     </form>
                 </div>
 
@@ -242,7 +266,6 @@ export default class Register extends Component {
 
 
             </div>
-
 
             // --> ver 2
 
