@@ -119,7 +119,7 @@ export default class Register extends Component {
                               <br /><br />If you already have an account with us, click the Sign In button below.
                          </h5>
 
-                    <button onClick={this.goToSign} > SIGN IN </button>
+                    <button className="registerBtn" onClick={this.goToSign} > SIGN IN </button>
                 </div>
 
 
@@ -245,6 +245,11 @@ export default class Register extends Component {
                         <section className="reg-btn back" onClick={this.backButton}> &#8637; Back</section>
                         <section className="reg-btn" onClick={this.nextButton} id="next"> Next &#8640;</section>
                         <input type="submit" value="Sign up" id="sign" className="reg-btn" />
+
+                        <div id="mobile-reg">
+                        <p> Go back to Login  </p>
+                        <input type="Submit" className="submitButton registerbtn" onClick={this.goToSign} value=" Login" />
+                        </div>
 
                     </form>
                 </div>

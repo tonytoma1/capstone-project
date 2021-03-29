@@ -1,7 +1,8 @@
 import React from 'react';
 import Logo from '../../../images/logo.png';
+import test from '../../../images/test.jpg';
 import axios from 'axios';
-import './order.css';
+
 
 export default class ShippingLabel extends React.Component {
 
@@ -37,7 +38,7 @@ export default class ShippingLabel extends React.Component {
 	        const {} = this.state;
 		        return (
 				<div className="shipping-label-container">
-					
+					<img src={test} />
 				</div>	
 			);
 	    }

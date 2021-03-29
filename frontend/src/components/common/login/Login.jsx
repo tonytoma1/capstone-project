@@ -7,6 +7,7 @@ import UserService from 'services/user.service';
 import * as Constants from 'constants/global-constants';
 
 import Logo from '../../../images/visuals/logo-white.png';
+import Logo2 from '../../../images/visuals/logo.png';
 import Email from '../../../images/visuals/email.png';
 import Password from '../../../images/visuals/padlock.png';
 import bg from '../../../images/visuals/login-bg.jpg';
@@ -121,11 +122,16 @@ export default class Login extends React.Component {
                         <h2> Welcome, Friend!</h2>
                         <h5> Log in with your email and password on the right. Dont have an account yet? click register below!</h5>
 
-                        <button onClick={this.goToRegister} > REGISTER </button>
+                        <button className="registerBtn" onClick={this.goToRegister} > REGISTER </button>
                    
                     </div>
 
                     <div className="right">
+
+                    <div id="mobile-reg">
+                        <img src={Logo2} />
+                    </div>
+
                             <h3> Login</h3>
                             <h4> Enter your details below to continue</h4>
 
@@ -146,13 +152,17 @@ export default class Login extends React.Component {
                                 <span className="forgot-password" > 
                                 <Link to="/forgot-password"> Forgot password?</Link>
                                 </span>
-
-
+                                {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
                                 <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />
 
-                                {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
+                               
                             </form>
-                            
+
+
+                    <div id="mobile-reg">
+                        <p> No account yet? click register </p>
+                        <input type="Submit" className="submitButton registerbtn" onClick={this.goToRegister} value=" Register" />
+                    </div>
                             <div className="small-footer">
                                 <hr></hr>
                                 <Link to="/" className="link"> Home</Link>

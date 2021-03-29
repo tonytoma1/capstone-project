@@ -89,8 +89,13 @@ import bg from 'images/visuals/login-bg.jpg';
                             
                             <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="Submit" value="Send Link"/>
                             
+                           
                             <p className="reset-error" id="reset-error">Link was sent into your E-mail. Please check you account and you can close this window.</p>
-
+                            <div id="mobile-reg">
+                        <p> Go back to Login  </p>
+                        
+                        <input type="Submit" className="submitButton registerbtn" onClick={this.goToLogin} value=" Login" />
+                    </div>
                             </form>
                             
                             <div className="small-footer">
@@ -102,13 +107,15 @@ import bg from 'images/visuals/login-bg.jpg';
                                 <section className="small-footer-reserved">&#169; 2021 Recommerce. All Rights Reserved.</section>
                             </div>
                     </div> 
+
+                   
                 
                     <div className="left">
                         <img src={Logo} />
                         <h2> <img src={reset} className="reset-img"/></h2>
                         <h5> Don't worry we will recover your account! To go back to the login page, click the Sign in below!</h5>
 
-                        <button onClick={this.goToLogin} > SIGN IN </button>
+                        <button onClick={this.goToLogin} className="registerBtn"> SIGN IN </button>
                    
                     </div>
 

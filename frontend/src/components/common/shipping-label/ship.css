@@ -1,13 +1,4 @@
 
-html {
-    box-sizing: border-box;
-  }
-  *, *:before, *:after {
-
-    box-sizing: inherit;
-}
-
-
 .shipping-label-container {
     margin: auto auto;
     margin-top: 50px;

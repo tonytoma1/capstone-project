@@ -147,7 +147,6 @@ class App extends React.Component {
                   <ChangePasswordPage />
                 </Route>
 
-
                 <Route path="/sell-device">
                   <SellDevicePage/>
                 </Route>

@@ -149,15 +149,15 @@ class  Header extends React.Component {
                     </div>
     
                     <div id="menu-links"  className="myLinks">
-                            <Link to="/" className="Link">
+                            <Link to="/" className="link">
                                Home
                             </Link>
     
-                            <Link to="/sell-device" className="Link">
+                            <Link to="/sell-device" className="link">
                                 Sell Device
                             </Link>
     
-                            <Link to="/about" className="Link">
+                            <Link to="/about" className="link">
                                About
                             </Link>
                     </div>
