@@ -14,6 +14,7 @@ import com.ez.wireless.cellphone.capstone.model.StorageCapacity;
 public interface DeviceRepository extends CrudRepository<Device, Integer>{
 	
 	List<Device> findByModel(Model model);
+	Device findByDeviceId(Integer modelId);
 	List<Device> findByModelAndStorageCapacityAndServiceProvider(Model model, StorageCapacity storageCapacity, 
 																ServiceProvider serviceProvider);	
 }
