@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 import com.ez.wireless.cellphone.capstone.model.Model;
 import com.ez.wireless.cellphone.capstone.repository.ModelRepository;
 
+/**
+ * The service for the Model_Service table
+ * @author Dakota Harvey
+ */
 @Service
 public class ModelService {
 

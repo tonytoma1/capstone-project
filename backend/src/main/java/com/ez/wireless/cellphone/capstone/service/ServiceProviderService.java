@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import com.ez.wireless.cellphone.capstone.model.ServiceProvider;
 import com.ez.wireless.cellphone.capstone.repository.ServiceProviderRepository;
 
+/**
+ * The service for the service_provider table
+ * @author Dakota Harvey
+ */
 @Service
 public class ServiceProviderService 
 {	

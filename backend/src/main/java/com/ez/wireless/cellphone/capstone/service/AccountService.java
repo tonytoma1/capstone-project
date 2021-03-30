@@ -18,6 +18,10 @@ import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.model.Person;
 import com.ez.wireless.cellphone.capstone.model.Role;
 
+/**
+ * The service for the account table on the database
+ * @author Dakota Harvey
+ */
 @Service
 public class AccountService 
 {

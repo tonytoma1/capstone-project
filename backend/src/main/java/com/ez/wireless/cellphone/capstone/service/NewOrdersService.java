@@ -15,6 +15,10 @@ import com.ez.wireless.cellphone.capstone.model.Device;
 import com.ez.wireless.cellphone.capstone.model.NewOrders;
 import com.ez.wireless.cellphone.capstone.repository.NewOrdersRepository;
 
+/**
+ * The service for the New_orders table
+ * @author Dakota Harvey
+ */
 @Service
 public class NewOrdersService {
 	

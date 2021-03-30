@@ -23,6 +23,10 @@ import com.ez.wireless.cellphone.capstone.model.Model;
 import com.ez.wireless.cellphone.capstone.model.ServiceProvider;
 import com.ez.wireless.cellphone.capstone.model.StorageCapacity;
 
+/**
+ * The service for the Device_Service table
+ * @author Tony Toma
+ */
 @Service
 public class DeviceService 
 {
