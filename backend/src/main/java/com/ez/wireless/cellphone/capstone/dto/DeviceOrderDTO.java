@@ -3,7 +3,6 @@ package com.ez.wireless.cellphone.capstone.dto;
 /**
  * When the customer completes his order, this DTO will contain the device specifications. 
  * @author Tony Toma
- *
  */
 public class DeviceOrderDTO {
 	

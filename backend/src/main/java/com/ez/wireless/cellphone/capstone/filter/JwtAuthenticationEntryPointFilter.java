@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
  * @author Tony
  * 
  * Referenced from: https://www.javainuse.com/spring/boot-jwt
- *
  */
 @Component
 public class JwtAuthenticationEntryPointFilter implements AuthenticationEntryPoint, Serializable {

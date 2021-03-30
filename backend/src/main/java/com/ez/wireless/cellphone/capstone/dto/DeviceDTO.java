@@ -1,7 +1,7 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
 /**
- * 
+ * The data transfer object used for the devices
  * @author Dakota Harvey
  */
 public class DeviceDTO {

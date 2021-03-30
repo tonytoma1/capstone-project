@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * The object model of a devices's storage capacity on the database
+ * @author Dakota Harvey
+ */
 @Entity
 @Table(name = "storage_capacity")
 public class StorageCapacity {

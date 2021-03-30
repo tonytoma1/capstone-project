@@ -1,7 +1,7 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
 /**
- * 
+ * The dto used when updating an acocunt on the database
  * @author Tony Toma
  */
 public class UpdateAccountDTO {

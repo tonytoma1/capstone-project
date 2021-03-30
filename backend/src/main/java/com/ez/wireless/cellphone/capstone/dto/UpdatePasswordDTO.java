@@ -1,6 +1,6 @@
 package com.ez.wireless.cellphone.capstone.dto;
 /**
- * 
+ * The dto to update the password on the database
  * @author Dakota Harvey
  */
 public class UpdatePasswordDTO {

@@ -16,6 +16,10 @@ import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * The object model for an account on the database
+ * @author Tony Toma
+ */
 @Entity
 @Table(name = "account")
 public class Account {

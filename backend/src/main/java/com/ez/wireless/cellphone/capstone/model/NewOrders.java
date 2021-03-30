@@ -16,6 +16,10 @@ import javax.persistence.Table;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.model.ClientTemp;
 
+/**
+ * The object model for a new order on the database
+ * @author Dakota Harvey
+ */
 @Entity
 @Table(name = "New_Orders")
 public class NewOrders {

@@ -3,7 +3,7 @@ package com.ez.wireless.cellphone.capstone.dto;
 import java.util.List;
 
 /**
- * 
+ * The dto used for the shipping label
  * @author Dakota Harvey
  */
 public class ShippingLabelDTO 

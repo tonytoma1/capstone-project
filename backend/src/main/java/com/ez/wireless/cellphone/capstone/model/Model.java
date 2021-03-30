@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * Represents a phone's model. Such as IPhone 6, IPhone XR, Samsung Galaxy Note etc.
  * @author Tony Toma
- *
  */
 @Entity
 @Table(name = "model")

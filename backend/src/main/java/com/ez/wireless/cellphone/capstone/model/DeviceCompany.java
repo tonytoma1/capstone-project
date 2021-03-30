@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * The object model for the device company on the database.
+ * @author Dakota Harvey
+ */
 @Entity
 @Table(name = "device_company")
 public class DeviceCompany {
