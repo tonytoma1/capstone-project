@@ -169,7 +169,7 @@ export default class Register extends Component {
 
                         <div className="first" id="return-add">
 
-                            <div className="your-return-add">Your Return Address</div>
+                            <div className="your-return-add">Shipping Information</div>
 
                             <label> Phone number </label>
                             <InputGroup className="ip-group" >

@@ -70,16 +70,9 @@ class  Header extends React.Component {
 
 
     menu = (e) => {
-        var menu = document.getElementById("menu-links");
         var user = document.getElementById("user-links");
 
 
-
-        if(e.currentTarget.alt === "user"){
-
-            document.getElementById("menu-icon").style.backgroundColor = 'white';
-            document.getElementById("menu-icon").style.backgroundColor = '70%';
-            menu.style.display = "none";
 
             if (user.style.display === "block") {
                 user.style.display = "none";
@@ -91,23 +84,7 @@ class  Header extends React.Component {
               e.target.style.backgroundColor = '#3aafa9';
               e.target.style.opacity = '100%';
             }
-        }else{
-
-            document.getElementById("user-icon").style.backgroundColor = 'white';
-            document.getElementById("user-icon").style.backgroundColor = '70%';
-            user.style.display = "none";
-
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
-                e.target.style.backgroundColor = 'white';
-                e.target.style.opacity = '70%';
-
-            } else {
-                menu.style.display = "block";
-              e.target.style.backgroundColor = '#3aafa9';
-              e.target.style.opacity = '100%';
-            }
-        }
+        
 
       }
 
@@ -134,34 +111,21 @@ class  Header extends React.Component {
                         <img src={Logo} alt="Recommerce" className="logo" onClick={this.goToHome}/>
     
                         <div className="logged-in" id="desktop">
-                        <span className="button"><Link to="/Account">Account  </Link> </span>
-                        <span className="button"><Link to="/login" onClick={this.handleLogout}>Logout  </Link> </span>
-                                  <img className="cart" src={Cart} alt />
+                            <span className="button"><Link to="/Account">Account  </Link> </span>
+                            <span className="button"><Link to="/login" onClick={this.handleLogout}>Logout  </Link> </span>
+                            <img className="cart" src={Cart} alt />
                         </div>
     
                         <div className="not-logged-in" id="mobile">
+                            <img className="cart" src={Cart} alt />
                             <div>
                                 <img src={User} alt='user' onClick={this.menu} id="user-icon"></img>
-                                <img src={Menu} alt='menu' onClick={this.menu} id="menu-icon"></img>
                             </div>
                         </div>
     
                     </div>
     
-                    <div id="menu-links"  className="myLinks">
-                            <Link to="/" className="link">
-                               Home
-                            </Link>
-    
-                            <Link to="/sell-device" className="link">
-                                Sell Device
-                            </Link>
-    
-                            <Link to="/about" className="link">
-                               About
-                            </Link>
-                    </div>
-    
+                   
                     <div id="user-links" className="myLinks">
     
                             <Link to="/account" className="Link">
@@ -189,7 +153,7 @@ class  Header extends React.Component {
     
                         <img src={Logo} alt="Recommerce" className="logo" onClick={this.goToHome}/>
 
-                        <div className="not-logged-in" id="desktop">
+                        <div className="not-logged-in" >
                             <span className="button"><Link to="/login">Sign in   </Link> </span>
                             <Dropdown className="dropdown-box">
                                 <Dropdown.Toggle variant="none" id="dropdown-basic">
