@@ -13,6 +13,10 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+/**
+ * The object model of a role on the database
+ * @author Tony Toma
+ */
 @Entity
 @Table(name = "role")
 public class Role {

@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * The object model of a Service provider on the database
+ * @author Dakota Harvey
+ */
 @Entity
 @Table(name = "service_provider")
 public class ServiceProvider {

@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 import com.ez.wireless.cellphone.capstone.model.Role;
 import com.ez.wireless.cellphone.capstone.repository.RoleRepository;
 
+/**
+ * The service for the role table
+ * @author Dakota Harvey
+ */
 @Service
 public class RoleService {
 

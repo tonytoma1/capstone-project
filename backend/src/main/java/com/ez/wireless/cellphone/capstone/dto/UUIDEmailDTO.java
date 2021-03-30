@@ -1,7 +1,7 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
 /**
- * 
+ * The dto for the UUIDs on the database
  * @author Tony Toma
  */
 public class UUIDEmailDTO {

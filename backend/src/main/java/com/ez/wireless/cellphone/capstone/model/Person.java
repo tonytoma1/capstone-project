@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * The object model for a person on the database
+ * @author Tony Toma
+ */
 @Entity
 @Table(name = "person")
 public class Person {

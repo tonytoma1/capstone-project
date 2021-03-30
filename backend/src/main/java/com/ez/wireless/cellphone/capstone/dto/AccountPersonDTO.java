@@ -1,7 +1,7 @@
 package com.ez.wireless.cellphone.capstone.dto;
 
 /**
- * 
+ * Data transfer object for account and person
  * @author Tony Toma
  */
 public class AccountPersonDTO {

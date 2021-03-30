@@ -23,7 +23,6 @@ import com.ez.wireless.cellphone.capstone.jwt.JwtUserDetailsService;
 
 import io.jsonwebtoken.ExpiredJwtException;
 
-
 /**
  * Verifies the Jwt token on authenticated api endpoints.
  * Reference: https://www.javainuse.com/spring/boot-jwt

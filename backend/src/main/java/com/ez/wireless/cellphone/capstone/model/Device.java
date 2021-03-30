@@ -16,7 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
+/**
+ * The object model for the devices on the database
+ * @author Dakota Harvey
+ */
 @Entity
 @Table(name = "device")
 public class Device 

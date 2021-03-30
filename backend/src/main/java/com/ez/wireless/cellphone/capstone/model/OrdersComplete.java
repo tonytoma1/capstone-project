@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * The object model for an complete order on the database.
+ * @author Dakota Harvey
+ */
 @Entity
 @Table(name = "orders_complete")
 public class OrdersComplete {

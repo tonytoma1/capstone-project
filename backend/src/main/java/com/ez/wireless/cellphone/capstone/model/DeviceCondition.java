@@ -9,6 +9,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * The object model for the device condition on the database.
+ * @author Tony Toma
+ */
 @Entity
 @Table(name = "device_condition")
 public class DeviceCondition {
