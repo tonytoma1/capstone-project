@@ -77,7 +77,7 @@ public class AccountService
 	
 	/**
 	 * Saves the Account to the account table
-	 * @param account The account
+	 * @param accountDTO The Account Data Transfer Object
 	 * @return The Account if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */

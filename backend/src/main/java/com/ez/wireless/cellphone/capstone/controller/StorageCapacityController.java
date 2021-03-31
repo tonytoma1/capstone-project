@@ -11,7 +11,7 @@ import com.ez.wireless.cellphone.capstone.model.StorageCapacity;
 import com.ez.wireless.cellphone.capstone.service.StorageCapacityService;
 
 /**
- * 
+ * Responsible for the storage capacities for the front end.
  * @author Tony Toma
  */
 @RestController

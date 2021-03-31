@@ -12,7 +12,7 @@ import com.ez.wireless.cellphone.capstone.model.OrdersComplete;
 import com.ez.wireless.cellphone.capstone.service.OrdersCompleteService;
 
 /**
- * 
+ * Responsible for the complete orders for the front end.
  * @author Dakota Harvey
  */
 @RestController

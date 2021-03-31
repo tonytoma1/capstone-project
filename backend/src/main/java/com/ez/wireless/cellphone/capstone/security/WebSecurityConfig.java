@@ -24,6 +24,10 @@ import org.springframework.web.filter.CorsFilter;
 import com.ez.wireless.cellphone.capstone.filter.JwtAuthenticationEntryPointFilter;
 import com.ez.wireless.cellphone.capstone.filter.JwtRequestFilter;
 
+/**
+ * The configuration for the security filter for the front end.
+ * @author Tony Toma
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)

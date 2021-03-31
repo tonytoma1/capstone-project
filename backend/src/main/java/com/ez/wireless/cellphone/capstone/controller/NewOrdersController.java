@@ -15,7 +15,7 @@ import com.ez.wireless.cellphone.capstone.model.NewOrders;
 import com.ez.wireless.cellphone.capstone.service.NewOrdersService;
 
 /**
- * 
+ * Responsible for the New order for the front end.
  * @author Dakota Harvey
  */
 @RestController

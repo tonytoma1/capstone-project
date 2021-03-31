@@ -11,7 +11,7 @@ import com.ez.wireless.cellphone.capstone.model.DeviceCompany;
 import com.ez.wireless.cellphone.capstone.service.DeviceCompanyService;
 
 	/**
-	 * 
+	 * Responsible for the device companies for the front end.
 	 * @author Dakota Harvey
 	 */
 	@RestController

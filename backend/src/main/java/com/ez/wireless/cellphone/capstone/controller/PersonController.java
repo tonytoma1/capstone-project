@@ -13,7 +13,7 @@ import com.ez.wireless.cellphone.capstone.model.Person;
 import com.ez.wireless.cellphone.capstone.service.PersonService;
 
 /**
- * 
+ * Responsible for the persons for the front end.
  * @author Tony Toma
  */
 @RestController

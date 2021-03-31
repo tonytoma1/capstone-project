@@ -13,7 +13,7 @@ import com.ez.wireless.cellphone.capstone.model.ClientTemp;
 import com.ez.wireless.cellphone.capstone.service.ClientTempService;
 
 /**
- * 
+ * Responsible for temporary clients for the front end.
  * @author Dakota Harvey
  */
 @RestController

@@ -29,7 +29,7 @@ import com.microsoft.azure.storage.blob.CloudBlockBlob;
 import com.ez.wireless.cellphone.capstone.model.Model;
 
 /**
- * 
+ * Responsible for the models for the front end.
  * @author Tony Toma
  */
 @RestController

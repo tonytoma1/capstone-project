@@ -48,7 +48,7 @@ public class DeviceCondition {
 	}
 
 	/**
-	 * @param conditonName the conditonName to set
+	 * @param conditionName the conditonName to set
 	 */
 	public void setConditionName(String conditionName) {
 		this.conditionName = conditionName;

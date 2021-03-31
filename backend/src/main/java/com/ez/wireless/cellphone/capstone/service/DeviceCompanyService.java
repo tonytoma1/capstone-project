@@ -35,7 +35,7 @@ private DeviceCompanyRepository deviceCompanyRepository;
 	
 	/**
 	 * Saves the condition to the device_company table
-	 * @param DeviceCompany the Device Company
+	 * @param deviceCompany the Device Company
 	 * @return The DeviceCompany if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */

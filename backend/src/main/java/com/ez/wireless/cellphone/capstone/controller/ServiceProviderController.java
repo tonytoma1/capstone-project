@@ -13,7 +13,7 @@ import com.ez.wireless.cellphone.capstone.model.ServiceProvider;
 import com.ez.wireless.cellphone.capstone.service.ServiceProviderService;
 
 /**
- * 
+ * Responsible for the service providers for the front end.
  * @author Dakota Harvey
  */
 @RestController
