@@ -18,6 +18,10 @@ import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.model.Person;
 import com.ez.wireless.cellphone.capstone.model.Role;
 
+/**
+ * The service for the account table on the database
+ * @author Dakota Harvey
+ */
 @Service
 public class AccountService 
 {
@@ -73,7 +77,7 @@ public class AccountService
 	
 	/**
 	 * Saves the Account to the account table
-	 * @param account The account
+	 * @param accountDTO The Account Data Transfer Object
 	 * @return The Account if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */

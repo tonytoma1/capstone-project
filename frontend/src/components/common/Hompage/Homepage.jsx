@@ -13,7 +13,7 @@ import cash from '../../../images/home/cash.png';
 
 export default class  Homepage extends React.Component{
 
-  goToSell(){
+goToSell(){
     window.location.href = '/sell-device';
  }
 
@@ -37,7 +37,7 @@ render() {
 
           
           <section className="home-bottom-how">
-            <img src={bag} />
+            <img src={bag} id="bag"/>
             <p className="home-bottom-title"> Get an instant quote </p>
             <p className="home-bottom-description"> Fill out your device information to get an instance quote</p>
           </section>

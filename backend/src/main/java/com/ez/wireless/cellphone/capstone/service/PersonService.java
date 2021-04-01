@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import com.ez.wireless.cellphone.capstone.model.Person;
 import com.ez.wireless.cellphone.capstone.repository.PersonRepository;
 
+/**
+ * The service for the Person table
+ * @author Tony Toma
+ */
 @Service
 public class PersonService {
 

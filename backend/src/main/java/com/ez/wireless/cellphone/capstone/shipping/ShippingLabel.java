@@ -126,7 +126,7 @@ public class ShippingLabel
 	 * @param message The message to the recipient
 	 * @param phone The Phone number
 	 * @param email The email address
-	 * @param residential if the person is shipping from a residence
+	 * @param residental if the person is shipping from a residence
 	 * @return The senders Address
 	 * @throws EasyPostException 
 	 */

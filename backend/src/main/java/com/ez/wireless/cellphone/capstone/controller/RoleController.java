@@ -13,7 +13,7 @@ import com.ez.wireless.cellphone.capstone.model.Role;
 import com.ez.wireless.cellphone.capstone.service.RoleService;
 
 /**
- * 
+ * Responsible for the roles for the front end.
  * @author Dakota Harvey
  */
 @RestController

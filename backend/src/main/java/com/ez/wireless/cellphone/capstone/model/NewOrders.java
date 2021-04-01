@@ -100,7 +100,7 @@ public class NewOrders {
 	}
 
 	/**
-	 * @param clientTempId the clientTempId to set
+	 * @param clientTemp the clientTempId to set
 	 */
 	public void setClientTemp(ClientTemp clientTemp) {
 		this.clientTemp = clientTemp;
@@ -114,7 +114,7 @@ public class NewOrders {
 	}
 
 	/**
-	 * @param accountId the accountId to set
+	 * @param account the accountId to set
 	 */
 	public void setAccount(Account account) {
 		this.account = account;

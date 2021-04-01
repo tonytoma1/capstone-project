@@ -111,14 +111,22 @@ html {
 
       #desktop{
         margin-right: 10px;
+        display: none;
       }
+      
 
       .explore{
         display: none;
       }
 
       #mobile{
-        display: block;
+        display: flex;
+        justify-content: center;
+      }
+
+      #mobile .cart{
+       margin-top: 15%;
+       margin-right: 5px;
       }
 
       #mobile div{

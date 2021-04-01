@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 import com.ez.wireless.cellphone.capstone.model.DeviceCondition;
 import com.ez.wireless.cellphone.capstone.repository.DeviceConditionRepository;
 
+/**
+ * The service for the Device_Condition table
+ * @author Tony Toma
+ */
 @Service
 public class DeviceConditionService {
 

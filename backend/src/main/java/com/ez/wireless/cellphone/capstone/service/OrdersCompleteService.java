@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import com.ez.wireless.cellphone.capstone.model.OrdersComplete;
 import com.ez.wireless.cellphone.capstone.repository.OrdersCompleteRepository;
 
+/**
+ * The service for the Orders_Complete table
+ * @author Tony Toma
+ */
 @Service
 public class OrdersCompleteService {
 	

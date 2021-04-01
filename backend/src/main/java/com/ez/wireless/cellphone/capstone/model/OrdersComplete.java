@@ -35,7 +35,7 @@ public class OrdersComplete {
 	}
 	
 	/**
-	 * @param Set value of ordersCompleteId
+	 * @param ordersSetId Set value of ordersCompleteId
 	 */
 	private void setOrdersCompleteId(Integer ordersSetId)
 	{

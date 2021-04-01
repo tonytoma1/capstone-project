@@ -33,7 +33,7 @@ import com.ez.wireless.cellphone.capstone.shipping.ShippingLabel;
 import com.ez.wireless.cellphone.capstone.shipping.ShippingLabelResponse;
 
 /**
- * 
+ * Responsible for the account services for the front end.
  * @author Tony Toma
  */
 @RestController
@@ -143,9 +143,8 @@ public class AccountController
 //	}
 	
 	/**
-	 * Saves the UUID into an account
-	 * @param uuid The uuid that will be persisted into the database.
-	 * @param username the username of the user.
+	 * Saves the UUID into an account based of a username
+	 * @param ac The Account Data transfer object
 	 */
 	@PostMapping(path = "/uuid")
 	public void insertUserUUID(@RequestBody AccountDTO ac) {

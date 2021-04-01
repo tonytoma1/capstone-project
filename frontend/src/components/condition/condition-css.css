@@ -40,6 +40,10 @@ html {
     font-size: 20px;
 }
 
+.condition-container .offer .list-cont .list {
+    text-align: left;
+}
+
 .condition-select #select-row{
     width: 70%;
     margin: auto auto;

@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import com.ez.wireless.cellphone.capstone.model.StorageCapacity;
 import com.ez.wireless.cellphone.capstone.repository.StorageCapacityRepository;
 
+/**
+ * The service for Storage_Capacity table
+ * @author Tony Toma
+ */
 @Service
 public class StorageCapacityService {
 	

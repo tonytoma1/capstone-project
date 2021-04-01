@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import com.ez.wireless.cellphone.capstone.model.DeviceCompany;
 import com.ez.wireless.cellphone.capstone.repository.DeviceCompanyRepository;
 
+/**
+ * The service for the Device_Company table
+ * @author Tony Toma
+ */
 @Service
 public class DeviceCompanyService {
 
@@ -31,7 +35,7 @@ private DeviceCompanyRepository deviceCompanyRepository;
 	
 	/**
 	 * Saves the condition to the device_company table
-	 * @param DeviceCompany the Device Company
+	 * @param deviceCompany the Device Company
 	 * @return The DeviceCompany if it was successfully saved to the database
 	 * @throws IllegalArgumentException if the argument is null
 	 */

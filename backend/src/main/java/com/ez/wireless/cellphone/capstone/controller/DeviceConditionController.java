@@ -13,7 +13,7 @@ import com.ez.wireless.cellphone.capstone.model.DeviceCondition;
 import com.ez.wireless.cellphone.capstone.service.DeviceConditionService;
 
 /**
- * 
+ * Responsible for the The device condition for the front end.
  * @author Tony Toma
  */
 @RestController
