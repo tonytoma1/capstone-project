@@ -136,6 +136,12 @@ html {
         /* background-color: aqua; */
       }
 
+      .linkText {
+        padding: 0 auto;
+        text-align: center;
+    
+      }
+
       .myLinks{
         background-color: #3aafa9;
         text-align: right;

@@ -11,6 +11,18 @@ html {
     text-align: left;
 }
 
+.form-submit {
+    margin-top: 20px;
+    border-color: #3aafa9;
+    color: #3aafa9;
+}
+
+.form-submit:hover {
+    background-color:#3aafa9;
+    color: white;
+    transition: 0.5s;
+}
+
 
 .confirm-order-container {
     margin: auto auto;

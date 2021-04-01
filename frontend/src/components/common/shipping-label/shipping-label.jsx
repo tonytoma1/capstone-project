@@ -2,17 +2,27 @@ import React from 'react';
 import Logo from '../../../images/logo.png';
 import test from '../../../images/test.jpg';
 import axios from 'axios';
+import {Button} from 'react-bootstrap';
+import history from '../../../history';
 
+import {connect} from 'react-redux';
+import Shipping from 'pages/shipping';
 
-export default class ShippingLabel extends React.Component {
+class ShippingLabel extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            bgColor: ""
+            shippingLabelUrl: ''
         }
        
+    }
+
+    componentDidMount() {        
+        this.setState({shippingLabelUrl: this.props.shipping_label});
+
+
     }
 
 	changeHandler = e => {
@@ -20,26 +30,21 @@ export default class ShippingLabel extends React.Component {
         this.setState({isResidential: e.target.checked})
     }
 
-    submitHandler = e => {
-        e.preventDefault();
-        console.log(this.state);
-        axios.post("http://localhost:8080/api/shipping-label", this.state)
-            .then(response => {
-                console.log(response);
-                window.location.reload();
-               
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
 
 	render() {
-	        const {} = this.state;
+            
 		        return (
 				<div className="shipping-label-container">
-					<img src={test} />
+                    
+					<p><a href={this.state.shippingLabelUrl}>test</a></p>
 				</div>	
 			);
 	    }
 }
+
+function mapStateToProps(state) {
+    return {
+        shipping_label: state.shipping_label
+    };
+}
+export default connect(mapStateToProps) (ShippingLabel)

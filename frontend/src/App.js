@@ -25,7 +25,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage';
 
-import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE, CART, REMOVE_ITEM} from 'redux-action';
+import {MODEL, CONDITION, SERVICE_PROVIDER, STORAGE, CART, REMOVE_ITEM, SHIPPING_LABEL} from 'redux-action';
 import ServiceProviderPage from 'pages/service-provider-page';
 import CreateUserComponent from 'components/admin/CreateUserComponent';
 import AddDeviceComponent from 'components/admin/AddDeviceComponent';
@@ -40,7 +40,8 @@ let currentState = {
   storage: '',
   condition: '', 
   service_provider: '',
-  shopping_cart: new Array()
+  shopping_cart: new Array(),
+  shipping_label: ''
 }
 
 function reducer(state = currentState, action) {
@@ -96,6 +97,13 @@ function reducer(state = currentState, action) {
                         ...state.shopping_cart.slice(action.payload + 1)
                         ]
       }
+
+      case SHIPPING_LABEL:
+        return {
+          ...state,
+          shipping_label: action.payload
+        }
+      
 
       default: 
         return {
@@ -179,7 +187,7 @@ class App extends React.Component {
                   <Ordering />
                 </Route>
 
-                <Route path="/shipping">
+                <Route path="/shipping" >
                   <Shipping />
                 </Route>
 

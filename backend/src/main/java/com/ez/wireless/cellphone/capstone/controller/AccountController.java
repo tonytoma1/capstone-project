@@ -28,6 +28,7 @@ import com.ez.wireless.cellphone.capstone.dto.UpdateAccountDTO;
 import com.ez.wireless.cellphone.capstone.dto.UpdatePasswordDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.service.AccountService;
+import com.ez.wireless.cellphone.capstone.service.NewOrdersService;
 import com.ez.wireless.cellphone.capstone.shipping.ShippingLabel;
 import com.ez.wireless.cellphone.capstone.shipping.ShippingLabelResponse;
 
@@ -41,6 +42,9 @@ public class AccountController
 {
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private NewOrdersService newOrdersService;
 	
 	@Autowired
     private JavaMailSender javaMailSender;
@@ -94,6 +98,7 @@ public class AccountController
 					new ShippingLabelResponse(shippingLabel.ship(sldto.getPostalService()));
 			
 			// TODO Shipping label didn't throw an error. Submit the orders in new orders
+			newOrdersService.saveOrders(sldto);
 			
 			return  ResponseEntity.ok(shippingLabelResponse);
 		} 

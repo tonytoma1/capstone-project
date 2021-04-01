@@ -7,6 +7,7 @@ import {Form, Col, InputGroup, FormControl, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import UserService from 'services/user.service';
 import { Envelope, Person, Building, Telephone, Signpost2, Mailbox, Map } from 'react-bootstrap-icons';
+import {SHIPPING_LABEL, addPhoneComponent} from 'redux-action';
 
 class ConfirmOrderPage extends React.Component {
 
@@ -46,10 +47,14 @@ class ConfirmOrderPage extends React.Component {
 		let shoppingCartItems = this.props.shopping_cart;
 		await UserService.placeOrder(this.state, shoppingCartItems)
 					.then((response) => {
-						console.log(response.data.shippingLabelUrl);
+						let shippingLabelUrl = response.data.shippingLabelUrl;
+						this.props.dispatch(addPhoneComponent(SHIPPING_LABEL, shippingLabelUrl));
+						history.push("/shipping");
+									
+						window.location.reload();
 					})
 					.catch((error) => {
-
+						console.log(error);
 					})
     }
 
@@ -60,7 +65,7 @@ class ConfirmOrderPage extends React.Component {
 		            	<img src= {Logo} alt="Recommerce" />
 		            	<figcaption>Recommerce</figcaption>
 		            </figure>
-					<Form>
+					<Form onSubmit={this.submitHandler} method="POST">
 					
 						<Form.Row>
 							<Col>
@@ -232,7 +237,7 @@ class ConfirmOrderPage extends React.Component {
 
 						<Form.Row>
 							<Col>
-								<Button onClick={this.submitHandler}>Submit</Button>
+								<FormControl className="form-submit" type="submit" value="Submit"/>
 							</Col>
 						</Form.Row>
 
