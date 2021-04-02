@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ez.wireless.cellphone.capstone.dto.PersonDTO;
 import com.ez.wireless.cellphone.capstone.model.Person;
 import com.ez.wireless.cellphone.capstone.service.PersonService;
 
@@ -59,5 +60,12 @@ public class PersonController {
 		personService.deletePersonById(id);
 		
 		return ResponseEntity.ok("Person deleted");
+	}
+	
+	@PostMapping(path = "/update-person")
+	public ResponseEntity<?> updatePersonById(@RequestBody PersonDTO personDTO) {
+		Person person = personService.updatePerson(personDTO);
+		
+		return ResponseEntity.ok(person);
 	}
 }

@@ -108,6 +108,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, "/api/account/update-account").hasRole("ADMIN")
 				.antMatchers(HttpMethod.POST, "/api/account/delete-account").hasRole("ADMIN")
 				.antMatchers(HttpMethod.POST, "/api/person/delete-person").hasRole("ADMIN")
+				.antMatchers(HttpMethod.POST, "/api/person/update-person").hasRole("ADMIN")
 				.antMatchers(HttpMethod.GET, "/api/new-orders/**").hasAnyRole("USER", "ADMIN")
 				.antMatchers(HttpMethod.GET, "/api/new-orders").hasRole("ADMIN")
 				// All other end-points are secured
