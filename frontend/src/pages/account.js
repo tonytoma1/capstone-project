@@ -25,6 +25,7 @@ export default class Account extends React.Component {
             city: '',
             state: '',
             zip: '',
+            loading: true
         
         
         };
@@ -123,8 +124,8 @@ export default class Account extends React.Component {
         catch(e) {
             console.log(e);
             this.setState({userFound: false, user: null});
-            history.push("/account");
-            // window.location.reload();
+            history.push("/");
+            window.location.reload();
         }
         
     }

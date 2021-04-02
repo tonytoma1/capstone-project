@@ -43,4 +43,11 @@ public class PersonService {
 	public Person savePerson(Person person) {
 		return personRepository.save(person);
 	}
+	
+	public boolean deletePersonById(int id) {
+		Person person = personRepository.findById(id);
+		personRepository.delete(person);
+		
+		return true;
+	}
 }
