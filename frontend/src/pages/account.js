@@ -144,7 +144,7 @@ componentDidUpdate(){
    let {user, fName, lName, email, streetAddress1, phone, country, city, state, zip} = this.state;
    console.log(user);
             return(
-                <div>
+              <div>
                 <Header/>
                 <h1> Welcome to your account, {user != null ? <p>{user.data.person.firstName}</p> : null} </h1>
                 <div className = "iconImage">
@@ -257,7 +257,8 @@ componentDidUpdate(){
                     </div>
                 <Footer/>
                
-                </div>   
+                </div>  
+              
             );
     
     }

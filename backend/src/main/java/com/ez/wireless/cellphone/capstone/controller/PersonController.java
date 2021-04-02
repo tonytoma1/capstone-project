@@ -54,7 +54,7 @@ public class PersonController {
 	}
 	
 	
-	@PostMapping(path = "/{id}")
+	@PostMapping(path = "/delete-person")
 	public ResponseEntity<?> deletePersonById(@RequestParam Integer id) {
 		personService.deletePersonById(id);
 		
