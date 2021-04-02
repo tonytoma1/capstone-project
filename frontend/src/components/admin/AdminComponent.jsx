@@ -22,9 +22,9 @@ export default class AdminComponent extends React.Component {
     }
 
     deletePerson(id) {
-        AdminService.deleteEmployee(id).then(res => {
+        AdminService.deleteEmployee(id).then((res) => {
             this.setState({ person: this.state.person.filter(person => person.personId !== id) });
-        });
+        }); 
     }
 
    async componentDidMount() {
@@ -60,7 +60,7 @@ export default class AdminComponent extends React.Component {
                     <table className="table table-striped table-bordered">
                         <thead className="thead-dark">
                             <tr>
-
+                                <th>ID</th>
                                 <th>City</th>
                                 <th>Company</th>
                                 <th>Country</th>
@@ -82,6 +82,7 @@ export default class AdminComponent extends React.Component {
                                 this.state.person.map(
                                     person =>
                                         <tr key={person.personId}>
+                                             <td>{person.personId}</td>
                                             <td>{person.city}</td>
                                             <td>{person.company}</td>
                                             <td>{person.country}</td>
@@ -98,7 +99,7 @@ export default class AdminComponent extends React.Component {
                                                 <button onClick={() => this.updatePerson(person.personId)} className="btn btn-primary" >Update</button>
                                                 <br />
                                                 <br />
-                                                {/* <button onClick={() => this.deletePerson(person.personId)} className="btn btn-danger" >Delete</button> */}
+                                                <button onClick={() => this.deletePerson(person.personId)} className="btn btn-danger" >Delete</button>
                                             </td>
                                         </tr>
                                 )

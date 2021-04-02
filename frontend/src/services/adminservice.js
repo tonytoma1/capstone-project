@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 
 const apiUrl= 'http://localhost:8080/api/person';
 const apiUrl2= 'http://localhost:8080/api/new-orders';
+const apiUrl3= 'http://localhost:8080/api/delete-person';
 class AdminService{
 
 
@@ -27,7 +28,15 @@ async viewOrder() {
 }
 
 deleteEmployee(personId){
-    return axios.delete(apiUrl + personId);
+    const token = Cookies.get(Constants.JWT_TOKEN);
+    var jsonResult = {Authorization: 'Bearer '.concat(token)};
+    var config = { 
+        headers: jsonResult, 
+        params: {
+           id: personId
+         }
+   }
+    return axios.post(apiUrl , config);
 }
 
 
