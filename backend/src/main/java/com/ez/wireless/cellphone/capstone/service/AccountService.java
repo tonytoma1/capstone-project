@@ -133,6 +133,14 @@ public class AccountService
 		
 		return accountRepository.save(account);
 	}
+	
+	public boolean deleteAccount(UpdateAccountDTO accountDTO) {
+		Account account = getByAccountId(accountDTO.getId());
+		
+		accountRepository.delete(account);
+		
+		return true;
+	}
 
 	/**
 	 * Creates an account and puts it on the account table

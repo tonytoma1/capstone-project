@@ -218,4 +218,11 @@ public class AccountController
 		
 		return ResponseEntity.ok(account);
 	}
+	
+	@PostMapping(path = "/delete-account") 
+	public ResponseEntity<?> deleteUser(@RequestBody UpdateAccountDTO updateAccountDTO) {
+		accountService.deleteAccount(updateAccountDTO);
+		
+		return ResponseEntity.ok("Account Deleted");
+	}
 }

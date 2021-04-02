@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -17,10 +18,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import com.ez.wireless.cellphone.capstone.dto.UpdateAccountDTO;
 import com.ez.wireless.cellphone.capstone.filter.JwtAuthenticationEntryPointFilter;
 import com.ez.wireless.cellphone.capstone.filter.JwtRequestFilter;
 
@@ -102,7 +105,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/api/model/find").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/device/find").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/account").hasAnyRole("ADMIN", "USER")
-				.antMatchers(HttpMethod.POST, "/api/account/updateAccount").hasRole("ADMIN")
+				.antMatchers(HttpMethod.POST, "/api/account/update-account").hasRole("ADMIN")
+				.antMatchers(HttpMethod.POST, "/api/account/delete-account").hasRole("ADMIN")
 				.antMatchers(HttpMethod.GET, "/api/new-orders/**").hasAnyRole("USER", "ADMIN")
 				.antMatchers(HttpMethod.GET, "/api/new-orders").hasRole("ADMIN")
 				// All other end-points are secured
