@@ -15,6 +15,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.ez.wireless.cellphone.capstone.model.Account;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -46,6 +48,11 @@ public class JwtTokenUtil implements Serializable{
 		return role;
 	}
 	
+	public String getAccountIdFromToken(String token) {
+		Claims claims = getAllClaimsFromToken(token);
+		return (String) claims.get("account_id");
+	}
+	
 	//Retrieve expiration date from jwt token
 	public Date getExpirationDateFromToken(String token) {
 		return getClaimFromToken(token, Claims::getExpiration);
@@ -72,10 +79,10 @@ public class JwtTokenUtil implements Serializable{
 	// string for the second argument since the UserDetails service
 	// encrypts the username.
 	// This Method was Referenced from: https://www.javainuse.com/spring/boot-jwt
-	public String generateToken(UserDetails userDetails, String username) { 
+	public String generateToken(UserDetails userDetails, String username, Account account) { 
 		Map<String, Object> claims = new HashMap<>();
 		claims.put("role", getFirstRoleFromUserDetails(userDetails));
-		
+		claims.put("account_id", account.getAccountId());
 		return generateJWTTokenForUser(claims, username);
 	}
 	

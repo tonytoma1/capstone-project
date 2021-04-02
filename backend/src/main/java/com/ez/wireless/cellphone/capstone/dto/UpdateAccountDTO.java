@@ -6,6 +6,7 @@ package com.ez.wireless.cellphone.capstone.dto;
  */
 public class UpdateAccountDTO {
 	
+	private long id;
 	private String city;
 	private String company;
 	private String state;
@@ -19,6 +20,20 @@ public class UpdateAccountDTO {
 	private String zip;
 	
 	
+	
+	
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
 	/**
 	 * @return the city
 	 */

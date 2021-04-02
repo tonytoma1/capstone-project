@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import com.ez.wireless.cellphone.capstone.dto.AccountPersonDTO;
 import com.ez.wireless.cellphone.capstone.dto.AccountPersonRoleDTO;
+import com.ez.wireless.cellphone.capstone.dto.UpdateAccountDTO;
 import com.ez.wireless.cellphone.capstone.model.Account;
 import com.ez.wireless.cellphone.capstone.model.Person;
 import com.ez.wireless.cellphone.capstone.model.Role;
@@ -100,8 +101,36 @@ public class AccountService
 	}
 	
 
+	/**
+	 * Updates the password of an account
+	 * @param account
+	 * @return
+	 */
 	public Account updateAccount(Account account) {
 		account.setPassword(bcryptPasswordEncoder.encode(account.getPassword()));
+		return accountRepository.save(account);
+	}
+	
+	/**
+	 * Updates account info
+	 * @param accountDTO
+	 * @return
+	 */
+	public Account updateAccount(UpdateAccountDTO accountDTO) {
+		Account account = getByAccountId(accountDTO.getId());
+		// Update the person object
+		account.getPerson().setCity(accountDTO.getCity());
+		account.getPerson().setCompany(accountDTO.getCompany());
+		account.getPerson().setCountry(accountDTO.getCountry());
+		account.getPerson().setEmail(accountDTO.getEmail());
+		account.getPerson().setFirstName(accountDTO.getFirstName());
+		account.getPerson().setLastName(accountDTO.getLastName());
+		account.getPerson().setPhone(accountDTO.getPhoneNumber());
+		account.getPerson().setState(accountDTO.getState());
+		account.getPerson().setStreetAddress1(accountDTO.getStreetAddress1());
+		account.getPerson().setStreetAddress2(accountDTO.getStreetAddress2());
+		account.getPerson().setZip(accountDTO.getZip());
+		
 		return accountRepository.save(account);
 	}
 

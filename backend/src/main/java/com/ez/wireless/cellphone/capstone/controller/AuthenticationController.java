@@ -17,6 +17,8 @@ import com.ez.wireless.cellphone.capstone.jwt.JwtRequest;
 import com.ez.wireless.cellphone.capstone.jwt.JwtResponse;
 import com.ez.wireless.cellphone.capstone.jwt.JwtTokenUtil;
 import com.ez.wireless.cellphone.capstone.jwt.JwtUserDetailsService;
+import com.ez.wireless.cellphone.capstone.model.Account;
+import com.ez.wireless.cellphone.capstone.service.AccountService;
 
 /**
  * Responsible for the authentication of the user
@@ -36,6 +38,9 @@ public class AuthenticationController {
 	@Autowired
 	private JwtUserDetailsService jwtUserDetailsService;
 	
+	@Autowired
+	private AccountService accountService;
+	
 	/**
 	 * Creates an authentication token 
 	 * @param jwtRequest
@@ -50,9 +55,10 @@ public class AuthenticationController {
 		
 
 		UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(jwtRequest.getUsername());
+		Account account = accountService.getByUsername(jwtRequest.getUsername());
 		
 		// Method was referenced from: https://www.javainuse.com/spring/boot-jwt
-		String token = jwtTokenUtil.generateToken(userDetails, jwtRequest.getUsername());
+		String token = jwtTokenUtil.generateToken(userDetails, jwtRequest.getUsername(), account);
 		
 		System.out.println("Login Accepted");
 		System.out.println(token);

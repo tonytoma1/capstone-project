@@ -212,8 +212,10 @@ public class AccountController
 
 	}
 	
-	@PostMapping(path = "/update-account/{id}")
-	public void updateUser(@PathVariable Long id, @RequestBody UpdateAccountDTO updateAccountDTO) {
-		//Account account = accountService.get
+	@PostMapping(path = "/update-account")
+	public ResponseEntity<?> updateUser(@RequestBody UpdateAccountDTO updateAccountDTO) {
+		Account account = accountService.updateAccount(updateAccountDTO);
+		
+		return ResponseEntity.ok(account);
 	}
 }
