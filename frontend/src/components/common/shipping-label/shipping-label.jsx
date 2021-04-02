@@ -7,6 +7,10 @@ import history from '../../../history';
 
 import {connect} from 'react-redux';
 import Shipping from 'pages/shipping';
+import {Container, Row, Col} from 'react-bootstrap';
+import {CLEAR, addPhoneComponent} from 'redux-action';
+
+import "./ship.css";
 
 class ShippingLabel extends React.Component {
 
@@ -21,7 +25,7 @@ class ShippingLabel extends React.Component {
 
     componentDidMount() {        
         this.setState({shippingLabelUrl: this.props.shipping_label});
-
+        this.props.dispatch(addPhoneComponent(CLEAR));
 
     }
 
@@ -34,10 +38,22 @@ class ShippingLabel extends React.Component {
 	render() {
             
 		        return (
-				<div className="shipping-label-container">
-                    
-					<p><a href={this.state.shippingLabelUrl}>test</a></p>
-				</div>	
+				<Container>
+                    <Row className="rows">
+                        <Col>
+                            <h1>Please print off your shipping label below</h1>
+                        </Col>
+                    </Row>
+                    <Row className="rows">
+                        <Col>
+                            <a href={this.state.shippingLabelUrl}>
+                                <Button>
+                                    Click here
+                                </Button>
+                            </a>
+                        </Col>
+                    </Row>
+                </Container>
 			);
 	    }
 }
