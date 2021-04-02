@@ -86,13 +86,13 @@ public class AccountService
 	{
 		// TODO check if value was returned
 		Optional<Role> userRole = roleRepository.findById(accountDTO.getRoleId());
-		Optional<Person> person = personRepository.findById(accountDTO.getPersonId());
+		Person person = personRepository.findById(accountDTO.getPersonId());
 		// TODO Get person
 		
 		// TODO error handling when person or userRole not found.
 		Account account = new Account();
 		//account.setAccountId(null);
-		account.setPerson(person.get());
+		account.setPerson(person);
 		account.setRole(userRole.get());
 		account.setUsername(accountDTO.getUsername());
 		account.setPassword(bcryptPasswordEncoder.encode(accountDTO.getPassword()));
