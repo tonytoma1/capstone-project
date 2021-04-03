@@ -25,7 +25,7 @@ async viewOrder() {
     var config = {
         headers: jsonResult
     }
-    return await axios.get(apiUrl2, config);
+    return await axios.get( Constants.API_URL + "new-orders", config);
 }
 
 async deleteEmployee(personId){

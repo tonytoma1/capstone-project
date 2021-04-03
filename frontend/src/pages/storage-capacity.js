@@ -36,7 +36,7 @@ class StorageCapcityPage extends React.Component {
         let result = await UserService.getDevicesBasedOnModelName(this.props.model);
     
         let storageArray = [];
-
+        
         for(let i = 0; i < result.data.length; i++) {
                 storageArray.push(result.data[i].storageCapacity.storageCapacitySize);   
         }

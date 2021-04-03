@@ -105,8 +105,8 @@ class UserService {
                 fromEmail: personObject.email,
                 device: shoppingCart
         }
-;
-        return await axios.post(Constants.API_URL + "account/label", config);
+
+        return await axios.post(Constants.API_URL + "account/label",config);
 
     }
 

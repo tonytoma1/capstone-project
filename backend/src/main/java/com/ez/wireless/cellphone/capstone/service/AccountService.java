@@ -153,7 +153,6 @@ public class AccountService
 		Account acc = new Account();
 		Role role = null;
 		
-		System.out.println(apDTO.getPassword());
 		
 		per.setFirstName(apDTO.getFirstName());
 		per.setLastName(apDTO.getLastName());
