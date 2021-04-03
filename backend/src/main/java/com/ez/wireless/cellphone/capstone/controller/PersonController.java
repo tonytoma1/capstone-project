@@ -36,6 +36,20 @@ public class PersonController {
 		return personService.getAllPerson();
 	}
 	
+	@PostMapping(path = "/deleteperson")
+	public ResponseEntity<?> deletePersonById(@RequestParam Integer id) {
+		personService.deletePersonById(id);
+		
+		return ResponseEntity.ok("Person deleted");
+	}
+	
+	@PostMapping(path = "/updateperson")
+	public ResponseEntity<?> updatePersonById(@RequestBody PersonDTO personDTO) {
+		Person person = personService.updatePerson(personDTO);
+		
+		return ResponseEntity.ok(person);
+	}
+	
 	/**
 	 * Persist the person object to the person table.
 	 * @param person object to be persisted
@@ -55,17 +69,4 @@ public class PersonController {
 	}
 	
 	
-	@PostMapping(path = "/delete-person")
-	public ResponseEntity<?> deletePersonById(@RequestParam Integer id) {
-		personService.deletePersonById(id);
-		
-		return ResponseEntity.ok("Person deleted");
-	}
-	
-	@PostMapping(path = "/update-person")
-	public ResponseEntity<?> updatePersonById(@RequestBody PersonDTO personDTO) {
-		Person person = personService.updatePerson(personDTO);
-		
-		return ResponseEntity.ok(person);
-	}
 }

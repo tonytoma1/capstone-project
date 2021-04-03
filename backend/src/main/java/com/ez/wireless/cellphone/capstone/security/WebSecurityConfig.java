@@ -1,5 +1,7 @@
 package com.ez.wireless.cellphone.capstone.security;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
@@ -33,7 +36,7 @@ import com.ez.wireless.cellphone.capstone.filter.JwtRequestFilter;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+//@EnableGlobalMethodSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	// Verifies a user's login based on the JwtUserDetailsService class
@@ -69,9 +72,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+	
 		// Enable CORS and disable CSRF
 		http.cors().and().csrf().disable()
 		// Add a filter to validate the tokens with every request
+		
 		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
 		.authorizeRequests()
 				// Register and login end-points are open so the user can login and 
@@ -104,11 +109,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/api/model").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/model/find").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/device/find").permitAll()
+				
 				.antMatchers(HttpMethod.GET, "/api/account").hasAnyRole("ADMIN", "USER")
 				.antMatchers(HttpMethod.POST, "/api/account/update-account").hasRole("ADMIN")
 				.antMatchers(HttpMethod.POST, "/api/account/delete-account").hasRole("ADMIN")
-				.antMatchers(HttpMethod.POST, "/api/person/delete-person").hasRole("ADMIN")
-				.antMatchers(HttpMethod.POST, "/api/person/update-person").hasRole("ADMIN")
+				.antMatchers(HttpMethod.POST, "/api/person/deleteperson").hasRole("ADMIN")
+				.antMatchers(HttpMethod.POST, "/api/person/updateperson").hasAnyRole("ADMIN")
 				.antMatchers(HttpMethod.GET, "/api/new-orders/**").hasAnyRole("USER", "ADMIN")
 				.antMatchers(HttpMethod.GET, "/api/new-orders").hasRole("ADMIN")
 				// All other end-points are secured
@@ -129,10 +135,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source =
             new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOriginPattern("*"); // allowed on react app
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
+       // config.setAllowCredentials(true);
+        config.addAllowedOrigin("http://localhost:3000"); // this allows all origin
+        config.addAllowedHeader("*"); // this allows all headers
+        config.addAllowedMethod("OPTIONS");
+        config.addAllowedMethod("GET");
+        config.addAllowedMethod("POST");
+        config.setExposedHeaders(Arrays.asList("Authorization", "x-auth-token"));
+       
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }

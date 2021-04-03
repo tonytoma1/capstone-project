@@ -18,12 +18,21 @@ export default class AdminComponent extends React.Component {
             isLoading: true
         }
         this.deletePerson = this.deletePerson.bind(this);
+        this.updatePerson = this.updatePerson.bind(this);
+    }
+
+    updatePerson(id) {
 
     }
 
-    deletePerson(id) {
-        AdminService.deleteEmployee(id).then((res) => {
-            this.setState({ person: this.state.person.filter(person => person.personId !== id) });
+   async deletePerson(id) {
+        await AdminService.deleteEmployee(id).then((res) => {
+            window.location.reload();
+           
+        })
+        .catch((error) => {
+            console.log("Can't delete person");
+            console.log(error);
         }); 
     }
 

@@ -2,10 +2,11 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import * as Constants from 'constants/global-constants';
 import jwt_decode from "jwt-decode";
+import userService from "./user.service";
 
 const apiUrl= 'http://localhost:8080/api/person';
-const apiUrl2= 'http://localhost:8080/api/new-orders';
-const apiUrl3= 'http://localhost:8080/api/delete-person';
+const apiUrl2= 'http://localhost:8080/api/person/new-orders';
+let apiUrl3= Constants.API_URL + 'person/deleteperson';
 class AdminService{
 
 
@@ -27,16 +28,22 @@ async viewOrder() {
     return await axios.get(apiUrl2, config);
 }
 
-deleteEmployee(personId){
+async deleteEmployee(personId){
     const token = Cookies.get(Constants.JWT_TOKEN);
+
     var jsonResult = {Authorization: 'Bearer '.concat(token)};
+
+    var data = {
+        id: personId
+    }
     var config = { 
-        headers: jsonResult, 
+        headers: jsonResult,
         params: {
-           id: personId
-         }
+            id: personId
+        }
    }
-    return axios.post(apiUrl , config);
+   
+    return await axios.post(Constants.API_URL + "person/deleteperson", {}, config);
 }
 
 

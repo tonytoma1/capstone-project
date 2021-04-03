@@ -1,5 +1,6 @@
 package com.ez.wireless.cellphone.capstone.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -42,7 +45,7 @@ public class Account {
 	@JsonIgnore
 	private String password;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REMOVE)
 	//@MapsId
 	@JoinColumn(name = "person_id")
 	private Person person;
