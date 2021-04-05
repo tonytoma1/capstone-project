@@ -16,7 +16,7 @@ import bg from '../../../images/visuals/login-bg.jpg';
 import { InputGroup, InputGroupText, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import  { Redirect } from 'react-router-dom'
-
+import {Spinner} from 'react-bootstrap';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -26,7 +26,8 @@ export default class Login extends React.Component {
             email: '',
             password: '',
             loggedIn: false,
-            failedLoginAttempt: false
+            failedLoginAttempt: false,
+            buttonPressed: false
         }
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -66,14 +67,18 @@ export default class Login extends React.Component {
                 * Moving forward, in order to retrieve secured endpoints from the backend, 
                 * we must keep sending the JWT token on each request. 
                 */
+                this.setState({buttonPressed: true});
+
                 AuthenticationService.login(this.state.email, this.state.password)
                                      .then((response) => {
+                                        this.setState({buttonPressed: false});
                                              var jwtToken = response.data.token;
                                              UserService.saveJwtToken(jwtToken);
                                             history.push("/account");
                                             window.location.reload();
                                             })
                                             .catch((error) => {
+                                                this.setState({buttonPressed: false});
                                                 this.setState({failedLoginAttempt: true});
                                                 console.log("error caught");
                                                 console.log(error);
@@ -153,8 +158,10 @@ export default class Login extends React.Component {
                                 <Link to="/forgot-password"> Forgot password?</Link>
                                 </span>
                                 {failedLoginAttempt && <p className="login-error">Login credentials are incorrect. Please try again</p>}
-                                <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />
+                                
+                                {this.state.buttonPressed ? <Spinner animation="border" variant="success" /> : 
 
+                                <input type="Submit" className="submitButton" id="loginSignIn" defaultValue="SignIn"value=" Sign in" />}
                                
                             </form>
 
