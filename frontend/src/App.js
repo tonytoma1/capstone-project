@@ -31,7 +31,6 @@ import CreateUserComponent from 'components/admin/CreateUserComponent';
 import AddDeviceComponent from 'components/admin/AddDeviceComponent';
 import ConfirmOrderPage from 'pages/confirm-order';
 import ViewOrdersComponent from 'components/admin/ViewOrders.component';
-
 import Ordering from 'pages/ordering';
 import Shipping from 'pages/shipping';
 

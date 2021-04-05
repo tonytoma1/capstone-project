@@ -46,6 +46,39 @@ async deleteEmployee(personId){
     return await axios.post(Constants.API_URL + "person/deleteperson", {}, config);
 }
 
+async updatePerson(person){
+    const token = Cookies.get(Constants.JWT_TOKEN);
+
+    var jsonResult = {Authorization: 'Bearer '.concat(token)};
+
+    var config = { 
+        headers: jsonResult,
+        params: {
+            personDTO: person
+        }
+   }
+   
+    return await axios.post(Constants.API_URL + "person/updateperson", {}, config);
+}
+
+
+async updateEmployee(personId){
+    const token = Cookies.get(Constants.JWT_TOKEN);
+
+    var jsonResult = {Authorization: 'Bearer '.concat(token)};
+
+    var data = {
+        id: personId
+    }
+    var config = { 
+        headers: jsonResult,
+        params: {
+            id: personId
+        }
+   }
+   
+    return await axios.post(Constants.API_URL + "person/deleteperson", {}, config);
+}
 
 
    
