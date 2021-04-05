@@ -141,6 +141,12 @@ componentDidUpdate(){
 
 
     render() {
+
+        if(this.state.isLoading) {
+            return <p>Loading..</p>;
+        }
+
+
    let {user, fName, lName, email, streetAddress1, phone, country, city, state, zip} = this.state;
    console.log(user);
             return(

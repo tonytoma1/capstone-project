@@ -80,6 +80,34 @@ async updateEmployee(personId){
     return await axios.post(Constants.API_URL + "person/deleteperson", {}, config);
 }
 
+async addDevice(modelId, storageId, conditionId, serviceProviderId, price, deviceCompanyId) {
+    const token = Cookies.get(Constants.JWT_TOKEN);
+
+    var jsonResult = {Authorization: 'Bearer '.concat(token)};
+
+    var data = {
+        modelId: modelId,
+        storageCapacityId: storageId,
+        deviceConditionId: conditionId,
+        serviceProviderId: serviceProviderId,
+        devicePrice: price,
+        deviceCompanyId: deviceCompanyId
+    }
+
+    var config = { 
+        headers: jsonResult,
+        params: {
+            modelId: modelId,
+            storageCapacityId: storageId,
+            deviceConditionId: conditionId,
+            serviceProviderId: serviceProviderId,
+            devicePrice: price
+        }
+   }
+
+   return await axios.post(Constants.API_URL + "device", data, config);
+}
+
 
    
    
