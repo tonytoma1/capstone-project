@@ -6,12 +6,8 @@ import { Link } from 'react-router-dom';
 import history from '../../history';
 import HeaderComponent from './HeaderComponent';
 import './table.css' ;
-import { ThreeDotsVertical } from 'react-bootstrap-icons';
 
-/*
-let a = AdminService.viewOrder();
-console.log(a);
-*/
+
 export default class ViewOrdersComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -27,19 +23,19 @@ export default class ViewOrdersComponent extends React.Component {
   
 
    async componentDidMount() {
-       try {
-            let items = await AdminService.viewOrder();
-            this.setState({neworder: items.data, 
+        AdminService.viewOrder().then((res) => {
+            this.setState({ neworder: res.data,
                             isLoggedIn: true,
-                            isLoading: false});
-
-            console.log(this.state.neworder);
+                            isLoading: false
+                           
+            });
             
-            
-       }
-        catch(error) {
+        }).catch(error => {
             console.log(error);
-        }
+            history.push("/login");
+            window.location.reload();
+            
+        })
       
     }
 
@@ -48,6 +44,11 @@ export default class ViewOrdersComponent extends React.Component {
 
     render() {
         const { isLoading, isLoggedIn } = this.state;
+
+        if(this.state.isLoading) {
+            return <p>Loading....</p>
+        }
+
         return (  
             <div>
                 <HeaderComponent />
@@ -68,18 +69,20 @@ export default class ViewOrdersComponent extends React.Component {
                         </thead>
 
                         <tbody>
-                        {
-                            this.state.neworder.map((item, index) => {
-                                return(
-                                    <tr>
-                                        <td>{item.clientTemp.email}</td>
-                                    
-                                        <td>{item.devices.deviceId}</td>
-                                    </tr>
+                            {
+                                this.state.neworder.map(
+                                    neworder =>
+                                        <tr key={neworder}>
+                                        <td >{neworder.clientTemp.email}</td>   
+                                        <td>{neworder.devices.deviceCompany.deviceCompanyName}</td>       
+                                        <td>{neworder.devices.deviceCondition.conditonName}</td>    
+                                        <td>{neworder.devices.model.modelName}</td>    
+                                        <td>{neworder.devices.serviceProvider.serviceProviderName}</td>    
+                                        <td>{neworder.devices.storageCapacity.storageCapacitySize}</td>     
+                                       <td>{neworder.totalPrice}</td>                                        
+                                        </tr>
                                 )
-                            })
-                        }
-
+                            }
                         </tbody>
                     </table>
                 </div>

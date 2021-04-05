@@ -20,6 +20,9 @@ export default class HeaderComponent extends Component {
                     <Link to='/vieworders'>
                     <div className="navbar-brand">View Orders</div>
                     </Link>
+                    <Link to='/adddevice'>
+                    <div className="navbar-brand">Add Device</div>
+                    </Link>
                     
                     
                     </nav>

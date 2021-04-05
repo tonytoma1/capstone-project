@@ -142,9 +142,10 @@ export default class Account extends React.Component {
 
     render() {
 
-        if(this.state.user == null) {
-            return <p>loading,..........</p>;
+        if(this.state.isLoading) {
+            return <p>Loading..</p>;
         }
+
 
    let {user, fName, lName, email, streetAddress1, phone, country, city, state, zip} = this.state;
    console.log(user);

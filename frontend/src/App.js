@@ -31,7 +31,6 @@ import CreateUserComponent from 'components/admin/CreateUserComponent';
 import AddDeviceComponent from 'components/admin/AddDeviceComponent';
 import ConfirmOrderPage from 'pages/confirm-order';
 import ViewOrdersComponent from 'components/admin/ViewOrders.component';
-
 import Ordering from 'pages/ordering';
 import Shipping from 'pages/shipping';
 
@@ -158,7 +157,7 @@ class App extends React.Component {
                 </Route>
                 <Route path="/add" component={CreateUserComponent}></Route>
                 <Route path="/vieworders" component={ViewOrdersComponent}></Route>
-               
+                <Route path="/adddevice" component={AddDeviceComponent}></Route>
                 
                 <Route path="/register">
                   <RegistrationPage />
