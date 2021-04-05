@@ -12,6 +12,9 @@ import Email from '../../../images/visuals/email.png';
 import Password from '../../../images/visuals/padlock.png';
 import User from 'images/visuals/user.png';
 
+import {Spinner} from 'react-bootstrap';
+
+
 
 export default class Register extends Component {
 
@@ -32,7 +35,9 @@ export default class Register extends Component {
             company: "",
             isResidential: false,
             matchingPass: false,
-            complete: false
+            complete: false,
+            buttonPressed: false,
+            error: false
 
         }
     }
@@ -46,11 +51,14 @@ export default class Register extends Component {
 
         e.preventDefault();
 
+        this.setState({buttonPressed: true});
+
         console.log(this.state);
         axios.post("http://localhost:8080/api/account/register", this.state)
             .then(response => {
 
-
+                this.setState({buttonPressed: false,
+                              error: false});
 
                 console.log(response);
                 history.push("/login");
@@ -58,6 +66,8 @@ export default class Register extends Component {
 
             })
             .catch(error => {
+                this.setState({buttonPressed: false,
+                    error: true});
                 console.log(error);
             })
     }
@@ -241,10 +251,17 @@ export default class Register extends Component {
 
                         {complete && <p className="login-error">Complete all Required fields <span className="asterisk">*</span></p>}
                         {matchingPass && <p className="login-error">Make sure you enter a matching password</p>}
-
-                        <section className="reg-btn back" onClick={this.backButton}> &#8637; Back</section>
+            
+                        {this.state.buttonPressed ? null : <section className="reg-btn back" onClick={this.backButton}> &#8637; Back</section> }
                         <section className="reg-btn" onClick={this.nextButton} id="next"> Next &#8640;</section>
-                        <input type="submit" value="Sign up" id="sign" className="reg-btn" />
+                       
+                       {this.state.error ? <p style={{color : 'red'}}>Email already in use</p> : null}
+                       {this.state.buttonPressed ? <Spinner className="spinner" animation="border" variant="success" /> : 
+                      
+                          <input type="submit" value="Sign up" id="sign" className="reg-btn" />
+
+                       }
+                        
 
                         <div id="mobile-reg">
                         <p> Go back to Login  </p>

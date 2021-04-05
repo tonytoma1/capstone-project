@@ -116,7 +116,8 @@ export default class Account extends React.Component {
                           zip: userFound.data.person.zip,
                           orders: ordersFound,
                           userFound: true, 
-                          user: userFound
+                          user: userFound,
+                          isLoading: false
 
                       
                         }); 
