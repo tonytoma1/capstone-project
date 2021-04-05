@@ -30,7 +30,7 @@ render() {
       </div>
 
       <div className="home-bottom">
-        <h1 className='how-title'>How it Works</h1>
+        <h1 className='how-title'style={{ textAlign: 'center', color: '#3aafa9' }} >How it Works</h1>
 
 
         <div className="home-cards">
@@ -38,19 +38,19 @@ render() {
           
           <section className="home-bottom-how">
             <img src={bag} id="bag"/>
-            <p className="home-bottom-title"> Get an instant quote </p>
+            <p className="home-bottom-title" style={{ textAlign: 'center', color: '#3aafa9' }}> Get an instant quote </p>
             <p className="home-bottom-description"> Fill out your device information to get an instance quote</p>
           </section>
 
           <section className="home-bottom-how">
             <img src={box} />
-            <p className="home-bottom-title"> Ship your device </p>
+            <p className="home-bottom-title"style={{ textAlign: 'center', color: '#3aafa9' }}> Ship your device </p>
             <p className="home-bottom-description">Ship your device for FREE using the provided shipping label</p>
           </section>
 
           <section className="home-bottom-how">
           <img src={cash} />
-          <p className="home-bottom-title"> Get paid </p>
+          <p className="home-bottom-title" style={{ textAlign: 'center', color: '#3aafa9' }}> Get paid </p>
           <p className="home-bottom-description">Get paid once the device has been received and verified</p>
         </section>
 

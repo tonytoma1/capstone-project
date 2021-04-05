@@ -12,7 +12,9 @@ import StorageCapacityPage from './pages/storage-capacity';
 import AboutUsPage from './pages/about-us-page';
 import AdminPage from './pages/admin.page';
 import SellDevicePage from 'pages/sell-device-page';
-
+import PrivacyPolicy from './components/fillerpages/PrivacyPolicy';
+import TermsConditions from './components/fillerpages/TermsConditions';
+import FAQ from './components/fillerpages/FAQ';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -158,7 +160,10 @@ class App extends React.Component {
                 <Route path="/add" component={CreateUserComponent}></Route>
                 <Route path="/vieworders" component={ViewOrdersComponent}></Route>
                 <Route path="/adddevice" component={AddDeviceComponent}></Route>
-                
+                <Route path="/privacypolicy" component={ PrivacyPolicy}></Route>
+                <Route path="/termsandconditions" component={ TermsConditions }></Route>
+                <Route path="/faq" component={ FAQ }></Route>
+               
                 <Route path="/register">
                   <RegistrationPage />
                 </Route>
