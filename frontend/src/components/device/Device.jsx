@@ -63,7 +63,7 @@ class Device extends React.Component {
                 <h2> Select Model </h2>
 
                 <div className="selection">
-
+                
                     {this.state.device.map((devicesObj) => {
                         
                         return (
