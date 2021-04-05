@@ -194,7 +194,7 @@ export default class PrivacyPolicy extends Component {
 <p>By phone number: 403-666-6666</p>
 </li>
 <li>
-<p>By mail: 1600 Holloway Ave, San Francisco, CA 94132, United States</p>
+<p>By mail: 1600 Holloway Ave, San Diego, CA 94132, United States</p>
 </li>
 </ul>
 <Footer />

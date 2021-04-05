@@ -17,7 +17,7 @@ export const Data = [
       },
       {
         question: 'Where are you located',
-        answer: 'San Francisco'
+        answer: 'San Diego'
       },
       {
         question: 'Do you have a physical store',
