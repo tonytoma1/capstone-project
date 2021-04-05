@@ -25,19 +25,27 @@ function Footer () {
           <Col >
 
               <span className="title"> CUSTOMER SERVICE </span>
-              <span className="content">Contact Us</span>
-              <span className="content"><Link to="./ordering">Ordering & Payment</Link></span>
-              <span className="content"><Link to="./shipping">Shipping</Link></span>
-              <span className="content">Returns</span>
-              <span className="content">FAQ</span>
+              <Link to="/about">
+              <span className="content color-content">Contact Us</span>
+              </Link>          
+              {/* <span className="content">Returns</span> */}
+              <Link to="/home">
+              <span className="content color-content">FAQ</span>
+              </Link>
+
 
           </Col>
           <Col >
 
           <span className="title"> INFORMATION </span>
-              <span className="content">Privacy Policy</span>
-              <span className="content">Terms & Conditions</span>
-          
+          <Link to="/privacypolicy">
+          <span className="content color-content">Privacy Policy</span>
+          </Link>
+              <Link to="termsandconditions">
+              <span className="content color-content">Terms & Conditions</span>
+              </Link>
+              
+             
           </Col>
         </Row>
 

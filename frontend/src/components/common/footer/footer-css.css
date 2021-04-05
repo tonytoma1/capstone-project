@@ -6,6 +6,10 @@ html {
   box-sizing: inherit;
 }
 
+.color-content {
+  color: white;
+}
+
 .footer-container{
   margin-top: 130px;
   /* padding: 30px 125px 15px 125px; */
