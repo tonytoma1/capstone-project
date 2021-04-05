@@ -113,15 +113,49 @@ class  Header extends React.Component {
                         <div className="logged-in" id="desktop">
                             <span className="button"><Link to="/Account">Account  </Link> </span>
                             <span className="button"><Link to="/login" onClick={this.handleLogout}>Logout  </Link> </span>
-                            <img className="cart" src={Cart} alt />
+                            <Dropdown className="dropdown-box">
+                                <Dropdown.Toggle variant="none" id="dropdown-basic">
+                                    <img className="cart" src={Cart} alt /> <Badge pill>{this.props.shopping_cart.length}</Badge>
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    {this.props.shopping_cart.length > 0 ? 
+                                    (<Dropdown.Item >
+                                        <Link to="/confirm-order">
+                                        <Button variant="outline-primary" className="linkText">Proceed to Checkout</Button>
+                                        </Link>
+                                    </Dropdown.Item>) : null}
+                                    {
+                                        this.props.shopping_cart.map((device, index) => {
+                                            return(
+                                                <Dropdown.Item>
+                                                    <ListGroup>
+                                                        <ListGroup.Item>
+                                                        <img src={device.modelImage}/>
+                                                        </ListGroup.Item>
+                                                        <ListGroup.Item>{device.model}</ListGroup.Item>
+                                                        <ListGroup.Item>{device.storage}GB</ListGroup.Item>
+                                                        <ListGroup.Item>{device.serviceProvider}</ListGroup.Item>
+                                                        <ListGroup.Item>{device.condition}</ListGroup.Item>
+                                                        <ListGroup.Item>${device.price}</ListGroup.Item>
+                                                       
+                                                        <ListGroup.Item><Button onClick={() => {this.removeItemFromCart(index)}}>Remove</Button></ListGroup.Item>
+                                                    </ListGroup>
+                                                </Dropdown.Item>
+                                                
+                                            )
+                                                    
+                                        })
+                                    }
+                                    
+                                    
+                                    
+
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </div>
     
-                        <div className="not-logged-in" id="mobile">
-                            <img className="cart" src={Cart} alt />
-                            <div>
-                                <img src={User} alt='user' onClick={this.menu} id="user-icon"></img>
-                            </div>
-                        </div>
+                        
     
                     </div>
     
