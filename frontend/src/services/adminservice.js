@@ -4,9 +4,6 @@ import * as Constants from 'constants/global-constants';
 import jwt_decode from "jwt-decode";
 import userService from "./user.service";
 
-const apiUrl= 'http://localhost:8080/api/person';
-const apiUrl2= 'http://localhost:8080/api/person/new-orders';
-let apiUrl3= Constants.API_URL + 'person/deleteperson';
 class AdminService{
 
 
@@ -16,7 +13,7 @@ async verifyAdmin() {
     var config = {
         headers: jsonResult
     }
-    return await axios.get(apiUrl, config);
+    return await axios.get(Constants.API_URL + "/person", config);
 }
 
 async viewOrder() {

@@ -14,6 +14,7 @@ import User from 'images/visuals/user.png';
 
 import {Spinner} from 'react-bootstrap';
 
+import * as Constants from 'constants/global-constants';
 
 
 export default class Register extends Component {
@@ -54,7 +55,7 @@ export default class Register extends Component {
         this.setState({buttonPressed: true});
 
         console.log(this.state);
-        axios.post("http://localhost:8080/api/account/register", this.state)
+        axios.post(Constants.API_URL + "account/register", this.state)
             .then(response => {
 
                 this.setState({buttonPressed: false,

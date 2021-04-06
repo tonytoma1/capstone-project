@@ -1,111 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.ez.wireless</groupId>
-	<artifactId>cellphone.capstone</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>cellphone.capstone</name>
-	<description>Capstone for 4th semester </description>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
-		<dependency>
-		    <groupId>com.microsoft.sqlserver</groupId>
-		    <artifactId>mssql-jdbc</artifactId>
-		    <version>9.2.1.jre15</version>
-		</dependency>
-		
-	
-		
-				
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		
-		<!-- send email -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-		
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
-		<dependency>
-		    <groupId>commons-codec</groupId>
-		    <artifactId>commons-codec</artifactId>
-		    <version>1.15</version>
-		</dependency>
-		
-		  
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>	
-		
-		<!-- https://mvnrepository.com/artifact/com.goshippo/shippo-java-client 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">  
+  <modelVersion>4.0.0</modelVersion>  
+  <parent> 
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-parent</artifactId>  
+    <version>2.4.1</version>  
+    <relativePath/>  
+    <!-- lookup parent from repository --> 
+  </parent>  
+  <groupId>com.ez.wireless</groupId>  
+  <artifactId>cellphone.capstone</artifactId>  
+  <version>0.0.1-SNAPSHOT</version>  
+  <name>cellphonecapstone</name>  
+  <description>Capstone for 4th semester</description>  
+  <properties> 
+    <java.version>1.8</java.version> 
+  </properties>  
+  <dependencies> 
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-data-jpa</artifactId> 
+    </dependency>  
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-web</artifactId> 
+    </dependency>  
+    <dependency> 
+      <groupId>com.microsoft.sqlserver</groupId>  
+      <artifactId>mssql-jdbc</artifactId>  
+      <version>7.4.1.jre8</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>mysql</groupId>  
+      <artifactId>mysql-connector-java</artifactId>  
+      <scope>runtime</scope> 
+    </dependency>  
+    <!-- send email -->  
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-mail</artifactId> 
+    </dependency>  
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-test</artifactId>  
+      <scope>test</scope> 
+    </dependency>  
+    <dependency> 
+      <groupId>io.jsonwebtoken</groupId>  
+      <artifactId>jjwt</artifactId>  
+      <version>0.9.1</version> 
+    </dependency>  
+    <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->  
+    <dependency> 
+      <groupId>commons-codec</groupId>  
+      <artifactId>commons-codec</artifactId>  
+      <version>1.15</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-security</artifactId> 
+    </dependency>  
+    <!-- https://mvnrepository.com/artifact/com.goshippo/shippo-java-client 
 		<dependency>
 		    <groupId>com.goshippo</groupId>
 		    <artifactId>shippo-java-client</artifactId>
 		    <version>3.0.3</version>
-		</dependency> -->
-		<!-- https://mvnrepository.com/artifact/com.easypost/easypost-api-client -->
-		<dependency>
-		    <groupId>com.easypost</groupId>
-		    <artifactId>easypost-api-client</artifactId>
-		    <version>4.0.4</version>
-		</dependency>
-		
-		<dependency>
-		   <groupId>com.microsoft.azure</groupId>
-		   <artifactId>spring-starter-azure-storage</artifactId>
-		   <version>1.2.8</version>
-		</dependency>
-		
-		
-		
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
+		</dependency> -->  
+    <!-- https://mvnrepository.com/artifact/com.easypost/easypost-api-client -->  
+    <dependency> 
+      <groupId>com.easypost</groupId>  
+      <artifactId>easypost-api-client</artifactId>  
+      <version>4.0.4</version> 
+    </dependency>  
+    <dependency> 
+      <groupId>com.microsoft.azure</groupId>  
+      <artifactId>spring-starter-azure-storage</artifactId>  
+      <version>1.2.8</version> 
+    </dependency> 
+  </dependencies>  
+  <build> 
+    <plugins> 
+      <plugin> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-maven-plugin</artifactId> 
+      </plugin>  
+      <plugin> 
+        <groupId>com.microsoft.azure</groupId>  
+        <artifactId>azure-webapp-maven-plugin</artifactId>  
+        <version>1.7.0</version>  
+        <configuration> 
+          <schemaVersion>V2</schemaVersion>  
+          <resourceGroup>cellphone.capstone-1617660524505-rg</resourceGroup>  
+          <appName>cellphonecapstone</appName>  
+          <pricingTier>B1</pricingTier>  
+          <region>westeurope</region>  
+          <runtime> 
+            <os>linux</os>  
+            <javaVersion>jre8</javaVersion>  
+            <webContainer>jre8</webContainer> 
+          </runtime>  
+          <deployment> 
+            <resources> 
+              <resource> 
+                <directory>${project.basedir}/target</directory>  
+                <includes> 
+                  <include>*.jar</include> 
+                </includes> 
+              </resource> 
+            </resources> 
+          </deployment> 
+        </configuration> 
+      </plugin> 
+    </plugins> 
+  </build> 
 </project>

@@ -1,11 +1,12 @@
 import axios from "axios";
-const API_URL = "http://localhost:8080/api/";
+import * as Constants from 'constants/global-constants';
+
 
  class AuthenticationService {
 
     // Attempts to login the user
     async login(user, pass) {
-        var loginUrl = API_URL + "authentication";
+        var loginUrl = Constants.API_URL + "authentication";
         var jsonDataSent = {
             username: user,
             password: pass

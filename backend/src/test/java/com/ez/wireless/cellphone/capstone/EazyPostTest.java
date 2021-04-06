@@ -102,7 +102,7 @@ class EazyPostTest
 	}
 	
 	
-	@Test
+	
 	void test(Address toAddress, Address fromAddress, Parcel par) 
 	{
 		shipmentMap.put("to_address", toAddress);

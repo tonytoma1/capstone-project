@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Data } from './Data';
-import styled from 'styled-components';
+import styled from 'styled-components'; 
 import { IconContext } from 'react-icons';
 import { FiPlus, FiMinus } from 'react-icons/fi';
+
+
+
 const AccordionSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -89,6 +92,7 @@ const FAQ = () => {
         </Container>
       </AccordionSection>
     </IconContext.Provider>
+  
   );
 };
 

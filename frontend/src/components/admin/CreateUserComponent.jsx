@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import history from '../../history';
 import AdminService from '../../services/adminservice';
+import * as Constants from 'constants/global-constants'; 
+
 export default class CreateUserComponent extends Component {
     constructor(props) {
         super(props);
@@ -33,7 +35,7 @@ export default class CreateUserComponent extends Component {
     submitHandler = e => {
         e.preventDefault();
         console.log(this.state);
-        axios.post("http://localhost:8080/api/account/register", this.state)
+        axios.post(Constants.API_URL + "/account/register", this.state)
             .then(response => {
                 console.log(response);
                 window.location.reload();

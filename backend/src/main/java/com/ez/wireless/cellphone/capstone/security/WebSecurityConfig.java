@@ -92,6 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, "/api/account/updatepassword").permitAll()
 				
 				// TODO remove this endpoints before deployment
+				/*
 				.antMatchers(HttpMethod.POST, "/api/role").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/model").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/service-provider").permitAll()
@@ -99,7 +100,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, "/api/condition").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/device").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/device-company").permitAll()
-				
+				*/
 				// Put the white listed end-points here
 				.antMatchers(HttpMethod.GET, "/api/device-company").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/condition").permitAll()
@@ -136,7 +137,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
        // config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:3000"); // this allows all origin
+        config.addAllowedOrigin("*"); // this allows all origin
         config.addAllowedHeader("*"); // this allows all headers
         config.addAllowedMethod("OPTIONS");
         config.addAllowedMethod("GET");
