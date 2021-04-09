@@ -31,6 +31,14 @@
       <artifactId>mssql-jdbc</artifactId>  
       <version>7.4.1.jre8</version> 
     </dependency>  
+    
+    
+	<dependency>
+	    <groupId>org.postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>42.2.5</version>
+	</dependency>
+	
     <dependency> 
       <groupId>mysql</groupId>  
       <artifactId>mysql-connector-java</artifactId>  
