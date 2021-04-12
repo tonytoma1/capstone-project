@@ -14,6 +14,7 @@ const AccordionSection = styled.div`
   position: relative;
   height: 100vh;
   background: #fff;
+  margin-bottom: 40px;
 `;
 
 const Container = styled.div`

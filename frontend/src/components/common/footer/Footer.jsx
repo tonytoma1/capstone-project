@@ -14,7 +14,7 @@ function Footer () {
 
   return (
 
-<div>
+    <div>
       <div className='footer-container'>
         <Row>
           <Col >
@@ -50,6 +50,7 @@ function Footer () {
         </Row>
 
       </div>
+
       <section className="reserved">&#169; 2021 Recommerce. All Rights Reserved.</section>
     </div>
 

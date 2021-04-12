@@ -21,9 +21,8 @@ export default class Home extends React.Component {
                 
                     <h2 style={{ textAlign: 'center', color: '#3aafa9' }}>Frequently Asked Questions</h2>
                 
-<div style = {{  marginBottom : 300 }}>
-<FAQ />
-</div>
+
+                <FAQ />
                
                 <Footer />
             </div>
