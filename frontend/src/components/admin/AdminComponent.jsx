@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom';
 import history from '../../history';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import UpdateModal from  './UpdateModal';
+import UserService from '../../services/user.service';
+import HeaderComponent from './HeaderComponent';
 
 
-/*
-let a = AdminService.verifyAdmin();
-console.log(a);
-*/
 export default class AdminComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -42,18 +40,36 @@ export default class AdminComponent extends React.Component {
     }
 
     async componentDidMount() {
-        AdminService.verifyAdmin().then((res) => {
-            this.setState({
-                person: res.data,
-                isLoggedIn: true,
-                isLoading: false
-            });
-        }).catch(error => {
+        try {
+            let result = await UserService.isUserLoggedIn();
+
+             //check to see if user is admin
+             if(result.data.role.roleName === "ADMIN"){
+                let peopleResult = await AdminService.getAllPerson();
+                console.log(peopleResult);
+                
+                this.setState({
+                    person: peopleResult.data,
+                    isLoggedIn: true,
+                    isLoading: false
+                });       
+            }
+
+            else {
+                history.push("/login");
+                window.location.reload();
+            }
+
+            
+         
+        }
+        catch(error) {
+            
             console.log(error);
             history.push("/login");
             window.location.reload();
-
-        })
+        
+        }
 
     }
 
@@ -63,12 +79,14 @@ export default class AdminComponent extends React.Component {
 
 
     render() {
-        const { isLoading, isLoggedIn } = this.state;
-       
+        if (this.state.isLoading) {
+            return <p>Loading.....</p>
+        }
 
         return (
             <div>
                 {this.state.isLoading ? 'Loading...' : <div>
+                    <HeaderComponent/>
                     <h2 className="text-center">Persons Lists</h2>
 
                     <Link to='/add/id'>

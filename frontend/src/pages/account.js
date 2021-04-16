@@ -105,6 +105,12 @@ export default class Account extends React.Component {
             //let ordersFound =  await UserService.getOrdersByUsername(userFound.data.person.email);
               let ordersFound = [];
 
+            //check to see if user is admin
+             if(userFound.data.role.roleName === "ADMIN"){
+                history.push("/admin");
+                window.location.reload();
+            }
+
             this.setState({firstName: userFound.data.person.firstName, 
                           lastName: userFound.data.person.lastName,
                           email: userFound.data.person.email, 
@@ -121,11 +127,6 @@ export default class Account extends React.Component {
 
                       
                         }); 
-            //check to see if user is admin
-             if(userFound.data.role.roleName === "ADMIN"){
-                history.push("/admin");
-                window.location.reload();
-            }
         }
         catch(e) {
             console.log(e);

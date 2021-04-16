@@ -7,13 +7,23 @@ import userService from "./user.service";
 class AdminService{
 
 
+async getAllPerson() {
+    const token = Cookies.get(Constants.JWT_TOKEN);
+    var jsonResult = {Authorization: 'Bearer '.concat(token)};
+    var config = {
+        headers: jsonResult
+    }
+
+    return await axios.get(Constants.API_URL + "person", config)
+}
+
 async verifyAdmin() {
     const token = Cookies.get(Constants.JWT_TOKEN);
     var jsonResult = {Authorization: 'Bearer '.concat(token)};
     var config = {
         headers: jsonResult
     }
-    return await axios.get(Constants.API_URL + "/person", config);
+    return await axios.get(Constants.API_URL + "account", config);
 }
 
 async viewOrder() {

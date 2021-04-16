@@ -6,15 +6,16 @@ import Header from '../components/admin/HeaderComponent';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreateUserComponent from '../components/admin/CreateUserComponent';
 import LoginPage from '../pages/login-page';
+
+
 export default class AdminPage extends React.Component {
     render() {
         return (
             <div>
                     
-                    <Header />
-                     <div className="container">
+                   
                     <AdminComponent />
-                    </div>
+                    
                
             </div>
         );

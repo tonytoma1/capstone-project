@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import history from '../../history';
 import HeaderComponent from './HeaderComponent';
 import './table.css' ;
+import UserService from '../../services/user.service';
 
 
 export default class ViewOrdersComponent extends React.Component {
@@ -23,23 +24,38 @@ export default class ViewOrdersComponent extends React.Component {
   
 
    async componentDidMount() {
-        AdminService.viewOrder().then((res) => {
-            this.setState({ neworder: res.data,
-                            isLoggedIn: true,
-                            isLoading: false
-                           
-            });
-            
-        }).catch(error => {
-            console.log(error);
+
+    try {
+            let result = await UserService.isUserLoggedIn();
+
+            //check to see if user is admin
+            if(result.data.role.roleName === "ADMIN"){
+                AdminService.viewOrder().then((res) => {
+                    this.setState({ neworder: res.data,
+                                    isLoggedIn: true,
+                                    isLoading: false
+                                
+                    });
+                    
+                }).catch(error => {
+                    console.log(error);
+                    history.push("/login");
+                    window.location.reload();
+                    
+                })
+            }
+
+            else {
+                history.push("/login");
+                window.location.reload();
+            }
+        
+        }
+        catch(error) {
             history.push("/login");
             window.location.reload();
-            
-        })
-      
-    }
-
-
+        }
+   }
 
 
     render() {
