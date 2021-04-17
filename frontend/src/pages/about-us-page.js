@@ -14,8 +14,44 @@ import 'css/about-us-page.css';
 export default class AboutUsPage extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            messageSent: false,
+            firstName: '',
+            lastName: '',
+            message: '',
+            error: false
+        }
     }
 
+    changeHandler = e => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    handleClick() {
+
+        if(this.state.message == '' || this.firstName == '' || this.lastName == '') {
+            this.setState({error: true});
+        }
+        else {
+            
+            this.setState({
+            messageSent: true, 
+            error: false})
+
+        }
+
+    
+        
+    }
+
+    componentDidMount() {
+        this.setState({message: '', 
+        firstName: '',
+        lastName: '',
+        messageSent: false,
+        error: false})
+    }
+    
 
     render() {
         return(
@@ -61,19 +97,21 @@ export default class AboutUsPage extends React.Component {
                                 <Form>
                                     <FormGroup>
                                         <Label for="firstName">First Name</Label>
-                                        <Input type="text" name="firstName" placeholder="John"></Input>
+                                        <Input type="text" name="firstName" placeholder="John"  onChange={this.changeHandler}></Input>
                                     </FormGroup>
 
                                     <FormGroup>
                                         <Label for="lastName">Last Name</Label>
-                                        <Input type="text" name="lastName" placeholder="Smith"></Input>
+                                        <Input type="text" name="lastName" placeholder="Smith"  onChange={this.changeHandler}></Input>
                                     </FormGroup>
-
                                     <FormGroup>
                                         <Label for="message">Message</Label>
-                                        <Input type="textarea" name="message"></Input>
+                                        <Input type="textarea" name="message"  onChange={this.changeHandler}></Input>
                                     </FormGroup>
-                                    <Button>Submit</Button>
+                                    {this.state.messageSent ? <p>Thank you for the message.</p> : null}
+                                    {this.state.error ? <p>Please fill out all of the fields</p> : null}
+
+                                    <Button onClick={() => this.handleClick()} >Submit</Button>
                                 </Form>
                             </Col>
 

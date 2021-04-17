@@ -8,3 +8,8 @@ ul li {
 }
 
 */
+
+.policy-content p, .policy-content li {
+    text-align: left;
+}
+

@@ -6,7 +6,7 @@ export default class TermsConditions extends Component {
     render() {
         return (
             
-            <div>
+            <div className="policy-content">
                 <Header />
                 <h2><strong>Terms and Conditions</strong></h2>
 
