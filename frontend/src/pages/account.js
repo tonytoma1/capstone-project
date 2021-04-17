@@ -25,15 +25,18 @@ export default class Account extends React.Component {
             lastName: '',
             email: '',
             streetAddress1: '',
-            phone: '',
+            streetAddress2: '',
+            phoneNumber: '',
             country: '',
             city: '',
             state: '',
             zip: '',
-            isLoading: true
+            isLoading: true,
+            id: null
         
         
         };
+        /*
         this.fNameChange = this.fNameChange.bind(this);
         this.lNameChange = this.lNameChange.bind(this);
         this.emailChange = this.emailChange.bind(this);
@@ -43,7 +46,10 @@ export default class Account extends React.Component {
         this.cityChange = this.cityChange.bind(this);
         this.zipChange = this.zipChange.bind(this);
         this.streetAddress1Change = this.streetAddress1Change.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        */
     }
+    /*
     fNameChange(e) {
         this.setState({
             fName: e.target.value
@@ -93,7 +99,10 @@ export default class Account extends React.Component {
  
 
 
-
+*/
+changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value })
+}
 
 
 
@@ -123,7 +132,8 @@ export default class Account extends React.Component {
                           orders: ordersFound,
                           userFound: true, 
                           user: userFound,
-                          isLoading: false
+                          isLoading: false,
+                          id: Number(userFound.data.accountId)
 
                       
                         }); 
@@ -137,8 +147,14 @@ export default class Account extends React.Component {
         
     }
 
-    handleClick() {
-        
+   async handleClick() {
+        try {
+            let result = await UserService.updateAccount(this.state);
+            window.location.reload();
+        }
+        catch(error) {
+
+        }
     }
 
 
@@ -149,14 +165,12 @@ export default class Account extends React.Component {
         }
 
 
-   let {user, fName, lName, email, streetAddress1, phone, country, city, state, zip} = this.state;
-   console.log(user);
             return(
               <div>
                 <Header/>
                 <Container>
                 
-                    <h1> Welcome to your account, {user != null ? <p>{user.data.person.firstName}</p> : null} </h1>
+                    <h1> Welcome to your account, <p>{this.state.firstName}</p> </h1>
                     <div className = "iconImage">
                     <img src = {Image} />
                     <br/>
@@ -180,7 +194,7 @@ export default class Account extends React.Component {
                                                 <Person/>
                                             </InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <FormControl type="text" placeholder={this.state.user.data.person.firstName}></FormControl>
+                                        <FormControl type="text" placeholder={this.state.user.data.person.firstName} name="firstName" onChange={this.changeHandler}></FormControl>
                                     </InputGroup>
                                 </Col>
                                 
@@ -194,7 +208,7 @@ export default class Account extends React.Component {
                                                         <Person/>
                                                     </InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <FormControl type="text" value={this.state.user.data.person.lastName}></FormControl>
+                                                <FormControl type="text" placeholder={this.state.user.data.person.lastName} name="lastName" onChange={this.changeHandler}></FormControl>
                                             </InputGroup>
                                 </Col>
                             </Form.Row>
@@ -208,7 +222,7 @@ export default class Account extends React.Component {
                                                 <Mailbox />
                                             </InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <FormControl type="email" value={this.state.user.data.person.email}></FormControl>
+                                        <FormControl type="email" placeholder={this.state.user.data.person.email} name="email" onChange={this.changeHandler}></FormControl>
                                     </InputGroup>
                                 </Col>
                             </Form.Row>
@@ -222,7 +236,7 @@ export default class Account extends React.Component {
                                                 <Telephone />
                                             </InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <FormControl type="tel" value={this.state.user.data.person.phone}></FormControl>
+                                        <FormControl type="tel" placeholder={this.state.user.data.person.phoneNumber} name="phoneNumber" onChange={this.changeHandler}></FormControl>
                                     </InputGroup>
                                 </Col>
                             </Form.Row>
@@ -236,7 +250,7 @@ export default class Account extends React.Component {
                                                 <Building />
                                             </InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <FormControl type="text" value={this.state.user.data.person.city} className="formControl"></FormControl>
+                                        <FormControl type="text" placeholder={this.state.user.data.person.city} name="city" onChange={this.changeHandler} className="formControl"></FormControl>
                                     </InputGroup>
                                 </Col>
                             </Form.Row>
@@ -250,7 +264,7 @@ export default class Account extends React.Component {
                                                 <Map />
                                             </InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <FormControl as="select" name="state" className="formControl">
+                                        <FormControl as="select" name="state" className="formControl" onChange={this.changeHandler}>
 										<option selected={this.state.user.data.person.state}>Please Select a State</option>
 										<option value="AL">Alabama</option>
 										<option value="AK">Alaska</option>
@@ -317,7 +331,7 @@ export default class Account extends React.Component {
                                                 <Building />
                                             </InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <FormControl type="text" value={this.state.user.data.person.streetAddress1}
+                                        <FormControl type="text" placeholder={this.state.user.data.person.streetAddress1} name="streetAddress1" onChange={this.changeHandler}
                                         className="formControl"></FormControl>
                                     </InputGroup>
                                 </Col>
@@ -333,7 +347,7 @@ export default class Account extends React.Component {
                                                     <Building />
                                                 </InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <FormControl type="text" value={this.state.user.data.person.streetAddress2}
+                                            <FormControl type="text" placeholder={this.state.user.data.person.streetAddress2} name="streetAddress2" onChange={this.changeHandler}
                                             className="formControl"></FormControl>
                                         </InputGroup>
                                     </Col>
@@ -349,7 +363,7 @@ export default class Account extends React.Component {
                                                 <Building />
                                             </InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <FormControl type="text" value={this.state.user.data.person.zip}
+                                        <FormControl type="text" placeholder={this.state.user.data.person.zip} name="zip"  onChange={this.changeHandler} 
                                         className="formControl"></FormControl>
                                     </InputGroup>
                                 </Col>
@@ -358,7 +372,7 @@ export default class Account extends React.Component {
                             <Form.Row>
                                 <Col md={5} className="cols">
 
-                                    <FormControl className="submit-button" type="Submit" value="Update"
+                                    <FormControl className="submit-button" type="button" onClick={() => this.handleClick()} value="Update"
                                     className="formControl" ></FormControl>
                                 
                                 </Col>
@@ -371,24 +385,24 @@ export default class Account extends React.Component {
                         <h2>Current information</h2>
                         <div className = "information">
                             <h5>Contact information</h5>
-                            <p><b>First name:</b> {fName} </p>
+                            <p><b>First name:</b> {this.state.firstName} </p>
                             <br/>
-                            <p><b>Last name:</b> {lName}</p>
+                            <p><b>Last name:</b> {this.state.lastName}</p>
                             <br/>
-                            <p><b>Email:</b> {email}</p>
+                            <p><b>Email:</b> {this.state.email}</p>
                             <br/>
-                            <p><b>Phone number:</b> {phone}</p>
+                            <p><b>Phone number:</b> {this.state.phone}</p>
                             <br/>
                             <h5>Shipping information</h5>
-                            <p><b>Country:</b> {country}</p>
+                            <p><b>Country:</b> {this.state.country}</p>
                             <br/>
-                            <p><b>State:</b> {state}</p>
+                            <p><b>State:</b> {this.state.state}</p>
                             <br/>
-                            <p><b>City:</b> {city}</p>
+                            <p><b>City:</b> {this.state.city}</p>
                             <br/>
-                            <p><b>Zip:</b> {zip}</p>
+                            <p><b>Zip:</b> {this.state.zip}</p>
                             <br/>
-                            <p><b>Address:</b> {streetAddress1}</p>
+                            <p><b>Address:</b> {this.state.streetAddress1}</p>
                             <br/>
                         </div>
                         <br/>

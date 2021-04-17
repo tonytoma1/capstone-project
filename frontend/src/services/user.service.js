@@ -118,9 +118,22 @@ class UserService {
         });
     }
 
+    async updateAccount(state) {
+
+        const token = Cookies.get(Constants.JWT_TOKEN);
+
+        var headers = {Authorization: 'Bearer '.concat(token)};
+
+        return await axios.post(Constants.API_URL + "account/update-account", state, {
+            headers: headers
+        });
+    }
+
     async getUser() {
         var usernameRetrieved = this.getUsernameFromJwtToken();
-
+        var headers = {
+            'Authorization': this.authenticationHeader
+        }
         var config = {
             headers: this.authenticationHeader(),
             params: {
