@@ -15,12 +15,18 @@ const AccordionSection = styled.div`
   height: 100vh;
   background: #fff;
   margin-bottom: 40px;
+
+  width: 80%;
+  margin: auto
+  
+
 `;
 
 const Container = styled.div`
   position: absolute;
   top: 10%;
   box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
+  text-align: left;
 `;
 
 const Wrap = styled.div`
@@ -32,9 +38,11 @@ const Wrap = styled.div`
   width: 100%;
   text-align: center;
   cursor: pointer;
+  transition: 1s ease-out;
   h1 {
     padding: 2rem;
     font-size: 2rem;
+    text-align:left;
   }
   span {
     margin-right: 1.5rem;
@@ -71,6 +79,7 @@ const FAQ = () => {
   };
 
   return (
+
     
     <IconContext.Provider value={{ color: '#00FFB9', size: '25px' }}>
       <AccordionSection>

@@ -51,6 +51,7 @@ html {
           position: relative;
           margin: 0;
           max-height: 100px;
+          cursor: pointer;
         }
 
         #mobile, .myLinks , .myLinks *{
@@ -171,105 +172,3 @@ html {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .Title
-{
-  font-weight: lighter;
-  position: absolute; 
-  margin-left: 35px;
-  margin-bottom: 730px;
-  display: inline-block;
-  color: #3aafa9;
-  font-size: 41px;
-  font-family:Georgia, 'Times New Roman', Times, serif;
-}
-
-.Container
-{
-    margin: 0px;
-    padding: 0px;
-    margin-top: 10px;
-    list-style: none;
-    background-color: White;
-    height: 150px;
-    top: 0px;
-    height: fixed;  
-}
-
-.I
-{
-    height: 83px;
-    margin-left: 20px;
-    display: inline-block;
-
-}
-
-.navigational-table {
-  display: inline-block;
-  position: absolute;
-  margin-left: 370px;
-  margin-top: 22px;
-}
-
-.login-register-table {
-  position: absolute;
-  margin-top: 25px;
-  margin-left: 1200px;
-  display: inline-block;
-  
-}
-
-.title-container {
-  display: inline-block;
-}
- td, button {
-    margin-right: 7px;
-    margin-left: 7px;
-    color: #3aafa9;
-    width: 175px;
-    text-align: center;
-    padding: 3%;
-    font-size: 29px;
-    font-weight: normal;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    text-decoration: underline;
-}
-
-button {
-  padding: 0;
-  border: none;
-  background: none;
-}
-/*
-.td-login-register {
-  border-left: solid 1px #3aafa9;
-
-}
-
-
-hr { border-top: 5px solid #3aafa9;
-}
-
-.shopping-cart-image {
-  width: 40px;
-  height: 40px;
-  color:#3aafa9;
-} */

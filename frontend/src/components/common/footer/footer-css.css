@@ -1,22 +1,26 @@
 
+.footer-container{
+  bottom: 0;
 
-.color-content {
-  color: white;
+  margin-top: 50px;
+  padding: 50px 30vh;
+
+  
+  background-color: var(--main-color);
+  display: flex;
+  align-items: center;
+  
 }
 
-.footer-container{
-  margin-top: 50px;
-  /* padding: 30px 125px 15px 125px; */
-  padding: 90px 150px;
-  clear: both;
-  color:white;
-  background-color: #38ada6;
+.footer-container  > * {
+  width: 50%;
 }
 
 .footer-container .aboutrecommerce{
   max-height: 150px;
-  margin-left: 0;
+  display: inline-block;
 }
+
 
 .footer-container .about-us{
   font-size: 13px;
@@ -34,40 +38,46 @@
   font-size: 13px;
   font-weight: 500;
 
-  font-style: italic;
   margin-bottom: 10px;
 }
 
 .footer-container .content{
   display: block;
   padding-left: 20px;
-  margin-bottom: 10px;
+  margin-bottom: .5rem;
   margin-left: 5px;
+  
+  color: white;
 }
 
 .footer-container .content:hover{
   border-left: 6px solid white;
   cursor: pointer;
   background-color: rgba(141, 140, 140, 0.554);
-  font-style: italic;
 }
 
 .reserved{
   padding: 25px 50px;
-  margin-bottom: 0;
 
   background-color: #267973;
   color: rgb(29, 29, 29);
 
+  width: 100%;
   text-align: center;
 }
 
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
 
   .footer-container{
-    margin-top: 350px;
     padding: 50px 50px;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+  .footer-container{
+    flex-direction: column;
   }
 
 }

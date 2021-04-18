@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../common/Header/Header';
 import Footer from '../common/footer/Footer';
-import './style.css';
 export default class PrivacyPolicy extends Component {
     render() {
         return (
