@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import history from '../../history';
+
+import Cookies from 'js-cookie';
+
 export default class HeaderComponent extends Component {
     constructor(props){
         super(props)
@@ -8,6 +11,14 @@ export default class HeaderComponent extends Component {
 
         }
     }
+
+    handleLogout() {
+        Cookies.remove("jwtToken");
+        history.push("/login");
+        window.location.reload();
+    }
+
+
     render() {
         return (
             <div>
@@ -22,6 +33,9 @@ export default class HeaderComponent extends Component {
                     </Link>
                     <Link to='/adddevice'>
                     <div className="navbar-brand">Add Device</div>
+                    </Link>
+                    <Link to="/login" onClick={this.handleLogout}>
+                    <div className="navbar-brand">Logout</div>  
                     </Link>
                     
                     

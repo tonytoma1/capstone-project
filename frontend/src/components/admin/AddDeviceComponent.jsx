@@ -54,29 +54,32 @@ export default class AddDeviceComponent extends Component {
     }
     async componentDidMount() {
 
-        AdminService.verifyAdmin()
-                    .then((response) => {
-                        Promise.all([UserService.getStorage(),  UserService.getNetwork(), UserService.getModels(),
-                            UserService.getCondition()
-                                    ])
-                                    .then((values) => {
-                                        this.setState({storage: values[0].data,
-                                                       service_provider: values[1].data,
-                                                      model: values[2].data, 
-                                                      condition: values[3].data })
-                                    })
-                                    .catch((error) => {
-                
-                                    })
-                                    this.setState({isLoading: false});
-                    })
-                    .catch((error) => {
-                        history.push("/")
-                        window.location.reload();
-                    })
-        
-       
+        try {
+            let result = await UserService.isUserLoggedIn();
 
+             //check to see if user is admin
+             if(result.data.role.roleName === "ADMIN"){
+
+                Promise.all([UserService.getStorage(),  UserService.getNetwork(), UserService.getModels(),
+                    UserService.getCondition()
+                            ])
+                            .then((values) => {
+                                this.setState({storage: values[0].data,
+                                               service_provider: values[1].data,
+                                              model: values[2].data, 
+                                              condition: values[3].data })
+                            })
+                            .catch((error) => {
+        
+                            })
+                            this.setState({isLoading: false});      
+            }
+        }
+        catch(error){
+            history.push("/")
+            window.location.reload();
+        }
+        
     }
     
     render() {

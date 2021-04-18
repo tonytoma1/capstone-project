@@ -9,7 +9,7 @@ export const Data = [
     },
     {
       question: 'Do I need to ship the charger and manual?',
-      answer: 'keep your charger and manual'
+      answer: 'Keep your charger and manual'
     },
     {
         question: 'When will I get paid',
@@ -21,6 +21,6 @@ export const Data = [
       },
       {
         question: 'Do you have a physical store',
-        answer: 'No currently'
+        answer: 'Not currently'
       }
   ];
