@@ -19,8 +19,7 @@ export default class Home extends React.Component {
                 <Header_LP />
                 <Hompage />
                 
-                    <h2 style={{ textAlign: 'center', color: '#3aafa9' }}>Frequently Asked Questions</h2>
-                
+                    
 
                 <FAQ />
                

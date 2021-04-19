@@ -1,7 +1,12 @@
 :root{
     --main-color:#38ada6;
+    min-height: 100vh;
+    position: relative;
 }
 
+:root:nth-child(n + 1){
+    padding-bottom: 24em;
+}
 
 a:hover {
     text-decoration:none;

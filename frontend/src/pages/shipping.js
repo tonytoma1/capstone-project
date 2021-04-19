@@ -14,19 +14,6 @@ export default class Shipping extends React.Component {
                 
             <ShippingLabel />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <Footer />
             </div>
 

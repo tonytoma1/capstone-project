@@ -1,0 +1,11 @@
+.policy-content{
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+}
+
+
+.policy-content p, .policy-content li {
+    text-align: left;
+}
+

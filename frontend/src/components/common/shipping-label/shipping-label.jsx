@@ -1,12 +1,9 @@
 import React from 'react';
-import Logo from '../../../images/logo.png';
-import test from '../../../images/test.jpg';
 import axios from 'axios';
 import {Button} from 'react-bootstrap';
 import history from '../../../history';
 
 import {connect} from 'react-redux';
-import Shipping from 'pages/shipping';
 import {Container, Row, Col} from 'react-bootstrap';
 import {CLEAR, addPhoneComponent} from 'redux-action';
 

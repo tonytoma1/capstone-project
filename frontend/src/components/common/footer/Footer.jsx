@@ -14,7 +14,7 @@ function Footer () {
 
   return (
 
-    <div>
+    <div className="footer">
 
       <div className='footer-container'>
 

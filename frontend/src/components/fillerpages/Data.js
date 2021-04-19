@@ -5,7 +5,7 @@ export const Data = [
     },
     {
       question: 'What kind of devices do we buy?',
-      answer: 'Just Apple products for now '
+      answer: 'Just Apple iphones products for now '
     },
     {
       question: 'Do I need to ship the charger and manual?',
