@@ -52,7 +52,7 @@ GET           | /api/person | Gets all person rows
 POST          | /api/person | Saves the person 
 
 
-# Atrributes 
+# Attributes 
 
 Attribute | Type |  Description
 ------------- | ---------- | ----------
