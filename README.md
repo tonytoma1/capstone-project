@@ -1,5 +1,25 @@
 # capstone-project
 
+Recommerce is a phone reselling platform that allows users to sell their old mobile devices.
+
+# Homepage
+
+![ScreenShot](https://res.cloudinary.com/realtor/image/upload/v1630975226/main_y8quth.png)
+
+# Login
+
+![ScreenShot](https://res.cloudinary.com/realtor/image/upload/v1630975226/login_aoager.png)
+
+# Register
+
+![ScreenShot](https://res.cloudinary.com/realtor/image/upload/v1630975224/register_rbzoi8.png)
+
+
+# Select Device
+
+![ScreenShot](https://res.cloudinary.com/realtor/image/upload/v1630975225/model-page_xjyfsk.png)
+
+
 # Backend API End Points
 Method        |   End Point    | Description
 ------------- | -------------  | -----------
@@ -29,17 +49,6 @@ POST          | /api/role           | Saves Role
 GET           | /api/person | Gets all person rows 
 POST          | /api/person | Saves the person 
 
-
-
-
-# Known bugs
-- If a person object isn't found during a POST request to api/register a status 500 is thrown
-- If a role object isn't found during a POST request to api/register a status 500 is thrown
-- If the account object isn't found during a login, POST request to /api/authentication, then a status 400 is thrown 
-
-- JWTRequestFilter throws generic errors. Need to go back and modify it so it will send the correct error codes
-back to the caller
-- Pulling the client account in the shippinglabel class with the account object is not fully implemented yet. Hardcoded information is in it's place for now.
 
 # Atrributes 
 
