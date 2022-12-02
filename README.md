@@ -1,6 +1,6 @@
 # capstone-project
 
-Recommerce is a phone reselling platform that allows users to sell their old mobile devices. /
+Recommerce is a phone reselling platform that allows users to sell their old mobile devices.
 
 Visit the website: https://recommerce-front-end.herokuapp.com/
 
