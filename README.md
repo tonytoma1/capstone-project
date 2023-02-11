@@ -2,8 +2,6 @@
 
 Recommerce is a phone reselling platform that allows users to sell their old mobile devices.
 
-Visit the website: https://recommerce-front-end.herokuapp.com/
-
 # Homepage
 
 ![ScreenShot](https://res.cloudinary.com/realtor/image/upload/v1630975226/main_y8quth.png)
